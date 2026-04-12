@@ -1,1735 +1,1821 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ApnaKitchen - Your Local Food Delivery Platform</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-red: #8B0000;
-            --dark-red: #5C0011;
-            --light-red: #DC143C;
-            --white: #FFFFFF;
-            --off-white: #F8F8F8;
-            --gray: #666666;
-            --light-gray: #E0E0E0;
-            --success: #28a745;
-            --warning: #ffc107;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--off-white); color: #333; }
-        .navbar { background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139, 0, 0, 0.3); }
-        .logo { display: flex; align-items: center; gap: 15px; color: var(--white); font-size: 28px; font-weight: bold; text-decoration: none; }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { color: var(--white); text-decoration: none; font-weight: 500; transition: all 0.3s; padding: 8px 16px; border-radius: 25px; }
-        .nav-links a:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
-        .btn-primary { background: var(--white); color: var(--primary-red); padding: 12px 30px; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
-        .btn-secondary { background: var(--primary-red); color: var(--white); padding: 12px 30px; border: 2px solid var(--white); border-radius: 30px; font-weight: bold; cursor: pointer; transition: all 0.3s; }
-        .btn-secondary:hover { background: var(--white); color: var(--primary-red); }
-        .btn-red { background: var(--primary-red); color: var(--white); padding: 15px 40px; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 16px; }
-        .btn-red:hover { background: var(--dark-red); transform: scale(1.05); }
-        .btn-white { background: var(--white); color: var(--primary-red); padding: 15px 40px; border: 2px solid var(--primary-red); border-radius: 30px; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 16px; }
-        .btn-white:hover { background: var(--off-white); transform: scale(1.05); }
-        .container { margin-top: 80px; min-height: calc(100vh - 80px); }
-        .page { display: none; padding: 20px; max-width: 1400px; margin: 0 auto; }
-        .page.active { display: block; }
-        .hero { background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%); color: var(--white); padding: 80px 50px; text-align: center; border-radius: 0 0 50px 50px; margin-bottom: 40px; }
-        .hero h1 { font-size: 48px; margin-bottom: 20px; }
-        .hero p { font-size: 20px; margin-bottom: 30px; opacity: 0.9; }
-        .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px; }
-        .role-card { background: var(--white); border-radius: 20px; padding: 40px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: all 0.3s; border-top: 5px solid var(--primary-red); }
-        .role-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(139, 0, 0, 0.2); }
-        .role-icon { font-size: 60px; color: var(--primary-red); margin-bottom: 20px; }
-        .auth-container { max-width: 500px; margin: 40px auto; background: var(--white); padding: 50px; border-radius: 30px; box-shadow: 0 15px 50px rgba(0,0,0,0.1); }
-        .auth-header { text-align: center; margin-bottom: 40px; }
-        .auth-header h2 { color: var(--primary-red); font-size: 32px; margin-bottom: 10px; }
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; margin-bottom: 8px; color: var(--dark-red); font-weight: 600; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 15px; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 16px; transition: all 0.3s; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-red); box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1); }
-        .file-upload { position: relative; display: inline-block; width: 100%; }
-        .file-upload input[type="file"] { position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
-        .file-upload-label { display: block; padding: 20px; border: 3px dashed var(--light-red); border-radius: 12px; text-align: center; color: var(--primary-red); cursor: pointer; transition: all 0.3s; }
-        .preview-image { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 20px auto; display: none; border: 4px solid var(--primary-red); }
-        .dashboard-header { background: var(--white); padding: 30px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
-        .user-info { display: flex; align-items: center; gap: 20px; }
-        .user-avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary-red); }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        .stat-card { background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-left: 5px solid var(--primary-red); }
-        .stat-card h4 { color: var(--gray); font-size: 14px; text-transform: uppercase; margin-bottom: 10px; }
-        .stat-card .value { font-size: 32px; font-weight: bold; color: var(--primary-red); }
-        .menu-section { background: var(--white); padding: 30px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
-        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid var(--light-gray); }
-        .add-btn { background: var(--primary-red); color: var(--white); width: 60px; height: 60px; border-radius: 50%; border: none; font-size: 30px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
-        .add-btn:hover { transform: rotate(90deg) scale(1.1); box-shadow: 0 5px 20px rgba(139, 0, 0, 0.4); }
-        .food-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-        .food-card { background: var(--off-white); border-radius: 20px; overflow: hidden; transition: all 0.3s; border: 2px solid transparent; cursor: pointer; }
-        .food-card:hover { transform: translateY(-5px); border-color: var(--primary-red); box-shadow: 0 15px 40px rgba(139, 0, 0, 0.15); }
-        .food-image { width: 100%; height: 200px; object-fit: cover; }
-        .food-details { padding: 20px; }
-        .food-details h4 { color: var(--dark-red); font-size: 20px; margin-bottom: 10px; }
-        .food-price { font-size: 24px; font-weight: bold; color: var(--primary-red); }
-        .options-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .option-tag { background: rgba(139, 0, 0, 0.1); color: var(--primary-red); padding: 5px 12px; border-radius: 20px; font-size: 12px; }
-        .order-container { display: grid; grid-template-columns: 1fr 400px; gap: 30px; }
-        .food-detail-image { width: 100%; height: 400px; object-fit: cover; border-radius: 20px; margin-bottom: 30px; }
-        .options-section { background: var(--white); padding: 25px; border-radius: 15px; margin-bottom: 20px; }
-        .option-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid var(--light-gray); }
-        .checkbox-custom { width: 24px; height: 24px; border: 2px solid var(--primary-red); border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
-        .checkbox-custom.checked { background: var(--primary-red); color: var(--white); }
-        .order-summary { background: var(--white); padding: 30px; border-radius: 20px; position: sticky; top: 100px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
-        .summary-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid var(--light-gray); }
-        .summary-row.total { font-size: 24px; font-weight: bold; color: var(--primary-red); border-bottom: none; border-top: 3px solid var(--primary-red); margin-top: 10px; }
-        .notification-panel { position: fixed; top: 100px; right: 20px; width: 350px; max-height: 500px; overflow-y: auto; background: var(--white); border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 20px; display: none; z-index: 999; }
-        .notification-panel.active { display: block; }
-        .notification-item { padding: 15px; border-left: 4px solid var(--primary-red); background: var(--off-white); margin-bottom: 15px; border-radius: 0 10px 10px 0; animation: slideIn 0.3s ease; }
-        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        .review-card { border-bottom: 1px solid var(--light-gray); padding: 25px 0; }
-        .review-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
-        .stars { color: var(--warning); }
-        .rating-input { display: flex; gap: 10px; font-size: 30px; color: var(--light-gray); cursor: pointer; margin-bottom: 20px; }
-        .commission-badge { background: linear-gradient(135deg, var(--primary-red), var(--light-red)); color: var(--white); padding: 15px 25px; border-radius: 15px; display: inline-flex; align-items: center; gap: 10px; font-weight: bold; }
-        .application-form { background: var(--white); padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
-        .form-section { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--light-gray); }
-        .form-section h3 { color: var(--primary-red); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .chat-container { background: var(--white); border-radius: 20px; height: 500px; display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
-        .chat-header { background: var(--primary-red); color: var(--white); padding: 20px; border-radius: 20px 20px 0 0; display: flex; align-items: center; gap: 15px; }
-        .chat-messages { flex: 1; overflow-y: auto; padding: 20px; background: var(--off-white); }
-        .message { max-width: 70%; padding: 15px 20px; border-radius: 20px; margin-bottom: 15px; }
-        .message.sent { background: var(--primary-red); color: var(--white); margin-left: auto; border-bottom-right-radius: 5px; }
-        .message.received { background: var(--white); color: #333; border-bottom-left-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .chat-input { display: flex; padding: 20px; gap: 15px; border-top: 1px solid var(--light-gray); }
-        .chat-input input { flex: 1; padding: 15px; border: 2px solid var(--light-gray); border-radius: 30px; outline: none; }
-        .chat-input button { background: var(--primary-red); color: var(--white); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; transition: all 0.3s; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; }
-        .modal.active { display: flex; }
-        .modal-content { background: var(--white); padding: 40px; border-radius: 30px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; animation: modalPop 0.3s ease; }
-        @keyframes modalPop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .close-btn { font-size: 30px; color: var(--gray); cursor: pointer; background: none; border: none; }
-        .data-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .data-table th, .data-table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--light-gray); }
-        .data-table th { background: var(--primary-red); color: var(--white); }
-        .status-badge { padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; }
-        .status-pending { background: var(--warning); color: #333; }
-        .status-preparing { background: #17a2b8; color: white; }
-        .status-completed { background: var(--success); color: white; }
-        .toggle-switch { position: relative; display: inline-block; width: 60px; height: 34px; }
-        .toggle-switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--light-gray); transition: .4s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
-        input:checked + .slider { background-color: var(--primary-red); }
-        input:checked + .slider:before { transform: translateX(26px); }
-        .location-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .location-tag { background: rgba(139, 0, 0, 0.1); color: var(--primary-red); padding: 8px 16px; border-radius: 20px; font-size: 14px; display: flex; align-items: center; gap: 8px; }
-        .how-it-works-section { background: var(--white); padding: 40px; border-radius: 30px; margin: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
-        .how-it-works-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 20px; background: var(--primary-red); color: white; border-radius: 20px; transition: all 0.3s; }
-        .how-it-works-header:hover { background: var(--dark-red); }
-        .how-it-works-content { display: none; padding: 30px 20px; animation: fadeIn 0.5s ease; }
-        .how-it-works-content.active { display: block; }
-        .how-it-works-step { display: flex; gap: 20px; margin-bottom: 25px; padding: 20px; background: var(--off-white); border-radius: 15px; border-left: 4px solid var(--primary-red); }
-        .step-number { width: 50px; height: 50px; background: var(--primary-red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; flex-shrink: 0; }
-        .quantity-selector { display: flex; align-items: center; gap: 15px; }
-        .quantity-btn { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-red); background: white; color: var(--primary-red); font-size: 20px; cursor: pointer; transition: all 0.3s; }
-        .quantity-btn:hover { background: var(--primary-red); color: white; }
-        .quantity-display { font-size: 24px; font-weight: bold; min-width: 40px; text-align: center; }
-        .payment-section { background: linear-gradient(135deg, rgba(139, 0, 0, 0.05), rgba(220, 20, 60, 0.05)); padding: 25px; border-radius: 15px; margin-bottom: 20px; border: 2px dashed var(--primary-red); }
-        .payment-details { background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
-        .store-display { background: linear-gradient(135deg, var(--primary-red), var(--dark-red)); color: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; text-align: center; }
-        .button-group { display: flex; gap: 15px; margin-top: 20px; }
-        .villages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-height: 300px; overflow-y: auto; padding: 10px; background: var(--off-white); border-radius: 10px; }
-        @media (max-width: 768px) { .villages-grid { grid-template-columns: repeat(2, 1fr); } }
-        .village-checkbox { display: flex; align-items: center; gap: 8px; padding: 8px; background: white; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
-        .admin-wallet { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, var(--primary-red), var(--dark-red)); color: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 1000; max-width: 300px; }
-        .admin-wallet .balance { font-size: 28px; font-weight: bold; }
-        .admin-wallet .account { font-size: 12px; opacity: 0.8; margin-top: 5px; }
-        .payment-status { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: bold; }
-        .payment-status.paid { background: var(--success); color: white; }
-        .food-card-actions { display: flex; gap: 10px; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--light-gray); }
-        .btn-review { flex: 1; background: white; color: var(--primary-red); padding: 10px; border: 2px solid var(--primary-red); border-radius: 25px; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 14px; }
-        .btn-order { flex: 1; background: var(--primary-red); color: white; padding: 10px; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 14px; }
-        .store-reviews { background: var(--white); padding: 30px; border-radius: 20px; margin-top: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
-        .extra-price-input { display: flex; gap: 10px; align-items: center; }
-        .notification-badge { position: absolute; top: -5px; right: -5px; background: var(--light-red); color: white; width: 20px; height: 20px; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center; }
-        .nav-links a { position: relative; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApnaKitchen — Swabi's Home Kitchen</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{
+  --crimson:#7A0020;
+  --crimson-deep:#4A0012;
+  --crimson-mid:#9E1030;
+  --gold:#C8861A;
+  --gold-light:#F5C842;
+  --gold-pale:#FDF3DC;
+  --cream:#FBF6EE;
+  --warm-white:#FFFDF9;
+  --ink:#1A0A0E;
+  --charcoal:#3D2030;
+  --muted:#8A6070;
+  --border:#E8D5C0;
+  --success:#1E7C4A;
+  --warning:#C8861A;
+  --shadow-warm:0 8px 40px rgba(122,0,32,0.12);
+  --shadow-card:0 2px 16px rgba(122,0,32,0.08);
+  --r:14px;
+  --r-lg:22px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  min-height:100vh;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* Grain overlay */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:0;
+  opacity:.6;
+}
+
+/* ── NAVBAR ─────────────────────────────────────────────────────────────── */
+.navbar{
+  position:fixed;top:0;width:100%;z-index:1000;
+  background:rgba(26,10,14,0.95);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(200,134,26,0.25);
+  padding:0 48px;
+  height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+
+.logo{
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;
+  cursor:pointer;
+}
+.logo-icon{
+  width:40px;height:40px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;color:var(--crimson-deep);
+  font-weight:700;
+  box-shadow:0 2px 12px rgba(200,134,26,0.4);
+}
+.logo-text{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:700;
+  color:var(--warm-white);
+  letter-spacing:-.3px;
+}
+.logo-text span{color:var(--gold-light);}
+
+.nav-links{display:flex;align-items:center;gap:6px;}
+.nav-links a{
+  color:rgba(255,255,255,0.7);
+  text-decoration:none;
+  font-size:14px;font-weight:400;
+  padding:8px 14px;border-radius:8px;
+  transition:all .2s;
+  cursor:pointer;
+}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.08);}
+
+.nav-bell{
+  position:relative;
+  color:rgba(255,255,255,0.7);
+  padding:8px 14px;border-radius:8px;
+  cursor:pointer;font-size:16px;
+  transition:all .2s;
+  border:none;background:none;
+}
+.nav-bell:hover{color:#fff;background:rgba(255,255,255,0.08);}
+
+.notif-dot{
+  position:absolute;top:6px;right:10px;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--gold-light);
+  display:none;
+  box-shadow:0 0 6px var(--gold-light);
+}
+
+.btn-login{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--crimson-deep);
+  border:none;border-radius:10px;
+  padding:9px 22px;font-size:14px;font-weight:600;
+  font-family:'DM Sans',sans-serif;
+  cursor:pointer;transition:all .2s;
+  letter-spacing:.2px;
+}
+.btn-login:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(200,134,26,0.4);}
+
+/* ── NOTIFICATION PANEL ─────────────────────────────────────────────────── */
+.notif-panel{
+  position:fixed;top:80px;right:24px;
+  width:340px;
+  background:var(--warm-white);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  box-shadow:var(--shadow-warm);
+  padding:20px;
+  display:none;z-index:999;
+  animation:slideDown .2s ease;
+}
+.notif-panel.show{display:block;}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+.notif-panel h4{
+  font-family:'Playfair Display',serif;
+  font-size:16px;color:var(--crimson);
+  margin-bottom:16px;
+}
+.notif-item{
+  padding:12px;
+  border-left:3px solid var(--gold);
+  background:var(--gold-pale);
+  border-radius:0 10px 10px 0;
+  margin-bottom:10px;
+  font-size:13px;line-height:1.5;
+}
+.notif-item strong{color:var(--crimson);display:block;margin-bottom:2px;}
+.notif-item small{color:var(--muted);font-size:11px;}
+
+/* ── ADMIN WALLET ────────────────────────────────────────────────────────── */
+.admin-wallet{
+  position:fixed;bottom:24px;right:24px;
+  background:linear-gradient(135deg,var(--crimson-deep),var(--crimson));
+  color:#fff;padding:18px 22px;
+  border-radius:var(--r-lg);
+  box-shadow:0 8px 32px rgba(74,0,18,0.4);
+  z-index:1000;display:none;
+  min-width:240px;
+  border:1px solid rgba(200,134,26,0.3);
+}
+.admin-wallet h4{font-size:11px;opacity:.7;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;}
+.wallet-balance{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--gold-light);}
+.wallet-account{font-size:11px;opacity:.6;margin-top:4px;letter-spacing:.3px;}
+
+/* ── CONTAINER & PAGES ───────────────────────────────────────────────────── */
+.container{margin-top:68px;min-height:calc(100vh - 68px);position:relative;z-index:1;}
+.page{display:none;animation:fadeUp .35s ease;}
+.page.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── HERO ────────────────────────────────────────────────────────────────── */
+.hero{
+  background:linear-gradient(160deg,var(--crimson-deep) 0%,var(--crimson-mid) 55%,var(--crimson) 100%);
+  color:#fff;
+  padding:80px 64px 72px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero::after{
+  content:'';position:absolute;
+  right:-80px;top:-80px;
+  width:440px;height:440px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(200,134,26,0.18) 0%,transparent 70%);
+}
+.hero-inner{position:relative;z-index:1;max-width:680px;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(200,134,26,0.2);
+  border:1px solid rgba(200,134,26,0.4);
+  color:var(--gold-light);
+  padding:6px 14px;border-radius:20px;
+  font-size:12px;font-weight:500;letter-spacing:.4px;
+  margin-bottom:24px;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:52px;font-weight:700;line-height:1.1;
+  margin-bottom:16px;
+  letter-spacing:-.5px;
+}
+.hero h1 em{color:var(--gold-light);font-style:italic;}
+.hero p{
+  font-size:17px;font-weight:300;opacity:.85;
+  line-height:1.65;margin-bottom:36px;max-width:520px;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-hero-primary{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--crimson-deep);
+  border:none;border-radius:12px;
+  padding:14px 28px;font-size:15px;font-weight:600;
+  font-family:'DM Sans',sans-serif;cursor:pointer;
+  transition:all .2s;letter-spacing:.1px;
+}
+.btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(200,134,26,0.5);}
+.btn-hero-ghost{
+  background:transparent;
+  color:#fff;
+  border:1.5px solid rgba(255,255,255,0.35);
+  border-radius:12px;padding:14px 28px;
+  font-size:15px;font-weight:500;
+  font-family:'DM Sans',sans-serif;cursor:pointer;
+  transition:all .2s;
+}
+.btn-hero-ghost:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.6);}
+
+/* ── ROLE CARDS ─────────────────────────────────────────────────────────── */
+.roles-section{padding:56px 48px;}
+.section-label{
+  display:inline-block;
+  font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:32px;font-weight:700;color:var(--ink);
+  margin-bottom:8px;letter-spacing:-.3px;
+}
+.section-sub{font-size:15px;color:var(--muted);margin-bottom:40px;font-weight:300;}
+
+.roles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.role-card{
+  background:var(--warm-white);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  padding:36px 28px;
+  position:relative;overflow:hidden;
+  cursor:pointer;
+  transition:all .3s;
+}
+.role-card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--crimson),var(--gold));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s;
+}
+.role-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-warm);border-color:transparent;}
+.role-card:hover::before{transform:scaleX(1);}
+
+.role-icon-wrap{
+  width:56px;height:56px;border-radius:14px;
+  background:var(--gold-pale);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;color:var(--crimson);
+  margin-bottom:20px;
+  transition:all .3s;
+}
+.role-card:hover .role-icon-wrap{background:var(--crimson);color:var(--gold-light);}
+.role-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:21px;font-weight:700;color:var(--ink);
+  margin-bottom:10px;
+}
+.role-card p{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:24px;font-weight:300;}
+.btn-card{
+  background:none;border:1.5px solid var(--crimson);color:var(--crimson);
+  border-radius:10px;padding:10px 20px;
+  font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;
+  cursor:pointer;transition:all .2s;letter-spacing:.2px;
+}
+.btn-card:hover{background:var(--crimson);color:#fff;}
+
+/* ── HOW IT WORKS ───────────────────────────────────────────────────────── */
+.how-section{
+  margin:0 48px 56px;
+  background:var(--ink);
+  border-radius:var(--r-lg);
+  overflow:hidden;
+}
+.how-header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:24px 36px;cursor:pointer;
+  transition:background .2s;
+}
+.how-header:hover{background:rgba(255,255,255,0.04);}
+.how-header h2{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:700;color:var(--warm-white);
+}
+.how-header h2 span{color:var(--gold-light);}
+.how-chevron{color:rgba(255,255,255,0.5);font-size:14px;transition:transform .3s;}
+.how-chevron.open{transform:rotate(180deg);}
+
+.how-body{display:none;padding:0 36px 32px;}
+.how-body.open{display:block;animation:fadeUp .3s ease;}
+
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px;}
+.how-step{padding:20px;background:rgba(255,255,255,0.04);border-radius:14px;border:1px solid rgba(255,255,255,0.07);}
+.how-num{
+  font-family:'Playfair Display',serif;
+  font-size:28px;font-weight:700;color:var(--gold);
+  opacity:.7;margin-bottom:10px;
+}
+.how-step h4{font-size:14px;font-weight:600;color:var(--warm-white);margin-bottom:6px;}
+.how-step p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;font-weight:300;}
+
+.commission-info{
+  background:rgba(200,134,26,0.12);
+  border:1px solid rgba(200,134,26,0.25);
+  border-radius:12px;padding:18px 22px;
+  font-size:13px;color:rgba(255,255,255,0.7);line-height:1.8;
+}
+.commission-info strong{color:var(--gold-light);}
+
+/* ── AUTH PAGES ─────────────────────────────────────────────────────────── */
+.auth-wrap{
+  max-width:480px;margin:40px auto;
+  padding:0 24px;
+}
+.auth-card{
+  background:var(--warm-white);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  padding:44px;
+  box-shadow:var(--shadow-card);
+}
+.auth-logo{
+  text-align:center;margin-bottom:32px;
+}
+.auth-logo .icon{
+  width:60px;height:60px;
+  background:linear-gradient(135deg,var(--crimson),var(--crimson-mid));
+  border-radius:16px;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:26px;color:var(--gold-light);
+  margin-bottom:14px;
+  box-shadow:0 4px 20px rgba(122,0,32,0.25);
+}
+.auth-logo h2{
+  font-family:'Playfair Display',serif;
+  font-size:24px;font-weight:700;color:var(--ink);margin-bottom:4px;
+}
+.auth-logo p{font-size:14px;color:var(--muted);font-weight:300;}
+
+.role-tabs{
+  display:flex;gap:6px;
+  background:var(--cream);
+  border:1px solid var(--border);
+  border-radius:12px;padding:5px;
+  margin-bottom:28px;
+}
+.role-tab{
+  flex:1;padding:9px 4px;border-radius:9px;border:none;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;
+  cursor:pointer;transition:all .2s;background:none;color:var(--muted);
+}
+.role-tab.active{background:var(--crimson);color:#fff;box-shadow:0 2px 8px rgba(122,0,32,0.3);}
+
+.store-banner{
+  background:linear-gradient(135deg,var(--crimson-deep),var(--crimson-mid));
+  color:#fff;padding:16px 20px;border-radius:12px;
+  text-align:center;margin-bottom:20px;display:none;
+}
+.store-banner h3{font-family:'Playfair Display',serif;font-size:17px;color:var(--gold-light);}
+.store-banner p{font-size:12px;opacity:.7;margin-top:3px;}
+
+.form-group{margin-bottom:20px;}
+.form-group label{
+  display:block;font-size:12px;font-weight:600;
+  color:var(--charcoal);margin-bottom:7px;
+  letter-spacing:.3px;text-transform:uppercase;
+}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:13px 16px;
+  border:1.5px solid var(--border);border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);
+  background:var(--cream);
+  transition:all .2s;outline:none;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:var(--crimson);
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(122,0,32,0.08);
+}
+.form-group input::placeholder{color:var(--muted);}
+
+.btn-full{
+  width:100%;padding:14px;
+  background:linear-gradient(135deg,var(--crimson),var(--crimson-mid));
+  color:#fff;border:none;border-radius:12px;
+  font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;
+  cursor:pointer;transition:all .2s;letter-spacing:.2px;
+  box-shadow:0 4px 16px rgba(122,0,32,0.3);
+}
+.btn-full:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(122,0,32,0.4);}
+
+.auth-footer{text-align:center;margin-top:20px;font-size:14px;color:var(--muted);}
+.auth-footer a{color:var(--crimson);font-weight:600;text-decoration:none;cursor:pointer;}
+.auth-footer a:hover{text-decoration:underline;}
+
+/* ── DASHBOARD ───────────────────────────────────────────────────────────── */
+.dash-wrap{padding:32px 48px;}
+.dash-header{
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--warm-white);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  padding:24px 28px;
+  margin-bottom:24px;
+  box-shadow:var(--shadow-card);
+}
+.dash-user{display:flex;align-items:center;gap:18px;}
+.dash-avatar{
+  width:60px;height:60px;border-radius:14px;
+  object-fit:cover;
+  border:2px solid var(--border);
+}
+.dash-user h2{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:700;color:var(--ink);margin-bottom:3px;
+}
+.dash-user p{font-size:13px;color:var(--muted);font-weight:300;}
+.dash-stars{color:var(--gold);font-size:12px;margin-top:3px;}
+.dash-stars span{color:var(--muted);font-size:12px;margin-left:6px;}
+
+.earnings-badge{
+  background:var(--ink);color:var(--gold-light);
+  padding:12px 20px;border-radius:12px;
+  font-size:13px;font-weight:500;
+  display:flex;align-items:center;gap:8px;
+  border:1px solid rgba(200,134,26,0.2);
+}
+.earnings-badge strong{font-size:18px;font-family:'Playfair Display',serif;}
+
+.toggle-wrap{display:flex;align-items:center;gap:10px;}
+.toggle-label{font-size:13px;font-weight:600;}
+.toggle-label.open{color:var(--success);}
+.toggle-label.closed{color:var(--muted);}
+.toggle{position:relative;display:inline-block;width:48px;height:27px;}
+.toggle input{opacity:0;width:0;height:0;}
+.toggle-slider{
+  position:absolute;cursor:pointer;inset:0;
+  background:var(--border);border-radius:27px;transition:.3s;
+}
+.toggle-slider:before{
+  content:'';position:absolute;
+  height:21px;width:21px;left:3px;bottom:3px;
+  background:#fff;border-radius:50%;transition:.3s;
+  box-shadow:0 1px 4px rgba(0,0,0,0.2);
+}
+input:checked + .toggle-slider{background:var(--success);}
+input:checked + .toggle-slider:before{transform:translateX(21px);}
+
+/* ── STATS ───────────────────────────────────────────────────────────────── */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
+.stat-card{
+  background:var(--warm-white);border:1px solid var(--border);
+  border-radius:var(--r);padding:20px 22px;
+  box-shadow:var(--shadow-card);
+  position:relative;overflow:hidden;
+}
+.stat-card::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--crimson),var(--gold));
+  opacity:.4;
+}
+.stat-card h4{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px;}
+.stat-val{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--ink);}
+.stat-val.warn{color:var(--warning);}
+.stat-val.danger{color:var(--crimson);}
+.stat-val.success{color:var(--success);}
+
+/* ── FOOD SECTION ────────────────────────────────────────────────────────── */
+.section-card{
+  background:var(--warm-white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:28px;
+  margin-bottom:24px;box-shadow:var(--shadow-card);
+}
+.sec-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:24px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--border);
+}
+.sec-header h2{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:700;color:var(--ink);
+}
+.sec-header h2 i{color:var(--gold);margin-right:8px;font-size:16px;}
+
+.search-row{display:flex;gap:10px;}
+.search-input{
+  padding:10px 16px;border:1.5px solid var(--border);border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:14px;background:var(--cream);
+  width:220px;outline:none;color:var(--ink);transition:all .2s;
+}
+.search-input:focus{border-color:var(--crimson);background:#fff;}
+.btn-search{
+  background:var(--crimson);color:#fff;border:none;border-radius:10px;
+  width:40px;cursor:pointer;font-size:14px;transition:all .2s;
+}
+.btn-search:hover{background:var(--crimson-deep);}
+
+/* ── FOOD CARDS ─────────────────────────────────────────────────────────── */
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;}
+.food-card{
+  background:var(--cream);border:1px solid var(--border);
+  border-radius:var(--r-lg);overflow:hidden;cursor:pointer;
+  transition:all .25s;
+}
+.food-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-warm);border-color:var(--crimson);}
+.food-img{width:100%;height:190px;object-fit:cover;transition:transform .4s;}
+.food-card:hover .food-img{transform:scale(1.04);}
+.food-img-wrap{overflow:hidden;position:relative;}
+.cook-tag{
+  position:absolute;bottom:10px;left:10px;
+  background:rgba(26,10,14,0.8);
+  color:rgba(255,255,255,0.9);
+  font-size:11px;padding:4px 10px;border-radius:20px;
+  backdrop-filter:blur(6px);
+  font-weight:400;
+}
+.food-body{padding:18px 18px 14px;}
+.food-body h4{
+  font-family:'Playfair Display',serif;
+  font-size:17px;color:var(--ink);margin-bottom:4px;
+}
+.food-price{
+  font-size:20px;font-weight:700;color:var(--crimson);
+  font-family:'Playfair Display',serif;
+  margin-bottom:8px;
+}
+.tags-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.tag{
+  background:var(--gold-pale);color:var(--gold);
+  font-size:11px;padding:4px 10px;border-radius:20px;font-weight:500;
+  border:1px solid rgba(200,134,26,0.2);
+}
+.food-actions{display:flex;gap:8px;border-top:1px solid var(--border);padding-top:14px;}
+.btn-review{
+  flex:1;background:none;border:1.5px solid var(--border);
+  color:var(--muted);border-radius:9px;padding:9px;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;
+  transition:all .2s;
+}
+.btn-review:hover{border-color:var(--gold);color:var(--gold);}
+.btn-order{
+  flex:1;background:var(--crimson);color:#fff;
+  border:none;border-radius:9px;padding:9px;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;
+  transition:all .2s;
+}
+.btn-order:hover{background:var(--crimson-deep);}
+
+.add-btn{
+  width:44px;height:44px;border-radius:11px;
+  background:var(--crimson);color:#fff;
+  border:none;font-size:20px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
+}
+.add-btn:hover{background:var(--crimson-deep);transform:rotate(90deg);}
+
+/* ── ORDER DETAIL ────────────────────────────────────────────────────────── */
+.order-wrap{display:grid;grid-template-columns:1fr 380px;gap:24px;padding:32px 48px;}
+.order-img{width:100%;height:360px;object-fit:cover;border-radius:var(--r-lg);margin-bottom:20px;}
+.options-block{
+  background:var(--warm-white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:24px;margin-bottom:16px;
+}
+.options-block h4{
+  font-family:'Playfair Display',serif;
+  font-size:16px;color:var(--ink);margin-bottom:18px;
+}
+.options-block h4 i{color:var(--gold);margin-right:8px;font-size:14px;}
+
+.opt-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:13px 0;border-bottom:1px solid var(--border);
+}
+.opt-item:last-child{border:none;}
+.opt-item strong{font-size:14px;color:var(--ink);}
+.opt-item p{font-size:12px;color:var(--muted);margin-top:2px;font-weight:300;}
+.opt-price{font-weight:700;color:var(--crimson);font-size:14px;}
+.checkbox{
+  width:22px;height:22px;border-radius:6px;
+  border:2px solid var(--border);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;color:#fff;font-size:11px;
+}
+.checkbox.on{background:var(--crimson);border-color:var(--crimson);}
+
+.qty-row{display:flex;align-items:center;gap:14px;}
+.qty-btn{
+  width:36px;height:36px;border-radius:9px;
+  border:1.5px solid var(--border);background:var(--cream);
+  color:var(--crimson);font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.qty-btn:hover{background:var(--crimson);color:#fff;border-color:var(--crimson);}
+.qty-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;min-width:32px;text-align:center;}
+
+/* ── ORDER SUMMARY ───────────────────────────────────────────────────────── */
+.order-summary{
+  background:var(--warm-white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:24px;
+  position:sticky;top:88px;
+  box-shadow:var(--shadow-card);
+}
+.order-summary h3{
+  font-family:'Playfair Display',serif;
+  font-size:18px;color:var(--ink);margin-bottom:20px;
+}
+.sum-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:11px 0;border-bottom:1px solid var(--border);
+  font-size:14px;color:var(--muted);
+}
+.sum-row span:last-child{color:var(--ink);font-weight:500;}
+.sum-total{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 0 0;
+  font-family:'Playfair Display',serif;
+  font-size:22px;color:var(--crimson);font-weight:700;
+  border-top:2px solid var(--crimson);margin-top:6px;
+}
+
+.payment-box{
+  background:var(--gold-pale);border:1.5px dashed var(--gold);
+  border-radius:12px;padding:18px;margin:16px 0;
+}
+.payment-box h4{font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:12px;}
+.payment-box h4 i{color:var(--gold);margin-right:6px;}
+.pay-row{
+  display:flex;justify-content:space-between;
+  font-size:13px;color:var(--charcoal);
+  margin-bottom:6px;
+}
+.pay-row strong{color:var(--crimson);font-weight:700;}
+.pay-account{font-size:11px;color:var(--muted);margin-top:8px;border-top:1px solid var(--border);padding-top:8px;}
+
+.paid-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(30,124,74,0.1);color:var(--success);
+  padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;
+  border:1px solid rgba(30,124,74,0.2);margin-bottom:12px;
+}
+
+/* ── CHAT ────────────────────────────────────────────────────────────────── */
+.chat-box{
+  background:var(--warm-white);border:1px solid var(--border);
+  border-radius:var(--r-lg);overflow:hidden;
+  margin-top:20px;display:flex;flex-direction:column;height:280px;
+}
+.chat-head{
+  background:var(--ink);color:#fff;
+  padding:14px 18px;display:flex;align-items:center;gap:12px;
+}
+.chat-head img{width:36px;height:36px;border-radius:9px;}
+.chat-head .name{font-weight:600;font-size:14px;}
+.chat-head .sub{font-size:11px;opacity:.6;}
+.chat-msgs{flex:1;overflow-y:auto;padding:16px;background:var(--cream);display:flex;flex-direction:column;gap:10px;}
+.msg{max-width:75%;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.5;}
+.msg.in{background:#fff;color:var(--ink);border:1px solid var(--border);align-self:flex-start;border-radius:4px 12px 12px 12px;}
+.msg.out{background:var(--crimson);color:#fff;align-self:flex-end;border-radius:12px 4px 12px 12px;}
+.chat-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border);}
+.chat-input-row input{
+  flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;
+  font-family:'DM Sans',sans-serif;font-size:13px;outline:none;
+  transition:border-color .2s;
+}
+.chat-input-row input:focus{border-color:var(--crimson);}
+.chat-send{
+  background:var(--crimson);color:#fff;border:none;
+  width:38px;height:38px;border-radius:10px;cursor:pointer;
+  font-size:14px;transition:all .2s;
+}
+.chat-send:hover{background:var(--crimson-deep);}
+
+/* ── ORDERS TABLE ────────────────────────────────────────────────────────── */
+.data-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px;}
+.data-table th{
+  background:var(--ink);color:rgba(255,255,255,0.8);
+  padding:12px 16px;text-align:left;font-weight:500;
+  font-size:12px;text-transform:uppercase;letter-spacing:.5px;
+}
+.data-table th:first-child{border-radius:10px 0 0 10px;}
+.data-table th:last-child{border-radius:0 10px 10px 0;}
+.data-table td{
+  padding:14px 16px;border-bottom:1px solid var(--border);
+  color:var(--charcoal);
+}
+.data-table tr:last-child td{border:none;}
+.data-table tr:hover td{background:var(--cream);}
+
+.badge{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;}
+.badge-pending{background:rgba(200,134,26,0.15);color:var(--gold);}
+.badge-preparing{background:rgba(23,162,184,0.15);color:#0e7a8a;}
+.badge-done{background:rgba(30,124,74,0.15);color:var(--success);}
+
+/* ── RIDER DASHBOARD ────────────────────────────────────────────────────── */
+.delivery-card{
+  background:var(--gold-pale);border:1px solid rgba(200,134,26,0.3);
+  border-left:4px solid var(--gold);
+  border-radius:var(--r);padding:20px 24px;margin-bottom:16px;
+}
+.delivery-card h4{
+  font-family:'Playfair Display',serif;
+  font-size:16px;color:var(--ink);margin-bottom:12px;
+}
+.delivery-card p{font-size:13px;color:var(--charcoal);line-height:1.7;font-weight:300;}
+.delivery-actions{display:flex;gap:10px;margin-top:16px;align-items:center;justify-content:space-between;}
+.delivery-fee{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--crimson);}
+
+.area-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.area-tag{
+  background:var(--gold-pale);color:var(--charcoal);
+  padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;
+  border:1px solid var(--border);display:flex;align-items:center;gap:5px;
+}
+.area-tag i{color:var(--crimson);font-size:10px;}
+
+/* ── APPLY PAGES ─────────────────────────────────────────────────────────── */
+.apply-wrap{max-width:860px;margin:0 auto;padding:40px 48px;}
+.apply-head{text-align:center;margin-bottom:44px;}
+.apply-head .icon{
+  width:72px;height:72px;
+  background:linear-gradient(135deg,var(--crimson-deep),var(--crimson));
+  border-radius:18px;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:30px;color:var(--gold-light);
+  margin-bottom:16px;
+  box-shadow:0 8px 24px rgba(122,0,32,0.25);
+}
+.apply-head h2{
+  font-family:'Playfair Display',serif;
+  font-size:30px;font-weight:700;color:var(--ink);margin-bottom:8px;
+}
+.apply-head p{font-size:15px;color:var(--muted);font-weight:300;}
+
+.apply-section{
+  background:var(--warm-white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:28px;margin-bottom:20px;
+  box-shadow:var(--shadow-card);
+}
+.apply-section h3{
+  font-family:'Playfair Display',serif;
+  font-size:17px;color:var(--crimson);
+  margin-bottom:20px;display:flex;align-items:center;gap:8px;
+}
+.apply-section h3 i{font-size:15px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+.file-upload{position:relative;display:inline-block;width:100%;}
+.file-upload input[type="file"]{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;}
+.file-label{
+  display:block;padding:18px;
+  border:2px dashed var(--border);border-radius:10px;
+  text-align:center;color:var(--muted);cursor:pointer;
+  transition:all .2s;font-size:14px;
+}
+.file-label i{display:block;font-size:24px;margin-bottom:8px;color:var(--gold);}
+.file-label:hover{border-color:var(--crimson);color:var(--crimson);}
+
+.preview-img{
+  width:120px;height:120px;border-radius:50%;object-fit:cover;
+  margin:14px auto;display:none;
+  border:3px solid var(--crimson);
+}
+
+.villages-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
+  max-height:280px;overflow-y:auto;padding:4px;
+}
+.vill-check{
+  display:flex;align-items:center;gap:7px;
+  padding:7px 10px;background:var(--cream);border-radius:8px;
+  cursor:pointer;font-size:12px;color:var(--charcoal);
+  border:1px solid transparent;transition:all .2s;
+}
+.vill-check:hover{border-color:var(--crimson);background:var(--gold-pale);}
+.vill-check input{accent-color:var(--crimson);}
+
+.terms-info{
+  background:var(--cream);border:1px solid var(--border);
+  border-radius:12px;padding:18px 22px;margin-bottom:20px;
+  font-size:13px;color:var(--muted);line-height:1.9;
+}
+.terms-info strong{color:var(--charcoal);}
+.terms-info h4{
+  font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--crimson);margin-bottom:8px;
+}
+
+/* ── MENU PAGE ───────────────────────────────────────────────────────────── */
+.menu-wrap{padding:32px 48px;}
+
+/* ── MODALS ──────────────────────────────────────────────────────────────── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(26,10,14,0.6);
+  backdrop-filter:blur(4px);
+  z-index:2000;align-items:center;justify-content:center;
+}
+.modal-overlay.show{display:flex;}
+.modal{
+  background:var(--warm-white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:36px;
+  max-width:580px;width:90%;max-height:90vh;overflow-y:auto;
+  animation:modalIn .25s ease;
+  box-shadow:0 24px 80px rgba(26,10,14,0.3);
+}
+@keyframes modalIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.modal-head{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:26px;
+}
+.modal-head h2{
+  font-family:'Playfair Display',serif;
+  font-size:20px;color:var(--ink);
+}
+.modal-close{
+  background:none;border:none;font-size:24px;
+  color:var(--muted);cursor:pointer;line-height:1;
+  transition:color .2s;
+}
+.modal-close:hover{color:var(--crimson);}
+
+.stars-input{display:flex;gap:8px;font-size:28px;color:var(--border);margin-bottom:20px;}
+.stars-input i{cursor:pointer;transition:color .15s;}
+.stars-input i.lit{color:var(--gold);}
+.review-stars{color:var(--gold);font-size:13px;}
+
+.option-extra{display:flex;gap:8px;margin-bottom:8px;align-items:center;}
+.btn-add-opt{
+  background:none;border:1.5px solid var(--border);color:var(--muted);
+  border-radius:9px;padding:9px 16px;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;
+  transition:all .2s;margin-top:6px;
+}
+.btn-add-opt:hover{border-color:var(--crimson);color:var(--crimson);}
+
+/* ── TOAST ───────────────────────────────────────────────────────────────── */
+.toast{
+  position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--ink);color:#fff;
+  padding:13px 22px;border-radius:12px;
+  font-size:14px;font-weight:400;
+  opacity:0;z-index:3000;
+  transition:all .3s;
+  border:1px solid rgba(200,134,26,0.2);
+  max-width:360px;text-align:center;
+  pointer-events:none;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ── REVIEWS ─────────────────────────────────────────────────────────────── */
+.review-card{padding:18px 0;border-bottom:1px solid var(--border);}
+.review-card:last-child{border:none;}
+.review-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
+.reviewer{font-size:14px;font-weight:600;color:var(--ink);}
+.review-date{font-size:12px;color:var(--muted);}
+.review-card p{font-size:14px;color:var(--muted);line-height:1.6;font-weight:300;}
+
+/* ── SCROLLBAR ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+::-webkit-scrollbar-thumb:hover{background:var(--muted);}
+
+@media(max-width:900px){
+  .navbar{padding:0 20px;}
+  .roles-grid,.stats-grid{grid-template-columns:1fr 1fr;}
+  .how-steps{grid-template-columns:1fr;}
+  .order-wrap{grid-template-columns:1fr;padding:20px;}
+  .dash-wrap,.menu-wrap,.apply-wrap{padding:20px;}
+  .roles-section{padding:32px 20px;}
+  .how-section{margin:0 20px 32px;}
+  .hero{padding:48px 24px 48px;}
+  .hero h1{font-size:34px;}
+  .villages-grid{grid-template-columns:repeat(2,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="#" class="logo" onclick="showPage('home')">
-            <i class="fas fa-utensils" style="font-size: 40px; color: var(--primary-red); background: white; padding: 10px; border-radius: 50%;"></i>
-            ApnaKitchen
-        </a>
-        <div class="nav-links">
-            <a href="#" onclick="showPage('home')">Home</a>
-            <a href="#" onclick="showPage('menu')">Menu</a>
-            <a href="#" onclick="showPage('become-rider')">Become a Rider</a>
-            <a href="#" onclick="showPage('apply-cook')">Apply as Cook</a>
-            <a href="#" onclick="toggleNotifications()">
-                <i class="fas fa-bell"></i>
-                <span class="notification-badge" id="notif-count" style="display:none;">0</span>
-            </a>
-            <button class="btn-primary" onclick="showPage('login')">Login</button>
-        </div>
-    </nav>
 
-    <div class="notification-panel" id="notificationPanel">
-        <h3 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-bell"></i> Notifications</h3>
-        <div id="notificationsList">
-            <div class="notification-item new">
-                <strong>Welcome to ApnaKitchen!</strong>
-                <p>Explore delicious food from local cooks</p>
-                <small>Just now</small>
-            </div>
-        </div>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo" onclick="showPage('home')">
+    <div class="logo-icon"><i class="fas fa-fire-alt"></i></div>
+    <div class="logo-text">Apna<span>Kitchen</span></div>
+  </div>
+  <div class="nav-links">
+    <a onclick="showPage('home')">Home</a>
+    <a onclick="showPage('menu')">Menu</a>
+    <a onclick="showPage('become-rider')">Become a Rider</a>
+    <a onclick="showPage('apply-cook')">Apply as Cook</a>
+    <button class="nav-bell" onclick="toggleNotif()"><i class="fas fa-bell"></i><span class="notif-dot" id="notifDot"></span></button>
+    <button class="btn-login" onclick="showPage('login')">Login</button>
+  </div>
+</nav>
+
+<!-- NOTIF PANEL -->
+<div class="notif-panel" id="notifPanel">
+  <h4><i class="fas fa-bell" style="margin-right:8px;color:var(--gold);"></i>Notifications</h4>
+  <div id="notifList">
+    <div class="notif-item">
+      <strong>Welcome to ApnaKitchen!</strong>
+      Explore delicious food from local cooks in Swabi.
+      <small>Just now</small>
     </div>
+  </div>
+</div>
 
-    <div class="admin-wallet" id="adminWallet" style="display: none;">
-        <h4><i class="fas fa-wallet"></i> Platform Wallet</h4>
-        <div class="balance" id="platformBalance">Rs. 0</div>
-        <div class="account">NayaPay: PK34NAYA1234503169382133</div>
+<!-- ADMIN WALLET -->
+<div class="admin-wallet" id="adminWallet">
+  <h4><i class="fas fa-wallet" style="margin-right:6px;"></i>Platform Wallet</h4>
+  <div class="wallet-balance" id="platformBalance">Rs. 0</div>
+  <div class="wallet-account">NayaPay: PK34NAYA1234503169382133</div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<div class="container">
+
+<!-- ══ HOME ══════════════════════════════════════════════════════════════════ -->
+<div id="home" class="page active">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fas fa-map-marker-alt"></i>Swabi, KPK</div>
+      <h1>Homemade food,<br><em>delivered with love</em></h1>
+      <p>ApnaKitchen connects you with talented home cooks across Swabi. Real food, real kitchens, your doorstep.</p>
+      <div class="hero-actions">
+        <button class="btn-hero-primary" onclick="showPage('login')"><i class="fas fa-utensils" style="margin-right:8px;"></i>Order Now</button>
+        <button class="btn-hero-ghost" onclick="showPage('apply-cook')">Cook With Us</button>
+        <button class="btn-hero-ghost" onclick="showPage('become-rider')">Deliver With Us</button>
+      </div>
     </div>
+  </div>
 
-    <div class="container">
-        <!-- Home Page -->
-        <div id="home" class="page active fade-in">
-            <div class="hero">
-                <h1>Welcome to ApnaKitchen</h1>
-                <p>Your Local Food Delivery Platform in Swabi - Connecting Cooks, Riders, and Food Lovers</p>
-                <div class="hero-buttons">
-                    <button class="btn-primary" onclick="showPage('login')">Order Food</button>
-                    <button class="btn-secondary" onclick="showPage('apply-cook')">Cook With Us</button>
-                    <button class="btn-secondary" onclick="showPage('become-rider')">Become a Rider</button>
-                </div>
-            </div>
-
-            <div class="cards-grid">
-                <div class="role-card">
-                    <div class="role-icon"><i class="fas fa-user"></i></div>
-                    <h3>Customer</h3>
-                    <p>Browse delicious homemade meals from local cooks in Swabi. Place orders, customize your meals, and enjoy doorstep delivery.</p>
-                    <button class="btn-primary" onclick="showPage('login')">Get Started</button>
-                </div>
-                <div class="role-card">
-                    <div class="role-icon"><i class="fas fa-chef-hat"></i></div>
-                    <h3>Cook</h3>
-                    <p>Share your cooking skills with the community. Upload your menu, manage orders, and earn from your kitchen in Swabi.</p>
-                    <button class="btn-primary" onclick="showPage('apply-cook')">Apply Now</button>
-                </div>
-                <div class="role-card">
-                    <div class="role-icon"><i class="fas fa-motorcycle"></i></div>
-                    <h3>Rider</h3>
-                    <p>Deliver happiness across Swabi. Flexible hours, competitive earnings, and be your own boss.</p>
-                    <button class="btn-primary" onclick="showPage('become-rider')">Join Us</button>
-                </div>
-            </div>
-
-            <div class="how-it-works-section">
-                <div class="how-it-works-header" onclick="toggleHowItWorks()">
-                    <h2><i class="fas fa-info-circle"></i> How ApnaKitchen Works</h2>
-                    <i class="fas fa-chevron-down" id="howItWorksIcon"></i>
-                </div>
-                <div class="how-it-works-content" id="howItWorksContent">
-                    <div class="how-it-works-step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Browse & Select</h4>
-                            <p>Explore a variety of delicious homemade dishes from verified local cooks in Swabi.</p>
-                        </div>
-                    </div>
-                    <div class="how-it-works-step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Customize Your Order</h4>
-                            <p>Select quantity, add extras like ketchup, raita, or cheese, and provide special instructions.</p>
-                        </div>
-                    </div>
-                    <div class="how-it-works-step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Secure Payment</h4>
-                            <p>Pay securely through our platform. A 5% platform fee is collected from both cook and rider per order.</p>
-                        </div>
-                    </div>
-                    <div class="how-it-works-step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h4>Cook Prepares</h4>
-                            <p>The cook receives your order instantly, prepares your food fresh, and marks it ready for pickup.</p>
-                        </div>
-                    </div>
-                    <div class="how-it-works-step">
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h4>Rider Delivery</h4>
-                            <p>Once payment is confirmed to the platform, a nearby rider picks up your order and delivers it.</p>
-                        </div>
-                    </div>
-                    <div class="how-it-works-step">
-                        <div class="step-number">6</div>
-                        <div class="step-content">
-                            <h4>Review & Enjoy</h4>
-                            <p>Rate your experience and leave reviews for the cook. Your feedback helps maintain quality.</p>
-                        </div>
-                    </div>
-                    <div style="background: rgba(139, 0, 0, 0.05); padding: 20px; border-radius: 15px; margin-top: 20px;">
-                        <h4 style="color: var(--primary-red); margin-bottom: 10px;"><i class="fas fa-percentage"></i> Platform Commission</h4>
-                        <p style="color: var(--gray); line-height: 1.8;">
-                            <strong>5% from Cook:</strong> Deducted from each order they receive<br>
-                            <strong>5% from Rider:</strong> Deducted from delivery fee before order assignment<br>
-                            <strong>NayaPay Account:</strong> PK34NAYA1234503169382133
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Login Page -->
-        <div id="login" class="page">
-            <div class="auth-container">
-                <div class="auth-header">
-                    <i class="fas fa-utensils" style="font-size: 50px; color: var(--primary-red);"></i>
-                    <h2>Welcome Back</h2>
-                    <p>Login to your ApnaKitchen account</p>
-                </div>
-                <div class="store-display" id="storeDisplay" style="display: none;">
-                    <i class="fas fa-store" style="font-size: 40px; margin-bottom: 10px;"></i>
-                    <h3 id="storeNameDisplay">Store Name</h3>
-                    <p>Your Kitchen is Ready!</p>
-                </div>
-                <div style="display: flex; gap: 10px; margin-bottom: 30px; background: var(--off-white); padding: 10px; border-radius: 15px;">
-                    <button class="btn-primary" style="flex: 1; padding: 12px;" onclick="switchLogin('customer')" id="btn-customer">Customer</button>
-                    <button class="btn-secondary" style="flex: 1; padding: 12px;" onclick="switchLogin('cook')" id="btn-cook">Cook</button>
-                    <button class="btn-secondary" style="flex: 1; padding: 12px;" onclick="switchLogin('rider')" id="btn-rider">Rider</button>
-                </div>
-                <form id="loginForm" onsubmit="handleLogin(event)">
-                    <div class="form-group">
-                        <label><i class="fas fa-envelope"></i> Email / Phone</label>
-                        <input type="text" placeholder="Enter your email or phone number" required>
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-lock"></i> Password</label>
-                        <input type="password" placeholder="Enter your password" required>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; padding: 15px; font-size: 18px;">Login</button>
-                </form>
-                <p style="text-align: center; margin-top: 20px; color: var(--gray);">
-                    Don't have an account? <a href="#" onclick="showPage('register')" style="color: var(--primary-red); font-weight: bold;">Register here</a>
-                </p>
-            </div>
-        </div>
-
-
-        <!-- Registration Page -->
-        <div id="register" class="page">
-            <div class="auth-container" style="max-width: 700px;">
-                <div class="auth-header">
-                    <h2>Create Account</h2>
-                    <p>Join ApnaKitchen today</p>
-                </div>
-                <form onsubmit="handleRegister(event)">
-                    <div class="grid-2">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" placeholder="Your full name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="tel" placeholder="03XX-XXXXXXX" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" placeholder="your@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Profile Picture</label>
-                        <div class="file-upload">
-                            <input type="file" accept="image/*" onchange="previewImage(this, 'reg-preview')">
-                            <div class="file-upload-label">
-                                <i class="fas fa-camera" style="font-size: 30px; margin-bottom: 10px;"></i>
-                                <p>Click to upload photo</p>
-                            </div>
-                        </div>
-                        <img id="reg-preview" class="preview-image">
-                    </div>
-                    <div class="form-group">
-                        <label>Address in Swabi</label>
-                        <input type="text" placeholder="e.g., Near City Center, Swabi" required>
-                    </div>
-                    <div class="grid-2">
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" placeholder="Create password" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Confirm Password</label>
-                            <input type="password" placeholder="Confirm password" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; padding: 15px;">Create Account</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Customer Dashboard -->
-        <div id="customer-dashboard" class="page">
-            <div class="dashboard-header">
-                <div class="user-info">
-                    <img src="https://via.placeholder.com/80" alt="Profile" class="user-avatar" id="customer-avatar">
-                    <div>
-                        <h2>Welcome, Ali Khan</h2>
-                        <p style="color: var(--gray);"><i class="fas fa-map-marker-alt"></i> Swabi City Center</p>
-                    </div>
-                </div>
-                <div class="commission-badge">
-                    <i class="fas fa-wallet"></i>
-                    Wallet: Rs. 2,500
-                </div>
-            </div>
-
-            <div class="stats-grid">
-                <div class="stat-card"><h4>Total Orders</h4><div class="value">24</div></div>
-                <div class="stat-card"><h4>Favorite Cooks</h4><div class="value">5</div></div>
-                <div class="stat-card"><h4>Pending Orders</h4><div class="value">2</div></div>
-                <div class="stat-card"><h4>Reviews Given</h4><div class="value">18</div></div>
-            </div>
-
-            <div class="menu-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-fire" style="color: var(--primary-red);"></i> Popular in Swabi</h2>
-                    <div style="display: flex; gap: 15px; align-items: center;">
-                        <input type="text" placeholder="Search food..." style="padding: 12px 20px; border: 2px solid var(--light-gray); border-radius: 30px; width: 250px;">
-                        <button class="btn-primary"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-
-                <div class="food-grid" id="customer-menu">
-                    <div class="food-card" onclick="showPage('order-detail')">
-                        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400" alt="Spaghetti" class="food-image">
-                        <div class="food-details">
-                            <h4>Spaghetti Bolognese</h4>
-                            <p>Chef Ahmad's Kitchen</p>
-                            <div class="food-price">Rs. 450</div>
-                            <div class="options-list">
-                                <span class="option-tag">+Ketchup Rs. 20</span>
-                                <span class="option-tag">+Cheese Rs. 50</span>
-                            </div>
-                            <div class="food-card-actions">
-                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Spaghetti Bolognese', 'Chef Ahmad')">
-                                    <i class="fas fa-star"></i> Review
-                                </button>
-                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')">
-                                    <i class="fas fa-shopping-bag"></i> Order
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="food-card" onclick="showPage('order-detail')">
-                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400" alt="Biryani" class="food-image">
-                        <div class="food-details">
-                            <h4>Chicken Biryani</h4>
-                            <p>Chef Fatima's Kitchen</p>
-                            <div class="food-price">Rs. 350</div>
-                            <div class="options-list">
-                                <span class="option-tag">+Raita Rs. 30</span>
-                                <span class="option-tag">+Salad Rs. 40</span>
-                            </div>
-                            <div class="food-card-actions">
-                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Chicken Biryani', 'Chef Fatima')">
-                                    <i class="fas fa-star"></i> Review
-                                </button>
-                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')">
-                                    <i class="fas fa-shopping-bag"></i> Order
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="food-card" onclick="showPage('order-detail')">
-                        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400" alt="Karahi" class="food-image">
-                        <div class="food-details">
-                            <h4>Chicken Karahi</h4>
-                            <p>Chef Usman's Kitchen</p>
-                            <div class="food-price">Rs. 800</div>
-                            <div class="options-list">
-                                <span class="option-tag">+Naan Rs. 30</span>
-                                <span class="option-tag">+Drink Rs. 60</span>
-                            </div>
-                            <div class="food-card-actions">
-                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Chicken Karahi', 'Chef Usman')">
-                                    <i class="fas fa-star"></i> Review
-                                </button>
-                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')">
-                                    <i class="fas fa-shopping-bag"></i> Order
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="food-card" onclick="showPage('order-detail')">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400" alt="Kebab" class="food-image">
-                        <div class="food-details">
-                            <h4>Seekh Kebab (6 pcs)</h4>
-                            <p>Chef Imran's Kitchen</p>
-                            <div class="food-price">Rs. 300</div>
-                            <div class="options-list">
-                                <span class="option-tag">+Chutney Rs. 20</span>
-                                <span class="option-tag">+Paratha Rs. 40</span>
-                            </div>
-                            <div class="food-card-actions">
-                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Seekh Kebab', 'Chef Imran')">
-                                    <i class="fas fa-star"></i> Review
-                                </button>
-                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')">
-                                    <i class="fas fa-shopping-bag"></i> Order
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Order Detail Page -->
-        <div id="order-detail" class="page">
-            <div class="order-container">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800" alt="Spaghetti" class="food-detail-image">
-                    
-                    <div class="menu-section">
-                        <h2 style="color: var(--dark-red); margin-bottom: 10px;">Spaghetti Bolognese</h2>
-                        <p style="color: var(--gray); margin-bottom: 20px;">by Chef Ahmad's Kitchen, Swabi</p>
-                        <p style="line-height: 1.8; margin-bottom: 30px;">
-                            Authentic Italian-style spaghetti with rich meat sauce, slow-cooked to perfection. 
-                            Served hot with fresh herbs and parmesan cheese.
-                        </p>
-
-                        <div class="options-section">
-                            <h4 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-sort-numeric-up"></i> Quantity</h4>
-                            <div class="quantity-selector">
-                                <button class="quantity-btn" onclick="updateQuantity(-1)">-</button>
-                                <div class="quantity-display" id="quantityDisplay">1</div>
-                                <button class="quantity-btn" onclick="updateQuantity(1)">+</button>
-                                <span style="color: var(--gray); margin-left: 10px;">x Rs. 450 = <strong id="quantityTotal">Rs. 450</strong></span>
-                            </div>
-                        </div>
-
-                        <div class="options-section">
-                            <h4 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-plus-circle"></i> Add Extras</h4>
-                            
-                            <div class="option-item">
-                                <div>
-                                    <strong>Extra Ketchup</strong>
-                                    <p style="font-size: 14px; color: var(--gray);">Tomato ketchup sachets</p>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 15px;">
-                                    <span style="font-weight: bold; color: var(--primary-red);">Rs. 20</span>
-                                    <div class="checkbox-custom" onclick="toggleOption(this, 20)">
-                                        <i class="fas fa-check" style="display: none;"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="option-item">
-                                <div>
-                                    <strong>Extra Cheese</strong>
-                                    <p style="font-size: 14px; color: var(--gray);">Mozzarella cheese topping</p>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 15px;">
-                                    <span style="font-weight: bold; color: var(--primary-red);">Rs. 50</span>
-                                    <div class="checkbox-custom" onclick="toggleOption(this, 50)">
-                                        <i class="fas fa-check" style="display: none;"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="option-item">
-                                <div>
-                                    <strong>Garlic Bread</strong>
-                                    <p style="font-size: 14px; color: var(--gray);">2 pieces of garlic bread</p>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 15px;">
-                                    <span style="font-weight: bold; color: var(--primary-red);">Rs. 80</span>
-                                    <div class="checkbox-custom" onclick="toggleOption(this, 80)">
-                                        <i class="fas fa-check" style="display: none;"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="option-item">
-                                <div>
-                                    <strong>Soft Drink</strong>
-                                    <p style="font-size: 14px; color: var(--gray);">500ml Coke/Pepsi/7up</p>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 15px;">
-                                    <span style="font-weight: bold; color: var(--primary-red);">Rs. 60</span>
-                                    <div class="checkbox-custom" onclick="toggleOption(this, 60)">
-                                        <i class="fas fa-check" style="display: none;"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="options-section">
-                            <h4 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-edit"></i> Special Instructions</h4>
-                            <textarea rows="3" placeholder="Any special requests? (e.g., less spicy, extra sauce...)" style="width: 100%; padding: 15px; border: 2px solid var(--light-gray); border-radius: 12px;"></textarea>
-                        </div>
-
-                        <div class="options-section">
-                            <h4 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-map-marker-alt"></i> Delivery Details</h4>
-                            <div class="form-group">
-                                <label>Delivery Address in Swabi</label>
-                                <input type="text" placeholder="Enter your complete address" value="House #123, Near City Center, Swabi">
-                            </div>
-                            <div class="form-group">
-                                <label>Contact Number</label>
-                                <input type="tel" placeholder="03XX-XXXXXXX">
-                            </div>
-                            <div class="form-group">
-                                <label>Delivery Time Preference</label>
-                                <select style="width: 100%; padding: 15px; border: 2px solid var(--light-gray); border-radius: 12px;">
-                                    <option>As soon as possible</option>
-                                    <option>Within 1 hour</option>
-                                    <option>Schedule for later</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="order-summary">
-                    <h3 style="color: var(--primary-red); margin-bottom: 30px;">Order Summary</h3>
-                    
-                    <div class="summary-row">
-                        <span>Spaghetti Bolognese (<span id="summaryQty">1</span>x)</span>
-                        <span id="summaryItemPrice">Rs. 450</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Delivery Fee</span>
-                        <span>Rs. 50</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Platform Fee (5%)</span>
-                        <span id="platformFee">Rs. 25</span>
-                    </div>
-                    <div id="extras-summary"></div>
-                    
-                    <div class="summary-row total">
-                        <span>Total</span>
-                        <span id="total-price">Rs. 525</span>
-                    </div>
-
-                    <div class="payment-section">
-                        <h4><i class="fas fa-credit-card"></i> Payment Required</h4>
-                        <div class="payment-details">
-                            <p><strong>Platform Commission (5%):</strong> Rs. <span id="cookCommission">25</span></p>
-                            <p><strong>Rider Commission (5%):</strong> Rs. <span id="riderCommission">2.5</span></p>
-                            <p><strong>Total to Platform:</strong> Rs. <span id="totalCommission">27.5</span></p>
-                            <p style="margin-top: 10px; font-size: 12px;"><strong>NayaPay:</strong> PK34NAYA1234503169382133</p>
-                        </div>
-                        <p style="color: var(--gray); font-size: 14px; margin-bottom: 15px;">
-                            <i class="fas fa-info-circle"></i> Payment must be sent to platform before rider assignment
-                        </p>
-                        <button class="btn-primary" style="width: 100%;" onclick="processPayment()">
-                            <i class="fas fa-money-bill-wave"></i> Send Payment to Platform
-                        </button>
-                    </div>
-
-                    <div id="placeOrderSection" style="display: none;">
-                        <div class="payment-status paid" style="margin-bottom: 15px;">
-                            <i class="fas fa-check-circle"></i> Payment Received
-                        </div>
-                        <button class="btn-red" style="width: 100%; padding: 18px; font-size: 18px;" onclick="placeOrder()">
-                            <i class="fas fa-shopping-bag"></i> Place Order
-                        </button>
-                    </div>
-
-                    <div class="chat-container" style="margin-top: 30px; height: 300px;">
-                        <div class="chat-header">
-                            <img src="https://via.placeholder.com/40" style="border-radius: 50%;">
-                            <div>
-                                <div style="font-weight: bold;">Chat with Chef Ahmad</div>
-                                <div style="font-size: 12px; opacity: 0.8;">Usually responds in 5 mins</div>
-                            </div>
-                        </div>
-                        <div class="chat-messages" id="chatMessages">
-                            <div class="message received">Hello! Feel free to ask about this dish.</div>
-                        </div>
-                        <div class="chat-input">
-                            <input type="text" placeholder="Type a message..." id="chatInput">
-                            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Cook Dashboard -->
-        <div id="cook-dashboard" class="page">
-            <div class="dashboard-header">
-                <div class="user-info">
-                    <img src="https://via.placeholder.com/80" alt="Profile" class="user-avatar">
-                    <div>
-                        <h2 id="cookStoreName">Chef Ahmad's Kitchen</h2>
-                        <p style="color: var(--gray);"><i class="fas fa-map-marker-alt"></i> Swabi City Center Area</p>
-                        <div class="stars" style="margin-top: 5px;">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                            <span style="color: var(--gray); margin-left: 10px;">(4.5 - 128 reviews)</span>
-                        </div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 15px; align-items: center;">
-                    <div class="commission-badge">
-                        <i class="fas fa-coins"></i>
-                        Earnings: Rs. 45,250
-                    </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox" checked onchange="toggleKitchenStatus(this)">
-                        <span class="slider"></span>
-                    </label>
-                    <span id="kitchen-status" style="color: var(--success); font-weight: bold;">Open</span>
-                </div>
-            </div>
-
-            <div class="stats-grid">
-                <div class="stat-card"><h4>Today's Orders</h4><div class="value">12</div></div>
-                <div class="stat-card"><h4>Pending</h4><div class="value" style="color: var(--warning);">3</div></div>
-                <div class="stat-card"><h4>Total Earnings</h4><div class="value">Rs. 8,400</div></div>
-                <div class="stat-card"><h4>Platform Commission (5%)</h4><div class="value" style="color: var(--light-red);">Rs. 420</div></div>
-            </div>
-
-            <div class="menu-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-book-open" style="color: var(--primary-red);"></i> My Menu</h2>
-                    <button class="add-btn" onclick="openAddItemModal()" title="Add New Item"><i class="fas fa-plus"></i></button>
-                </div>
-
-                <div class="food-grid" id="cook-menu">
-                    <div class="food-card">
-                        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400" alt="Spaghetti" class="food-image">
-                        <div class="food-details">
-                            <h4>Spaghetti Bolognese</h4>
-                            <p>Authentic Italian recipe</p>
-                            <div class="food-price">Rs. 450</div>
-                            <div class="options-list">
-                                <span class="option-tag">+Ketchup Rs. 20</span>
-                                <span class="option-tag">+Cheese Rs. 50</span>
-                            </div>
-                            <div style="margin-top: 15px; display: flex; gap: 10px;">
-                                <button class="btn-primary" style="padding: 8px 16px; font-size: 14px;"><i class="fas fa-edit"></i> Edit</button>
-                                <button style="padding: 8px 16px; background: var(--light-red); color: white; border: none; border-radius: 20px; cursor: pointer;"><i class="fas fa-trash"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="food-card">
-                        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400" alt="Karahi" class="food-image">
-                        <div class="food-details">
-                            <h4>Chicken Karahi</h4>
-                            <p>Desi style with special spices</p>
-                            <div class="food-price">Rs. 800</div>
-                            <div class="options-list">
-                                <span class="option-tag">+Naan Rs. 30</span>
-                                <span class="option-tag">+Raita Rs. 30</span>
-                            </div>
-                            <div style="margin-top: 15px; display: flex; gap: 10px;">
-                                <button class="btn-primary" style="padding: 8px 16px; font-size: 14px;"><i class="fas fa-edit"></i> Edit</button>
-                                <button style="padding: 8px 16px; background: var(--light-red); color: white; border: none; border-radius: 20px; cursor: pointer;"><i class="fas fa-trash"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="store-reviews">
-                <h3><i class="fas fa-comments"></i> Customer Reviews for Your Store</h3>
-                <div id="storeReviewsList">
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div>
-                                <strong>Ali Khan</strong>
-                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                            </div>
-                            <span style="color: var(--gray);">2 days ago</span>
-                        </div>
-                        <p>Amazing taste! The extra cheese option was perfect. Will order again!</p>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div>
-                                <strong>Sarah Ahmad</strong>
-                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                            </div>
-                            <span style="color: var(--gray);">5 days ago</span>
-                        </div>
-                        <p>Great food but delivery took a bit longer than expected.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-section">
-                <h3 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-list-alt"></i> Recent Orders</h3>
-                <table class="data-table">
-                    <thead>
-                        <tr><th>Order #</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Action</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>#1234</td><td>Ali Khan</td><td>Spaghetti x2</td><td>Rs. 900</td>
-                            <td><span class="status-badge status-pending">Pending</span></td>
-                            <td><button class="btn-primary" style="padding: 8px 16px; font-size: 12px;" onclick="acceptOrder(1234)">Accept</button></td>
-                        </tr>
-                        <tr>
-                            <td>#1233</td><td>Sarah Ahmad</td><td>Karahi x1, Naan x2</td><td>Rs. 860</td>
-                            <td><span class="status-badge status-preparing">Preparing</span></td>
-                            <td><button class="btn-primary" style="padding: 8px 16px; font-size: 12px;" onclick="markReady(1233)">Ready</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-
-        <!-- Rider Dashboard -->
-        <div id="rider-dashboard" class="page">
-            <div class="dashboard-header">
-                <div class="user-info">
-                    <img src="https://via.placeholder.com/80" alt="Profile" class="user-avatar">
-                    <div>
-                        <h2>Usman - Delivery Partner</h2>
-                        <p style="color: var(--gray);"><i class="fas fa-map-marker-alt"></i> Active in Swabi Area</p>
-                        <div style="margin-top: 5px;">
-                            <span class="badge badge-success"><i class="fas fa-check-circle"></i> Verified Rider</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="commission-badge">
-                    <i class="fas fa-wallet"></i>
-                    Today's Earnings: Rs. 1,850
-                </div>
-            </div>
-
-            <div class="stats-grid">
-                <div class="stat-card"><h4>Completed Deliveries</h4><div class="value">8</div></div>
-                <div class="stat-card"><h4>Available Orders</h4><div class="value" style="color: var(--primary-red);">3</div></div>
-                <div class="stat-card"><h4>Rating</h4><div class="value">4.8</div></div>
-                <div class="stat-card"><h4>Platform Commission (10%)</h4><div class="value" style="color: var(--light-red);">Rs. 185</div></div>
-            </div>
-
-            <div class="menu-section">
-                <h3 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-bell"></i> New Order Notifications</h3>
-                
-                <div id="rider-notifications">
-                    <div style="background: rgba(139, 0, 0, 0.05); border-left: 4px solid var(--primary-red); padding: 20px; border-radius: 0 15px 15px 0; margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; align-items: start;">
-                            <div>
-                                <h4 style="color: var(--dark-red); margin-bottom: 10px;"><i class="fas fa-shopping-bag"></i> New Order #1234</h4>
-                                <p><strong>Pickup:</strong> Chef Ahmad's Kitchen, City Center Swabi</p>
-                                <p><strong>Drop:</strong> House #123, Near City Center, Swabi</p>
-                                <p><strong>Items:</strong> Spaghetti Bolognese x2</p>
-                                <p style="margin-top: 10px; color: var(--gray);"><i class="fas fa-route"></i> Distance: 2.5 km | <i class="fas fa-money-bill-wave"></i> Delivery Fee: Rs. 50</p>
-                                <div class="payment-status paid" style="margin-top: 10px;"><i class="fas fa-check-circle"></i> Platform Payment Received</div>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="font-size: 24px; font-weight: bold; color: var(--primary-red);">Rs. 50</div>
-                                <div style="margin-top: 15px; display: flex; gap: 10px;">
-                                    <button class="btn-primary" onclick="acceptDelivery(1234)"><i class="fas fa-check"></i> Accept</button>
-                                    <button class="btn-secondary" style="padding: 12px 20px;" onclick="rejectDelivery(1234)"><i class="fas fa-times"></i> Reject</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-section">
-                <h3 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-map-marked-alt"></i> My Delivery Areas (Swabi)</h3>
-                <div class="location-tags">
-                    <span class="location-tag"><i class="fas fa-map-pin"></i> City Center</span>
-                    <span class="location-tag"><i class="fas fa-map-pin"></i> Guli Bagh</span>
-                    <span class="location-tag"><i class="fas fa-map-pin"></i> Topi Road</span>
-                    <span class="location-tag"><i class="fas fa-map-pin"></i> Shahmansoor</span>
-                    <span class="location-tag"><i class="fas fa-map-pin"></i> Marghuz</span>
-                </div>
-                <button class="btn-primary" style="margin-top: 20px;" onclick="editDeliveryAreas()"><i class="fas fa-edit"></i> Edit Delivery Areas</button>
-            </div>
-
-            <div class="menu-section">
-                <h3 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-history"></i> Delivery History</h3>
-                <table class="data-table">
-                    <thead>
-                        <tr><th>Order #</th><th>Restaurant</th><th>Customer</th><th>Amount</th><th>Status</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>#1220</td><td>Chef Ahmad's Kitchen</td><td>Ali Khan</td><td>Rs. 50</td><td><span class="status-badge status-completed">Completed</span></td></tr>
-                        <tr><td>#1221</td><td>Chef Fatima's Kitchen</td><td>Sarah Ahmad</td><td>Rs. 60</td><td><span class="status-badge status-completed">Completed</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Become a Rider Page -->
-        <div id="become-rider" class="page">
-            <div class="application-form" style="max-width: 900px; margin: 0 auto;">
-                <div class="auth-header" style="margin-bottom: 40px;">
-                    <i class="fas fa-motorcycle" style="font-size: 60px; color: var(--primary-red);"></i>
-                    <h2>Become a Delivery Rider</h2>
-                    <p>Join ApnaKitchen and earn by delivering food in Swabi</p>
-                </div>
-
-                <form onsubmit="submitRiderApplication(event)">
-                    <div class="form-section">
-                        <h3><i class="fas fa-user"></i> Personal Information</h3>
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>Full Name</label>
-                                <input type="text" placeholder="As per CNIC" required>
-                            </div>
-                            <div class="form-group">
-                                <label>CNIC Number</label>
-                                <input type="text" placeholder="XXXXX-XXXXXXX-X" required>
-                            </div>
-                        </div>
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>Phone Number</label>
-                                <input type="tel" placeholder="03XX-XXXXXXX" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Email Address</label>
-                                <input type="email" placeholder="your@email.com">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Profile Photo</label>
-                            <div class="file-upload">
-                                <input type="file" accept="image/*" onchange="previewImage(this, 'rider-preview')">
-                                <div class="file-upload-label">
-                                    <i class="fas fa-camera" style="font-size: 30px; margin-bottom: 10px;"></i>
-                                    <p>Upload clear photo of yourself</p>
-                                </div>
-                            </div>
-                            <img id="rider-preview" class="preview-image">
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h3><i class="fas fa-map-marker-alt"></i> Delivery Areas in Swabi - All Villages</h3>
-                        <p style="margin-bottom: 20px; color: var(--gray);">Select the areas where you can deliver orders:</p>
-                        <div class="villages-grid">
-                            <label class="village-checkbox"><input type="checkbox"> <span>City Center</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Guli Bagh</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Topi Road</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Shahmansoor</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Marghuz</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Kotha</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Baja</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Kabla</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Maniri</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Sheikh Jana</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Yar Hussain</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Zaida</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Matta</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Chota Lahor</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Turlandi</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Dobian</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Bamkhel</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Panjpir</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Kalu Khan</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Ismaila</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Jalbai</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Manglawar</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Pabbi</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Tangi</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Sard Cheena</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Adina</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Chamla</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Kanju</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Buner</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Daggar</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Gagra</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Jowar</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Karakar</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Khazana</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Mahal</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Mandor</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Nora</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Pir Baba</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Salarzai</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Shalbandi</span></label>
-                            <label class="village-checkbox"><input type="checkbox"> <span>Sheringal</span></label>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h3><i class="fas fa-motorcycle"></i> Vehicle Information</h3>
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>Vehicle Type</label>
-                                <select required>
-                                    <option value="">Select Vehicle</option>
-                                    <option>Motorcycle</option>
-                                    <option>Scooter</option>
-                                    <option>Bicycle</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Vehicle Number</label>
-                                <input type="text" placeholder="e.g., SWA-1234" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h3><i class="fas fa-file-alt"></i> Documents</h3>
-                        <div class="form-group">
-                            <label>CNIC Front Side</label>
-                            <div class="file-upload">
-                                <input type="file" accept="image/*">
-                                <div class="file-upload-label"><i class="fas fa-id-card" style="font-size: 30px;"></i></div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>CNIC Back Side</label>
-                            <div class="file-upload">
-                                <input type="file" accept="image/*">
-                                <div class="file-upload-label"><i class="fas fa-id-card" style="font-size: 30px;"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="background: rgba(139, 0, 0, 0.05); padding: 20px; border-radius: 15px; margin-bottom: 30px;">
-                        <h4 style="color: var(--primary-red); margin-bottom: 10px;"><i class="fas fa-info-circle"></i> Commission Structure</h4>
-                        <p style="color: var(--gray); line-height: 1.8;">
-                            Platform commission: 10% per delivery<br>
-                            You keep 90% of delivery fees<br>
-                            Weekly payments directly to your bank account<br>
-                            <strong>NayaPay Account:</strong> PK34NAYA1234503169382133
-                        </p>
-                    </div>
-
-                    <button type="submit" class="btn-primary" style="width: 100%; padding: 18px; font-size: 18px;"><i class="fas fa-paper-plane"></i> Continue</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Apply as Cook Page -->
-        <div id="apply-cook" class="page">
-            <div class="application-form" style="max-width: 900px; margin: 0 auto;">
-                <div class="auth-header" style="margin-bottom: 40px;">
-                    <i class="fas fa-chef-hat" style="font-size: 60px; color: var(--primary-red);"></i>
-                    <h2>Apply as Home Cook</h2>
-                    <p>Share your cooking with Swabi and earn from home</p>
-                </div>
-
-                <form onsubmit="submitCookApplication(event)">
-                    <div class="form-section">
-                        <h3><i class="fas fa-user"></i> Personal Information</h3>
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>Full Name</label>
-                                <input type="text" placeholder="Your full name" required>
-                            </div>
-                            <div class="form-group">
-                                <label>CNIC Number</label>
-                                <input type="text" placeholder="XXXXX-XXXXXXX-X" required>
-                            </div>
-                        </div>
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>Phone Number</label>
-                                <input type="tel" placeholder="03XX-XXXXXXX" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Email Address</label>
-                                <input type="email" placeholder="your@email.com">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Profile Photo</label>
-                            <div class="file-upload">
-                                <input type="file" accept="image/*" onchange="previewImage(this, 'cook-preview')">
-                                <div class="file-upload-label">
-                                    <i class="fas fa-camera" style="font-size: 30px; margin-bottom: 10px;"></i>
-                                    <p>Upload your photo</p>
-                                </div>
-                            </div>
-                            <img id="cook-preview" class="preview-image">
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h3><i class="fas fa-store"></i> Kitchen Details</h3>
-                        <div class="form-group">
-                            <label>Kitchen/Store Name</label>
-                            <input type="text" id="cookStoreNameInput" placeholder="e.g., Ahmad's Kitchen" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Complete Address in Swabi</label>
-                            <input type="text" placeholder="House #, Street, Area, Swabi" required>
-                        </div>
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>Area/Zone</label>
-                                <select required>
-                                    <option value="">Select Area</option>
-                                    <option>City Center</option>
-                                    <option>Guli Bagh</option>
-                                    <option>Topi Road</option>
-                                    <option>Shahmansoor</option>
-                                    <option>Marghuz</option>
-                                    <option>Kotha</option>
-                                    <option>Baja</option>
-                                    <option>Kabla</option>
-                                    <option>Maniri</option>
-                                    <option>Sheikh Jana</option>
-                                    <option>Yar Hussain</option>
-                                    <option>Zaida</option>
-                                    <option>Matta</option>
-                                    <option>Chota Lahor</option>
-                                    <option>Turlandi</option>
-                                    <option>Dobian</option>
-                                    <option>Bamkhel</option>
-                                    <option>Panjpir</option>
-                                    <option>Kalu Khan</option>
-                                    <option>Ismaila</option>
-                                    <option>Jalbai</option>
-                                    <option>Manglawar</option>
-                                    <option>Pabbi</option>
-                                    <option>Tangi</option>
-                                    <option>Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Years of Cooking Experience</label>
-                                <input type="number" placeholder="e.g., 5" min="0" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Specialty Cuisine</label>
-                            <input type="text" placeholder="e.g., Pakistani, Chinese, Italian, Desi">
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h3><i class="fas fa-file-alt"></i> Documents</h3>
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>CNIC Front</label>
-                                <div class="file-upload">
-                                    <input type="file" accept="image/*">
-                                    <div class="file-upload-label"><i class="fas fa-id-card" style="font-size: 30px;"></i></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>CNIC Back</label>
-                                <div class="file-upload">
-                                    <input type="file" accept="image/*">
-                                    <div class="file-upload-label"><i class="fas fa-id-card" style="font-size: 30px;"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="background: rgba(139, 0, 0, 0.05); padding: 20px; border-radius: 15px; margin-bottom: 30px;">
-                        <h4 style="color: var(--primary-red); margin-bottom: 10px;"><i class="fas fa-info-circle"></i> Commission & Terms</h4>
-                        <p style="color: var(--gray); line-height: 1.8;">
-                            Platform commission: 5% per order<br>
-                            You set your own menu prices<br>
-                            Weekly settlement of earnings<br>
-                            Maintain food safety standards<br>
-                            Respond to orders within 15 minutes<br>
-                            <strong>NayaPay Account:</strong> PK34NAYA1234503169382133
-                        </p>
-                    </div>
-
-                    <div class="form-group">
-                        <label style="display: flex; align-items: start; gap: 10px; cursor: pointer;">
-                            <input type="checkbox" required style="margin-top: 5px; width: 20px; height: 20px; accent-color: var(--primary-red);">
-                            <span>I agree to the terms and conditions and confirm that all information provided is accurate.</span>
-                        </label>
-                    </div>
-
-                    <button type="submit" class="btn-primary" style="width: 100%; padding: 18px; font-size: 18px; margin-top: 20px;"><i class="fas fa-arrow-right"></i> Continue</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Menu Page -->
-        <div id="menu" class="page">
-            <div class="menu-section">
-                <div class="section-header">
-                    <h2><i class="fas fa-utensils" style="color: var(--primary-red);"></i> All Food Items in Swabi</h2>
-                    <div style="display: flex; gap: 15px;">
-                        <select style="padding: 12px 20px; border: 2px solid var(--light-gray); border-radius: 30px;">
-                            <option>All Areas</option>
-                            <option>City Center</option>
-                            <option>Guli Bagh</option>
-                            <option>Topi Road</option>
-                            <option>Shahmansoor</option>
-                            <option>Marghuz</option>
-                            <option>Kotha</option>
-                            <option>Baja</option>
-                            <option>Kabla</option>
-                            <option>Maniri</option>
-                            <option>Sheikh Jana</option>
-                            <option>Yar Hussain</option>
-                            <option>Zaida</option>
-                            <option>Matta</option>
-                            <option>Chota Lahor</option>
-                            <option>Turlandi</option>
-                            <option>Dobian</option>
-                            <option>Bamkhel</option>
-                            <option>Panjpir</option>
-                            <option>Kalu Khan</option>
-                            <option>Ismaila</option>
-                            <option>Jalbai</option>
-                            <option>Manglawar</option>
-                            <option>Pabbi</option>
-                            <option>Tangi</option>
-                        </select>
-                        <input type="text" placeholder="Search food..." style="padding: 12px 20px; border: 2px solid var(--light-gray); border-radius: 30px; width: 250px;">
-                    </div>
-                </div>
-
-                <div class="food-grid">
-                    <div class="food-card" onclick="showPage('order-detail')">
-                        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400" alt="Spaghetti" class="food-image">
-                        <div class="food-details">
-                            <h4>Spaghetti Bolognese</h4>
-                            <p>Chef Ahmad's Kitchen - City Center</p>
-                            <div class="food-price">Rs. 450</div>
-                            <div class="options-list">
-                                <span class="option-tag">+Ketchup Rs. 20</span>
-                                <span class="option-tag">+Cheese Rs. 50</span>
-                            </div>
-                            <div class="food-card-actions">
-                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Spaghetti Bolognese', 'Chef Ahmad')"><i class="fas fa-star"></i> Review</button>
-                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="food-card" onclick="showPage('order-detail')">
-                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400" alt="Biryani" class="food-image">
-                        <div class="food-details">
-                            <h4>Chicken Biryani</h4>
-                            <p>Chef Fatima's Kitchen - Guli Bagh</p>
-                            <div class="food-price">Rs. 350</div>
-                            <div class="options-list">
-                                <span class="option-tag">+Raita Rs. 30</span>
-                                <span class="option-tag">+Salad Rs. 40</span>
-                            </div>
-                            <div class="food-card-actions">
-                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Chicken Biryani', 'Chef Fatima')"><i class="fas fa-star"></i> Review</button>
-                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="food-card" onclick="showPage('order-detail')">
-                        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400" alt="Karahi" class="food-image">
-                        <div class="food-details">
-                            <h4>Chicken Karahi</h4>
-                            <p>Chef Usman's Kitchen - Topi Road</p>
-                            <div class="food-price">Rs. 800</div>
-                            <div class="options-list">
-                                <span class="option-tag">+Naan Rs. 30</span>
-                                <span class="option-tag">+Drink Rs. 60</span>
-                            </div>
-                            <div class="food-card-actions">
-                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Chicken Karahi', 'Chef Usman')"><i class="fas fa-star"></i> Review</button>
-                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="food-card" onclick="showPage('order-detail')">
-                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400" alt="Kebab" class="food-image">
-                        <div class="food-details">
-                            <h4>Seekh Kebab</h4>
-                            <p>Chef Imran's Kitchen - City Center</p>
-                            <div class="food-price">Rs. 300</div>
-                            <div class="options-list">
-                                <span class="option-tag">+Chutney Rs. 20</span>
-                            </div>
-                            <div class="food-card-actions">
-                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Seekh Kebab', 'Chef Imran')"><i class="fas fa-star"></i> Review</button>
-                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="food-card" onclick="showPage('order-detail')">
-                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" alt="Salad" class="food-image">
-                        <div class="food-details">
-                            <h4>Fresh Salad Bowl</h4>
-                            <p>Chef Ayesha's Kitchen - Shahmansoor</p>
-                            <div class="food-price">Rs. 200</div>
-                            <div class="options-list">
-                                <span class="option-tag">+Dressing Rs. 30</span>
-                            </div>
-                            <div class="food-card-actions">
-                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Fresh Salad Bowl', 'Chef Ayesha')"><i class="fas fa-star"></i> Review</button>
-                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="food-card" onclick="showPage('order-detail')">
-                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400" alt="Pancakes" class="food-image">
-                        <div class="food-details">
-                            <h4>Breakfast Pancakes</h4>
-                            <p>Chef Sara's Kitchen - Marghuz</p>
-                            <div class="food-price">Rs. 350</div>
-                            <div class="options-list">
-                                <span class="option-tag">+Syrup Rs. 40</span>
-                                <span class="option-tag">+Fruit Rs. 60</span>
-                            </div>
-                            <div class="food-card-actions">
-                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Breakfast Pancakes', 'Chef Sara')"><i class="fas fa-star"></i> Review</button>
-                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="roles-section">
+    <div class="section-label">Who it's for</div>
+    <h2 class="section-title">Everyone has a role</h2>
+    <p class="section-sub">Join as a customer, cook, or rider — Swabi's kitchen is open for all.</p>
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-icon-wrap"><i class="fas fa-user"></i></div>
+        <h3>Customers</h3>
+        <p>Browse homemade meals from verified local cooks. Order, customize, and enjoy doorstep delivery — cash on arrival.</p>
+        <button class="btn-card" onclick="showPage('login')">Start Ordering</button>
+      </div>
+      <div class="role-card">
+        <div class="role-icon-wrap"><i class="fas fa-hat-chef"></i></div>
+        <h3>Home Cooks</h3>
+        <p>Turn your kitchen into a business. Upload your menu, manage orders, and earn — all from home in Swabi.</p>
+        <button class="btn-card" onclick="showPage('apply-cook')">Apply Now</button>
+      </div>
+      <div class="role-card">
+        <div class="role-icon-wrap"><i class="fas fa-motorcycle"></i></div>
+        <h3>Riders</h3>
+        <p>Deliver happiness across Swabi. Choose your areas, work your hours, and earn Rs. 190 per delivery.</p>
+        <button class="btn-card" onclick="showPage('become-rider')">Join the Team</button>
+      </div>
     </div>
+  </div>
 
-    <!-- Add Item Modal -->
-    <div class="modal" id="addItemModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 style="color: var(--primary-red);"><i class="fas fa-plus-circle"></i> Add New Menu Item</h2>
-                <button class="close-btn" onclick="closeModal()">&times;</button>
-            </div>
-            
-            <form onsubmit="saveMenuItem(event)">
-                <div class="form-group">
-                    <label>Food Item Name</label>
-                    <input type="text" placeholder="e.g., Chicken Biryani" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea rows="3" placeholder="Describe your dish..." required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Food Image</label>
-                    <div class="file-upload">
-                        <input type="file" accept="image/*" onchange="previewImage(this, 'item-preview')">
-                        <div class="file-upload-label">
-                            <i class="fas fa-image" style="font-size: 30px;"></i>
-                            <p>Click to upload food photo</p>
-                        </div>
-                    </div>
-                    <img id="item-preview" class="preview-image" style="border-radius: 15px; width: 100%; height: 200px;">
-                </div>
-
-                <div class="grid-2">
-                    <div class="form-group">
-                        <label>Base Price (Rs.)</label>
-                        <input type="number" placeholder="e.g., 450" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Preparation Time (minutes)</label>
-                        <input type="number" placeholder="e.g., 30" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Additional Options with Prices</label>
-                    <div id="options-container">
-                        <div class="extra-price-input" style="margin-bottom: 10px;">
-                            <input type="text" placeholder="Option name (e.g., Extra Ketchup)">
-                            <input type="number" placeholder="Price (Rs.)">
-                        </div>
-                    </div>
-                    <button type="button" class="btn-secondary" style="margin-top: 10px;" onclick="addOptionField()">
-                        <i class="fas fa-plus"></i> Add More Options
-                    </button>
-                </div>
-
-                <button type="submit" class="btn-primary" style="width: 100%; padding: 15px; margin-top: 20px;">
-                    <i class="fas fa-save"></i> Save Menu Item
-                </button>
-            </form>
-        </div>
+  <div class="how-section">
+    <div class="how-header" onclick="toggleHow()">
+      <h2><i class="fas fa-info-circle" style="color:var(--gold);margin-right:12px;"></i>How <span>ApnaKitchen</span> works</h2>
+      <i class="fas fa-chevron-down how-chevron" id="howChevron"></i>
     </div>
-
-    <!-- Review Modal -->
-    <div class="modal" id="reviewModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 style="color: var(--primary-red);"><i class="fas fa-star"></i> Write a Review</h2>
-                <button class="close-btn" onclick="closeReviewModal()">&times;</button>
-            </div>
-            <div id="reviewModalContent">
-                <h4 id="reviewFoodName" style="margin-bottom: 10px;">Food Item</h4>
-                <p id="reviewCookName" style="color: var(--gray); margin-bottom: 20px;">by Chef Name</p>
-                
-                <div class="rating-input" id="modalRatingInput">
-                    <i class="fas fa-star" onclick="setModalRating(1)"></i>
-                    <i class="fas fa-star" onclick="setModalRating(2)"></i>
-                    <i class="fas fa-star" onclick="setModalRating(3)"></i>
-                    <i class="fas fa-star" onclick="setModalRating(4)"></i>
-                    <i class="fas fa-star" onclick="setModalRating(5)"></i>
-                </div>
-                
-                <div class="form-group">
-                    <textarea rows="4" placeholder="Share your experience..." style="width: 100%; padding: 15px; border: 2px solid var(--light-gray); border-radius: 12px;"></textarea>
-                </div>
-                
-                <div class="button-group">
-                    <button class="btn-white" onclick="closeReviewModal()" style="flex: 1;">Cancel</button>
-                    <button class="btn-red" onclick="submitModalReview()" style="flex: 1;">Submit Review</button>
-                </div>
-            </div>
-        </div>
+    <div class="how-body" id="howBody">
+      <div class="how-steps">
+        <div class="how-step"><div class="how-num">01</div><h4>Browse & Select</h4><p>Explore homemade dishes from verified cooks near you across Swabi.</p></div>
+        <div class="how-step"><div class="how-num">02</div><h4>Customize & Order</h4><p>Choose quantity, add extras, leave special instructions for your cook.</p></div>
+        <div class="how-step"><div class="how-num">03</div><h4>Cook Prepares</h4><p>Your cook receives the order, pays their commission, and starts cooking fresh.</p></div>
+        <div class="how-step"><div class="how-num">04</div><h4>Rider Picks Up</h4><p>A nearby rider accepts the delivery, pays their commission, and heads your way.</p></div>
+        <div class="how-step"><div class="how-num">05</div><h4>Cash on Delivery</h4><p>Pay the rider when your food arrives. No advance payment, ever.</p></div>
+        <div class="how-step"><div class="how-num">06</div><h4>Rate & Review</h4><p>Leave a review for your cook. Your feedback keeps quality high for everyone.</p></div>
+      </div>
+      <div class="commission-info">
+        <strong>Platform Commission:</strong> 10% from cook per order · 5% from rider per delivery<br>
+        <strong>NayaPay:</strong> PK34NAYA1234503169382133 · <strong>Delivery fee:</strong> Rs. 200 (flat, all areas)
+      </div>
     </div>
+  </div>
+</div>
 
-    <script>
-        // Global Variables
-        let currentUser = null;
-        let currentRole = 'customer';
-        let totalPrice = 525;
-        let selectedExtras = [];
-        let quantity = 1;
-        let basePrice = 450;
-        let platformBalance = 0;
-        let modalRating = 0;
-        let currentStoreName = '';
+<!-- ══ LOGIN ══════════════════════════════════════════════════════════════════ -->
+<div id="login" class="page">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="icon"><i class="fas fa-fire-alt"></i></div>
+        <h2>Welcome back</h2>
+        <p>Sign in to your ApnaKitchen account</p>
+      </div>
+      <div class="store-banner" id="storeBanner">
+        <i class="fas fa-store" style="font-size:24px;color:var(--gold-light);margin-bottom:6px;display:block;"></i>
+        <h3 id="storeBannerName">Store Name</h3>
+        <p>Your kitchen is ready!</p>
+      </div>
+      <div class="role-tabs">
+        <button class="role-tab active" onclick="switchRole('customer',this)">Customer</button>
+        <button class="role-tab" onclick="switchRole('cook',this)">Cook</button>
+        <button class="role-tab" onclick="switchRole('rider',this)">Rider</button>
+      </div>
+      <form onsubmit="doLogin(event)">
+        <div class="form-group"><label>Email or Phone</label><input type="text" placeholder="03XX-XXXXXXX or email" required></div>
+        <div class="form-group"><label>Password</label><input type="password" placeholder="Enter your password" required></div>
+        <button type="submit" class="btn-full">Sign In</button>
+      </form>
+      <p class="auth-footer">No account? <a onclick="showPage('register')">Register here</a></p>
+    </div>
+  </div>
+</div>
 
-        // Page Navigation
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-            document.getElementById('notificationPanel').classList.remove('active');
-            window.scrollTo(0, 0);
+<!-- ══ REGISTER ═══════════════════════════════════════════════════════════════ -->
+<div id="register" class="page">
+  <div class="auth-wrap" style="max-width:600px;">
+    <div class="auth-card">
+      <div class="auth-logo"><h2>Create Account</h2><p>Join ApnaKitchen today</p></div>
+      <form onsubmit="doRegister(event)">
+        <div class="grid-2">
+          <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
+          <div class="form-group"><label>Phone</label><input type="tel" placeholder="03XX-XXXXXXX" required></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com" required></div>
+        <div class="form-group">
+          <label>Profile Photo</label>
+          <div class="file-upload">
+            <input type="file" accept="image/*" onchange="previewImg(this,'regPrev')">
+            <div class="file-label"><i class="fas fa-camera"></i>Click to upload photo</div>
+          </div>
+          <img id="regPrev" class="preview-img">
+        </div>
+        <div class="form-group"><label>Address in Swabi</label><input type="text" placeholder="e.g. Near City Center, Swabi" required></div>
+        <div class="grid-2">
+          <div class="form-group"><label>Password</label><input type="password" placeholder="Create password" required></div>
+          <div class="form-group"><label>Confirm Password</label><input type="password" placeholder="Confirm password" required></div>
+        </div>
+        <button type="submit" class="btn-full">Create Account</button>
+      </form>
+      <p class="auth-footer">Already have an account? <a onclick="showPage('login')">Login</a></p>
+    </div>
+  </div>
+</div>
 
-            if (pageId === 'cook-dashboard' || pageId === 'rider-dashboard' || pageId === 'order-detail') {
-                document.getElementById('adminWallet').style.display = 'block';
-            } else {
-                document.getElementById('adminWallet').style.display = 'none';
-            }
-        }
+<!-- ══ CUSTOMER DASHBOARD ═════════════════════════════════════════════════════ -->
+<div id="customer-dashboard" class="page">
+  <div class="dash-wrap">
+    <div class="dash-header">
+      <div class="dash-user">
+        <img src="https://ui-avatars.com/api/?name=Ali+Khan&background=7A0020&color=FDF3DC&bold=true&size=60" class="dash-avatar" id="custAvatar">
+        <div>
+          <h2>Welcome, Ali Khan</h2>
+          <p><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;font-size:11px;"></i>Swabi City Center</p>
+        </div>
+      </div>
+      <div class="earnings-badge"><i class="fas fa-wallet"></i><div>Wallet<br><strong>Rs. 2,500</strong></div></div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><h4>Total Orders</h4><div class="stat-val">24</div></div>
+      <div class="stat-card"><h4>Favourite Cooks</h4><div class="stat-val">5</div></div>
+      <div class="stat-card"><h4>Pending</h4><div class="stat-val warn">2</div></div>
+      <div class="stat-card"><h4>Reviews Given</h4><div class="stat-val">18</div></div>
+    </div>
+    <div class="section-card">
+      <div class="sec-header">
+        <h2><i class="fas fa-fire"></i>Popular in Swabi</h2>
+        <div class="search-row">
+          <input class="search-input" placeholder="Search dishes…">
+          <button class="btn-search"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+      <div class="food-grid" id="custMenu"></div>
+    </div>
+  </div>
+</div>
 
-        // Login Switch
-        function switchLogin(role) {
-            currentRole = role;
-            ['customer', 'cook', 'rider'].forEach(r => {
-                const btn = document.getElementById('btn-' + r);
-                if (r === role) {
-                    btn.classList.remove('btn-secondary');
-                    btn.classList.add('btn-primary');
-                } else {
-                    btn.classList.remove('btn-primary');
-                    btn.classList.add('btn-secondary');
-                }
-            });
-        }
+<!-- ══ ORDER DETAIL ═══════════════════════════════════════════════════════════ -->
+<div id="order-detail" class="page">
+  <div class="order-wrap">
+    <div>
+      <div class="food-img-wrap" style="border-radius:var(--r-lg);overflow:hidden;margin-bottom:20px;">
+        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=900" alt="Food" class="order-img" style="margin:0;border-radius:0;">
+      </div>
+      <div class="section-card">
+        <h2 style="font-family:'Playfair Display',serif;font-size:26px;margin-bottom:6px;">Spaghetti Bolognese</h2>
+        <p style="color:var(--muted);font-size:14px;margin-bottom:20px;">by Chef Ahmad's Kitchen, Swabi</p>
+        <p style="color:var(--charcoal);font-size:15px;line-height:1.75;margin-bottom:0;">Authentic Italian-style spaghetti with a rich slow-cooked meat sauce, served hot with fresh herbs. A crowd favourite in Swabi.</p>
+      </div>
+      <div class="options-block">
+        <h4><i class="fas fa-sort-numeric-up"></i>Quantity</h4>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <div class="qty-num" id="qtyDisplay">1</div>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+          <span style="color:var(--muted);font-size:14px;margin-left:6px;">× Rs. 450 = <strong id="qtyTotal" style="color:var(--ink);">Rs. 450</strong></span>
+        </div>
+      </div>
+      <div class="options-block">
+        <h4><i class="fas fa-plus-circle"></i>Add Extras</h4>
+        <div class="opt-item">
+          <div><strong>Extra Ketchup</strong><p>Tomato ketchup sachets</p></div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="opt-price">Rs. 20</span>
+            <div class="checkbox" onclick="toggleOpt(this,20)"><i class="fas fa-check"></i></div>
+          </div>
+        </div>
+        <div class="opt-item">
+          <div><strong>Extra Cheese</strong><p>Mozzarella topping</p></div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="opt-price">Rs. 50</span>
+            <div class="checkbox" onclick="toggleOpt(this,50)"><i class="fas fa-check"></i></div>
+          </div>
+        </div>
+        <div class="opt-item">
+          <div><strong>Garlic Bread</strong><p>2 pieces</p></div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="opt-price">Rs. 80</span>
+            <div class="checkbox" onclick="toggleOpt(this,80)"><i class="fas fa-check"></i></div>
+          </div>
+        </div>
+        <div class="opt-item">
+          <div><strong>Soft Drink</strong><p>500ml Coke / Pepsi / 7UP</p></div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="opt-price">Rs. 60</span>
+            <div class="checkbox" onclick="toggleOpt(this,60)"><i class="fas fa-check"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="options-block">
+        <h4><i class="fas fa-map-marker-alt"></i>Delivery Details</h4>
+        <div class="form-group"><label>Delivery Address</label><input type="text" value="House #123, Near City Center, Swabi"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="03XX-XXXXXXX"></div>
+        <div class="form-group"><label>Preferred Time</label>
+          <select>
+            <option>As soon as possible</option>
+            <option>Within 1 hour</option>
+            <option>Schedule for later</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Special Instructions</label><textarea rows="3" placeholder="Less spicy, extra sauce…" style="resize:none;"></textarea></div>
+      </div>
+    </div>
+    <div>
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div class="sum-row"><span>Spaghetti Bolognese (<span id="sumQty">1</span>×)</span><span id="sumItem">Rs. 450</span></div>
+        <div class="sum-row"><span>Delivery Fee</span><span>Rs. 200</span></div>
+        <div class="sum-row"><span>Platform Fee (5%)</span><span id="sumFee">Rs. 33</span></div>
+        <div id="sumExtras"></div>
+        <div class="sum-total"><span>Total</span><span id="sumTotal">Rs. 683</span></div>
+        <div class="payment-box" id="payBox">
+          <h4><i class="fas fa-credit-card"></i>Payment to Platform</h4>
+          <div class="pay-row"><span>Cook commission (10%):</span><strong>Rs. <span id="payCommission">45</span></strong></div>
+          <div class="pay-row"><span>Rider commission (5%):</span><strong>Rs. 10</strong></div>
+          <div class="pay-row"><span>Total to send:</span><strong>Rs. <span id="payTotal">55</span></strong></div>
+          <div class="pay-account">NayaPay: PK34NAYA1234503169382133</div>
+          <button class="btn-full" style="margin-top:14px;" onclick="doPayment()"><i class="fas fa-money-bill-wave" style="margin-right:8px;"></i>Send Payment</button>
+        </div>
+        <div id="paidSection" style="display:none;">
+          <div class="paid-badge"><i class="fas fa-check-circle"></i>Payment Received</div>
+          <button class="btn-full" onclick="doPlaceOrder()"><i class="fas fa-shopping-bag" style="margin-right:8px;"></i>Place Order</button>
+        </div>
+        <div class="chat-box">
+          <div class="chat-head">
+            <img src="https://ui-avatars.com/api/?name=Chef+Ahmad&background=C8861A&color=4A0012&bold=true" alt="">
+            <div><div class="name">Chef Ahmad</div><div class="sub">Usually replies in 5 min</div></div>
+          </div>
+          <div class="chat-msgs" id="chatMsgs"><div class="msg in">Hello! Feel free to ask about this dish.</div></div>
+          <div class="chat-input-row">
+            <input type="text" placeholder="Type a message…" id="chatIn" onkeypress="if(event.key==='Enter')sendMsg()">
+            <button class="chat-send" onclick="sendMsg()"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        // Handle Login
-        function handleLogin(e) {
-            e.preventDefault();
-            if (currentRole === 'customer') {
-                showPage('customer-dashboard');
-            } else if (currentRole === 'cook') {
-                showPage('cook-dashboard');
-            } else if (currentRole === 'rider') {
-                showPage('rider-dashboard');
-            }
-            showNotification('Login successful! Welcome to ApnaKitchen.');
-        }
+<!-- ══ COOK DASHBOARD ══════════════════════════════════════════════════════════ -->
+<div id="cook-dashboard" class="page">
+  <div class="dash-wrap">
+    <div class="dash-header">
+      <div class="dash-user">
+        <img src="https://ui-avatars.com/api/?name=Chef+Ahmad&background=7A0020&color=FDF3DC&bold=true&size=60" class="dash-avatar">
+        <div>
+          <h2 id="cookStoreName">Chef Ahmad's Kitchen</h2>
+          <p><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;font-size:11px;"></i>Swabi City Center</p>
+          <div class="dash-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span>4.5 · 128 reviews</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:20px;">
+        <div class="earnings-badge"><i class="fas fa-coins"></i><div>Total Earned<br><strong>Rs. 45,250</strong></div></div>
+        <div class="toggle-wrap">
+          <label class="toggle"><input type="checkbox" checked onchange="toggleKitchen(this)"><span class="toggle-slider"></span></label>
+          <span class="toggle-label open" id="kitchenStatus">Open</span>
+        </div>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><h4>Today's Orders</h4><div class="stat-val">12</div></div>
+      <div class="stat-card"><h4>Pending</h4><div class="stat-val warn">3</div></div>
+      <div class="stat-card"><h4>Today's Earnings</h4><div class="stat-val">Rs. 8,400</div></div>
+      <div class="stat-card"><h4>Commission Paid</h4><div class="stat-val danger">Rs. 840</div></div>
+    </div>
+    <div class="section-card">
+      <div class="sec-header">
+        <h2><i class="fas fa-book-open"></i>My Menu</h2>
+        <button class="add-btn" onclick="openAddItem()" title="Add item"><i class="fas fa-plus"></i></button>
+      </div>
+      <div class="food-grid" id="cookMenu"></div>
+    </div>
+    <div class="section-card">
+      <h2 style="font-family:'Playfair Display',serif;font-size:18px;margin-bottom:20px;"><i class="fas fa-comments" style="color:var(--gold);margin-right:8px;font-size:15px;"></i>Customer Reviews</h2>
+      <div class="review-card">
+        <div class="review-head"><div class="reviewer">Ali Khan <span class="review-stars">★★★★★</span></div><div class="review-date">2 days ago</div></div>
+        <p>Amazing taste! The extra cheese option was perfect. Will definitely order again.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-head"><div class="reviewer">Sarah Ahmad <span class="review-stars">★★★★</span></div><div class="review-date">5 days ago</div></div>
+        <p>Great food but delivery took a bit longer than expected. Taste was excellent.</p>
+      </div>
+    </div>
+    <div class="section-card">
+      <h2 style="font-family:'Playfair Display',serif;font-size:18px;margin-bottom:16px;"><i class="fas fa-list-alt" style="color:var(--gold);margin-right:8px;font-size:15px;"></i>Recent Orders</h2>
+      <table class="data-table">
+        <thead><tr><th>Order #</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td>#1234</td><td>Ali Khan</td><td>Spaghetti ×2</td><td>Rs. 900</td><td><span class="badge badge-pending">Pending</span></td><td><button class="btn-card" onclick="acceptOrder(1234)">Accept</button></td></tr>
+          <tr><td>#1233</td><td>Sarah Ahmad</td><td>Karahi ×1, Naan ×2</td><td>Rs. 860</td><td><span class="badge badge-preparing">Preparing</span></td><td><button class="btn-card" onclick="markReady(1233)">Mark Ready</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-        // Handle Register
-        function handleRegister(e) {
-            e.preventDefault();
-            showNotification('Account created successfully! Please login.');
-            showPage('login');
-        }
+<!-- ══ RIDER DASHBOARD ════════════════════════════════════════════════════════ -->
+<div id="rider-dashboard" class="page">
+  <div class="dash-wrap">
+    <div class="dash-header">
+      <div class="dash-user">
+        <img src="https://ui-avatars.com/api/?name=Usman+Ali&background=7A0020&color=FDF3DC&bold=true&size=60" class="dash-avatar">
+        <div>
+          <h2>Usman — Delivery Partner</h2>
+          <p><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;font-size:11px;"></i>Active in Swabi</p>
+          <div style="margin-top:4px;"><span style="font-size:12px;font-weight:600;color:var(--success);"><i class="fas fa-check-circle" style="margin-right:4px;"></i>Verified Rider</span></div>
+        </div>
+      </div>
+      <div class="earnings-badge"><i class="fas fa-wallet"></i><div>Today's Earnings<br><strong>Rs. 1,850</strong></div></div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card"><h4>Deliveries Today</h4><div class="stat-val">8</div></div>
+      <div class="stat-card"><h4>Available Orders</h4><div class="stat-val danger">3</div></div>
+      <div class="stat-card"><h4>Rating</h4><div class="stat-val">4.8 ★</div></div>
+      <div class="stat-card"><h4>Commission Paid</h4><div class="stat-val warn">Rs. 80</div></div>
+    </div>
+    <div class="section-card">
+      <div class="sec-header"><h2><i class="fas fa-bell"></i>New Deliveries</h2></div>
+      <div class="delivery-card">
+        <h4><i class="fas fa-shopping-bag" style="color:var(--gold);margin-right:8px;"></i>Order #1234 — Ready for Pickup</h4>
+        <p><strong>Pickup:</strong> Chef Ahmad's Kitchen, City Center Swabi<br>
+        <strong>Drop:</strong> House #123, Near City Center, Swabi<br>
+        <strong>Items:</strong> Spaghetti Bolognese ×2<br>
+        <strong>Distance:</strong> 2.5 km</p>
+        <div class="paid-badge" style="margin-top:12px;"><i class="fas fa-check-circle"></i>Platform Payment Verified</div>
+        <div class="delivery-actions">
+          <div class="delivery-fee">Rs. 190 <span style="font-size:13px;font-weight:400;color:var(--muted);">your share</span></div>
+          <div style="display:flex;gap:10px;">
+            <button class="btn-hero-primary" onclick="acceptDelivery(1234)"><i class="fas fa-check" style="margin-right:6px;"></i>Accept</button>
+            <button class="btn-hero-ghost" style="color:var(--muted);border-color:var(--border);" onclick="rejectDelivery(1234)">Reject</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-card">
+      <div class="sec-header"><h2><i class="fas fa-map-marked-alt"></i>My Delivery Areas</h2>
+        <button class="btn-card" onclick="toast('Edit delivery areas coming soon!')">Edit Areas</button>
+      </div>
+      <div class="area-tags">
+        <span class="area-tag"><i class="fas fa-map-pin"></i>City Center</span>
+        <span class="area-tag"><i class="fas fa-map-pin"></i>Guli Bagh</span>
+        <span class="area-tag"><i class="fas fa-map-pin"></i>Topi Road</span>
+        <span class="area-tag"><i class="fas fa-map-pin"></i>Shahmansoor</span>
+        <span class="area-tag"><i class="fas fa-map-pin"></i>Marghuz</span>
+      </div>
+    </div>
+    <div class="section-card">
+      <h2 style="font-family:'Playfair Display',serif;font-size:18px;margin-bottom:16px;"><i class="fas fa-history" style="color:var(--gold);margin-right:8px;font-size:15px;"></i>Delivery History</h2>
+      <table class="data-table">
+        <thead><tr><th>Order #</th><th>From</th><th>Customer</th><th>Earned</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>#1220</td><td>Chef Ahmad's Kitchen</td><td>Ali Khan</td><td>Rs. 190</td><td><span class="badge badge-done">Completed</span></td></tr>
+          <tr><td>#1221</td><td>Chef Fatima's Kitchen</td><td>Sarah Ahmad</td><td>Rs. 190</td><td><span class="badge badge-done">Completed</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-        // Image Preview
-        function previewImage(input, previewId) {
-            const preview = document.getElementById(previewId);
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+<!-- ══ BECOME RIDER ══════════════════════════════════════════════════════════ -->
+<div id="become-rider" class="page">
+  <div class="apply-wrap">
+    <div class="apply-head">
+      <div class="icon"><i class="fas fa-motorcycle"></i></div>
+      <h2>Become a Delivery Rider</h2>
+      <p>Join ApnaKitchen and earn Rs. 190 per delivery across Swabi</p>
+    </div>
+    <form onsubmit="submitRider(event)">
+      <div class="apply-section">
+        <h3><i class="fas fa-user"></i>Personal Information</h3>
+        <div class="grid-2">
+          <div class="form-group"><label>Full Name (as per CNIC)</label><input type="text" required></div>
+          <div class="form-group"><label>CNIC Number</label><input type="text" placeholder="XXXXX-XXXXXXX-X" required></div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="03XX-XXXXXXX" required></div>
+          <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com"></div>
+        </div>
+        <div class="form-group">
+          <label>Profile Photo</label>
+          <div class="file-upload"><input type="file" accept="image/*" onchange="previewImg(this,'riderPrev')">
+          <div class="file-label"><i class="fas fa-camera"></i>Upload clear photo of yourself</div></div>
+          <img id="riderPrev" class="preview-img">
+        </div>
+      </div>
+      <div class="apply-section">
+        <h3><i class="fas fa-map-marker-alt"></i>Delivery Areas — Swabi</h3>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;font-weight:300;">Select all areas where you can deliver orders:</p>
+        <div class="villages-grid">
+          <label class="vill-check"><input type="checkbox"><span>City Center</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Guli Bagh</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Topi Road</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Shahmansoor</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Marghuz</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Kotha</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Baja</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Kabla</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Maniri</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Sheikh Jana</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Yar Hussain</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Zaida</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Matta</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Chota Lahor</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Turlandi</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Dobian</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Bamkhel</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Panjpir</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Kalu Khan</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Ismaila</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Jalbai</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Manglawar</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Pabbi</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Tangi</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Sard Cheena</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Adina</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Chamla</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Kanju</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Buner</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Daggar</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Gagra</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Jowar</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Karakar</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Khazana</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Mahal</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Mandor</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Nora</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Pir Baba</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Salarzai</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Shalbandi</span></label>
+          <label class="vill-check"><input type="checkbox"><span>Sheringal</span></label>
+        </div>
+      </div>
+      <div class="apply-section">
+        <h3><i class="fas fa-motorcycle"></i>Vehicle</h3>
+        <div class="grid-2">
+          <div class="form-group"><label>Vehicle Type</label>
+            <select required><option value="">Select</option><option>Motorcycle</option><option>Scooter</option><option>Bicycle</option></select>
+          </div>
+          <div class="form-group"><label>Vehicle Number</label><input type="text" placeholder="SWA-1234" required></div>
+        </div>
+      </div>
+      <div class="apply-section">
+        <h3><i class="fas fa-file-alt"></i>Documents</h3>
+        <div class="grid-2">
+          <div class="form-group"><label>CNIC Front</label><div class="file-upload"><input type="file" accept="image/*"><div class="file-label"><i class="fas fa-id-card"></i>Upload front side</div></div></div>
+          <div class="form-group"><label>CNIC Back</label><div class="file-upload"><input type="file" accept="image/*"><div class="file-label"><i class="fas fa-id-card"></i>Upload back side</div></div></div>
+        </div>
+      </div>
+      <div class="terms-info">
+        <h4><i class="fas fa-percentage" style="margin-right:6px;"></i>Commission & Earnings</h4>
+        Commission per delivery: <strong>Rs. 10 (5%)</strong> sent to NayaPay before accepting<br>
+        You earn: <strong>Rs. 190 per delivery</strong> collected directly from customer<br>
+        NayaPay account: <strong>PK34NAYA1234503169382133</strong>
+      </div>
+      <button type="submit" class="btn-full"><i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Application</button>
+    </form>
+  </div>
+</div>
 
-        // Quantity Update
-        function updateQuantity(change) {
-            quantity += change;
-            if (quantity < 1) quantity = 1;
-            document.getElementById('quantityDisplay').textContent = quantity;
-            document.getElementById('quantityTotal').textContent = 'Rs. ' + (quantity * basePrice);
-            document.getElementById('summaryQty').textContent = quantity;
-            document.getElementById('summaryItemPrice').textContent = 'Rs. ' + (quantity * basePrice);
-            calculateTotal();
-        }
+<!-- ══ APPLY COOK ════════════════════════════════════════════════════════════ -->
+<div id="apply-cook" class="page">
+  <div class="apply-wrap">
+    <div class="apply-head">
+      <div class="icon"><i class="fas fa-hat-chef"></i></div>
+      <h2>Apply as Home Cook</h2>
+      <p>Share your cooking talent with Swabi and earn from your kitchen</p>
+    </div>
+    <form onsubmit="submitCook(event)">
+      <div class="apply-section">
+        <h3><i class="fas fa-user"></i>Personal Information</h3>
+        <div class="grid-2">
+          <div class="form-group"><label>Full Name</label><input type="text" required></div>
+          <div class="form-group"><label>CNIC Number</label><input type="text" placeholder="XXXXX-XXXXXXX-X" required></div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group"><label>Phone</label><input type="tel" placeholder="03XX-XXXXXXX" required></div>
+          <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com"></div>
+        </div>
+        <div class="form-group">
+          <label>Profile Photo</label>
+          <div class="file-upload"><input type="file" accept="image/*" onchange="previewImg(this,'cookPrev')">
+          <div class="file-label"><i class="fas fa-camera"></i>Upload your photo</div></div>
+          <img id="cookPrev" class="preview-img">
+        </div>
+      </div>
+      <div class="apply-section">
+        <h3><i class="fas fa-store"></i>Kitchen Details</h3>
+        <div class="form-group"><label>Kitchen / Store Name</label><input type="text" id="cookStoreInput" placeholder="e.g. Ahmad's Kitchen" required></div>
+        <div class="form-group"><label>Address in Swabi</label><input type="text" placeholder="House #, Street, Area, Swabi" required></div>
+        <div class="grid-2">
+          <div class="form-group"><label>Area / Zone</label>
+            <select required><option value="">Select area</option><option>City Center</option><option>Guli Bagh</option><option>Topi Road</option><option>Shahmansoor</option><option>Marghuz</option><option>Kotha</option><option>Baja</option><option>Other</option></select>
+          </div>
+          <div class="form-group"><label>Years of Experience</label><input type="number" placeholder="e.g. 5" min="0" required></div>
+        </div>
+        <div class="form-group"><label>Specialty Cuisine</label><input type="text" placeholder="e.g. Pakistani, Desi, Chinese, Italian"></div>
+      </div>
+      <div class="apply-section">
+        <h3><i class="fas fa-file-alt"></i>Documents</h3>
+        <div class="grid-2">
+          <div class="form-group"><label>CNIC Front</label><div class="file-upload"><input type="file" accept="image/*"><div class="file-label"><i class="fas fa-id-card"></i>Front side</div></div></div>
+          <div class="form-group"><label>CNIC Back</label><div class="file-upload"><input type="file" accept="image/*"><div class="file-label"><i class="fas fa-id-card"></i>Back side</div></div></div>
+        </div>
+      </div>
+      <div class="terms-info">
+        <h4><i class="fas fa-percentage" style="margin-right:6px;"></i>Commission & Terms</h4>
+        Platform commission: <strong>10% per order</strong> sent to NayaPay before accepting<br>
+        You keep: <strong>90% of every order</strong> · Set your own prices<br>
+        Respond to orders within: <strong>15 minutes</strong><br>
+        NayaPay: <strong>PK34NAYA1234503169382133</strong>
+      </div>
+      <div class="form-group">
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;text-transform:none;font-size:14px;font-weight:400;">
+          <input type="checkbox" required style="margin-top:2px;accent-color:var(--crimson);width:16px;height:16px;">
+          I agree to the terms and conditions and confirm all information is accurate.
+        </label>
+      </div>
+      <button type="submit" class="btn-full"><i class="fas fa-arrow-right" style="margin-right:8px;"></i>Submit Application</button>
+    </form>
+  </div>
+</div>
 
-        // Toggle Options in Order
-        function toggleOption(element, price) {
-            element.classList.toggle('checked');
-            const icon = element.querySelector('i');
-            if (element.classList.contains('checked')) {
-                icon.style.display = 'block';
-                selectedExtras.push(price);
-            } else {
-                icon.style.display = 'none';
-                const index = selectedExtras.indexOf(price);
-                if (index > -1) {
-                    selectedExtras.splice(index, 1);
-                }
-            }
-            calculateTotal();
-        }
+<!-- ══ MENU PAGE ══════════════════════════════════════════════════════════════ -->
+<div id="menu" class="page">
+  <div class="menu-wrap">
+    <div class="section-card">
+      <div class="sec-header">
+        <h2><i class="fas fa-utensils"></i>All Food in Swabi</h2>
+        <div class="search-row">
+          <select class="search-input" style="width:160px;">
+            <option>All Areas</option><option>City Center</option><option>Guli Bagh</option>
+            <option>Topi Road</option><option>Shahmansoor</option><option>Marghuz</option>
+          </select>
+          <input class="search-input" placeholder="Search…">
+        </div>
+      </div>
+      <div class="food-grid" id="menuGrid"></div>
+    </div>
+  </div>
+</div>
 
-        // Calculate Total
-        function calculateTotal() {
-            let itemTotal = quantity * basePrice;
-            let extrasTotal = selectedExtras.reduce((a, b) => a + b, 0);
-            let subtotal = itemTotal + extrasTotal + 50;
-            let platformFee = Math.round(subtotal * 0.05);
-            totalPrice = subtotal + platformFee;
-            document.getElementById('total-price').textContent = 'Rs. ' + totalPrice;
-            document.getElementById('platformFee').textContent = 'Rs. ' + platformFee;
-            document.getElementById('cookCommission').textContent = platformFee;
-            document.getElementById('riderCommission').textContent = (50 * 0.05).toFixed(1);
-            document.getElementById('totalCommission').textContent = (platformFee + 50 * 0.05).toFixed(1);
-        }
+</div><!-- /container -->
 
-        // Process Payment
-        function processPayment() {
-            let commission = parseFloat(document.getElementById('totalCommission').textContent);
-            platformBalance += commission;
-            document.getElementById('platformBalance').textContent = 'Rs. ' + platformBalance.toFixed(2);
-            document.querySelector('.payment-section').style.display = 'none';
-            document.getElementById('placeOrderSection').style.display = 'block';
-            showNotification('Payment of Rs. ' + commission + ' sent to platform (NayaPay: PK34NAYA1234503169382133)');
-        }
+<!-- ══ MODALS ════════════════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="addItemModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h2><i class="fas fa-plus-circle" style="color:var(--gold);margin-right:8px;font-size:18px;"></i>Add Menu Item</h2>
+      <button class="modal-close" onclick="closeModal('addItemModal')">×</button>
+    </div>
+    <form onsubmit="saveItem(event)">
+      <div class="form-group"><label>Item Name</label><input type="text" placeholder="e.g. Chicken Biryani" required></div>
+      <div class="form-group"><label>Description</label><textarea rows="3" placeholder="Describe your dish…" required style="resize:none;"></textarea></div>
+      <div class="form-group">
+        <label>Food Photo</label>
+        <div class="file-upload"><input type="file" accept="image/*" onchange="previewImg(this,'itemPrev')">
+        <div class="file-label"><i class="fas fa-image"></i>Upload food photo</div></div>
+        <img id="itemPrev" class="preview-img" style="border-radius:10px;width:100%;height:160px;object-fit:cover;">
+      </div>
+      <div class="grid-2">
+        <div class="form-group"><label>Base Price (Rs.)</label><input type="number" placeholder="e.g. 450" required></div>
+        <div class="form-group"><label>Prep Time (min)</label><input type="number" placeholder="e.g. 30" required></div>
+      </div>
+      <div class="form-group">
+        <label>Add-on Options</label>
+        <div id="optionsContainer">
+          <div class="option-extra"><input type="text" placeholder="e.g. Extra Ketchup" style="flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:14px;"><input type="number" placeholder="Price" style="width:100px;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:14px;"></div>
+        </div>
+        <button type="button" class="btn-add-opt" onclick="addOpt()"><i class="fas fa-plus" style="margin-right:6px;"></i>Add Option</button>
+      </div>
+      <button type="submit" class="btn-full"><i class="fas fa-save" style="margin-right:8px;"></i>Save Item</button>
+    </form>
+  </div>
+</div>
 
-        // Modal Rating
-        function setModalRating(rating) {
-            modalRating = rating;
-            const stars = document.querySelectorAll('#modalRatingInput i');
-            stars.forEach((star, index) => {
-                if (index < rating) {
-                    star.style.color = 'var(--warning)';
-                } else {
-                    star.style.color = 'var(--light-gray)';
-                }
-            });
-        }
+<div class="modal-overlay" id="reviewModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h2><i class="fas fa-star" style="color:var(--gold);margin-right:8px;font-size:18px;"></i>Write a Review</h2>
+      <button class="modal-close" onclick="closeModal('reviewModal')">×</button>
+    </div>
+    <h3 id="revFood" style="font-family:'Playfair Display',serif;font-size:18px;margin-bottom:4px;"></h3>
+    <p id="revCook" style="font-size:13px;color:var(--muted);margin-bottom:16px;font-weight:300;"></p>
+    <div class="stars-input" id="starsInput">
+      <i class="far fa-star" onclick="setRating(1)"></i>
+      <i class="far fa-star" onclick="setRating(2)"></i>
+      <i class="far fa-star" onclick="setRating(3)"></i>
+      <i class="far fa-star" onclick="setRating(4)"></i>
+      <i class="far fa-star" onclick="setRating(5)"></i>
+    </div>
+    <div class="form-group"><textarea rows="4" placeholder="Share your experience…" style="resize:none;"></textarea></div>
+    <div style="display:flex;gap:12px;">
+      <button class="btn-card" style="flex:1;" onclick="closeModal('reviewModal')">Cancel</button>
+      <button class="btn-full" style="flex:2;" onclick="submitReview()">Submit Review</button>
+    </div>
+  </div>
+</div>
 
-        // Review Modal
-        function openReviewModal(foodName, cookName) {
-            document.getElementById('reviewFoodName').textContent = foodName;
-            document.getElementById('reviewCookName').textContent = 'by ' + cookName;
-            document.getElementById('reviewModal').classList.add('active');
-            modalRating = 0;
-            setModalRating(0);
-        }
+<script>
+// ── DATA ─────────────────────────────────────────────────────────────────────
+const foods = [
+  {name:'Spaghetti Bolognese',cook:"Chef Ahmad's Kitchen",price:450,area:'City Center',img:'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=500',tags:['+ Ketchup Rs.20','+ Cheese Rs.50']},
+  {name:'Chicken Biryani',cook:"Chef Fatima's Kitchen",price:350,area:'Guli Bagh',img:'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=500',tags:['+ Raita Rs.30','+ Salad Rs.40']},
+  {name:'Chicken Karahi',cook:"Chef Usman's Kitchen",price:800,area:'Topi Road',img:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500',tags:['+ Naan Rs.30','+ Drink Rs.60']},
+  {name:'Seekh Kebab (6 pcs)',cook:"Chef Imran's Kitchen",price:300,area:'City Center',img:'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500',tags:['+ Chutney Rs.20','+ Paratha Rs.40']},
+  {name:'Fresh Salad Bowl',cook:"Chef Ayesha's Kitchen",price:200,area:'Shahmansoor',img:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500',tags:['+ Dressing Rs.30']},
+  {name:'Breakfast Pancakes',cook:"Chef Sara's Kitchen",price:350,area:'Marghuz',img:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500',tags:['+ Syrup Rs.40','+ Fruit Rs.60']},
+];
 
-        function closeReviewModal() {
-            document.getElementById('reviewModal').classList.remove('active');
-        }
+function foodCard(f, editMode=false) {
+  const actionsHTML = editMode
+    ? `<button class="btn-review" onclick="event.stopPropagation()"><i class="fas fa-edit"></i> Edit</button>
+       <button class="btn-order" onclick="event.stopPropagation();this.closest('.food-card').remove();toast('Item removed')" style="background:var(--crimson-deep)"><i class="fas fa-trash"></i> Remove</button>`
+    : `<button class="btn-review" onclick="event.stopPropagation();openReview('${f.name}','${f.cook}')"><i class="fas fa-star"></i> Review</button>
+       <button class="btn-order" onclick="event.stopPropagation();showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>`;
+  return `
+    <div class="food-card" onclick="showPage('order-detail')">
+      <div class="food-img-wrap">
+        <img class="food-img" src="${f.img}" alt="${f.name}" loading="lazy">
+        <span class="cook-tag">${f.area}</span>
+      </div>
+      <div class="food-body">
+        <h4>${f.name}</h4>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:300;">${f.cook}</p>
+        <div class="food-price">Rs. ${f.price.toLocaleString()}</div>
+        <div class="tags-row">${f.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="food-actions">${actionsHTML}</div>
+      </div>
+    </div>`;
+}
 
-        function submitModalReview() {
-            if (modalRating === 0) {
-                showNotification('Please select a rating!');
-                return;
-            }
-            showNotification('Review submitted successfully!');
-            closeReviewModal();
-        }
+function renderGrids() {
+  const cm = document.getElementById('custMenu');
+  const mg = document.getElementById('menuGrid');
+  const ck = document.getElementById('cookMenu');
+  if(cm) cm.innerHTML = foods.map(f=>foodCard(f)).join('');
+  if(mg) mg.innerHTML = foods.map(f=>foodCard(f)).join('');
+  if(ck) ck.innerHTML = foods.slice(0,2).map(f=>foodCard(f,true)).join('');
+}
+document.addEventListener('DOMContentLoaded', renderGrids);
 
-        // Place Order
-        function placeOrder() {
-            showNotification('Order placed successfully! You will receive updates soon.');
-            addCookNotification('New Order #1236', 'Spaghetti Bolognese x' + quantity, 'Just now');
-            setTimeout(() => {
-                showPage('customer-dashboard');
-            }, 2000);
-        }
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let currentRole = 'customer';
+let qty = 1;
+const basePrice = 450;
+let extras = [];
+let walletBal = 0;
+let starRating = 0;
 
-        // Add Cook Notification
-        function addCookNotification(title, details, time) {
-            const notifList = document.getElementById('notificationsList');
-            const newNotif = document.createElement('div');
-            newNotif.className = 'notification-item new';
-            newNotif.innerHTML = '<strong>' + title + '</strong><p>' + details + '</p><small>' + time + '</small>';
-            notifList.insertBefore(newNotif, notifList.firstChild);
-            const badge = document.getElementById('notif-count');
-            badge.style.display = 'flex';
-            badge.textContent = parseInt(badge.textContent) + 1;
-        }
+// ── NAVIGATION ────────────────────────────────────────────────────────────────
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('notifPanel').classList.remove('show');
+  window.scrollTo(0,0);
+  const showWallet = ['cook-dashboard','rider-dashboard','order-detail'].includes(id);
+  document.getElementById('adminWallet').style.display = showWallet ? 'block' : 'none';
+  if(id==='customer-dashboard'||id==='cook-dashboard'||id==='rider-dashboard'||id==='menu') {
+    setTimeout(renderGrids, 50);
+  }
+}
 
-        // Modal Functions
-        function openAddItemModal() {
-            document.getElementById('addItemModal').classList.add('active');
-        }
+// ── AUTH ──────────────────────────────────────────────────────────────────────
+function switchRole(role, btn) {
+  currentRole = role;
+  document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+}
+function doLogin(e) {
+  e.preventDefault();
+  const dashMap = {customer:'customer-dashboard', cook:'cook-dashboard', rider:'rider-dashboard'};
+  showPage(dashMap[currentRole]);
+  toast('Welcome back to ApnaKitchen!');
+}
+function doRegister(e) { e.preventDefault(); toast('Account created! Please login.'); showPage('login'); }
+function submitCook(e) {
+  e.preventDefault();
+  const name = document.getElementById('cookStoreInput').value;
+  if(name){
+    document.getElementById('cookStoreName').textContent = name;
+    document.getElementById('storeBannerName').textContent = name;
+    document.getElementById('storeBanner').style.display = 'block';
+  }
+  toast(`"${name || 'Your Kitchen'}" is approved! Please login as Cook.`);
+  showPage('login');
+}
+function submitRider(e) { e.preventDefault(); toast('Application submitted! We will review and contact you soon.'); showPage('home'); }
 
-        function closeModal() {
-            document.getElementById('addItemModal').classList.remove('active');
-        }
+// ── ORDER ─────────────────────────────────────────────────────────────────────
+function changeQty(d) {
+  qty = Math.max(1, qty + d);
+  document.getElementById('qtyDisplay').textContent = qty;
+  document.getElementById('qtyTotal').textContent = 'Rs. ' + (qty * basePrice).toLocaleString();
+  document.getElementById('sumQty').textContent = qty;
+  calcTotal();
+}
+function toggleOpt(el, price) {
+  el.classList.toggle('on');
+  el.querySelector('i').style.display = el.classList.contains('on') ? 'block' : 'none';
+  if(el.classList.contains('on')) extras.push(price);
+  else extras.splice(extras.indexOf(price),1);
+  calcTotal();
+}
+function calcTotal() {
+  const item = qty * basePrice;
+  const ext = extras.reduce((a,b)=>a+b,0);
+  const sub = item + ext + 200;
+  const fee = Math.round(sub * 0.05);
+  const total = sub + fee;
+  const cookC = Math.round(item * 0.10);
+  document.getElementById('sumItem').textContent = 'Rs. ' + item.toLocaleString();
+  document.getElementById('sumFee').textContent = 'Rs. ' + fee;
+  document.getElementById('sumTotal').textContent = 'Rs. ' + total.toLocaleString();
+  document.getElementById('payCommission').textContent = cookC;
+  document.getElementById('payTotal').textContent = cookC + 10;
+}
+function doPayment() {
+  const amt = parseInt(document.getElementById('payTotal').textContent);
+  walletBal += amt;
+  document.getElementById('platformBalance').textContent = 'Rs. ' + walletBal.toLocaleString();
+  document.getElementById('payBox').style.display = 'none';
+  document.getElementById('paidSection').style.display = 'block';
+  toast('Payment of Rs.' + amt + ' sent to platform NayaPay ✓');
+}
+function doPlaceOrder() {
+  toast('Order placed! You will receive updates soon.');
+  addNotif('Order #1236 placed', 'Spaghetti Bolognese × ' + qty);
+  setTimeout(() => showPage('customer-dashboard'), 1800);
+}
 
-        function addOptionField() {
-            const container = document.getElementById('options-container');
-            const div = document.createElement('div');
-            div.className = 'extra-price-input';
-            div.style.cssText = 'margin-bottom: 10px;';
-            div.innerHTML = '<input type="text" placeholder="Option name" style="flex: 1;"><input type="number" placeholder="Price (Rs.)" style="width: 100px;"><button type="button" onclick="this.parentElement.remove()" style="background: var(--light-red); color: white; border: none; border-radius: 8px; padding: 10px 15px; cursor: pointer;"><i class="fas fa-trash"></i></button>';
-            container.appendChild(div);
-        }
+// ── COOK ──────────────────────────────────────────────────────────────────────
+function toggleKitchen(cb) {
+  const el = document.getElementById('kitchenStatus');
+  el.textContent = cb.checked ? 'Open' : 'Closed';
+  el.className = 'toggle-label ' + (cb.checked ? 'open' : 'closed');
+  toast('Kitchen is now ' + (cb.checked ? 'OPEN' : 'CLOSED'));
+}
+function acceptOrder(id) { toast('Order #' + id + ' accepted — start cooking!'); }
+function markReady(id) { toast('Order #' + id + ' marked ready for pickup!'); }
 
-        function saveMenuItem(e) {
-            e.preventDefault();
-            showNotification('Menu item added successfully!');
-            closeModal();
-            const menuGrid = document.getElementById('cook-menu');
-            const newCard = document.createElement('div');
-            newCard.className = 'food-card fade-in';
-            newCard.innerHTML = '<img src="https://via.placeholder.com/400x300/8B0000/FFFFFF?text=New+Item" alt="New Item" class="food-image"><div class="food-details"><h4>New Menu Item</h4><p>Freshly added</p><div class="food-price">Rs. 500</div><div style="margin-top: 15px; display: flex; gap: 10px;"><button class="btn-primary" style="padding: 8px 16px; font-size: 14px;"><i class="fas fa-edit"></i> Edit</button><button style="padding: 8px 16px; background: var(--light-red); color: white; border: none; border-radius: 20px; cursor: pointer;"><i class="fas fa-trash"></i></button></div></div>';
-            menuGrid.appendChild(newCard);
-        }
+// ── RIDER ─────────────────────────────────────────────────────────────────────
+function acceptDelivery(id) { toast('Delivery #' + id + ' accepted — head to pickup!'); }
+function rejectDelivery(id) { toast('Delivery #' + id + ' declined.'); }
 
-        // Cook Dashboard Functions
-        function toggleKitchenStatus(checkbox) {
-            const status = document.getElementById('kitchen-status');
-            if (checkbox.checked) {
-                status.textContent = 'Open';
-                status.style.color = 'var(--success)';
-                showNotification('Kitchen is now OPEN for orders!');
-            } else {
-                status.textContent = 'Closed';
-                status.style.color = 'var(--light-red)';
-                showNotification('Kitchen is now CLOSED.');
-            }
-        }
+// ── CHAT ──────────────────────────────────────────────────────────────────────
+function sendMsg() {
+  const inp = document.getElementById('chatIn');
+  const msg = inp.value.trim();
+  if(!msg) return;
+  const box = document.getElementById('chatMsgs');
+  box.innerHTML += `<div class="msg out">${msg}</div>`;
+  inp.value = '';
+  box.scrollTop = box.scrollHeight;
+  setTimeout(() => {
+    box.innerHTML += `<div class="msg in">Thank you! I'll get back to you shortly.</div>`;
+    box.scrollTop = box.scrollHeight;
+  }, 900);
+}
 
-        function acceptOrder(orderId) {
-            showNotification('Order #' + orderId + ' accepted! Start preparing.');
-        }
+// ── MODALS ────────────────────────────────────────────────────────────────────
+function openAddItem() { document.getElementById('addItemModal').classList.add('show'); }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+function saveItem(e) {
+  e.preventDefault();
+  toast('Menu item added!');
+  closeModal('addItemModal');
+  renderGrids();
+}
+function addOpt() {
+  const c = document.getElementById('optionsContainer');
+  const d = document.createElement('div');
+  d.className = 'option-extra';
+  d.innerHTML = `<input type="text" placeholder="Option name" style="flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:14px;"><input type="number" placeholder="Price" style="width:100px;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:14px;"><button type="button" onclick="this.parentElement.remove()" style="background:var(--crimson);color:#fff;border:none;border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:16px;align-self:center;">×</button>`;
+  c.appendChild(d);
+}
 
-        function markReady(orderId) {
-            showNotification('Order #' + orderId + ' marked as ready for pickup!');
-        }
+// ── REVIEWS ───────────────────────────────────────────────────────────────────
+function openReview(food, cook) {
+  document.getElementById('revFood').textContent = food;
+  document.getElementById('revCook').textContent = 'by ' + cook;
+  starRating = 0;
+  setRating(0);
+  document.getElementById('reviewModal').classList.add('show');
+}
+function setRating(n) {
+  starRating = n;
+  document.querySelectorAll('#starsInput i').forEach((s,i) => {
+    s.className = i < n ? 'fas fa-star lit' : 'far fa-star';
+  });
+}
+function submitReview() {
+  if(!starRating) { toast('Please select a star rating!'); return; }
+  toast('Review submitted — thank you!');
+  closeModal('reviewModal');
+}
 
-        // Rider Functions
-        function acceptDelivery(orderId) {
-            showNotification('Delivery #' + orderId + ' accepted! Head to pickup location.');
-        }
+// ── HOW IT WORKS ──────────────────────────────────────────────────────────────
+function toggleHow() {
+  const b = document.getElementById('howBody');
+  const c = document.getElementById('howChevron');
+  b.classList.toggle('open');
+  c.classList.toggle('open');
+}
 
-        function rejectDelivery(orderId) {
-            showNotification('Delivery #' + orderId + ' rejected.');
-        }
+// ── NOTIFICATIONS ─────────────────────────────────────────────────────────────
+function toggleNotif() {
+  document.getElementById('notifPanel').classList.toggle('show');
+  document.getElementById('notifDot').style.display = 'none';
+}
+function addNotif(title, detail) {
+  const list = document.getElementById('notifList');
+  const d = document.createElement('div');
+  d.className = 'notif-item';
+  d.innerHTML = `<strong>${title}</strong>${detail}<small>Just now</small>`;
+  list.insertBefore(d, list.firstChild);
+  document.getElementById('notifDot').style.display = 'block';
+}
 
-        // Applications
-        function submitRiderApplication(e) {
-            e.preventDefault();
-            showNotification('Rider application submitted! We will review and contact you soon.');
-            showPage('home');
-        }
+// ── IMAGE PREVIEW ──────────────────────────────────────────────────────────────
+function previewImg(inp, id) {
+  const prev = document.getElementById(id);
+  if(inp.files && inp.files[0]) {
+    const r = new FileReader();
+    r.onload = e => { prev.src = e.target.result; prev.style.display = 'block'; };
+    r.readAsDataURL(inp.files[0]);
+  }
+}
 
-        function submitCookApplication(e) {
-            e.preventDefault();
-            const storeName = document.getElementById('cookStoreNameInput').value;
-            currentStoreName = storeName;
-            document.getElementById('storeDisplay').style.display = 'block';
-            document.getElementById('storeNameDisplay').textContent = storeName;
-            document.getElementById('cookStoreName').textContent = storeName;
-            showNotification('Cook registration successful! Your store "' + storeName + '" is ready.');
-            showPage('login');
-        }
+// ── TOAST ──────────────────────────────────────────────────────────────────────
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
 
-        // Notifications
-        function toggleNotifications() {
-            const panel = document.getElementById('notificationPanel');
-            panel.classList.toggle('active');
-            document.getElementById('notif-count').style.display = 'none';
-            document.getElementById('notif-count').textContent = '0';
-        }
+// ── CLOSE MODAL ON OVERLAY CLICK ──────────────────────────────────────────────
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => { if(e.target === overlay) overlay.classList.remove('show'); });
+});
 
-        function showNotification(message) {
-            const notif = document.createElement('div');
-            notif.style.cssText = 'position: fixed; top: 100px; right: 20px; background: var(--primary-red); color: white; padding: 20px 30px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 3000; animation: slideIn 0.3s ease; max-width: 350px;';
-            notif.innerHTML = '<div style="display: flex; align-items: center; gap: 15px;"><i class="fas fa-check-circle" style="font-size: 24px;"></i><span>' + message + '</span></div>';
-            document.body.appendChild(notif);
-            setTimeout(() => { notif.remove(); }, 3000);
-        }
-
-        // Chat Functions
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            if (message) {
-                const chatMessages = document.getElementById('chatMessages');
-                const sentMsg = document.createElement('div');
-                sentMsg.className = 'message sent';
-                sentMsg.textContent = message;
-                chatMessages.appendChild(sentMsg);
-                input.value = '';
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-                setTimeout(() => {
-                    const replyMsg = document.createElement('div');
-                    replyMsg.className = 'message received';
-                    replyMsg.textContent = 'Thank you for your message! I will get back to you shortly.';
-                    chatMessages.appendChild(replyMsg);
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, 1000);
-            }
-        }
-
-        // How It Works Toggle
-        function toggleHowItWorks() {
-            const content = document.getElementById('howItWorksContent');
-            const icon = document.getElementById('howItWorksIcon');
-            content.classList.toggle('active');
-            if (content.classList.contains('active')) {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            } else {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            }
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('addItemModal');
-            const reviewModal = document.getElementById('reviewModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-            if (event.target === reviewModal) {
-                closeReviewModal();
-            }
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('chatInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    sendMessage();
-                }
-            });
-        });
-    </script>
+// ── INIT ──────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.checkbox').forEach(c => {
+  c.querySelector('i').style.display = 'none';
+});
+calcTotal();
+</script>
 </body>
 </html>
