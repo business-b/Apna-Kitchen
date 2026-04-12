@@ -17,930 +17,148 @@
             --success: #28a745;
             --warning: #ffc107;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--off-white);
-            color: #333;
-        }
-
-        /* Navigation */
-        .navbar {
-            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(139, 0, 0, 0.3);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: var(--white);
-            font-size: 28px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .logo img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--white);
-            padding: 5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            padding: 8px 16px;
-            border-radius: 25px;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-
-        .btn-primary {
-            background: var(--white);
-            color: var(--primary-red);
-            padding: 12px 30px;
-            border: none;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            background: var(--primary-red);
-            color: var(--white);
-            padding: 12px 30px;
-            border: 2px solid var(--white);
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--primary-red);
-        }
-
-        /* Main Container */
-        .container {
-            margin-top: 80px;
-            min-height: calc(100vh - 80px);
-        }
-
-        .page {
-            display: none;
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
-            color: var(--white);
-            padding: 80px 50px;
-            text-align: center;
-            border-radius: 0 0 50px 50px;
-            margin-bottom: 40px;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Cards Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 40px;
-        }
-
-        .role-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            border-top: 5px solid var(--primary-red);
-        }
-
-        .role-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(139, 0, 0, 0.2);
-        }
-
-        .role-icon {
-            font-size: 60px;
-            color: var(--primary-red);
-            margin-bottom: 20px;
-        }
-
-        .role-card h3 {
-            font-size: 24px;
-            color: var(--dark-red);
-            margin-bottom: 15px;
-        }
-
-        .role-card p {
-            color: var(--gray);
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        /* Login Forms */
-        .auth-container {
-            max-width: 500px;
-            margin: 40px auto;
-            background: var(--white);
-            padding: 50px;
-            border-radius: 30px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
-        }
-
-        .auth-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .auth-header h2 {
-            color: var(--primary-red);
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--dark-red);
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid var(--light-gray);
-            border-radius: 12px;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-red);
-            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
-        }
-
-        .file-upload {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
-
-        .file-upload input[type="file"] {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-
-        .file-upload-label {
-            display: block;
-            padding: 20px;
-            border: 3px dashed var(--light-red);
-            border-radius: 12px;
-            text-align: center;
-            color: var(--primary-red);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .file-upload-label:hover {
-            background: rgba(220, 20, 60, 0.05);
-            border-color: var(--primary-red);
-        }
-
-        .preview-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 20px auto;
-            display: none;
-            border: 4px solid var(--primary-red);
-        }
-
-        /* Dashboard Styles */
-        .dashboard-header {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .user-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary-red);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-left: 5px solid var(--primary-red);
-        }
-
-        .stat-card h4 {
-            color: var(--gray);
-            font-size: 14px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .stat-card .value {
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--primary-red);
-        }
-
-        /* Menu Items */
-        .menu-section {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--light-gray);
-        }
-
-        .add-btn {
-            background: var(--primary-red);
-            color: var(--white);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: none;
-            font-size: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .add-btn:hover {
-            transform: rotate(90deg) scale(1.1);
-            box-shadow: 0 5px 20px rgba(139, 0, 0, 0.4);
-        }
-
-        .food-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .food-card {
-            background: var(--off-white);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .food-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-red);
-            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.15);
-        }
-
-        .food-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .food-details {
-            padding: 20px;
-        }
-
-        .food-details h4 {
-            color: var(--dark-red);
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .food-details p {
-            color: var(--gray);
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .food-price {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-red);
-        }
-
-        .options-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .option-tag {
-            background: rgba(139, 0, 0, 0.1);
-            color: var(--primary-red);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-        }
-
-        /* Order Page */
-        .order-container {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 30px;
-        }
-
-        .food-detail-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 20px;
-            margin-bottom: 30px;
-        }
-
-        .options-section {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
-
-        .option-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .option-item:last-child {
-            border-bottom: none;
-        }
-
-        .checkbox-custom {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--primary-red);
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .checkbox-custom.checked {
-            background: var(--primary-red);
-            color: var(--white);
-        }
-
-        .order-summary {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 20px;
-            position: sticky;
-            top: 100px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .summary-row.total {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-red);
-            border-bottom: none;
-            border-top: 3px solid var(--primary-red);
-            margin-top: 10px;
-        }
-
-        /* Notifications */
-        .notification-panel {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            width: 350px;
-            max-height: 500px;
-            overflow-y: auto;
-            background: var(--white);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            padding: 20px;
-            display: none;
-            z-index: 999;
-        }
-
-        .notification-panel.active {
-            display: block;
-        }
-
-        .notification-item {
-            padding: 15px;
-            border-left: 4px solid var(--primary-red);
-            background: var(--off-white);
-            margin-bottom: 15px;
-            border-radius: 0 10px 10px 0;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .notification-item.new {
-            background: rgba(139, 0, 0, 0.1);
-            border-left-color: var(--light-red);
-        }
-
-        /* Reviews */
-        .reviews-section {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 20px;
-            margin-top: 30px;
-        }
-
-        .review-card {
-            border-bottom: 1px solid var(--light-gray);
-            padding: 25px 0;
-        }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-
-        .stars {
-            color: var(--warning);
-        }
-
-        .rating-input {
-            display: flex;
-            gap: 10px;
-            font-size: 30px;
-            color: var(--light-gray);
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .rating-input .star.active {
-            color: var(--warning);
-        }
-
-        /* Commission Display */
-        .commission-badge {
-            background: linear-gradient(135deg, var(--primary-red), var(--light-red));
-            color: var(--white);
-            padding: 15px 25px;
-            border-radius: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: bold;
-        }
-
-        /* Application Forms */
-        .application-form {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .form-section {
-            margin-bottom: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .form-section h3 {
-            color: var(--primary-red);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        /* Chat Interface */
-        .chat-container {
-            background: var(--white);
-            border-radius: 20px;
-            height: 500px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .chat-header {
-            background: var(--primary-red);
-            color: var(--white);
-            padding: 20px;
-            border-radius: 20px 20px 0 0;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            background: var(--off-white);
-        }
-
-        .message {
-            max-width: 70%;
-            padding: 15px 20px;
-            border-radius: 20px;
-            margin-bottom: 15px;
-        }
-
-        .message.sent {
-            background: var(--primary-red);
-            color: var(--white);
-            margin-left: auto;
-            border-bottom-right-radius: 5px;
-        }
-
-        .message.received {
-            background: var(--white);
-            color: #333;
-            border-bottom-left-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .chat-input {
-            display: flex;
-            padding: 20px;
-            gap: 15px;
-            border-top: 1px solid var(--light-gray);
-        }
-
-        .chat-input input {
-            flex: 1;
-            padding: 15px;
-            border: 2px solid var(--light-gray);
-            border-radius: 30px;
-            outline: none;
-        }
-
-        .chat-input button {
-            background: var(--primary-red);
-            color: var(--white);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 30px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: modalPop 0.3s ease;
-        }
-
-        @keyframes modalPop {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .close-btn {
-            font-size: 30px;
-            color: var(--gray);
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 20px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .order-container {
-                grid-template-columns: 1fr;
-            }
-
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-
-            .cards-grid {
-                padding: 20px;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* Badge */
-        .badge {
-            background: var(--light-red);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .badge-success {
-            background: var(--success);
-        }
-
-        /* Table Styles */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .data-table th,
-        .data-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .data-table th {
-            background: var(--primary-red);
-            color: var(--white);
-        }
-
-        .data-table tr:hover {
-            background: var(--off-white);
-        }
-
-        .status-badge {
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--off-white); color: #333; }
+        .navbar { background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(139, 0, 0, 0.3); }
+        .logo { display: flex; align-items: center; gap: 15px; color: var(--white); font-size: 28px; font-weight: bold; text-decoration: none; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 500; transition: all 0.3s; padding: 8px 16px; border-radius: 25px; }
+        .nav-links a:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        .btn-primary { background: var(--white); color: var(--primary-red); padding: 12px 30px; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+        .btn-secondary { background: var(--primary-red); color: var(--white); padding: 12px 30px; border: 2px solid var(--white); border-radius: 30px; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+        .btn-secondary:hover { background: var(--white); color: var(--primary-red); }
+        .btn-red { background: var(--primary-red); color: var(--white); padding: 15px 40px; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 16px; }
+        .btn-red:hover { background: var(--dark-red); transform: scale(1.05); }
+        .btn-white { background: var(--white); color: var(--primary-red); padding: 15px 40px; border: 2px solid var(--primary-red); border-radius: 30px; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 16px; }
+        .btn-white:hover { background: var(--off-white); transform: scale(1.05); }
+        .container { margin-top: 80px; min-height: calc(100vh - 80px); }
+        .page { display: none; padding: 20px; max-width: 1400px; margin: 0 auto; }
+        .page.active { display: block; }
+        .hero { background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%); color: var(--white); padding: 80px 50px; text-align: center; border-radius: 0 0 50px 50px; margin-bottom: 40px; }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; }
+        .hero p { font-size: 20px; margin-bottom: 30px; opacity: 0.9; }
+        .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px; }
+        .role-card { background: var(--white); border-radius: 20px; padding: 40px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: all 0.3s; border-top: 5px solid var(--primary-red); }
+        .role-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(139, 0, 0, 0.2); }
+        .role-icon { font-size: 60px; color: var(--primary-red); margin-bottom: 20px; }
+        .auth-container { max-width: 500px; margin: 40px auto; background: var(--white); padding: 50px; border-radius: 30px; box-shadow: 0 15px 50px rgba(0,0,0,0.1); }
+        .auth-header { text-align: center; margin-bottom: 40px; }
+        .auth-header h2 { color: var(--primary-red); font-size: 32px; margin-bottom: 10px; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--dark-red); font-weight: 600; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 15px; border: 2px solid var(--light-gray); border-radius: 12px; font-size: 16px; transition: all 0.3s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-red); box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1); }
+        .file-upload { position: relative; display: inline-block; width: 100%; }
+        .file-upload input[type="file"] { position: absolute; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
+        .file-upload-label { display: block; padding: 20px; border: 3px dashed var(--light-red); border-radius: 12px; text-align: center; color: var(--primary-red); cursor: pointer; transition: all 0.3s; }
+        .preview-image { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 20px auto; display: none; border: 4px solid var(--primary-red); }
+        .dashboard-header { background: var(--white); padding: 30px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
+        .user-info { display: flex; align-items: center; gap: 20px; }
+        .user-avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary-red); }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-left: 5px solid var(--primary-red); }
+        .stat-card h4 { color: var(--gray); font-size: 14px; text-transform: uppercase; margin-bottom: 10px; }
+        .stat-card .value { font-size: 32px; font-weight: bold; color: var(--primary-red); }
+        .menu-section { background: var(--white); padding: 30px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid var(--light-gray); }
+        .add-btn { background: var(--primary-red); color: var(--white); width: 60px; height: 60px; border-radius: 50%; border: none; font-size: 30px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
+        .add-btn:hover { transform: rotate(90deg) scale(1.1); box-shadow: 0 5px 20px rgba(139, 0, 0, 0.4); }
+        .food-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .food-card { background: var(--off-white); border-radius: 20px; overflow: hidden; transition: all 0.3s; border: 2px solid transparent; cursor: pointer; }
+        .food-card:hover { transform: translateY(-5px); border-color: var(--primary-red); box-shadow: 0 15px 40px rgba(139, 0, 0, 0.15); }
+        .food-image { width: 100%; height: 200px; object-fit: cover; }
+        .food-details { padding: 20px; }
+        .food-details h4 { color: var(--dark-red); font-size: 20px; margin-bottom: 10px; }
+        .food-price { font-size: 24px; font-weight: bold; color: var(--primary-red); }
+        .options-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .option-tag { background: rgba(139, 0, 0, 0.1); color: var(--primary-red); padding: 5px 12px; border-radius: 20px; font-size: 12px; }
+        .order-container { display: grid; grid-template-columns: 1fr 400px; gap: 30px; }
+        .food-detail-image { width: 100%; height: 400px; object-fit: cover; border-radius: 20px; margin-bottom: 30px; }
+        .options-section { background: var(--white); padding: 25px; border-radius: 15px; margin-bottom: 20px; }
+        .option-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid var(--light-gray); }
+        .checkbox-custom { width: 24px; height: 24px; border: 2px solid var(--primary-red); border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .checkbox-custom.checked { background: var(--primary-red); color: var(--white); }
+        .order-summary { background: var(--white); padding: 30px; border-radius: 20px; position: sticky; top: 100px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .summary-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid var(--light-gray); }
+        .summary-row.total { font-size: 24px; font-weight: bold; color: var(--primary-red); border-bottom: none; border-top: 3px solid var(--primary-red); margin-top: 10px; }
+        .notification-panel { position: fixed; top: 100px; right: 20px; width: 350px; max-height: 500px; overflow-y: auto; background: var(--white); border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); padding: 20px; display: none; z-index: 999; }
+        .notification-panel.active { display: block; }
+        .notification-item { padding: 15px; border-left: 4px solid var(--primary-red); background: var(--off-white); margin-bottom: 15px; border-radius: 0 10px 10px 0; animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .review-card { border-bottom: 1px solid var(--light-gray); padding: 25px 0; }
+        .review-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+        .stars { color: var(--warning); }
+        .rating-input { display: flex; gap: 10px; font-size: 30px; color: var(--light-gray); cursor: pointer; margin-bottom: 20px; }
+        .commission-badge { background: linear-gradient(135deg, var(--primary-red), var(--light-red)); color: var(--white); padding: 15px 25px; border-radius: 15px; display: inline-flex; align-items: center; gap: 10px; font-weight: bold; }
+        .application-form { background: var(--white); padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .form-section { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--light-gray); }
+        .form-section h3 { color: var(--primary-red); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .chat-container { background: var(--white); border-radius: 20px; height: 500px; display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .chat-header { background: var(--primary-red); color: var(--white); padding: 20px; border-radius: 20px 20px 0 0; display: flex; align-items: center; gap: 15px; }
+        .chat-messages { flex: 1; overflow-y: auto; padding: 20px; background: var(--off-white); }
+        .message { max-width: 70%; padding: 15px 20px; border-radius: 20px; margin-bottom: 15px; }
+        .message.sent { background: var(--primary-red); color: var(--white); margin-left: auto; border-bottom-right-radius: 5px; }
+        .message.received { background: var(--white); color: #333; border-bottom-left-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .chat-input { display: flex; padding: 20px; gap: 15px; border-top: 1px solid var(--light-gray); }
+        .chat-input input { flex: 1; padding: 15px; border: 2px solid var(--light-gray); border-radius: 30px; outline: none; }
+        .chat-input button { background: var(--primary-red); color: var(--white); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; transition: all 0.3s; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; }
+        .modal.active { display: flex; }
+        .modal-content { background: var(--white); padding: 40px; border-radius: 30px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; animation: modalPop 0.3s ease; }
+        @keyframes modalPop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .close-btn { font-size: 30px; color: var(--gray); cursor: pointer; background: none; border: none; }
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .data-table th, .data-table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--light-gray); }
+        .data-table th { background: var(--primary-red); color: var(--white); }
+        .status-badge { padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; }
         .status-pending { background: var(--warning); color: #333; }
         .status-preparing { background: #17a2b8; color: white; }
-        .status-delivering { background: #6f42c1; color: white; }
         .status-completed { background: var(--success); color: white; }
-
-        /* Toggle Switch */
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: var(--light-gray);
-            transition: .4s;
-            border-radius: 34px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: var(--primary-red);
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        /* Location Tags */
-        .location-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .location-tag {
-            background: rgba(139, 0, 0, 0.1);
-            color: var(--primary-red);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .location-tag i {
-            color: var(--light-red);
-        }
+        .toggle-switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--light-gray); transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--primary-red); }
+        input:checked + .slider:before { transform: translateX(26px); }
+        .location-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .location-tag { background: rgba(139, 0, 0, 0.1); color: var(--primary-red); padding: 8px 16px; border-radius: 20px; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+        .how-it-works-section { background: var(--white); padding: 40px; border-radius: 30px; margin: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .how-it-works-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 20px; background: var(--primary-red); color: white; border-radius: 20px; transition: all 0.3s; }
+        .how-it-works-header:hover { background: var(--dark-red); }
+        .how-it-works-content { display: none; padding: 30px 20px; animation: fadeIn 0.5s ease; }
+        .how-it-works-content.active { display: block; }
+        .how-it-works-step { display: flex; gap: 20px; margin-bottom: 25px; padding: 20px; background: var(--off-white); border-radius: 15px; border-left: 4px solid var(--primary-red); }
+        .step-number { width: 50px; height: 50px; background: var(--primary-red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; flex-shrink: 0; }
+        .quantity-selector { display: flex; align-items: center; gap: 15px; }
+        .quantity-btn { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-red); background: white; color: var(--primary-red); font-size: 20px; cursor: pointer; transition: all 0.3s; }
+        .quantity-btn:hover { background: var(--primary-red); color: white; }
+        .quantity-display { font-size: 24px; font-weight: bold; min-width: 40px; text-align: center; }
+        .payment-section { background: linear-gradient(135deg, rgba(139, 0, 0, 0.05), rgba(220, 20, 60, 0.05)); padding: 25px; border-radius: 15px; margin-bottom: 20px; border: 2px dashed var(--primary-red); }
+        .payment-details { background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
+        .store-display { background: linear-gradient(135deg, var(--primary-red), var(--dark-red)); color: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; text-align: center; }
+        .button-group { display: flex; gap: 15px; margin-top: 20px; }
+        .villages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-height: 300px; overflow-y: auto; padding: 10px; background: var(--off-white); border-radius: 10px; }
+        @media (max-width: 768px) { .villages-grid { grid-template-columns: repeat(2, 1fr); } }
+        .village-checkbox { display: flex; align-items: center; gap: 8px; padding: 8px; background: white; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+        .admin-wallet { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, var(--primary-red), var(--dark-red)); color: white; padding: 20px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 1000; max-width: 300px; }
+        .admin-wallet .balance { font-size: 28px; font-weight: bold; }
+        .admin-wallet .account { font-size: 12px; opacity: 0.8; margin-top: 5px; }
+        .payment-status { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: bold; }
+        .payment-status.paid { background: var(--success); color: white; }
+        .food-card-actions { display: flex; gap: 10px; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--light-gray); }
+        .btn-review { flex: 1; background: white; color: var(--primary-red); padding: 10px; border: 2px solid var(--primary-red); border-radius: 25px; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 14px; }
+        .btn-order { flex: 1; background: var(--primary-red); color: white; padding: 10px; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; transition: all 0.3s; font-size: 14px; }
+        .store-reviews { background: var(--white); padding: 30px; border-radius: 20px; margin-top: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .extra-price-input { display: flex; gap: 10px; align-items: center; }
+        .notification-badge { position: absolute; top: -5px; right: -5px; background: var(--light-red); color: white; width: 20px; height: 20px; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+        .nav-links a { position: relative; }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <a href="#" class="logo" onclick="showPage('home')">
             <i class="fas fa-utensils" style="font-size: 40px; color: var(--primary-red); background: white; padding: 10px; border-radius: 50%;"></i>
@@ -953,27 +171,29 @@
             <a href="#" onclick="showPage('apply-cook')">Apply as Cook</a>
             <a href="#" onclick="toggleNotifications()">
                 <i class="fas fa-bell"></i>
-                <span class="badge" id="notif-count" style="display:none;">0</span>
+                <span class="notification-badge" id="notif-count" style="display:none;">0</span>
             </a>
             <button class="btn-primary" onclick="showPage('login')">Login</button>
         </div>
     </nav>
 
-    <!-- Notification Panel -->
     <div class="notification-panel" id="notificationPanel">
-        <h3 style="color: var(--primary-red); margin-bottom: 20px;">
-            <i class="fas fa-bell"></i> Notifications
-        </h3>
+        <h3 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-bell"></i> Notifications</h3>
         <div id="notificationsList">
             <div class="notification-item new">
-                <strong>New Order Available!</strong>
-                <p>Order #1234 - Spaghetti x2 - Swabi City Center</p>
-                <small>2 minutes ago</small>
+                <strong>Welcome to ApnaKitchen!</strong>
+                <p>Explore delicious food from local cooks</p>
+                <small>Just now</small>
             </div>
         </div>
     </div>
 
-    <!-- Main Container -->
+    <div class="admin-wallet" id="adminWallet" style="display: none;">
+        <h4><i class="fas fa-wallet"></i> Platform Wallet</h4>
+        <div class="balance" id="platformBalance">Rs. 0</div>
+        <div class="account">NayaPay: PK34NAYA1234503169382133</div>
+    </div>
+
     <div class="container">
         <!-- Home Page -->
         <div id="home" class="page active fade-in">
@@ -989,50 +209,80 @@
 
             <div class="cards-grid">
                 <div class="role-card">
-                    <div class="role-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    <div class="role-icon"><i class="fas fa-user"></i></div>
                     <h3>Customer</h3>
                     <p>Browse delicious homemade meals from local cooks in Swabi. Place orders, customize your meals, and enjoy doorstep delivery.</p>
                     <button class="btn-primary" onclick="showPage('login')">Get Started</button>
                 </div>
-
                 <div class="role-card">
-                    <div class="role-icon">
-                        <i class="fas fa-chef-hat"></i>
-                    </div>
+                    <div class="role-icon"><i class="fas fa-chef-hat"></i></div>
                     <h3>Cook</h3>
                     <p>Share your cooking skills with the community. Upload your menu, manage orders, and earn from your kitchen in Swabi.</p>
                     <button class="btn-primary" onclick="showPage('apply-cook')">Apply Now</button>
                 </div>
-
                 <div class="role-card">
-                    <div class="role-icon">
-                        <i class="fas fa-motorcycle"></i>
-                    </div>
+                    <div class="role-icon"><i class="fas fa-motorcycle"></i></div>
                     <h3>Rider</h3>
                     <p>Deliver happiness across Swabi. Flexible hours, competitive earnings, and be your own boss.</p>
                     <button class="btn-primary" onclick="showPage('become-rider')">Join Us</button>
                 </div>
             </div>
 
-            <div style="text-align: center; padding: 60px 20px; background: var(--white); margin: 40px; border-radius: 30px;">
-                <h2 style="color: var(--primary-red); font-size: 36px; margin-bottom: 20px;">How It Works</h2>
-                <div class="cards-grid" style="margin-top: 40px;">
-                    <div style="text-align: center;">
-                        <div style="width: 80px; height: 80px; background: var(--primary-red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 20px;">1</div>
-                        <h4>Browse Menu</h4>
-                        <p>Explore dishes from verified home cooks in your area</p>
+            <div class="how-it-works-section">
+                <div class="how-it-works-header" onclick="toggleHowItWorks()">
+                    <h2><i class="fas fa-info-circle"></i> How ApnaKitchen Works</h2>
+                    <i class="fas fa-chevron-down" id="howItWorksIcon"></i>
+                </div>
+                <div class="how-it-works-content" id="howItWorksContent">
+                    <div class="how-it-works-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Browse & Select</h4>
+                            <p>Explore a variety of delicious homemade dishes from verified local cooks in Swabi.</p>
+                        </div>
                     </div>
-                    <div style="text-align: center;">
-                        <div style="width: 80px; height: 80px; background: var(--primary-red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 20px;">2</div>
-                        <h4>Customize & Order</h4>
-                        <p>Add extras like ketchup, cheese, or special requests</p>
+                    <div class="how-it-works-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Customize Your Order</h4>
+                            <p>Select quantity, add extras like ketchup, raita, or cheese, and provide special instructions.</p>
+                        </div>
                     </div>
-                    <div style="text-align: center;">
-                        <div style="width: 80px; height: 80px; background: var(--primary-red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 20px;">3</div>
-                        <h4>Track & Receive</h4>
-                        <p>Real-time updates until food reaches your doorstep</p>
+                    <div class="how-it-works-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Secure Payment</h4>
+                            <p>Pay securely through our platform. A 5% platform fee is collected from both cook and rider per order.</p>
+                        </div>
+                    </div>
+                    <div class="how-it-works-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Cook Prepares</h4>
+                            <p>The cook receives your order instantly, prepares your food fresh, and marks it ready for pickup.</p>
+                        </div>
+                    </div>
+                    <div class="how-it-works-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Rider Delivery</h4>
+                            <p>Once payment is confirmed to the platform, a nearby rider picks up your order and delivers it.</p>
+                        </div>
+                    </div>
+                    <div class="how-it-works-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Review & Enjoy</h4>
+                            <p>Rate your experience and leave reviews for the cook. Your feedback helps maintain quality.</p>
+                        </div>
+                    </div>
+                    <div style="background: rgba(139, 0, 0, 0.05); padding: 20px; border-radius: 15px; margin-top: 20px;">
+                        <h4 style="color: var(--primary-red); margin-bottom: 10px;"><i class="fas fa-percentage"></i> Platform Commission</h4>
+                        <p style="color: var(--gray); line-height: 1.8;">
+                            <strong>5% from Cook:</strong> Deducted from each order they receive<br>
+                            <strong>5% from Rider:</strong> Deducted from delivery fee before order assignment<br>
+                            <strong>NayaPay Account:</strong> PK34NAYA1234503169382133
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1046,13 +296,16 @@
                     <h2>Welcome Back</h2>
                     <p>Login to your ApnaKitchen account</p>
                 </div>
-
+                <div class="store-display" id="storeDisplay" style="display: none;">
+                    <i class="fas fa-store" style="font-size: 40px; margin-bottom: 10px;"></i>
+                    <h3 id="storeNameDisplay">Store Name</h3>
+                    <p>Your Kitchen is Ready!</p>
+                </div>
                 <div style="display: flex; gap: 10px; margin-bottom: 30px; background: var(--off-white); padding: 10px; border-radius: 15px;">
                     <button class="btn-primary" style="flex: 1; padding: 12px;" onclick="switchLogin('customer')" id="btn-customer">Customer</button>
                     <button class="btn-secondary" style="flex: 1; padding: 12px;" onclick="switchLogin('cook')" id="btn-cook">Cook</button>
                     <button class="btn-secondary" style="flex: 1; padding: 12px;" onclick="switchLogin('rider')" id="btn-rider">Rider</button>
                 </div>
-
                 <form id="loginForm" onsubmit="handleLogin(event)">
                     <div class="form-group">
                         <label><i class="fas fa-envelope"></i> Email / Phone</label>
@@ -1062,17 +315,14 @@
                         <label><i class="fas fa-lock"></i> Password</label>
                         <input type="password" placeholder="Enter your password" required>
                     </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; padding: 15px; font-size: 18px;">
-                        Login
-                    </button>
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 15px; font-size: 18px;">Login</button>
                 </form>
-
                 <p style="text-align: center; margin-top: 20px; color: var(--gray);">
-                    Don't have an account? 
-                    <a href="#" onclick="showPage('register')" style="color: var(--primary-red); font-weight: bold;">Register here</a>
+                    Don't have an account? <a href="#" onclick="showPage('register')" style="color: var(--primary-red); font-weight: bold;">Register here</a>
                 </p>
             </div>
         </div>
+
 
         <!-- Registration Page -->
         <div id="register" class="page">
@@ -1081,7 +331,6 @@
                     <h2>Create Account</h2>
                     <p>Join ApnaKitchen today</p>
                 </div>
-
                 <form onsubmit="handleRegister(event)">
                     <div class="grid-2">
                         <div class="form-group">
@@ -1093,12 +342,10 @@
                             <input type="tel" placeholder="03XX-XXXXXXX" required>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label>Email Address</label>
                         <input type="email" placeholder="your@email.com" required>
                     </div>
-
                     <div class="form-group">
                         <label>Profile Picture</label>
                         <div class="file-upload">
@@ -1110,12 +357,10 @@
                         </div>
                         <img id="reg-preview" class="preview-image">
                     </div>
-
                     <div class="form-group">
                         <label>Address in Swabi</label>
                         <input type="text" placeholder="e.g., Near City Center, Swabi" required>
                     </div>
-
                     <div class="grid-2">
                         <div class="form-group">
                             <label>Password</label>
@@ -1126,10 +371,7 @@
                             <input type="password" placeholder="Confirm password" required>
                         </div>
                     </div>
-
-                    <button type="submit" class="btn-primary" style="width: 100%; padding: 15px;">
-                        Create Account
-                    </button>
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 15px;">Create Account</button>
                 </form>
             </div>
         </div>
@@ -1151,22 +393,10 @@
             </div>
 
             <div class="stats-grid">
-                <div class="stat-card">
-                    <h4>Total Orders</h4>
-                    <div class="value">24</div>
-                </div>
-                <div class="stat-card">
-                    <h4>Favorite Cooks</h4>
-                    <div class="value">5</div>
-                </div>
-                <div class="stat-card">
-                    <h4>Pending Orders</h4>
-                    <div class="value">2</div>
-                </div>
-                <div class="stat-card">
-                    <h4>Reviews Given</h4>
-                    <div class="value">18</div>
-                </div>
+                <div class="stat-card"><h4>Total Orders</h4><div class="value">24</div></div>
+                <div class="stat-card"><h4>Favorite Cooks</h4><div class="value">5</div></div>
+                <div class="stat-card"><h4>Pending Orders</h4><div class="value">2</div></div>
+                <div class="stat-card"><h4>Reviews Given</h4><div class="value">18</div></div>
             </div>
 
             <div class="menu-section">
@@ -1179,7 +409,6 @@
                 </div>
 
                 <div class="food-grid" id="customer-menu">
-                    <!-- Sample Food Items -->
                     <div class="food-card" onclick="showPage('order-detail')">
                         <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400" alt="Spaghetti" class="food-image">
                         <div class="food-details">
@@ -1190,10 +419,18 @@
                                 <span class="option-tag">+Ketchup Rs. 20</span>
                                 <span class="option-tag">+Cheese Rs. 50</span>
                             </div>
+                            <div class="food-card-actions">
+                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Spaghetti Bolognese', 'Chef Ahmad')">
+                                    <i class="fas fa-star"></i> Review
+                                </button>
+                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')">
+                                    <i class="fas fa-shopping-bag"></i> Order
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-card">
+                    <div class="food-card" onclick="showPage('order-detail')">
                         <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400" alt="Biryani" class="food-image">
                         <div class="food-details">
                             <h4>Chicken Biryani</h4>
@@ -1203,10 +440,18 @@
                                 <span class="option-tag">+Raita Rs. 30</span>
                                 <span class="option-tag">+Salad Rs. 40</span>
                             </div>
+                            <div class="food-card-actions">
+                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Chicken Biryani', 'Chef Fatima')">
+                                    <i class="fas fa-star"></i> Review
+                                </button>
+                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')">
+                                    <i class="fas fa-shopping-bag"></i> Order
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-card">
+                    <div class="food-card" onclick="showPage('order-detail')">
                         <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400" alt="Karahi" class="food-image">
                         <div class="food-details">
                             <h4>Chicken Karahi</h4>
@@ -1216,10 +461,18 @@
                                 <span class="option-tag">+Naan Rs. 30</span>
                                 <span class="option-tag">+Drink Rs. 60</span>
                             </div>
+                            <div class="food-card-actions">
+                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Chicken Karahi', 'Chef Usman')">
+                                    <i class="fas fa-star"></i> Review
+                                </button>
+                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')">
+                                    <i class="fas fa-shopping-bag"></i> Order
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-card">
+                    <div class="food-card" onclick="showPage('order-detail')">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400" alt="Kebab" class="food-image">
                         <div class="food-details">
                             <h4>Seekh Kebab (6 pcs)</h4>
@@ -1229,47 +482,16 @@
                                 <span class="option-tag">+Chutney Rs. 20</span>
                                 <span class="option-tag">+Paratha Rs. 40</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Reviews Section -->
-            <div class="reviews-section">
-                <h3 style="color: var(--primary-red); margin-bottom: 30px;">
-                    <i class="fas fa-star"></i> Your Reviews
-                </h3>
-                
-                <div class="review-card">
-                    <div class="review-header">
-                        <div>
-                            <strong>Spaghetti Bolognese</strong>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                            <div class="food-card-actions">
+                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Seekh Kebab', 'Chef Imran')">
+                                    <i class="fas fa-star"></i> Review
+                                </button>
+                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')">
+                                    <i class="fas fa-shopping-bag"></i> Order
+                                </button>
                             </div>
                         </div>
-                        <span style="color: var(--gray);">2 days ago</span>
                     </div>
-                    <p>Amazing taste! The extra cheese option was perfect. Delivery was quick too.</p>
-                </div>
-
-                <div style="background: var(--off-white); padding: 30px; border-radius: 20px; margin-top: 30px;">
-                    <h4 style="margin-bottom: 20px;">Write a Review</h4>
-                    <div class="rating-input" id="ratingInput">
-                        <i class="fas fa-star" onclick="setRating(1)"></i>
-                        <i class="fas fa-star" onclick="setRating(2)"></i>
-                        <i class="fas fa-star" onclick="setRating(3)"></i>
-                        <i class="fas fa-star" onclick="setRating(4)"></i>
-                        <i class="fas fa-star" onclick="setRating(5)"></i>
-                    </div>
-                    <div class="form-group">
-                        <textarea rows="4" placeholder="Share your experience..." style="width: 100%; padding: 15px; border: 2px solid var(--light-gray); border-radius: 12px;"></textarea>
-                    </div>
-                    <button class="btn-primary" onclick="submitReview()">Submit Review</button>
                 </div>
             </div>
         </div>
@@ -1289,9 +511,17 @@
                         </p>
 
                         <div class="options-section">
-                            <h4 style="color: var(--primary-red); margin-bottom: 20px;">
-                                <i class="fas fa-plus-circle"></i> Add Extras
-                            </h4>
+                            <h4 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-sort-numeric-up"></i> Quantity</h4>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQuantity(-1)">-</button>
+                                <div class="quantity-display" id="quantityDisplay">1</div>
+                                <button class="quantity-btn" onclick="updateQuantity(1)">+</button>
+                                <span style="color: var(--gray); margin-left: 10px;">x Rs. 450 = <strong id="quantityTotal">Rs. 450</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="options-section">
+                            <h4 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-plus-circle"></i> Add Extras</h4>
                             
                             <div class="option-item">
                                 <div>
@@ -1347,22 +577,18 @@
                         </div>
 
                         <div class="options-section">
-                            <h4 style="color: var(--primary-red); margin-bottom: 20px;">
-                                <i class="fas fa-edit"></i> Special Instructions
-                            </h4>
+                            <h4 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-edit"></i> Special Instructions</h4>
                             <textarea rows="3" placeholder="Any special requests? (e.g., less spicy, extra sauce...)" style="width: 100%; padding: 15px; border: 2px solid var(--light-gray); border-radius: 12px;"></textarea>
                         </div>
 
                         <div class="options-section">
-                            <h4 style="color: var(--primary-red); margin-bottom: 20px;">
-                                <i class="fas fa-map-marker-alt"></i> Delivery Details
-                            </h4>
+                            <h4 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-map-marker-alt"></i> Delivery Details</h4>
                             <div class="form-group">
                                 <label>Delivery Address in Swabi</label>
                                 <input type="text" placeholder="Enter your complete address" value="House #123, Near City Center, Swabi">
                             </div>
                             <div class="form-group">
-                                <label>Contact Number (Optional - for platform use only)</label>
+                                <label>Contact Number</label>
                                 <input type="tel" placeholder="03XX-XXXXXXX">
                             </div>
                             <div class="form-group">
@@ -1381,32 +607,48 @@
                     <h3 style="color: var(--primary-red); margin-bottom: 30px;">Order Summary</h3>
                     
                     <div class="summary-row">
-                        <span>Spaghetti Bolognese</span>
-                        <span>Rs. 450</span>
+                        <span>Spaghetti Bolognese (<span id="summaryQty">1</span>x)</span>
+                        <span id="summaryItemPrice">Rs. 450</span>
                     </div>
                     <div class="summary-row">
                         <span>Delivery Fee</span>
                         <span>Rs. 50</span>
                     </div>
                     <div class="summary-row">
-                        <span>Platform Fee</span>
-                        <span>Rs. 20</span>
+                        <span>Platform Fee (5%)</span>
+                        <span id="platformFee">Rs. 25</span>
                     </div>
                     <div id="extras-summary"></div>
                     
                     <div class="summary-row total">
                         <span>Total</span>
-                        <span id="total-price">Rs. 520</span>
+                        <span id="total-price">Rs. 525</span>
                     </div>
 
-                    <div style="background: rgba(139, 0, 0, 0.05); padding: 15px; border-radius: 10px; margin: 20px 0; font-size: 12px; color: var(--gray);">
-                        <i class="fas fa-info-circle"></i> 
-                        Developer commission (5%): Rs. 26 included in platform fee
+                    <div class="payment-section">
+                        <h4><i class="fas fa-credit-card"></i> Payment Required</h4>
+                        <div class="payment-details">
+                            <p><strong>Platform Commission (5%):</strong> Rs. <span id="cookCommission">25</span></p>
+                            <p><strong>Rider Commission (5%):</strong> Rs. <span id="riderCommission">2.5</span></p>
+                            <p><strong>Total to Platform:</strong> Rs. <span id="totalCommission">27.5</span></p>
+                            <p style="margin-top: 10px; font-size: 12px;"><strong>NayaPay:</strong> PK34NAYA1234503169382133</p>
+                        </div>
+                        <p style="color: var(--gray); font-size: 14px; margin-bottom: 15px;">
+                            <i class="fas fa-info-circle"></i> Payment must be sent to platform before rider assignment
+                        </p>
+                        <button class="btn-primary" style="width: 100%;" onclick="processPayment()">
+                            <i class="fas fa-money-bill-wave"></i> Send Payment to Platform
+                        </button>
                     </div>
 
-                    <button class="btn-primary" style="width: 100%; padding: 18px; font-size: 18px; margin-top: 20px;" onclick="placeOrder()">
-                        <i class="fas fa-shopping-bag"></i> Place Order
-                    </button>
+                    <div id="placeOrderSection" style="display: none;">
+                        <div class="payment-status paid" style="margin-bottom: 15px;">
+                            <i class="fas fa-check-circle"></i> Payment Received
+                        </div>
+                        <button class="btn-red" style="width: 100%; padding: 18px; font-size: 18px;" onclick="placeOrder()">
+                            <i class="fas fa-shopping-bag"></i> Place Order
+                        </button>
+                    </div>
 
                     <div class="chat-container" style="margin-top: 30px; height: 300px;">
                         <div class="chat-header">
@@ -1417,9 +659,7 @@
                             </div>
                         </div>
                         <div class="chat-messages" id="chatMessages">
-                            <div class="message received">
-                                Hello! Feel free to ask about this dish.
-                            </div>
+                            <div class="message received">Hello! Feel free to ask about this dish.</div>
                         </div>
                         <div class="chat-input">
                             <input type="text" placeholder="Type a message..." id="chatInput">
@@ -1436,14 +676,10 @@
                 <div class="user-info">
                     <img src="https://via.placeholder.com/80" alt="Profile" class="user-avatar">
                     <div>
-                        <h2>Chef Ahmad's Kitchen</h2>
+                        <h2 id="cookStoreName">Chef Ahmad's Kitchen</h2>
                         <p style="color: var(--gray);"><i class="fas fa-map-marker-alt"></i> Swabi City Center Area</p>
                         <div class="stars" style="margin-top: 5px;">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                             <span style="color: var(--gray); margin-left: 10px;">(4.5 - 128 reviews)</span>
                         </div>
                     </div>
@@ -1462,30 +698,16 @@
             </div>
 
             <div class="stats-grid">
-                <div class="stat-card">
-                    <h4>Today's Orders</h4>
-                    <div class="value">12</div>
-                </div>
-                <div class="stat-card">
-                    <h4>Pending</h4>
-                    <div class="value" style="color: var(--warning);">3</div>
-                </div>
-                <div class="stat-card">
-                    <h4>Total Earnings</h4>
-                    <div class="value">Rs. 8,400</div>
-                </div>
-                <div class="stat-card">
-                    <h4>Platform Commission (5%)</h4>
-                    <div class="value" style="color: var(--light-red);">Rs. 420</div>
-                </div>
+                <div class="stat-card"><h4>Today's Orders</h4><div class="value">12</div></div>
+                <div class="stat-card"><h4>Pending</h4><div class="value" style="color: var(--warning);">3</div></div>
+                <div class="stat-card"><h4>Total Earnings</h4><div class="value">Rs. 8,400</div></div>
+                <div class="stat-card"><h4>Platform Commission (5%)</h4><div class="value" style="color: var(--light-red);">Rs. 420</div></div>
             </div>
 
             <div class="menu-section">
                 <div class="section-header">
                     <h2><i class="fas fa-book-open" style="color: var(--primary-red);"></i> My Menu</h2>
-                    <button class="add-btn" onclick="openAddItemModal()" title="Add New Item">
-                        <i class="fas fa-plus"></i>
-                    </button>
+                    <button class="add-btn" onclick="openAddItemModal()" title="Add New Item"><i class="fas fa-plus"></i></button>
                 </div>
 
                 <div class="food-grid" id="cook-menu">
@@ -1500,12 +722,8 @@
                                 <span class="option-tag">+Cheese Rs. 50</span>
                             </div>
                             <div style="margin-top: 15px; display: flex; gap: 10px;">
-                                <button class="btn-primary" style="padding: 8px 16px; font-size: 14px;">
-                                    <i class="fas fa-edit"></i> Edit
-                                </button>
-                                <button style="padding: 8px 16px; background: var(--light-red); color: white; border: none; border-radius: 20px; cursor: pointer;">
-                                    <i class="fas fa-trash"></i>
-                                </button>
+                                <button class="btn-primary" style="padding: 8px 16px; font-size: 14px;"><i class="fas fa-edit"></i> Edit</button>
+                                <button style="padding: 8px 16px; background: var(--light-red); color: white; border: none; border-radius: 20px; cursor: pointer;"><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -1521,62 +739,62 @@
                                 <span class="option-tag">+Raita Rs. 30</span>
                             </div>
                             <div style="margin-top: 15px; display: flex; gap: 10px;">
-                                <button class="btn-primary" style="padding: 8px 16px; font-size: 14px;">
-                                    <i class="fas fa-edit"></i> Edit
-                                </button>
-                                <button style="padding: 8px 16px; background: var(--light-red); color: white; border: none; border-radius: 20px; cursor: pointer;">
-                                    <i class="fas fa-trash"></i>
-                                </button>
+                                <button class="btn-primary" style="padding: 8px 16px; font-size: 14px;"><i class="fas fa-edit"></i> Edit</button>
+                                <button style="padding: 8px 16px; background: var(--light-red); color: white; border: none; border-radius: 20px; cursor: pointer;"><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div class="store-reviews">
+                <h3><i class="fas fa-comments"></i> Customer Reviews for Your Store</h3>
+                <div id="storeReviewsList">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div>
+                                <strong>Ali Khan</strong>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            </div>
+                            <span style="color: var(--gray);">2 days ago</span>
+                        </div>
+                        <p>Amazing taste! The extra cheese option was perfect. Will order again!</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div>
+                                <strong>Sarah Ahmad</strong>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                            </div>
+                            <span style="color: var(--gray);">5 days ago</span>
+                        </div>
+                        <p>Great food but delivery took a bit longer than expected.</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="menu-section">
-                <h3 style="color: var(--primary-red); margin-bottom: 20px;">
-                    <i class="fas fa-list-alt"></i> Recent Orders
-                </h3>
+                <h3 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-list-alt"></i> Recent Orders</h3>
                 <table class="data-table">
                     <thead>
-                        <tr>
-                            <th>Order #</th>
-                            <th>Customer</th>
-                            <th>Items</th>
-                            <th>Total</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
+                        <tr><th>Order #</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Action</th></tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>#1234</td>
-                            <td>Ali Khan</td>
-                            <td>Spaghetti x2</td>
-                            <td>Rs. 900</td>
+                            <td>#1234</td><td>Ali Khan</td><td>Spaghetti x2</td><td>Rs. 900</td>
                             <td><span class="status-badge status-pending">Pending</span></td>
-                            <td>
-                                <button class="btn-primary" style="padding: 8px 16px; font-size: 12px;" onclick="acceptOrder(1234)">
-                                    Accept
-                                </button>
-                            </td>
+                            <td><button class="btn-primary" style="padding: 8px 16px; font-size: 12px;" onclick="acceptOrder(1234)">Accept</button></td>
                         </tr>
                         <tr>
-                            <td>#1233</td>
-                            <td>Sarah Ahmad</td>
-                            <td>Karahi x1, Naan x2</td>
-                            <td>Rs. 860</td>
+                            <td>#1233</td><td>Sarah Ahmad</td><td>Karahi x1, Naan x2</td><td>Rs. 860</td>
                             <td><span class="status-badge status-preparing">Preparing</span></td>
-                            <td>
-                                <button class="btn-primary" style="padding: 8px 16px; font-size: 12px;" onclick="markReady(1233)">
-                                    Ready
-                                </button>
-                            </td>
+                            <td><button class="btn-primary" style="padding: 8px 16px; font-size: 12px;" onclick="markReady(1233)">Ready</button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+
 
         <!-- Rider Dashboard -->
         <div id="rider-dashboard" class="page">
@@ -1598,81 +816,31 @@
             </div>
 
             <div class="stats-grid">
-                <div class="stat-card">
-                    <h4>Completed Deliveries</h4>
-                    <div class="value">8</div>
-                </div>
-                <div class="stat-card">
-                    <h4>Available Orders</h4>
-                    <div class="value" style="color: var(--primary-red);">3</div>
-                </div>
-                <div class="stat-card">
-                    <h4>Rating</h4>
-                    <div class="value">4.8</div>
-                </div>
-                <div class="stat-card">
-                    <h4>Platform Commission (10%)</h4>
-                    <div class="value" style="color: var(--light-red);">Rs. 185</div>
-                </div>
+                <div class="stat-card"><h4>Completed Deliveries</h4><div class="value">8</div></div>
+                <div class="stat-card"><h4>Available Orders</h4><div class="value" style="color: var(--primary-red);">3</div></div>
+                <div class="stat-card"><h4>Rating</h4><div class="value">4.8</div></div>
+                <div class="stat-card"><h4>Platform Commission (10%)</h4><div class="value" style="color: var(--light-red);">Rs. 185</div></div>
             </div>
 
             <div class="menu-section">
-                <h3 style="color: var(--primary-red); margin-bottom: 20px;">
-                    <i class="fas fa-bell"></i> New Order Notifications
-                </h3>
+                <h3 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-bell"></i> New Order Notifications</h3>
                 
                 <div id="rider-notifications">
                     <div style="background: rgba(139, 0, 0, 0.05); border-left: 4px solid var(--primary-red); padding: 20px; border-radius: 0 15px 15px 0; margin-bottom: 20px;">
                         <div style="display: flex; justify-content: space-between; align-items: start;">
                             <div>
-                                <h4 style="color: var(--dark-red); margin-bottom: 10px;">
-                                    <i class="fas fa-shopping-bag"></i> New Order #1234
-                                </h4>
+                                <h4 style="color: var(--dark-red); margin-bottom: 10px;"><i class="fas fa-shopping-bag"></i> New Order #1234</h4>
                                 <p><strong>Pickup:</strong> Chef Ahmad's Kitchen, City Center Swabi</p>
                                 <p><strong>Drop:</strong> House #123, Near City Center, Swabi</p>
                                 <p><strong>Items:</strong> Spaghetti Bolognese x2</p>
-                                <p style="margin-top: 10px; color: var(--gray);">
-                                    <i class="fas fa-route"></i> Distance: 2.5 km | 
-                                    <i class="fas fa-money-bill-wave"></i> Delivery Fee: Rs. 50
-                                </p>
+                                <p style="margin-top: 10px; color: var(--gray);"><i class="fas fa-route"></i> Distance: 2.5 km | <i class="fas fa-money-bill-wave"></i> Delivery Fee: Rs. 50</p>
+                                <div class="payment-status paid" style="margin-top: 10px;"><i class="fas fa-check-circle"></i> Platform Payment Received</div>
                             </div>
                             <div style="text-align: right;">
                                 <div style="font-size: 24px; font-weight: bold; color: var(--primary-red);">Rs. 50</div>
                                 <div style="margin-top: 15px; display: flex; gap: 10px;">
-                                    <button class="btn-primary" onclick="acceptDelivery(1234)">
-                                        <i class="fas fa-check"></i> Accept
-                                    </button>
-                                    <button class="btn-secondary" style="padding: 12px 20px;" onclick="rejectDelivery(1234)">
-                                        <i class="fas fa-times"></i> Reject
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="background: rgba(139, 0, 0, 0.05); border-left: 4px solid var(--primary-red); padding: 20px; border-radius: 0 15px 15px 0; margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; align-items: start;">
-                            <div>
-                                <h4 style="color: var(--dark-red); margin-bottom: 10px;">
-                                    <i class="fas fa-shopping-bag"></i> New Order #1235
-                                </h4>
-                                <p><strong>Pickup:</strong> Chef Fatima's Kitchen, Guli Bagh Swabi</p>
-                                <p><strong>Drop:</strong> Street 4, Guli Bagh, Swabi</p>
-                                <p><strong>Items:</strong> Chicken Biryani x3, Raita x3</p>
-                                <p style="margin-top: 10px; color: var(--gray);">
-                                    <i class="fas fa-route"></i> Distance: 1.8 km | 
-                                    <i class="fas fa-money-bill-wave"></i> Delivery Fee: Rs. 60
-                                </p>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="font-size: 24px; font-weight: bold; color: var(--primary-red);">Rs. 60</div>
-                                <div style="margin-top: 15px; display: flex; gap: 10px;">
-                                    <button class="btn-primary" onclick="acceptDelivery(1235)">
-                                        <i class="fas fa-check"></i> Accept
-                                    </button>
-                                    <button class="btn-secondary" style="padding: 12px 20px;" onclick="rejectDelivery(1235)">
-                                        <i class="fas fa-times"></i> Reject
-                                    </button>
+                                    <button class="btn-primary" onclick="acceptDelivery(1234)"><i class="fas fa-check"></i> Accept</button>
+                                    <button class="btn-secondary" style="padding: 12px 20px;" onclick="rejectDelivery(1234)"><i class="fas fa-times"></i> Reject</button>
                                 </div>
                             </div>
                         </div>
@@ -1681,9 +849,7 @@
             </div>
 
             <div class="menu-section">
-                <h3 style="color: var(--primary-red); margin-bottom: 20px;">
-                    <i class="fas fa-map-marked-alt"></i> My Delivery Areas (Swabi)
-                </h3>
+                <h3 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-map-marked-alt"></i> My Delivery Areas (Swabi)</h3>
                 <div class="location-tags">
                     <span class="location-tag"><i class="fas fa-map-pin"></i> City Center</span>
                     <span class="location-tag"><i class="fas fa-map-pin"></i> Guli Bagh</span>
@@ -1691,40 +857,18 @@
                     <span class="location-tag"><i class="fas fa-map-pin"></i> Shahmansoor</span>
                     <span class="location-tag"><i class="fas fa-map-pin"></i> Marghuz</span>
                 </div>
-                <button class="btn-primary" style="margin-top: 20px;" onclick="editDeliveryAreas()">
-                    <i class="fas fa-edit"></i> Edit Delivery Areas
-                </button>
+                <button class="btn-primary" style="margin-top: 20px;" onclick="editDeliveryAreas()"><i class="fas fa-edit"></i> Edit Delivery Areas</button>
             </div>
 
             <div class="menu-section">
-                <h3 style="color: var(--primary-red); margin-bottom: 20px;">
-                    <i class="fas fa-history"></i> Delivery History
-                </h3>
+                <h3 style="color: var(--primary-red); margin-bottom: 20px;"><i class="fas fa-history"></i> Delivery History</h3>
                 <table class="data-table">
                     <thead>
-                        <tr>
-                            <th>Order #</th>
-                            <th>Restaurant</th>
-                            <th>Customer</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                        </tr>
+                        <tr><th>Order #</th><th>Restaurant</th><th>Customer</th><th>Amount</th><th>Status</th></tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>#1220</td>
-                            <td>Chef Ahmad's Kitchen</td>
-                            <td>Ali Khan</td>
-                            <td>Rs. 50</td>
-                            <td><span class="status-badge status-completed">Completed</span></td>
-                        </tr>
-                        <tr>
-                            <td>#1221</td>
-                            <td>Chef Fatima's Kitchen</td>
-                            <td>Sarah Ahmad</td>
-                            <td>Rs. 60</td>
-                            <td><span class="status-badge status-completed">Completed</span></td>
-                        </tr>
+                        <tr><td>#1220</td><td>Chef Ahmad's Kitchen</td><td>Ali Khan</td><td>Rs. 50</td><td><span class="status-badge status-completed">Completed</span></td></tr>
+                        <tr><td>#1221</td><td>Chef Fatima's Kitchen</td><td>Sarah Ahmad</td><td>Rs. 60</td><td><span class="status-badge status-completed">Completed</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -1776,45 +920,50 @@
                     </div>
 
                     <div class="form-section">
-                        <h3><i class="fas fa-map-marker-alt"></i> Delivery Areas in Swabi</h3>
+                        <h3><i class="fas fa-map-marker-alt"></i> Delivery Areas in Swabi - All Villages</h3>
                         <p style="margin-bottom: 20px; color: var(--gray);">Select the areas where you can deliver orders:</p>
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--primary-red);">
-                                <span>City Center</span>
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--primary-red);">
-                                <span>Guli Bagh</span>
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--primary-red);">
-                                <span>Topi Road</span>
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--primary-red);">
-                                <span>Shahmansoor</span>
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--primary-red);">
-                                <span>Marghuz</span>
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--primary-red);">
-                                <span>Kotha</span>
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--primary-red);">
-                                <span>Baja</span>
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--primary-red);">
-                                <span>Kabla</span>
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" style="width: 20px; height: 20px; accent-color: var(--primary-red);">
-                                <span>Maniri</span>
-                            </label>
+                        <div class="villages-grid">
+                            <label class="village-checkbox"><input type="checkbox"> <span>City Center</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Guli Bagh</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Topi Road</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Shahmansoor</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Marghuz</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Kotha</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Baja</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Kabla</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Maniri</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Sheikh Jana</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Yar Hussain</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Zaida</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Matta</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Chota Lahor</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Turlandi</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Dobian</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Bamkhel</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Panjpir</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Kalu Khan</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Ismaila</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Jalbai</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Manglawar</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Pabbi</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Tangi</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Sard Cheena</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Adina</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Chamla</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Kanju</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Buner</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Daggar</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Gagra</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Jowar</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Karakar</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Khazana</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Mahal</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Mandor</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Nora</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Pir Baba</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Salarzai</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Shalbandi</span></label>
+                            <label class="village-checkbox"><input type="checkbox"> <span>Sheringal</span></label>
                         </div>
                     </div>
 
@@ -1835,16 +984,6 @@
                                 <input type="text" placeholder="e.g., SWA-1234" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Driving License Photo</label>
-                            <div class="file-upload">
-                                <input type="file" accept="image/*">
-                                <div class="file-upload-label">
-                                    <i class="fas fa-id-card" style="font-size: 30px; margin-bottom: 10px;"></i>
-                                    <p>Upload driving license</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="form-section">
@@ -1853,36 +992,29 @@
                             <label>CNIC Front Side</label>
                             <div class="file-upload">
                                 <input type="file" accept="image/*">
-                                <div class="file-upload-label">
-                                    <i class="fas fa-id-card" style="font-size: 30px;"></i>
-                                </div>
+                                <div class="file-upload-label"><i class="fas fa-id-card" style="font-size: 30px;"></i></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>CNIC Back Side</label>
                             <div class="file-upload">
                                 <input type="file" accept="image/*">
-                                <div class="file-upload-label">
-                                    <i class="fas fa-id-card" style="font-size: 30px;"></i>
-                                </div>
+                                <div class="file-upload-label"><i class="fas fa-id-card" style="font-size: 30px;"></i></div>
                             </div>
                         </div>
                     </div>
 
                     <div style="background: rgba(139, 0, 0, 0.05); padding: 20px; border-radius: 15px; margin-bottom: 30px;">
-                        <h4 style="color: var(--primary-red); margin-bottom: 10px;">
-                            <i class="fas fa-info-circle"></i> Commission Structure
-                        </h4>
+                        <h4 style="color: var(--primary-red); margin-bottom: 10px;"><i class="fas fa-info-circle"></i> Commission Structure</h4>
                         <p style="color: var(--gray); line-height: 1.8;">
                             Platform commission: 10% per delivery<br>
                             You keep 90% of delivery fees<br>
-                            Weekly payments directly to your bank account
+                            Weekly payments directly to your bank account<br>
+                            <strong>NayaPay Account:</strong> PK34NAYA1234503169382133
                         </p>
                     </div>
 
-                    <button type="submit" class="btn-primary" style="width: 100%; padding: 18px; font-size: 18px;">
-                        <i class="fas fa-paper-plane"></i> Submit Application
-                    </button>
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 18px; font-size: 18px;"><i class="fas fa-paper-plane"></i> Continue</button>
                 </form>
             </div>
         </div>
@@ -1936,7 +1068,7 @@
                         <h3><i class="fas fa-store"></i> Kitchen Details</h3>
                         <div class="form-group">
                             <label>Kitchen/Store Name</label>
-                            <input type="text" placeholder="e.g., Ahmad's Kitchen" required>
+                            <input type="text" id="cookStoreNameInput" placeholder="e.g., Ahmad's Kitchen" required>
                         </div>
                         <div class="form-group">
                             <label>Complete Address in Swabi</label>
@@ -1954,6 +1086,23 @@
                                     <option>Marghuz</option>
                                     <option>Kotha</option>
                                     <option>Baja</option>
+                                    <option>Kabla</option>
+                                    <option>Maniri</option>
+                                    <option>Sheikh Jana</option>
+                                    <option>Yar Hussain</option>
+                                    <option>Zaida</option>
+                                    <option>Matta</option>
+                                    <option>Chota Lahor</option>
+                                    <option>Turlandi</option>
+                                    <option>Dobian</option>
+                                    <option>Bamkhel</option>
+                                    <option>Panjpir</option>
+                                    <option>Kalu Khan</option>
+                                    <option>Ismaila</option>
+                                    <option>Jalbai</option>
+                                    <option>Manglawar</option>
+                                    <option>Pabbi</option>
+                                    <option>Tangi</option>
                                     <option>Other</option>
                                 </select>
                             </div>
@@ -1969,73 +1118,34 @@
                     </div>
 
                     <div class="form-section">
-                        <h3><i class="fas fa-camera"></i> Kitchen Photos</h3>
-                        <div class="grid-2">
-                            <div class="form-group">
-                                <label>Kitchen Front View</label>
-                                <div class="file-upload">
-                                    <input type="file" accept="image/*">
-                                    <div class="file-upload-label">
-                                        <i class="fas fa-image" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Cooking Area</label>
-                                <div class="file-upload">
-                                    <input type="file" accept="image/*">
-                                    <div class="file-upload-label">
-                                        <i class="fas fa-image" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
                         <h3><i class="fas fa-file-alt"></i> Documents</h3>
                         <div class="grid-2">
                             <div class="form-group">
                                 <label>CNIC Front</label>
                                 <div class="file-upload">
                                     <input type="file" accept="image/*">
-                                    <div class="file-upload-label">
-                                        <i class="fas fa-id-card" style="font-size: 30px;"></i>
-                                    </div>
+                                    <div class="file-upload-label"><i class="fas fa-id-card" style="font-size: 30px;"></i></div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>CNIC Back</label>
                                 <div class="file-upload">
                                     <input type="file" accept="image/*">
-                                    <div class="file-upload-label">
-                                        <i class="fas fa-id-card" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Food Handler Certificate (if available)</label>
-                            <div class="file-upload">
-                                <input type="file" accept="image/*,application/pdf">
-                                <div class="file-upload-label">
-                                    <i class="fas fa-certificate" style="font-size: 30px;"></i>
-                                    <p>Optional but recommended</p>
+                                    <div class="file-upload-label"><i class="fas fa-id-card" style="font-size: 30px;"></i></div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div style="background: rgba(139, 0, 0, 0.05); padding: 20px; border-radius: 15px; margin-bottom: 30px;">
-                        <h4 style="color: var(--primary-red); margin-bottom: 10px;">
-                            <i class="fas fa-info-circle"></i> Commission & Terms
-                        </h4>
+                        <h4 style="color: var(--primary-red); margin-bottom: 10px;"><i class="fas fa-info-circle"></i> Commission & Terms</h4>
                         <p style="color: var(--gray); line-height: 1.8;">
                             Platform commission: 5% per order<br>
                             You set your own menu prices<br>
                             Weekly settlement of earnings<br>
                             Maintain food safety standards<br>
-                            Respond to orders within 15 minutes
+                            Respond to orders within 15 minutes<br>
+                            <strong>NayaPay Account:</strong> PK34NAYA1234503169382133
                         </p>
                     </div>
 
@@ -2046,9 +1156,7 @@
                         </label>
                     </div>
 
-                    <button type="submit" class="btn-primary" style="width: 100%; padding: 18px; font-size: 18px; margin-top: 20px;">
-                        <i class="fas fa-paper-plane"></i> Submit Application
-                    </button>
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 18px; font-size: 18px; margin-top: 20px;"><i class="fas fa-arrow-right"></i> Continue</button>
                 </form>
             </div>
         </div>
@@ -2064,6 +1172,27 @@
                             <option>City Center</option>
                             <option>Guli Bagh</option>
                             <option>Topi Road</option>
+                            <option>Shahmansoor</option>
+                            <option>Marghuz</option>
+                            <option>Kotha</option>
+                            <option>Baja</option>
+                            <option>Kabla</option>
+                            <option>Maniri</option>
+                            <option>Sheikh Jana</option>
+                            <option>Yar Hussain</option>
+                            <option>Zaida</option>
+                            <option>Matta</option>
+                            <option>Chota Lahor</option>
+                            <option>Turlandi</option>
+                            <option>Dobian</option>
+                            <option>Bamkhel</option>
+                            <option>Panjpir</option>
+                            <option>Kalu Khan</option>
+                            <option>Ismaila</option>
+                            <option>Jalbai</option>
+                            <option>Manglawar</option>
+                            <option>Pabbi</option>
+                            <option>Tangi</option>
                         </select>
                         <input type="text" placeholder="Search food..." style="padding: 12px 20px; border: 2px solid var(--light-gray); border-radius: 30px; width: 250px;">
                     </div>
@@ -2080,10 +1209,14 @@
                                 <span class="option-tag">+Ketchup Rs. 20</span>
                                 <span class="option-tag">+Cheese Rs. 50</span>
                             </div>
+                            <div class="food-card-actions">
+                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Spaghetti Bolognese', 'Chef Ahmad')"><i class="fas fa-star"></i> Review</button>
+                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-card">
+                    <div class="food-card" onclick="showPage('order-detail')">
                         <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400" alt="Biryani" class="food-image">
                         <div class="food-details">
                             <h4>Chicken Biryani</h4>
@@ -2093,10 +1226,14 @@
                                 <span class="option-tag">+Raita Rs. 30</span>
                                 <span class="option-tag">+Salad Rs. 40</span>
                             </div>
+                            <div class="food-card-actions">
+                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Chicken Biryani', 'Chef Fatima')"><i class="fas fa-star"></i> Review</button>
+                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-card">
+                    <div class="food-card" onclick="showPage('order-detail')">
                         <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400" alt="Karahi" class="food-image">
                         <div class="food-details">
                             <h4>Chicken Karahi</h4>
@@ -2106,10 +1243,14 @@
                                 <span class="option-tag">+Naan Rs. 30</span>
                                 <span class="option-tag">+Drink Rs. 60</span>
                             </div>
+                            <div class="food-card-actions">
+                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Chicken Karahi', 'Chef Usman')"><i class="fas fa-star"></i> Review</button>
+                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-card">
+                    <div class="food-card" onclick="showPage('order-detail')">
                         <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400" alt="Kebab" class="food-image">
                         <div class="food-details">
                             <h4>Seekh Kebab</h4>
@@ -2118,10 +1259,14 @@
                             <div class="options-list">
                                 <span class="option-tag">+Chutney Rs. 20</span>
                             </div>
+                            <div class="food-card-actions">
+                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Seekh Kebab', 'Chef Imran')"><i class="fas fa-star"></i> Review</button>
+                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-card">
+                    <div class="food-card" onclick="showPage('order-detail')">
                         <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" alt="Salad" class="food-image">
                         <div class="food-details">
                             <h4>Fresh Salad Bowl</h4>
@@ -2130,10 +1275,14 @@
                             <div class="options-list">
                                 <span class="option-tag">+Dressing Rs. 30</span>
                             </div>
+                            <div class="food-card-actions">
+                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Fresh Salad Bowl', 'Chef Ayesha')"><i class="fas fa-star"></i> Review</button>
+                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-card">
+                    <div class="food-card" onclick="showPage('order-detail')">
                         <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400" alt="Pancakes" class="food-image">
                         <div class="food-details">
                             <h4>Breakfast Pancakes</h4>
@@ -2142,6 +1291,10 @@
                             <div class="options-list">
                                 <span class="option-tag">+Syrup Rs. 40</span>
                                 <span class="option-tag">+Fruit Rs. 60</span>
+                            </div>
+                            <div class="food-card-actions">
+                                <button class="btn-review" onclick="event.stopPropagation(); openReviewModal('Breakfast Pancakes', 'Chef Sara')"><i class="fas fa-star"></i> Review</button>
+                                <button class="btn-order" onclick="event.stopPropagation(); showPage('order-detail')"><i class="fas fa-shopping-bag"></i> Order</button>
                             </div>
                         </div>
                     </div>
@@ -2193,11 +1346,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Additional Options (Optional)</label>
+                    <label>Additional Options with Prices</label>
                     <div id="options-container">
-                        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                            <input type="text" placeholder="Option name (e.g., Extra Cheese)" style="flex: 1;">
-                            <input type="number" placeholder="Price" style="width: 100px;">
+                        <div class="extra-price-input" style="margin-bottom: 10px;">
+                            <input type="text" placeholder="Option name (e.g., Extra Ketchup)">
+                            <input type="number" placeholder="Price (Rs.)">
                         </div>
                     </div>
                     <button type="button" class="btn-secondary" style="margin-top: 10px;" onclick="addOptionField()">
@@ -2212,37 +1365,70 @@
         </div>
     </div>
 
+    <!-- Review Modal -->
+    <div class="modal" id="reviewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="color: var(--primary-red);"><i class="fas fa-star"></i> Write a Review</h2>
+                <button class="close-btn" onclick="closeReviewModal()">&times;</button>
+            </div>
+            <div id="reviewModalContent">
+                <h4 id="reviewFoodName" style="margin-bottom: 10px;">Food Item</h4>
+                <p id="reviewCookName" style="color: var(--gray); margin-bottom: 20px;">by Chef Name</p>
+                
+                <div class="rating-input" id="modalRatingInput">
+                    <i class="fas fa-star" onclick="setModalRating(1)"></i>
+                    <i class="fas fa-star" onclick="setModalRating(2)"></i>
+                    <i class="fas fa-star" onclick="setModalRating(3)"></i>
+                    <i class="fas fa-star" onclick="setModalRating(4)"></i>
+                    <i class="fas fa-star" onclick="setModalRating(5)"></i>
+                </div>
+                
+                <div class="form-group">
+                    <textarea rows="4" placeholder="Share your experience..." style="width: 100%; padding: 15px; border: 2px solid var(--light-gray); border-radius: 12px;"></textarea>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn-white" onclick="closeReviewModal()" style="flex: 1;">Cancel</button>
+                    <button class="btn-red" onclick="submitModalReview()" style="flex: 1;">Submit Review</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Global Variables
         let currentUser = null;
         let currentRole = 'customer';
-        let totalPrice = 520;
+        let totalPrice = 525;
         let selectedExtras = [];
+        let quantity = 1;
+        let basePrice = 450;
+        let platformBalance = 0;
+        let modalRating = 0;
+        let currentStoreName = '';
 
         // Page Navigation
         function showPage(pageId) {
-            // Hide all pages
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
-            
-            // Show selected page
             document.getElementById(pageId).classList.add('active');
-            
-            // Close notification panel if open
             document.getElementById('notificationPanel').classList.remove('active');
-            
-            // Scroll to top
             window.scrollTo(0, 0);
+
+            if (pageId === 'cook-dashboard' || pageId === 'rider-dashboard' || pageId === 'order-detail') {
+                document.getElementById('adminWallet').style.display = 'block';
+            } else {
+                document.getElementById('adminWallet').style.display = 'none';
+            }
         }
 
         // Login Switch
         function switchLogin(role) {
             currentRole = role;
-            
-            // Update button styles
             ['customer', 'cook', 'rider'].forEach(r => {
-                const btn = document.getElementById(`btn-${r}`);
+                const btn = document.getElementById('btn-' + r);
                 if (r === role) {
                     btn.classList.remove('btn-secondary');
                     btn.classList.add('btn-primary');
@@ -2256,8 +1442,6 @@
         // Handle Login
         function handleLogin(e) {
             e.preventDefault();
-            
-            // Simulate login based on role
             if (currentRole === 'customer') {
                 showPage('customer-dashboard');
             } else if (currentRole === 'cook') {
@@ -2265,8 +1449,6 @@
             } else if (currentRole === 'rider') {
                 showPage('rider-dashboard');
             }
-            
-            // Show success notification
             showNotification('Login successful! Welcome to ApnaKitchen.');
         }
 
@@ -2290,50 +1472,112 @@
             }
         }
 
+        // Quantity Update
+        function updateQuantity(change) {
+            quantity += change;
+            if (quantity < 1) quantity = 1;
+            document.getElementById('quantityDisplay').textContent = quantity;
+            document.getElementById('quantityTotal').textContent = 'Rs. ' + (quantity * basePrice);
+            document.getElementById('summaryQty').textContent = quantity;
+            document.getElementById('summaryItemPrice').textContent = 'Rs. ' + (quantity * basePrice);
+            calculateTotal();
+        }
+
         // Toggle Options in Order
         function toggleOption(element, price) {
             element.classList.toggle('checked');
             const icon = element.querySelector('i');
-            
             if (element.classList.contains('checked')) {
                 icon.style.display = 'block';
                 selectedExtras.push(price);
-                totalPrice += price;
             } else {
                 icon.style.display = 'none';
                 const index = selectedExtras.indexOf(price);
                 if (index > -1) {
                     selectedExtras.splice(index, 1);
-                    totalPrice -= price;
                 }
             }
-            
-            document.getElementById('total-price').textContent = 'Rs. ' + totalPrice;
+            calculateTotal();
         }
 
-        // Rating System
-        function setRating(rating) {
-            const stars = document.querySelectorAll('#ratingInput .star');
+        // Calculate Total
+        function calculateTotal() {
+            let itemTotal = quantity * basePrice;
+            let extrasTotal = selectedExtras.reduce((a, b) => a + b, 0);
+            let subtotal = itemTotal + extrasTotal + 50;
+            let platformFee = Math.round(subtotal * 0.05);
+            totalPrice = subtotal + platformFee;
+            document.getElementById('total-price').textContent = 'Rs. ' + totalPrice;
+            document.getElementById('platformFee').textContent = 'Rs. ' + platformFee;
+            document.getElementById('cookCommission').textContent = platformFee;
+            document.getElementById('riderCommission').textContent = (50 * 0.05).toFixed(1);
+            document.getElementById('totalCommission').textContent = (platformFee + 50 * 0.05).toFixed(1);
+        }
+
+        // Process Payment
+        function processPayment() {
+            let commission = parseFloat(document.getElementById('totalCommission').textContent);
+            platformBalance += commission;
+            document.getElementById('platformBalance').textContent = 'Rs. ' + platformBalance.toFixed(2);
+            document.querySelector('.payment-section').style.display = 'none';
+            document.getElementById('placeOrderSection').style.display = 'block';
+            showNotification('Payment of Rs. ' + commission + ' sent to platform (NayaPay: PK34NAYA1234503169382133)');
+        }
+
+        // Modal Rating
+        function setModalRating(rating) {
+            modalRating = rating;
+            const stars = document.querySelectorAll('#modalRatingInput i');
             stars.forEach((star, index) => {
                 if (index < rating) {
-                    star.classList.add('active');
+                    star.style.color = 'var(--warning)';
                 } else {
-                    star.classList.remove('active');
+                    star.style.color = 'var(--light-gray)';
                 }
             });
         }
 
-        // Submit Review
-        function submitReview() {
+        // Review Modal
+        function openReviewModal(foodName, cookName) {
+            document.getElementById('reviewFoodName').textContent = foodName;
+            document.getElementById('reviewCookName').textContent = 'by ' + cookName;
+            document.getElementById('reviewModal').classList.add('active');
+            modalRating = 0;
+            setModalRating(0);
+        }
+
+        function closeReviewModal() {
+            document.getElementById('reviewModal').classList.remove('active');
+        }
+
+        function submitModalReview() {
+            if (modalRating === 0) {
+                showNotification('Please select a rating!');
+                return;
+            }
             showNotification('Review submitted successfully!');
+            closeReviewModal();
         }
 
         // Place Order
         function placeOrder() {
             showNotification('Order placed successfully! You will receive updates soon.');
+            addCookNotification('New Order #1236', 'Spaghetti Bolognese x' + quantity, 'Just now');
             setTimeout(() => {
                 showPage('customer-dashboard');
             }, 2000);
+        }
+
+        // Add Cook Notification
+        function addCookNotification(title, details, time) {
+            const notifList = document.getElementById('notificationsList');
+            const newNotif = document.createElement('div');
+            newNotif.className = 'notification-item new';
+            newNotif.innerHTML = '<strong>' + title + '</strong><p>' + details + '</p><small>' + time + '</small>';
+            notifList.insertBefore(newNotif, notifList.firstChild);
+            const badge = document.getElementById('notif-count');
+            badge.style.display = 'flex';
+            badge.textContent = parseInt(badge.textContent) + 1;
         }
 
         // Modal Functions
@@ -2348,14 +1592,9 @@
         function addOptionField() {
             const container = document.getElementById('options-container');
             const div = document.createElement('div');
-            div.style.cssText = 'display: flex; gap: 10px; margin-bottom: 10px;';
-            div.innerHTML = `
-                <input type="text" placeholder="Option name" style="flex: 1;">
-                <input type="number" placeholder="Price" style="width: 100px;">
-                <button type="button" onclick="this.parentElement.remove()" style="background: var(--light-red); color: white; border: none; border-radius: 8px; padding: 0 15px; cursor: pointer;">
-                    <i class="fas fa-trash"></i>
-                </button>
-            `;
+            div.className = 'extra-price-input';
+            div.style.cssText = 'margin-bottom: 10px;';
+            div.innerHTML = '<input type="text" placeholder="Option name" style="flex: 1;"><input type="number" placeholder="Price (Rs.)" style="width: 100px;"><button type="button" onclick="this.parentElement.remove()" style="background: var(--light-red); color: white; border: none; border-radius: 8px; padding: 10px 15px; cursor: pointer;"><i class="fas fa-trash"></i></button>';
             container.appendChild(div);
         }
 
@@ -2363,27 +1602,10 @@
             e.preventDefault();
             showNotification('Menu item added successfully!');
             closeModal();
-            
-            // Add new item to cook's menu (simulated)
             const menuGrid = document.getElementById('cook-menu');
             const newCard = document.createElement('div');
             newCard.className = 'food-card fade-in';
-            newCard.innerHTML = `
-                <img src="https://via.placeholder.com/400x300/8B0000/FFFFFF?text=New+Item" alt="New Item" class="food-image">
-                <div class="food-details">
-                    <h4>New Menu Item</h4>
-                    <p>Freshly added</p>
-                    <div class="food-price">Rs. 500</div>
-                    <div style="margin-top: 15px; display: flex; gap: 10px;">
-                        <button class="btn-primary" style="padding: 8px 16px; font-size: 14px;">
-                            <i class="fas fa-edit"></i> Edit
-                        </button>
-                        <button style="padding: 8px 16px; background: var(--light-red); color: white; border: none; border-radius: 20px; cursor: pointer;">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-            `;
+            newCard.innerHTML = '<img src="https://via.placeholder.com/400x300/8B0000/FFFFFF?text=New+Item" alt="New Item" class="food-image"><div class="food-details"><h4>New Menu Item</h4><p>Freshly added</p><div class="food-price">Rs. 500</div><div style="margin-top: 15px; display: flex; gap: 10px;"><button class="btn-primary" style="padding: 8px 16px; font-size: 14px;"><i class="fas fa-edit"></i> Edit</button><button style="padding: 8px 16px; background: var(--light-red); color: white; border: none; border-radius: 20px; cursor: pointer;"><i class="fas fa-trash"></i></button></div></div>';
             menuGrid.appendChild(newCard);
         }
 
@@ -2402,20 +1624,20 @@
         }
 
         function acceptOrder(orderId) {
-            showNotification(`Order #${orderId} accepted! Start preparing.`);
+            showNotification('Order #' + orderId + ' accepted! Start preparing.');
         }
 
         function markReady(orderId) {
-            showNotification(`Order #${orderId} marked as ready for pickup!`);
+            showNotification('Order #' + orderId + ' marked as ready for pickup!');
         }
 
         // Rider Functions
         function acceptDelivery(orderId) {
-            showNotification(`Delivery #${orderId} accepted! Head to pickup location.`);
+            showNotification('Delivery #' + orderId + ' accepted! Head to pickup location.');
         }
 
         function rejectDelivery(orderId) {
-            showNotification(`Delivery #${orderId} rejected.`);
+            showNotification('Delivery #' + orderId + ' rejected.');
         }
 
         // Applications
@@ -2427,64 +1649,43 @@
 
         function submitCookApplication(e) {
             e.preventDefault();
-            showNotification('Cook application submitted! Verification in progress.');
-            showPage('home');
+            const storeName = document.getElementById('cookStoreNameInput').value;
+            currentStoreName = storeName;
+            document.getElementById('storeDisplay').style.display = 'block';
+            document.getElementById('storeNameDisplay').textContent = storeName;
+            document.getElementById('cookStoreName').textContent = storeName;
+            showNotification('Cook registration successful! Your store "' + storeName + '" is ready.');
+            showPage('login');
         }
 
         // Notifications
         function toggleNotifications() {
             const panel = document.getElementById('notificationPanel');
             panel.classList.toggle('active');
+            document.getElementById('notif-count').style.display = 'none';
+            document.getElementById('notif-count').textContent = '0';
         }
 
         function showNotification(message) {
-            // Create notification element
             const notif = document.createElement('div');
-            notif.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: var(--primary-red);
-                color: white;
-                padding: 20px 30px;
-                border-radius: 15px;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-                z-index: 3000;
-                animation: slideIn 0.3s ease;
-                max-width: 350px;
-            `;
-            notif.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <i class="fas fa-check-circle" style="font-size: 24px;"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            
+            notif.style.cssText = 'position: fixed; top: 100px; right: 20px; background: var(--primary-red); color: white; padding: 20px 30px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 3000; animation: slideIn 0.3s ease; max-width: 350px;';
+            notif.innerHTML = '<div style="display: flex; align-items: center; gap: 15px;"><i class="fas fa-check-circle" style="font-size: 24px;"></i><span>' + message + '</span></div>';
             document.body.appendChild(notif);
-            
-            setTimeout(() => {
-                notif.remove();
-            }, 3000);
+            setTimeout(() => { notif.remove(); }, 3000);
         }
 
         // Chat Functions
         function sendMessage() {
             const input = document.getElementById('chatInput');
             const message = input.value.trim();
-            
             if (message) {
                 const chatMessages = document.getElementById('chatMessages');
-                
-                // Add sent message
                 const sentMsg = document.createElement('div');
                 sentMsg.className = 'message sent';
                 sentMsg.textContent = message;
                 chatMessages.appendChild(sentMsg);
-                
                 input.value = '';
                 chatMessages.scrollTop = chatMessages.scrollHeight;
-                
-                // Simulate reply
                 setTimeout(() => {
                     const replyMsg = document.createElement('div');
                     replyMsg.className = 'message received';
@@ -2495,18 +1696,35 @@
             }
         }
 
+        // How It Works Toggle
+        function toggleHowItWorks() {
+            const content = document.getElementById('howItWorksContent');
+            const icon = document.getElementById('howItWorksIcon');
+            content.classList.toggle('active');
+            if (content.classList.contains('active')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+
         // Close modal when clicking outside
         window.onclick = function(event) {
             const modal = document.getElementById('addItemModal');
+            const reviewModal = document.getElementById('reviewModal');
             if (event.target === modal) {
                 closeModal();
+            }
+            if (event.target === reviewModal) {
+                closeReviewModal();
             }
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Add enter key support for chat
-            document.getElementById('chatInput')?.addEventListener('keypress', function(e) {
+            document.getElementById('chatInput').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     sendMessage();
                 }
