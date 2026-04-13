@@ -28,6 +28,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .nav-links{display:flex;align-items:center;gap:6px;}
 .nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:14px;padding:8px 14px;border-radius:8px;transition:all .2s;cursor:pointer;}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,.08);}
+.nav-cart{position:relative;color:rgba(255,255,255,.7);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:16px;transition:all .2s;border:none;background:none;}
+.nav-cart:hover{color:#fff;background:rgba(255,255,255,.08);}
 .nav-bell{position:relative;color:rgba(255,255,255,.7);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:16px;transition:all .2s;border:none;background:none;}
 .nav-bell:hover{color:#fff;background:rgba(255,255,255,.08);}
 .notif-count{position:absolute;top:4px;right:8px;background:var(--gold-light);color:var(--crimson-deep);width:18px;height:18px;border-radius:50%;font-size:10px;font-weight:700;display:none;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;}
@@ -43,6 +45,22 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .notif-item.new-order{border-left-color:var(--crimson);background:rgba(122,0,32,.06);}
 .notif-item strong{color:var(--crimson);display:block;margin-bottom:2px;}
 .notif-item small{color:var(--muted);font-size:11px;}
+
+/* CART PANEL */
+.cart-panel{position:fixed;top:80px;right:24px;width:380px;background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-warm);padding:20px;display:none;z-index:998;max-height:580px;overflow-y:auto;}
+.cart-panel.show{display:block;animation:slideDown .2s ease;}
+.cart-panel h4{font-family:'Playfair Display',serif;font-size:16px;color:var(--crimson);margin-bottom:16px;}
+.cart-item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);}
+.cart-item img{width:52px;height:52px;border-radius:10px;object-fit:cover;}
+.cart-item-info{flex:1;}
+.cart-item-info strong{font-size:13px;color:var(--ink);display:block;}
+.cart-item-info span{font-size:12px;color:var(--muted);}
+.cart-item-price{font-weight:700;color:var(--crimson);font-size:14px;}
+.cart-item-remove{background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px;padding:4px;}
+.cart-item-remove:hover{color:var(--crimson);}
+.cart-total-row{display:flex;justify-content:space-between;padding:14px 0 0;font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--crimson);border-top:2px solid var(--crimson);margin-top:10px;}
+.cart-empty{text-align:center;padding:32px 0;color:var(--muted);font-size:14px;}
+.cart-empty i{font-size:36px;margin-bottom:12px;display:block;color:var(--border);}
 
 /* CONTAINER */
 .container{margin-top:68px;min-height:calc(100vh - 68px);position:relative;z-index:1;}
@@ -64,6 +82,21 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .btn-hp:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(200,134,26,.5);}
 .btn-hg{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:12px;padding:14px 28px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;}
 .btn-hg:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6);}
+
+/* SEARCH BAR (FoodPanda style) */
+.hero-search{display:flex;gap:0;background:#fff;border-radius:14px;overflow:hidden;max-width:520px;margin-bottom:36px;box-shadow:0 6px 32px rgba(0,0,0,.2);}
+.hero-search input{flex:1;padding:16px 20px;border:none;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);outline:none;background:transparent;}
+.hero-search button{background:var(--crimson);color:#fff;border:none;padding:0 28px;font-size:16px;cursor:pointer;transition:all .2s;}
+.hero-search button:hover{background:var(--crimson-deep);}
+
+/* CATEGORY CHIPS (FoodPanda style) */
+.categories-bar{padding:24px 48px 0;background:var(--warm-white);border-bottom:1px solid var(--border);}
+.cat-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:16px;scrollbar-width:none;}
+.cat-scroll::-webkit-scrollbar{display:none;}
+.cat-chip{display:flex;align-items:center;gap:8px;background:var(--cream);border:1.5px solid var(--border);border-radius:50px;padding:9px 18px;font-size:13px;font-weight:500;white-space:nowrap;cursor:pointer;transition:all .2s;color:var(--charcoal);}
+.cat-chip i{font-size:15px;color:var(--crimson);}
+.cat-chip:hover,.cat-chip.active{background:var(--crimson);color:#fff;border-color:var(--crimson);}
+.cat-chip:hover i,.cat-chip.active i{color:#fff;}
 
 /* SECTIONS */
 .roles-section{padding:56px 48px;}
@@ -102,6 +135,12 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* HOME MENU */
 .home-menu-section{padding:0 48px 56px;}
+
+/* PROMO BANNER (FoodPanda style) */
+.promo-strip{background:linear-gradient(90deg,var(--crimson-deep),var(--crimson-mid));color:#fff;padding:14px 48px;display:flex;align-items:center;gap:16px;font-size:14px;}
+.promo-strip i{color:var(--gold-light);font-size:18px;}
+.promo-strip strong{color:var(--gold-light);}
+.promo-strip span{opacity:.85;}
 
 /* AUTH */
 .auth-wrap{max-width:480px;margin:40px auto;padding:0 24px;}
@@ -167,8 +206,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .dash-user p{font-size:13px;color:var(--muted);font-weight:300;}
 .dash-stars{color:var(--gold);font-size:12px;margin-top:3px;}
 .dash-stars span{color:var(--muted);font-size:12px;margin-left:6px;}
-.earnings-badge{background:var(--ink);color:var(--gold-light);padding:12px 20px;border-radius:12px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px;border:1px solid rgba(200,134,26,.2);}
-.earnings-badge strong{font-size:18px;font-family:'Playfair Display',serif;}
 .toggle-wrap{display:flex;align-items:center;gap:10px;}
 .toggle-label{font-size:13px;font-weight:600;}
 .toggle-label.open{color:var(--success);}
@@ -190,6 +227,30 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .stat-val.danger{color:var(--crimson);}
 .stat-val.success{color:var(--success);}
 
+/* ORDER HISTORY (FoodPanda style) */
+.order-history-card{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-bottom:12px;display:flex;gap:14px;align-items:center;}
+.order-history-card img{width:56px;height:56px;border-radius:10px;object-fit:cover;}
+.order-hist-info{flex:1;}
+.order-hist-info strong{font-size:14px;color:var(--ink);display:block;margin-bottom:2px;}
+.order-hist-info span{font-size:12px;color:var(--muted);}
+.order-hist-status{font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;}
+.order-hist-status.delivered{background:rgba(30,124,74,.1);color:var(--success);}
+.order-hist-status.pending{background:rgba(200,134,26,.1);color:var(--warning);}
+.order-hist-status.preparing{background:rgba(122,0,32,.1);color:var(--crimson);}
+.reorder-btn{background:var(--crimson);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:8px;}
+.reorder-btn:hover{background:var(--crimson-deep);}
+
+/* LIVE ORDER TRACKER (FoodPanda style) */
+.order-tracker{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;margin-bottom:24px;}
+.tracker-steps{display:flex;align-items:center;justify-content:space-between;position:relative;margin:24px 0;}
+.tracker-steps::before{content:'';position:absolute;top:20px;left:0;right:0;height:2px;background:var(--border);z-index:0;}
+.tracker-step{display:flex;flex-direction:column;align-items:center;gap:8px;z-index:1;flex:1;}
+.tracker-dot{width:40px;height:40px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;transition:all .4s;}
+.tracker-dot.done{background:var(--success);}
+.tracker-dot.active{background:var(--crimson);box-shadow:0 0 0 6px rgba(122,0,32,.15);}
+.tracker-step span{font-size:11px;font-weight:600;color:var(--muted);text-align:center;}
+.tracker-step.done span,.tracker-step.active span{color:var(--ink);}
+
 /* SECTION CARD */
 .section-card{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;margin-bottom:24px;box-shadow:var(--shadow-card);}
 .sec-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border);}
@@ -209,6 +270,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .food-card:hover .food-img{transform:scale(1.04);}
 .food-img-wrap{overflow:hidden;position:relative;}
 .cook-tag{position:absolute;bottom:10px;left:10px;background:rgba(26,10,14,.8);color:rgba(255,255,255,.9);font-size:11px;padding:4px 10px;border-radius:20px;backdrop-filter:blur(6px);font-weight:400;}
+.food-badge{position:absolute;top:10px;right:10px;background:var(--crimson);color:#fff;font-size:10px;padding:4px 9px;border-radius:20px;font-weight:600;}
 .food-body{padding:18px 18px 14px;}
 .food-body h4{font-family:'Playfair Display',serif;font-size:17px;color:var(--ink);margin-bottom:4px;}
 .food-price{font-size:20px;font-weight:700;color:var(--crimson);font-family:'Playfair Display',serif;margin-bottom:8px;}
@@ -263,6 +325,10 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .chef-banner p{font-size:14px;opacity:.8;margin-top:4px;}
 .chef-stars{color:var(--gold-light);font-size:14px;margin-top:6px;}
 .chef-stars span{color:rgba(255,255,255,.6);font-size:13px;margin-left:6px;}
+/* Open/Closed badge on chef store */
+.chef-status-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-top:8px;}
+.chef-status-badge.open{background:rgba(30,124,74,.2);color:#7BE4A6;}
+.chef-status-badge.closed{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);}
 
 /* DELIVERY CARDS */
 .delivery-card{background:var(--gold-pale);border:1px solid rgba(200,134,26,.3);border-left:4px solid var(--gold);border-radius:var(--r);padding:20px 24px;margin-bottom:16px;}
@@ -277,7 +343,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 /* PAID BADGE */
 .paid-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(30,124,74,.1);color:var(--success);padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid rgba(30,124,74,.2);margin-bottom:12px;}
 
-/* EDIT AREAS MODAL content */
+/* EDIT AREAS MODAL */
 .villages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-height:340px;overflow-y:auto;padding:4px;}
 .vill-check{display:flex;align-items:center;gap:7px;padding:7px 10px;background:var(--cream);border-radius:8px;cursor:pointer;font-size:12px;color:var(--charcoal);border:1px solid transparent;transition:all .2s;}
 .vill-check:hover{border-color:var(--crimson);background:var(--gold-pale);}
@@ -291,7 +357,6 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .apply-head p{font-size:15px;color:var(--muted);font-weight:300;}
 .apply-section{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;margin-bottom:20px;box-shadow:var(--shadow-card);}
 .apply-section h3{font-family:'Playfair Display',serif;font-size:17px;color:var(--crimson);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
-.terms-info{background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:20px;font-size:13px;color:var(--muted);line-height:1.9;}
 
 /* REVIEWS */
 .review-card{padding:18px 0;border-bottom:1px solid var(--border);}
@@ -352,6 +417,16 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .wa-btn{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;border:none;border-radius:10px;padding:11px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:12px;}
 .wa-btn:hover{background:#1DAB54;transform:translateY(-1px);}
 
+/* FAVOURITES */
+.fav-btn{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.9);border:none;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;color:var(--border);transition:all .2s;backdrop-filter:blur(6px);}
+.fav-btn.active{color:var(--crimson);}
+.fav-btn:hover{color:var(--crimson);transform:scale(1.1);}
+
+/* RATING STARS DISPLAY */
+.rating-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;}
+.rating-row .stars{color:var(--gold);font-size:12px;}
+.rating-row span{font-size:12px;color:var(--muted);}
+
 ::-webkit-scrollbar{width:5px;}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
 
@@ -367,6 +442,8 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   .hero h1{font-size:34px;}
   .villages-grid{grid-template-columns:repeat(2,1fr);}
   .grid-2{grid-template-columns:1fr;}
+  .categories-bar{padding:16px 20px 0;}
+  .cart-panel,.notif-panel{width:calc(100vw - 32px);right:16px;}
 }
 </style>
 </head>
@@ -382,18 +459,35 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
     <a onclick="showPage('menu')">Menu</a>
     <a onclick="showPage('become-rider')">Become a Rider</a>
     <a onclick="showPage('apply-cook')">Apply as Cook</a>
+    <button class="nav-cart" onclick="toggleCart()" title="Cart">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="notif-count" id="cartCount" style="background:var(--crimson);color:#fff;">0</span>
+    </button>
     <button class="nav-bell" onclick="toggleNotif()">
       <i class="fas fa-bell"></i>
       <span class="notif-count" id="notifCount">0</span>
     </button>
-    <button class="btn-login" onclick="showPage('login')">Login</button>
+    <button class="btn-login" id="navLoginBtn" onclick="showPage('login')">Login</button>
   </div>
 </nav>
 
+<!-- NOTIFICATIONS PANEL -->
 <div class="notif-panel" id="notifPanel">
   <h4><i class="fas fa-bell" style="margin-right:8px;color:var(--gold);"></i>Notifications</h4>
   <div id="notifList">
     <div class="notif-item"><strong>Welcome to ApnaKitchen!</strong>Explore delicious food from local cooks in Swabi.<small>Just now</small></div>
+  </div>
+</div>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+  <h4><i class="fas fa-shopping-bag" style="margin-right:8px;color:var(--gold);"></i>Your Cart</h4>
+  <div id="cartItemsList">
+    <div class="cart-empty"><i class="fas fa-shopping-bag"></i>Your cart is empty</div>
+  </div>
+  <div id="cartFooter" style="display:none;">
+    <div class="cart-total-row"><span>Total</span><span id="cartTotalDisplay">Rs. 0</span></div>
+    <button class="btn-full" style="margin-top:14px;" onclick="goToCheckout()"><i class="fas fa-arrow-right" style="margin-right:8px;"></i>Proceed to Checkout</button>
   </div>
 </div>
 
@@ -403,11 +497,20 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 
 <!-- ═══ HOME ═══════════════════════════════════════════════════════ -->
 <div id="home" class="page active">
+  <div class="promo-strip">
+    <i class="fas fa-tag"></i>
+    <div><strong>Free Delivery</strong> <span>on your first order! Use code: APNA2024</span></div>
+    <div style="margin-left:auto;font-size:12px;opacity:.7;"><i class="fas fa-clock" style="margin-right:4px;"></i>Delivery in 30–45 min</div>
+  </div>
   <div class="hero">
     <div class="hero-inner">
       <div class="hero-badge"><i class="fas fa-map-marker-alt"></i>Swabi, KPK</div>
       <h1>Homemade food,<br><em>delivered with love</em></h1>
       <p>ApnaKitchen connects you with talented home cooks across Swabi. Real food, real kitchens, your doorstep.</p>
+      <div class="hero-search">
+        <input type="text" placeholder="Search for biryani, karahi, BBQ…" oninput="searchMenu(this.value)">
+        <button onclick="showPage('menu')"><i class="fas fa-search"></i></button>
+      </div>
       <div class="hero-actions">
         <button class="btn-hp" onclick="showPage('login')"><i class="fas fa-utensils" style="margin-right:8px;"></i>Order Now</button>
         <button class="btn-hg" onclick="showPage('apply-cook')">Cook With Us</button>
@@ -415,6 +518,22 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       </div>
     </div>
   </div>
+
+  <!-- CATEGORY BAR -->
+  <div class="categories-bar">
+    <div class="cat-scroll">
+      <div class="cat-chip active" onclick="filterCat(this,'')"><i class="fas fa-th"></i>All</div>
+      <div class="cat-chip" onclick="filterCat(this,'Biryani')"><i class="fas fa-bowl-rice"></i>Biryani</div>
+      <div class="cat-chip" onclick="filterCat(this,'Karahi')"><i class="fas fa-fire"></i>Karahi</div>
+      <div class="cat-chip" onclick="filterCat(this,'BBQ')"><i class="fas fa-drumstick-bite"></i>BBQ</div>
+      <div class="cat-chip" onclick="filterCat(this,'Breakfast')"><i class="fas fa-coffee"></i>Breakfast</div>
+      <div class="cat-chip" onclick="filterCat(this,'Salad')"><i class="fas fa-leaf"></i>Salad</div>
+      <div class="cat-chip" onclick="filterCat(this,'Pasta')"><i class="fas fa-utensils"></i>Pasta</div>
+      <div class="cat-chip" onclick="filterCat(this,'Dessert')"><i class="fas fa-ice-cream"></i>Dessert</div>
+      <div class="cat-chip" onclick="filterCat(this,'Drinks')"><i class="fas fa-glass-whiskey"></i>Drinks</div>
+    </div>
+  </div>
+
   <div class="roles-section">
     <div class="section-label">Who it's for</div>
     <h2 class="section-title">Everyone has a role</h2>
@@ -623,17 +742,18 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         <button class="btn-full" style="flex:2;" onclick="cookNext(4)">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
       </div>
     </div>
-    <!-- Step 5 - Payment -->
+    <!-- Step 5 - Payment (UPDATED: slip only sent, no extra message) -->
     <div id="cook-s5" style="display:none;">
       <div class="payment-section">
         <h3><i class="fas fa-lock"></i> Registration Fee</h3>
         <div class="payment-amount">Rs. 2,000</div>
         <p>One-time registration fee for Home Cook</p>
         <div class="naypay-box">
-          <h4><i class="fas fa-university"></i> Send Payment To</h4>
+          <h4><i class="fas fa-university"></i> Send Payment To This NayaPay Account</h4>
           <div class="account-num">PK34NAYA1234503169382133</div>
-          <div class="account-name">ApnaKitchen NayaPay Account</div>
+          <div class="account-name">ApnaKitchen — Platform Wallet</div>
         </div>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px;">Send Rs. 2,000 to the above account, then upload your payment slip below.</p>
         <div class="form-group" style="text-align:left;margin-top:20px;">
           <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip</label>
           <div class="file-upload">
@@ -642,7 +762,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
           </div>
           <img id="cookPaySlipPreview" style="width:100%;max-width:300px;border-radius:10px;margin-top:10px;display:none;">
         </div>
-        <div class="whatsapp-info"><i class="fab fa-whatsapp"></i><div><strong>Slip will be sent to WhatsApp: 03483351028</strong><br>You will receive your password on WhatsApp within 15 minutes</div></div>
+        <div class="whatsapp-info"><i class="fab fa-whatsapp"></i><div><strong>Your slip + details will be sent to WhatsApp: 03483351028</strong><br>You will receive your password on WhatsApp within 15 minutes</div></div>
       </div>
       <div style="display:flex;gap:12px;">
         <button class="btn-card" style="flex:1;padding:14px;" onclick="cookBack(5)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
@@ -719,7 +839,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         <button class="btn-full" style="flex:2;" onclick="riderNext(2)">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
       </div>
     </div>
-    <!-- R Step 3 - Areas -->
+    <!-- R Step 3 -->
     <div id="rider-s3" style="display:none;">
       <div class="apply-section">
         <h3><i class="fas fa-map-marker-alt"></i>Delivery Areas — Swabi</h3>
@@ -756,7 +876,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         <button class="btn-full" style="flex:2;" onclick="riderNext(3)">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
       </div>
     </div>
-    <!-- R Step 4 - Documents -->
+    <!-- R Step 4 -->
     <div id="rider-s4" style="display:none;">
       <div class="apply-section">
         <h3><i class="fas fa-file-alt"></i>Documents</h3>
@@ -770,17 +890,18 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         <button class="btn-full" style="flex:2;" onclick="riderNext(4)">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
       </div>
     </div>
-    <!-- R Step 5 - Payment -->
+    <!-- R Step 5 - Payment (UPDATED) -->
     <div id="rider-s5" style="display:none;">
       <div class="payment-section">
         <h3><i class="fas fa-lock"></i> Registration Fee</h3>
         <div class="payment-amount">Rs. 1,000</div>
         <p>One-time registration fee for Rider</p>
         <div class="naypay-box">
-          <h4><i class="fas fa-university"></i> Send Payment To</h4>
+          <h4><i class="fas fa-university"></i> Send Payment To This NayaPay Account</h4>
           <div class="account-num">PK34NAYA1234503169382133</div>
-          <div class="account-name">ApnaKitchen NayaPay Account</div>
+          <div class="account-name">ApnaKitchen — Platform Wallet</div>
         </div>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px;">Send Rs. 1,000 to the above account, then upload your payment slip below.</p>
         <div class="form-group" style="text-align:left;margin-top:20px;">
           <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip</label>
           <div class="file-upload">
@@ -789,7 +910,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
           </div>
           <img id="riderPaySlipPreview" style="width:100%;max-width:300px;border-radius:10px;margin-top:10px;display:none;">
         </div>
-        <div class="whatsapp-info"><i class="fab fa-whatsapp"></i><div><strong>Slip will be sent to WhatsApp: 03483351028</strong><br>You will receive your password on WhatsApp within 15 minutes</div></div>
+        <div class="whatsapp-info"><i class="fab fa-whatsapp"></i><div><strong>Your slip + details will be sent to WhatsApp: 03483351028</strong><br>You will receive your password on WhatsApp within 15 minutes</div></div>
       </div>
       <div style="display:flex;gap:12px;">
         <button class="btn-card" style="flex:1;padding:14px;" onclick="riderBack(5)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
@@ -798,7 +919,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         </button>
       </div>
     </div>
-    <!-- R Step 6 - Password -->
+    <!-- R Step 6 -->
     <div id="rider-s6" style="display:none;">
       <div class="password-section">
         <div style="width:80px;height:80px;background:var(--gold-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;color:var(--gold);"><i class="fas fa-key"></i></div>
@@ -818,7 +939,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 <!-- ═══ FOOD DETAIL PAGE ══════════════════════════════════════════════ -->
 <div id="food-detail" class="page">
   <div class="food-detail-wrap">
-    <button onclick="history.go(-1)||showPage('home')" class="btn-card" style="margin-bottom:20px;"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
+    <button onclick="showPage('menu')" class="btn-card" style="margin-bottom:20px;"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
     <img id="fdImg" src="" alt="Food" class="food-detail-img">
     <div class="food-detail-info">
       <h1 id="fdName">Food Name</h1>
@@ -826,6 +947,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         by <span id="fdCookLink" class="cook-link" onclick="visitChefStore()">Chef Name</span> ·
         <span id="fdArea" style="color:var(--muted);"></span>
       </p>
+      <div id="fdRatingRow" class="rating-row" style="margin-bottom:8px;"></div>
       <div class="food-price" id="fdPrice">Rs. 0</div>
       <p id="fdDesc" style="color:var(--charcoal);font-size:15px;line-height:1.75;margin-bottom:0;"></p>
     </div>
@@ -884,7 +1006,8 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         <h1 id="chefStoreName">Chef Name</h1>
         <p id="chefStoreArea"><i class="fas fa-map-marker-alt" style="margin-right:4px;"></i>Area</p>
         <p id="chefStoreCuisine" style="opacity:.7;font-size:13px;margin-top:4px;"></p>
-        <div class="chef-stars" id="chefStoreStars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>4.5 · 128 reviews</span></div>
+        <div class="chef-stars" id="chefStoreStars"></div>
+        <div class="chef-status-badge open" id="chefStatusBadge"><i class="fas fa-circle" style="font-size:8px;"></i>Open Now</div>
       </div>
     </div>
     <div class="section-card">
@@ -894,10 +1017,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
     <div class="section-card" id="chefStoreReviewsSection">
       <div class="sec-header"><h2><i class="fas fa-star"></i>Reviews</h2></div>
       <div id="chefStoreReviewsList">
-        <div class="review-card">
-          <div class="review-head"><div class="reviewer">Ali Khan <span style="color:var(--gold);">★★★★★</span></div><div class="review-date">2 days ago</div></div>
-          <p>Amazing food! Very fresh and delicious. Highly recommend.</p>
-        </div>
+        <p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet for this chef.</p>
       </div>
     </div>
   </div>
@@ -908,30 +1028,62 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   <div class="dash-wrap">
     <div class="dash-header">
       <div class="dash-user">
-        <img src="https://ui-avatars.com/api/?name=Ali+Khan&background=7A0020&color=FDF3DC&bold=true&size=60" class="dash-avatar">
+        <img id="custAvatar" src="" class="dash-avatar">
         <div>
-          <h2 id="custWelcomeName">Welcome, Ali Khan</h2>
-          <p><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;font-size:11px;"></i>Swabi City Center</p>
+          <h2 id="custWelcomeName">Welcome!</h2>
+          <p><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;font-size:11px;"></i><span id="custAddressDisplay">Swabi</span></p>
         </div>
       </div>
-      <div class="earnings-badge"><i class="fas fa-wallet"></i><div>Wallet<br><strong>Rs. 2,500</strong></div></div>
     </div>
+
+    <!-- LIVE ORDER TRACKER -->
+    <div class="order-tracker" id="orderTrackerSection" style="display:none;">
+      <div class="sec-header" style="margin-bottom:0;padding-bottom:16px;">
+        <h2><i class="fas fa-shipping-fast" style="color:var(--crimson);margin-right:8px;font-size:16px;"></i>Live Order Tracking</h2>
+        <span id="trackerOrderId" style="font-size:13px;color:var(--muted);"></span>
+      </div>
+      <div class="tracker-steps">
+        <div class="tracker-step active" id="track1">
+          <div class="tracker-dot active"><i class="fas fa-shopping-bag"></i></div>
+          <span>Order Placed</span>
+        </div>
+        <div class="tracker-step" id="track2">
+          <div class="tracker-dot"><i class="fas fa-check"></i></div>
+          <span>Confirmed</span>
+        </div>
+        <div class="tracker-step" id="track3">
+          <div class="tracker-dot"><i class="fas fa-fire"></i></div>
+          <span>Preparing</span>
+        </div>
+        <div class="tracker-step" id="track4">
+          <div class="tracker-dot"><i class="fas fa-motorcycle"></i></div>
+          <span>On the Way</span>
+        </div>
+        <div class="tracker-step" id="track5">
+          <div class="tracker-dot"><i class="fas fa-home"></i></div>
+          <span>Delivered</span>
+        </div>
+      </div>
+    </div>
+
     <div class="stats-grid">
-      <div class="stat-card"><h4>Total Orders</h4><div class="stat-val">24</div></div>
-      <div class="stat-card"><h4>Favourite Cooks</h4><div class="stat-val">5</div></div>
-      <div class="stat-card"><h4>Pending</h4><div class="stat-val warn">2</div></div>
-      <div class="stat-card"><h4>Reviews Given</h4><div class="stat-val">18</div></div>
+      <div class="stat-card"><h4>Total Orders</h4><div class="stat-val" id="custTotalOrders">0</div></div>
+      <div class="stat-card"><h4>Favourite Cooks</h4><div class="stat-val" id="custFavCount">0</div></div>
+      <div class="stat-card"><h4>Pending</h4><div class="stat-val warn" id="custPendingCount">0</div></div>
+      <div class="stat-card"><h4>Reviews Given</h4><div class="stat-val" id="custReviewCount">0</div></div>
     </div>
-    <!-- Order Status Notifications for customer -->
-    <div class="section-card" id="custOrderStatusSection" style="display:none;">
-      <div class="sec-header"><h2 style="color:var(--success);"><i class="fas fa-check-circle" style="color:var(--success);"></i>Order Update</h2></div>
-      <div id="custOrderStatusList"></div>
+
+    <!-- ORDER HISTORY -->
+    <div class="section-card" id="custOrderHistorySection" style="display:none;">
+      <div class="sec-header"><h2><i class="fas fa-history"></i>My Orders</h2></div>
+      <div id="custOrderHistoryList"></div>
     </div>
+
     <div class="section-card">
       <div class="sec-header">
         <h2><i class="fas fa-fire"></i>Popular in Swabi</h2>
         <div class="search-row">
-          <input class="search-input" placeholder="Search dishes…">
+          <input class="search-input" placeholder="Search dishes…" oninput="searchMenuCust(this.value)">
           <button class="btn-search"><i class="fas fa-search"></i></button>
         </div>
       </div>
@@ -945,11 +1097,11 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   <div class="dash-wrap">
     <div class="dash-header">
       <div class="dash-user">
-        <img src="https://ui-avatars.com/api/?name=Chef+Ahmad&background=7A0020&color=FDF3DC&bold=true&size=60" class="dash-avatar">
+        <img id="cookDashAvatar" src="" class="dash-avatar">
         <div>
-          <h2 id="cookStoreName">Chef Ahmad's Kitchen</h2>
-          <p><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;font-size:11px;"></i>Swabi City Center</p>
-          <div class="dash-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>4.5 · 128 reviews</span></div>
+          <h2 id="cookStoreName">My Kitchen</h2>
+          <p><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;font-size:11px;"></i>Swabi</p>
+          <div class="dash-stars" id="cookDashStars"><span style="color:var(--muted);">No ratings yet</span></div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:20px;">
@@ -963,7 +1115,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
     <!-- PREMIUM EXPIRED BANNER -->
     <div class="premium-banner" id="cookPremiumBanner" style="display:none;">
       <h3><i class="fas fa-crown" style="margin-right:8px;"></i>Premium Membership Expired</h3>
-      <p style="opacity:.9;margin-bottom:12px;">Your 1-month premium has expired. Renew to continue receiving orders and managing your store.</p>
+      <p style="opacity:.9;margin-bottom:12px;">Your 1-month premium has expired. Renew to continue receiving orders.</p>
       <div class="expiry-tag"><i class="fas fa-calendar-times" style="margin-right:6px;color:var(--gold-light);"></i>Expired: <span id="cookExpiryDate">—</span></div>
       <div class="premium-amount">Rs. 2,000</div>
       <p style="opacity:.8;margin-bottom:16px;">Monthly Renewal Fee</p>
@@ -983,15 +1135,14 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       <button class="btn-full" id="cookRenewBtn" onclick="submitCookRenewal()" disabled style="max-width:400px;margin:0 auto;display:block;">
         <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Renewal Slip
       </button>
-      <div class="whatsapp-info" style="max-width:400px;margin:16px auto 0;"><i class="fab fa-whatsapp"></i><div>Slip sent to WhatsApp: 03483351028. Password sent back within 15 min.</div></div>
     </div>
 
     <div id="cookMainContent">
       <div class="stats-grid">
         <div class="stat-card"><h4>Today's Orders</h4><div class="stat-val" id="cookTodayOrders">0</div></div>
         <div class="stat-card"><h4>Pending</h4><div class="stat-val warn" id="cookPendingOrders">0</div></div>
-        <div class="stat-card"><h4>Today's Earnings</h4><div class="stat-val" id="cookEarnings">Rs. 0</div></div>
-        <div class="stat-card"><h4>Total Menu Items</h4><div class="stat-val" id="cookMenuCount">0</div></div>
+        <div class="stat-card"><h4>Total Reviews</h4><div class="stat-val" id="cookTotalReviews">0</div></div>
+        <div class="stat-card"><h4>Menu Items</h4><div class="stat-val" id="cookMenuCount">0</div></div>
       </div>
 
       <!-- NEW ORDER NOTIFICATIONS -->
@@ -1008,16 +1159,17 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
             <button class="add-btn" onclick="openAddItem()" title="Add item"><i class="fas fa-plus"></i></button>
           </div>
         </div>
+        <div id="cookMenuEmpty" style="text-align:center;padding:40px 0;color:var(--muted);">
+          <i class="fas fa-utensils" style="font-size:36px;margin-bottom:14px;display:block;color:var(--border);"></i>
+          <p>Your menu is empty. Click + to add your first dish!</p>
+        </div>
         <div class="food-grid" id="cookMenu"></div>
       </div>
 
       <div class="section-card">
-        <h2 style="font-family:'Playfair Display',serif;font-size:18px;margin-bottom:20px;"><i class="fas fa-star" style="color:var(--gold);margin-right:8px;font-size:15px;"></i>My Reviews</h2>
+        <div class="sec-header"><h2><i class="fas fa-star" style="color:var(--gold);font-size:16px;"></i>My Reviews</h2></div>
         <div id="cookReviewsList">
-          <div class="review-card">
-            <div class="review-head"><div class="reviewer">Ali Khan <span style="color:var(--gold);">★★★★★</span></div><div class="review-date">2 days ago</div></div>
-            <p>Amazing taste! Very fresh. Will order again!</p>
-          </div>
+          <p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet. Reviews appear here once customers rate your food.</p>
         </div>
       </div>
     </div>
@@ -1029,14 +1181,13 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   <div class="dash-wrap">
     <div class="dash-header">
       <div class="dash-user">
-        <img src="https://ui-avatars.com/api/?name=Usman+Ali&background=7A0020&color=FDF3DC&bold=true&size=60" class="dash-avatar">
+        <img id="riderDashAvatar" src="" class="dash-avatar">
         <div>
-          <h2>Usman — Delivery Partner</h2>
+          <h2 id="riderDashName">Rider Dashboard</h2>
           <p><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;font-size:11px;"></i>Active in Swabi</p>
           <div style="margin-top:4px;"><span style="font-size:12px;font-weight:600;color:var(--success);"><i class="fas fa-check-circle" style="margin-right:4px;"></i>Verified Rider</span></div>
         </div>
       </div>
-      <div class="earnings-badge"><i class="fas fa-wallet"></i><div>Today's Earnings<br><strong>Rs. 1,850</strong></div></div>
     </div>
 
     <!-- PREMIUM EXPIRED BANNER -->
@@ -1062,17 +1213,15 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       <button class="btn-full" id="riderRenewBtn" onclick="submitRiderRenewal()" disabled style="max-width:400px;margin:0 auto;display:block;">
         <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Renewal Slip
       </button>
-      <div class="whatsapp-info" style="max-width:400px;margin:16px auto 0;"><i class="fab fa-whatsapp"></i><div>Slip sent to WhatsApp: 03483351028. Password sent back within 15 min.</div></div>
     </div>
 
     <div id="riderMainContent">
       <div class="stats-grid">
-        <div class="stat-card"><h4>Deliveries Today</h4><div class="stat-val">8</div></div>
-        <div class="stat-card"><h4>Available</h4><div class="stat-val danger">3</div></div>
-        <div class="stat-card"><h4>Rating</h4><div class="stat-val">4.8 ★</div></div>
-        <div class="stat-card"><h4>This Month</h4><div class="stat-val">245</div></div>
+        <div class="stat-card"><h4>Deliveries Today</h4><div class="stat-val" id="riderTodayDeliveries">0</div></div>
+        <div class="stat-card"><h4>Available</h4><div class="stat-val danger" id="riderAvailable">0</div></div>
+        <div class="stat-card"><h4>Rating</h4><div class="stat-val" id="riderRating">—</div></div>
+        <div class="stat-card"><h4>This Month</h4><div class="stat-val" id="riderMonthDeliveries">0</div></div>
       </div>
-      <!-- DELIVERY NOTIFICATIONS -->
       <div class="section-card">
         <div class="sec-header"><h2 style="color:var(--crimson);"><i class="fas fa-bell" style="color:var(--crimson);"></i>Delivery Requests</h2></div>
         <div id="riderDeliveryList"><p style="color:var(--muted);font-size:14px;">No delivery requests right now.</p></div>
@@ -1082,15 +1231,11 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
           <h2><i class="fas fa-map-marked-alt"></i>My Delivery Areas</h2>
           <button class="btn-card" onclick="openEditAreas('rider')"><i class="fas fa-edit" style="margin-right:6px;"></i>Edit Areas</button>
         </div>
-        <div class="area-tags" id="riderAreaDisplay">
-          <span class="area-tag"><i class="fas fa-map-pin"></i>City Center</span>
-          <span class="area-tag"><i class="fas fa-map-pin"></i>Guli Bagh</span>
-          <span class="area-tag"><i class="fas fa-map-pin"></i>Topi Road</span>
-        </div>
+        <div class="area-tags" id="riderAreaDisplay"></div>
       </div>
       <div class="section-card">
-        <h2 style="font-family:'Playfair Display',serif;font-size:18px;margin-bottom:20px;"><i class="fas fa-star" style="color:var(--gold);margin-right:8px;font-size:15px;"></i>My Reviews</h2>
-        <div id="riderReviewsList"><p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet.</p></div>
+        <div class="sec-header"><h2><i class="fas fa-star" style="color:var(--gold);font-size:16px;"></i>My Reviews</h2></div>
+        <div id="riderReviewsList"><p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet. Reviews appear here after deliveries.</p></div>
       </div>
     </div>
   </div>
@@ -1155,7 +1300,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   </div>
 </div>
 
-<!-- REVIEW MODAL -->
+<!-- REVIEW MODAL (UPDATED: collects name + reason) -->
 <div class="modal-overlay" id="reviewModal">
   <div class="modal">
     <div class="modal-head">
@@ -1171,7 +1316,8 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       <i class="far fa-star" onclick="setRating(4)"></i>
       <i class="far fa-star" onclick="setRating(5)"></i>
     </div>
-    <div class="form-group"><textarea rows="4" id="reviewText" placeholder="Share your experience…" style="resize:none;"></textarea></div>
+    <div class="form-group"><label>Your Name</label><input type="text" id="reviewerName" placeholder="Enter your name" required></div>
+    <div class="form-group"><label>Your Review</label><textarea rows="4" id="reviewText" placeholder="Share your experience — what did you like or dislike?" style="resize:none;" required></textarea></div>
     <div style="display:flex;gap:12px;">
       <button class="btn-card" style="flex:1;" onclick="closeModal('reviewModal')">Cancel</button>
       <button class="btn-full" style="flex:2;" onclick="submitReview()">Submit Review</button>
@@ -1195,7 +1341,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   </div>
 </div>
 
-<!-- PREMIUM PASSWORD MODAL (renewal) -->
+<!-- PREMIUM PASSWORD MODAL -->
 <div class="modal-overlay" id="premiumPwModal">
   <div class="modal" style="max-width:420px;">
     <div class="modal-head">
@@ -1212,7 +1358,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 // ═══════════════════════════════════════════════════════════════════════
 // CONSTANTS & STATE
 // ═══════════════════════════════════════════════════════════════════════
-const OWNER_WHATSAPP = '923483351028'; // for wa.me links
+const OWNER_WHATSAPP = '923483351028';
 const COOK_PASSWORD  = 'kitchen01';
 const RIDER_PASSWORD = 'bike01';
 
@@ -1222,53 +1368,59 @@ const ALL_AREAS = ['City Center','Guli Bagh','Topi Road','Shahmansoor','Marghuz'
 
 let currentRole = 'customer';
 let starRating = 0;
-let reviewTargetType = ''; // 'chef' | 'rider'
+let reviewTargetType = '';
 let reviewTargetId = 0;
 let currentEditAreasRole = '';
 let currentFoodId = null;
 let pendingRenewalRole = '';
 let qty = 1, basePrice = 0, extras = [];
 
-// USER DATA (in-memory, simulating logged-in state)
-let currentUser = {name:'Ali Khan', phone:'03001234567', cnic:'12345-1234567-1', email:'ali@example.com', address:'House 12, City Center'};
-let cookProfile  = {name:'Ahmad Khan', phone:'03111111111', cnic:'54321-7654321-1', email:'ahmad@example.com', address:'House 5, Guli Bagh', storeName:"Chef Ahmad's Kitchen", areas:['City Center','Guli Bagh'], badReviews:0, regDate:null, premium:false};
-let riderProfile = {name:'Usman Ali', phone:'03222222222', cnic:'11111-2222222-3', email:'usman@example.com', address:'House 9, Topi Road', areas:['City Center','Guli Bagh','Topi Road'], badReviews:0, regDate:null, premium:false};
+// USER DATA (in-memory)
+let currentUser = {name:'', phone:'', cnic:'', email:'', address:'', photo:'', loggedIn:false, role:''};
+let cookProfile  = {name:'', phone:'', cnic:'', email:'', address:'', storeName:'', areas:[], badReviews:0, regDate:null, premium:false, photo:''};
+let riderProfile = {name:'', phone:'', cnic:'', email:'', address:'', areas:[], badReviews:0, regDate:null, premium:false, photo:''};
 
-// FOODS DATA
-let foods = [
-  {id:1, name:'Spaghetti Bolognese',    cook:"Chef Ahmad's Kitchen", cookId:1, price:450, area:'City Center',
-   img:'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600',
-   desc:'Authentic Italian-style spaghetti with slow-cooked meat sauce.',
-   tags:[{label:'+ Ketchup Rs.20',price:20},{label:'+ Cheese Rs.50',price:50}]},
-  {id:2, name:'Chicken Biryani',         cook:"Chef Fatima's Kitchen", cookId:2, price:350, area:'Guli Bagh',
+// FOODS DATA — empty by default (cooks add their own)
+let foods = [];
+
+// SAMPLE DATA to show on public pages only
+const sampleFoods = [
+  {id:1, name:'Chicken Biryani', cook:"Chef Fatima's Kitchen", cookId:101, price:350, area:'Guli Bagh',
    img:'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=600',
    desc:'Fragrant homemade biryani with slow-cooked chicken.',
-   tags:[{label:'+ Raita Rs.30',price:30},{label:'+ Salad Rs.40',price:40}]},
-  {id:3, name:'Chicken Karahi',          cook:"Chef Usman's Kitchen", cookId:3, price:800, area:'Topi Road',
+   tags:[{label:'+ Raita Rs.30',price:30},{label:'+ Salad Rs.40',price:40}], avgRating:4.7, reviewCount:18},
+  {id:2, name:'Chicken Karahi', cook:"Chef Ahmad's Kitchen", cookId:102, price:800, area:'City Center',
    img:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600',
    desc:'Desi style karahi with fresh tomatoes and hand-ground spices.',
-   tags:[{label:'+ Naan Rs.30',price:30},{label:'+ Drink Rs.60',price:60}]},
-  {id:4, name:'Seekh Kebab (6 pcs)',     cook:"Chef Imran's Kitchen", cookId:4, price:300, area:'City Center',
+   tags:[{label:'+ Naan Rs.30',price:30},{label:'+ Drink Rs.60',price:60}], avgRating:4.9, reviewCount:32},
+  {id:3, name:'Seekh Kebab (6 pcs)', cook:"Chef Imran's Kitchen", cookId:103, price:300, area:'Topi Road',
    img:'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600',
    desc:'Juicy minced beef seekh kebabs, charcoal grilled.',
-   tags:[{label:'+ Chutney Rs.20',price:20},{label:'+ Paratha Rs.40',price:40}]},
-  {id:5, name:'Fresh Salad Bowl',        cook:"Chef Ayesha's Kitchen", cookId:5, price:200, area:'Shahmansoor',
-   img:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600',
-   desc:'Fresh seasonal salad with house dressing.',
-   tags:[{label:'+ Dressing Rs.30',price:30}]},
-  {id:6, name:'Breakfast Pancakes',      cook:"Chef Sara's Kitchen", cookId:6, price:350, area:'Marghuz',
+   tags:[{label:'+ Chutney Rs.20',price:20},{label:'+ Paratha Rs.40',price:40}], avgRating:4.5, reviewCount:11},
+  {id:4, name:'Spaghetti Bolognese', cook:"Chef Sara's Kitchen", cookId:104, price:450, area:'Shahmansoor',
+   img:'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600',
+   desc:'Authentic Italian-style spaghetti with slow-cooked meat sauce.',
+   tags:[{label:'+ Ketchup Rs.20',price:20},{label:'+ Cheese Rs.50',price:50}], avgRating:4.3, reviewCount:7},
+  {id:5, name:'Breakfast Pancakes', cook:"Chef Ayesha's Kitchen", cookId:105, price:350, area:'Marghuz',
    img:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600',
-   desc:'Fluffy American pancakes with maple syrup.',
-   tags:[{label:'+ Syrup Rs.40',price:40},{label:'+ Fruit Rs.60',price:60}]},
+   desc:'Fluffy American pancakes with maple syrup and fresh fruit.',
+   tags:[{label:'+ Syrup Rs.40',price:40},{label:'+ Fruit Rs.60',price:60}], avgRating:4.6, reviewCount:14},
+  {id:6, name:'Fresh Salad Bowl', cook:"Chef Zainab's Kitchen", cookId:106, price:200, area:'Guli Bagh',
+   img:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600',
+   desc:'Fresh seasonal salad with house dressing and crunchy toppings.',
+   tags:[{label:'+ Dressing Rs.30',price:30}], avgRating:4.2, reviewCount:5},
 ];
 
-let chefReviews  = []; // {text, rating, reviewer, target:'chef'|'rider', targetId}
+let chefReviews  = [];
 let riderReviews = [];
-
-// Order simulation
 let orderCounter = 1237;
 let pendingOrdersForCook = [];
 let pendingDeliveriesForRider = [];
+let customerOrders = [];
+let favourites = new Set();
+let cartItems = [];
+let activeOrderId = null;
+let trackStep = 1;
 
 // ═══════════════════════════════════════════════════════════════════════
 // WHATSAPP HELPER
@@ -1285,27 +1437,57 @@ function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   document.getElementById('notifPanel').classList.remove('show');
+  document.getElementById('cartPanel').classList.remove('show');
   window.scrollTo(0, 0);
   if (['customer-dashboard','cook-dashboard','rider-dashboard','menu','home'].includes(id)) {
     setTimeout(renderGrids, 60);
   }
   if (id === 'cook-dashboard') updateCookStats();
-  if (id === 'rider-dashboard') checkRiderPremium();
+  if (id === 'rider-dashboard') { checkRiderPremium(); renderRiderDeliveries(); }
   if (id === 'cook-dashboard') checkCookPremium();
 }
 
 // ═══════════════════════════════════════════════════════════════════════
+// CURRENT DISPLAY FOODS (sample for public, cook's own for their dash)
+// ═══════════════════════════════════════════════════════════════════════
+function getPublicFoods() { return sampleFoods; }
+function getCookFoods()   { return foods.filter(f => f.cookId === 'mystore'); }
+
+// ═══════════════════════════════════════════════════════════════════════
 // FOOD CARD RENDERER
 // ═══════════════════════════════════════════════════════════════════════
+function starsHTML(avg) {
+  if (!avg) return '';
+  let s = '';
+  for (let i = 1; i <= 5; i++) {
+    if (avg >= i) s += '<i class="fas fa-star"></i>';
+    else if (avg >= i - 0.5) s += '<i class="fas fa-star-half-alt"></i>';
+    else s += '<i class="far fa-star"></i>';
+  }
+  return s;
+}
+
 function foodCard(f, editMode=false) {
+  const ratingHTML = f.avgRating
+    ? `<div class="rating-row"><span class="stars">${starsHTML(f.avgRating)}</span><span>${f.avgRating} (${f.reviewCount})</span></div>`
+    : '';
+  const favIcon = favourites.has(f.id) ? 'fas fa-heart' : 'far fa-heart';
+  const favActive = favourites.has(f.id) ? 'active' : '';
+
   const actionsHTML = editMode
     ? `<button class="btn-review" onclick="event.stopPropagation();editItem(${f.id})"><i class="fas fa-edit"></i> Edit</button>
        <button class="btn-order" onclick="event.stopPropagation();removeItem(${f.id})" style="background:var(--crimson-deep)"><i class="fas fa-trash"></i> Remove</button>`
-    : `<button class="btn-review" onclick="event.stopPropagation();openReview('chef',${f.cookId},'${f.cook}')"><i class="fas fa-star"></i> Review Chef</button>
+    : `<button class="btn-review" onclick="event.stopPropagation();openReview('chef',${f.cookId},'${f.cook}')"><i class="fas fa-star"></i> Review</button>
        <button class="btn-order" onclick="event.stopPropagation();openFoodDetail(${f.id})"><i class="fas fa-shopping-bag"></i> Order</button>`;
+
   return `<div class="food-card" onclick="openFoodDetail(${f.id})">
-    <div class="food-img-wrap"><img class="food-img" src="${f.img}" alt="${f.name}" loading="lazy"><span class="cook-tag">${f.area}</span></div>
+    <div class="food-img-wrap">
+      <img class="food-img" src="${f.img}" alt="${f.name}" loading="lazy">
+      <span class="cook-tag">${f.area}</span>
+      ${!editMode ? `<button class="fav-btn ${favActive}" onclick="event.stopPropagation();toggleFav(${f.id},this)" title="Favourite"><i class="${favIcon}"></i></button>` : ''}
+    </div>
     <div class="food-body">
+      ${ratingHTML}
       <h4>${f.name}</h4>
       <p style="font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:300;cursor:pointer;" onclick="event.stopPropagation();openChefStore(${f.cookId})">${f.cook} <i class="fas fa-external-link-alt" style="font-size:10px;"></i></p>
       <div class="food-price">Rs. ${f.price.toLocaleString()}</div>
@@ -1315,38 +1497,150 @@ function foodCard(f, editMode=false) {
 }
 
 function renderGrids() {
+  // Public grids
+  const pubFoods = getPublicFoods();
+  const myFoods  = getCookFoods();
+
   ['homeMenuGrid','custMenu','menuGrid'].forEach(id => {
-    const el = document.getElementById(id); if (el) el.innerHTML = foods.map(f => foodCard(f)).join('');
+    const el = document.getElementById(id); if (el) el.innerHTML = pubFoods.map(f => foodCard(f)).join('');
   });
+
+  // Cook's own menu
   const ck = document.getElementById('cookMenu');
+  const ckEmpty = document.getElementById('cookMenuEmpty');
   if (ck) {
-    const myFoods = foods.filter(f => f.cookId === 1);
-    ck.innerHTML = myFoods.length ? myFoods.map(f => foodCard(f, true)).join('') : '<p style="color:var(--muted);font-size:14px;">No items yet. Click + to add.</p>';
+    if (myFoods.length) {
+      ck.innerHTML = myFoods.map(f => foodCard(f, true)).join('');
+      if (ckEmpty) ckEmpty.style.display = 'none';
+    } else {
+      ck.innerHTML = '';
+      if (ckEmpty) ckEmpty.style.display = 'block';
+    }
     document.getElementById('cookMenuCount').textContent = myFoods.length;
   }
+
   const cs = document.getElementById('chefStoreMenu');
   if (cs) {
-    const storeId = parseInt(cs.dataset.cookid || '1');
-    cs.innerHTML = foods.filter(f => f.cookId === storeId).map(f => foodCard(f)).join('');
+    const storeId = cs.dataset.cookid;
+    const storeFoods = pubFoods.filter(f => String(f.cookId) === String(storeId));
+    cs.innerHTML = storeFoods.length ? storeFoods.map(f => foodCard(f)).join('') : '<p style="color:var(--muted);font-size:14px;">No items yet.</p>';
   }
+
+  updateCustStats();
+  updateCartBadge();
 }
 
 function filterMenu(area) {
   const grid = document.getElementById('menuGrid');
-  const filtered = area ? foods.filter(f => f.area === area) : foods;
+  const filtered = area ? getPublicFoods().filter(f => f.area === area) : getPublicFoods();
   grid.innerHTML = filtered.map(f => foodCard(f)).join('');
 }
+
 function searchMenu(q) {
-  const grid = document.getElementById('menuGrid');
-  const filtered = foods.filter(f => f.name.toLowerCase().includes(q.toLowerCase()) || f.cook.toLowerCase().includes(q.toLowerCase()));
-  grid.innerHTML = filtered.map(f => foodCard(f)).join('');
+  const menuGrid = document.getElementById('menuGrid');
+  const homeGrid = document.getElementById('homeMenuGrid');
+  const filtered = getPublicFoods().filter(f => f.name.toLowerCase().includes(q.toLowerCase()) || f.cook.toLowerCase().includes(q.toLowerCase()));
+  if (menuGrid) menuGrid.innerHTML = filtered.map(f => foodCard(f)).join('');
+  if (homeGrid) homeGrid.innerHTML = filtered.map(f => foodCard(f)).join('');
+}
+
+function searchMenuCust(q) {
+  const el = document.getElementById('custMenu');
+  const filtered = getPublicFoods().filter(f => f.name.toLowerCase().includes(q.toLowerCase()) || f.cook.toLowerCase().includes(q.toLowerCase()));
+  if (el) el.innerHTML = filtered.map(f => foodCard(f)).join('');
+}
+
+function filterCat(chip, cat) {
+  document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  const homeGrid = document.getElementById('homeMenuGrid');
+  const filtered = cat ? getPublicFoods().filter(f => f.name.toLowerCase().includes(cat.toLowerCase()) || f.desc.toLowerCase().includes(cat.toLowerCase())) : getPublicFoods();
+  if (homeGrid) homeGrid.innerHTML = (filtered.length ? filtered : getPublicFoods()).map(f => foodCard(f)).join('');
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// FAVOURITES
+// ═══════════════════════════════════════════════════════════════════════
+function toggleFav(id, btn) {
+  if (favourites.has(id)) {
+    favourites.delete(id);
+    btn.classList.remove('active');
+    btn.querySelector('i').className = 'far fa-heart';
+    toast('Removed from favourites');
+  } else {
+    favourites.add(id);
+    btn.classList.add('active');
+    btn.querySelector('i').className = 'fas fa-heart';
+    toast('Added to favourites ❤️');
+  }
+  updateCustStats();
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// CART
+// ═══════════════════════════════════════════════════════════════════════
+function toggleCart() {
+  document.getElementById('notifPanel').classList.remove('show');
+  document.getElementById('cartPanel').classList.toggle('show');
+}
+
+function addToCart(food, quantity) {
+  const existing = cartItems.find(c => c.id === food.id);
+  if (existing) { existing.qty += quantity; }
+  else { cartItems.push({id: food.id, name: food.name, price: food.price, img: food.img, qty: quantity}); }
+  updateCartBadge();
+  renderCart();
+}
+
+function updateCartBadge() {
+  const total = cartItems.reduce((a, b) => a + b.qty, 0);
+  const el = document.getElementById('cartCount');
+  el.textContent = total;
+  el.style.display = total > 0 ? 'inline-flex' : 'none';
+}
+
+function renderCart() {
+  const list = document.getElementById('cartItemsList');
+  const footer = document.getElementById('cartFooter');
+  if (!cartItems.length) {
+    list.innerHTML = '<div class="cart-empty"><i class="fas fa-shopping-bag"></i>Your cart is empty</div>';
+    footer.style.display = 'none';
+    return;
+  }
+  list.innerHTML = cartItems.map(c => `
+    <div class="cart-item">
+      <img src="${c.img}" alt="${c.name}">
+      <div class="cart-item-info">
+        <strong>${c.name}</strong>
+        <span>Qty: ${c.qty}</span>
+      </div>
+      <span class="cart-item-price">Rs. ${(c.price * c.qty).toLocaleString()}</span>
+      <button class="cart-item-remove" onclick="removeFromCart(${c.id})"><i class="fas fa-times"></i></button>
+    </div>`).join('');
+  const total = cartItems.reduce((a, c) => a + c.price * c.qty, 0) + 200;
+  document.getElementById('cartTotalDisplay').textContent = 'Rs. ' + total.toLocaleString();
+  footer.style.display = 'block';
+}
+
+function removeFromCart(id) {
+  cartItems = cartItems.filter(c => c.id !== id);
+  updateCartBadge();
+  renderCart();
+}
+
+function goToCheckout() {
+  if (!cartItems.length) return;
+  const first = cartItems[0];
+  const f = getPublicFoods().find(x => x.id === first.id);
+  if (f) openFoodDetail(f.id);
+  document.getElementById('cartPanel').classList.remove('show');
 }
 
 // ═══════════════════════════════════════════════════════════════════════
 // FOOD DETAIL PAGE
 // ═══════════════════════════════════════════════════════════════════════
 function openFoodDetail(id) {
-  const f = foods.find(x => x.id === id);
+  const f = getPublicFoods().find(x => x.id === id);
   if (!f) return;
   currentFoodId = id;
   basePrice = f.price;
@@ -1360,6 +1654,11 @@ function openFoodDetail(id) {
   document.getElementById('fdDesc').textContent = f.desc;
   document.getElementById('sumFoodName').textContent = f.name;
   document.getElementById('qtyUnitPrice').textContent = 'Rs. ' + f.price;
+  // Rating
+  const ratingRow = document.getElementById('fdRatingRow');
+  ratingRow.innerHTML = f.avgRating
+    ? `<span class="stars">${starsHTML(f.avgRating)}</span><span>${f.avgRating} (${f.reviewCount} reviews)</span>`
+    : '<span style="color:var(--muted);font-size:13px;">No ratings yet</span>';
   // Build extras list
   const el = document.getElementById('extrasList');
   el.innerHTML = f.tags.map((t,i) => `
@@ -1377,23 +1676,29 @@ function openFoodDetail(id) {
 
 function visitChefStore() {
   if (!currentFoodId) return;
-  const f = foods.find(x => x.id === currentFoodId);
+  const f = getPublicFoods().find(x => x.id === currentFoodId);
   if (f) openChefStore(f.cookId);
 }
 
 function openChefStore(cookId) {
-  const cf = foods.find(f => f.cookId === cookId);
+  const cf = getPublicFoods().find(f => f.cookId === cookId);
   if (!cf) return;
   document.getElementById('chefStoreName').textContent = cf.cook;
-  document.getElementById('chefStoreArea').textContent = cf.area;
+  document.getElementById('chefStoreArea').innerHTML = `<i class="fas fa-map-marker-alt" style="margin-right:4px;"></i>${cf.area}`;
   document.getElementById('chefStoreCuisine').textContent = 'Specialty: Desi & Pakistani';
   document.getElementById('chefStoreAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(cf.cook)}&background=7A0020&color=FDF3DC&bold=true&size=90`;
+  // Rating
+  const myRevs = chefReviews.filter(r => r.targetId === cookId);
+  const avgRating = myRevs.length ? (myRevs.reduce((a,b)=>a+b.rating,0)/myRevs.length).toFixed(1) : null;
+  const starsEl = document.getElementById('chefStoreStars');
+  starsEl.innerHTML = avgRating
+    ? `${starsHTML(parseFloat(avgRating))}<span>${avgRating} · ${myRevs.length} reviews</span>`
+    : '<span style="opacity:.6;">No reviews yet</span>';
   const menu = document.getElementById('chefStoreMenu');
   menu.dataset.cookid = cookId;
-  menu.innerHTML = foods.filter(f => f.cookId === cookId).map(f => foodCard(f)).join('');
-  // Show reviews for this chef
+  menu.innerHTML = getPublicFoods().filter(f => f.cookId === cookId).map(f => foodCard(f)).join('');
+  // Reviews
   const revList = document.getElementById('chefStoreReviewsList');
-  const myRevs = chefReviews.filter(r => r.targetId === cookId);
   revList.innerHTML = myRevs.length
     ? myRevs.map(r => `<div class="review-card"><div class="review-head"><div class="reviewer">${r.reviewer} <span style="color:var(--gold);">${'★'.repeat(r.rating)}</span></div><div class="review-date">Just now</div></div><p>${r.text}</p></div>`).join('')
     : '<p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet for this chef.</p>';
@@ -1438,42 +1743,83 @@ function doPlaceOrder() {
   const phone   = document.getElementById('custPhone').value.trim();
   const address = document.getElementById('custAddress').value.trim();
   if (!name || !phone || !address) { toast('Please fill in your delivery details!'); return; }
-  const f = foods.find(x => x.id === currentFoodId);
+  const f = getPublicFoods().find(x => x.id === currentFoodId);
   if (!f) return;
   orderCounter++;
   const orderId = orderCounter;
   const orderNote = document.getElementById('custNote').value;
+  const orderTotal = qty * basePrice + extras.reduce((a,b)=>a+b,0) + 200;
 
-  // Add order notification to cook dashboard
   const orderData = {
-    id: orderId, food: f.name, qty, price: qty * basePrice + extras.reduce((a,b)=>a+b,0) + 200,
+    id: orderId, food: f.name, qty, price: orderTotal,
     customerName: name, customerPhone: phone, customerAddress: address, note: orderNote,
-    cookId: f.cookId, cookName: f.cook
+    cookId: f.cookId, cookName: f.cook, status:'pending', img: f.img, date: new Date()
   };
+
   pendingOrdersForCook.push(orderData);
+  customerOrders.unshift(orderData);
+  addToCart(f, qty);
+
   renderCookOrders();
-
-  // Add to navbar notification
-  addNavNotif(`New order #${orderId} from ${name}`, 'new-order');
-
-  // Show toast & navigate
+  addNavNotif(`Order #${orderId} placed! Waiting for ${f.cook}`, 'new-order');
   toast(`Order #${orderId} placed! Notifying ${f.cook}…`);
-  showPage('customer-dashboard');
-  showCustOrderStatus(`Your order has been sent to ${f.cook}. Waiting for confirmation…`, orderId);
 
-  // Auto WhatsApp to owner about order
-  const msg = `📦 New Order #${orderId}\nCustomer: ${name}\nPhone: ${phone}\nAddress: ${address}\nItem: ${f.name} x${qty}\nTotal: Rs. ${qty * basePrice + extras.reduce((a,b)=>a+b,0) + 200}\nCook: ${f.cook}${orderNote ? '\nNote: ' + orderNote : ''}`;
-  // (In a real system this would send via API; here we just prep it)
+  // Go to customer dashboard and show tracker
+  showPage('customer-dashboard');
+  activeOrderId = orderId;
+  trackStep = 1;
+  showOrderTracker(orderId, 1);
+  renderOrderHistory();
+  updateCustStats();
 }
 
-function showCustOrderStatus(msg, orderId) {
-  const sec = document.getElementById('custOrderStatusSection');
-  const list = document.getElementById('custOrderStatusList');
+function showOrderTracker(orderId, step) {
+  const sec = document.getElementById('orderTrackerSection');
   sec.style.display = 'block';
-  list.innerHTML = `<div class="delivery-card" style="background:rgba(30,124,74,.05);border-left-color:var(--success);">
-    <h4 style="color:var(--success);">Order #${orderId} — Update</h4>
-    <p>${msg}</p>
-  </div>`;
+  document.getElementById('trackerOrderId').textContent = `Order #${orderId}`;
+  for (let i = 1; i <= 5; i++) {
+    const tStep = document.getElementById('track'+i);
+    const dot = tStep.querySelector('.tracker-dot');
+    tStep.className = 'tracker-step';
+    dot.className = 'tracker-dot';
+    if (i < step) { tStep.classList.add('done'); dot.classList.add('done'); }
+    else if (i === step) { tStep.classList.add('active'); dot.classList.add('active'); }
+  }
+}
+
+function advanceTracker(orderId, newStep) {
+  const order = customerOrders.find(o => o.id === orderId);
+  if (order) order.status = ['pending','confirmed','preparing','on-the-way','delivered'][newStep-1]||'delivered';
+  if (activeOrderId === orderId) showOrderTracker(orderId, newStep);
+  renderOrderHistory();
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// ORDER HISTORY
+// ═══════════════════════════════════════════════════════════════════════
+function renderOrderHistory() {
+  const sec = document.getElementById('custOrderHistorySection');
+  const list = document.getElementById('custOrderHistoryList');
+  if (!customerOrders.length) { sec.style.display = 'none'; return; }
+  sec.style.display = 'block';
+  const statusMap = {pending:'pending', confirmed:'preparing', preparing:'preparing', 'on-the-way':'pending', delivered:'delivered'};
+  list.innerHTML = customerOrders.map(o => `
+    <div class="order-history-card">
+      <img src="${o.img}" alt="${o.food}">
+      <div class="order-hist-info">
+        <strong>${o.food} × ${o.qty}</strong>
+        <span>${o.cookName} · Rs. ${o.price.toLocaleString()}</span>
+      </div>
+      <span class="order-hist-status ${o.status === 'delivered' ? 'delivered' : o.status === 'pending' ? 'pending' : 'preparing'}">${o.status}</span>
+      ${o.status === 'delivered' ? `<button class="reorder-btn" onclick="openFoodDetail(${o.id % 106 + 101})"><i class="fas fa-redo" style="margin-right:4px;"></i>Reorder</button>` : ''}
+    </div>`).join('');
+}
+
+function updateCustStats() {
+  document.getElementById('custTotalOrders').textContent = customerOrders.length;
+  document.getElementById('custFavCount').textContent = favourites.size;
+  document.getElementById('custPendingCount').textContent = customerOrders.filter(o => o.status !== 'delivered').length;
+  document.getElementById('custReviewCount').textContent = chefReviews.filter(r => r.reviewer === currentUser.name).length + riderReviews.filter(r => r.reviewer === currentUser.name).length;
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -1507,43 +1853,52 @@ function renderCookOrders() {
 function cookAcceptOrder(id) {
   const order = pendingOrdersForCook.find(o => o.id === id);
   if (!order) return;
-  // Remove from pending
   pendingOrdersForCook = pendingOrdersForCook.filter(o => o.id !== id);
   renderCookOrders();
   updateCookStats();
-
-  // Notify customer
-  addNavNotif(`Order #${id} accepted by chef! Your food is being prepared.`, '');
-  showCustOrderStatus(`✅ Your order has been accepted by ${order.cookName}! Your food is being prepared.`, id);
+  addNavNotif(`Order #${id} accepted! Preparing food.`, '');
+  advanceTracker(id, 2);
   toast(`Order #${id} accepted! Customer notified.`);
 
-  // Auto-send delivery request to rider
   const deliveryData = {
-    id, food: order.food, qty: order.qty, price: 190,
-    pickupName: order.cookName, pickupArea: cookProfile.areas[0] || 'City Center',
+    id, food: order.food, qty: order.qty,
+    pickupName: cookProfile.storeName || 'Chef Kitchen',
+    pickupArea: cookProfile.areas[0] || 'City Center',
     dropAddress: order.customerAddress, customerName: order.customerName
   };
   pendingDeliveriesForRider.push(deliveryData);
-  renderRiderDeliveries();
-  addNavNotif(`Delivery request #${id}: Pickup from ${order.cookName}`, 'new-order');
-
-  // WhatsApp message to owner/system
-  const msg = `✅ Order #${id} Accepted\nChef: ${order.cookName}\nCustomer: ${order.customerName} — ${order.customerPhone}\nItem: ${order.food}\nPlease assign a rider for delivery to: ${order.customerAddress}`;
-  console.log('Auto-message to owner:', msg);
+  if (document.getElementById('rider-dashboard').classList.contains('active')) {
+    renderRiderDeliveries();
+  }
+  addNavNotif(`Delivery request #${id}: Pickup from ${deliveryData.pickupName}`, 'new-order');
+  setTimeout(() => { advanceTracker(id, 3); toast('Food is being prepared…'); }, 3000);
 }
 
 function cookRejectOrder(id) {
   pendingOrdersForCook = pendingOrdersForCook.filter(o => o.id !== id);
   renderCookOrders();
-  addNavNotif(`Order #${id} was rejected by chef.`, '');
-  showCustOrderStatus(`Sorry, Order #${id} was rejected by the chef. Please try another cook.`, id);
+  const order = customerOrders.find(o => o.id === id);
+  if (order) order.status = 'cancelled';
+  addNavNotif(`Order #${id} was rejected by the chef.`, '');
   toast(`Order #${id} rejected.`);
+  renderOrderHistory();
 }
 
 function updateCookStats() {
-  document.getElementById('cookTodayOrders').textContent = 12 + (10 - pendingOrdersForCook.length);
+  const accepted = customerOrders.filter(o => o.status !== 'pending').length;
+  document.getElementById('cookTodayOrders').textContent = accepted;
   document.getElementById('cookPendingOrders').textContent = pendingOrdersForCook.length;
-  document.getElementById('cookEarnings').textContent = 'Rs. 8,400';
+  document.getElementById('cookTotalReviews').textContent = chefReviews.length;
+  const myFoods = getCookFoods();
+  document.getElementById('cookMenuCount').textContent = myFoods.length;
+  // Cook dashboard reviews
+  const cl = document.getElementById('cookReviewsList');
+  if (cl) {
+    const myRevs = chefReviews.filter(r => r.targetId === 'mystore');
+    cl.innerHTML = myRevs.length
+      ? myRevs.map(r => `<div class="review-card"><div class="review-head"><div class="reviewer">${r.reviewer} <span style="color:var(--gold);">${'★'.repeat(r.rating)}</span></div><div class="review-date">Just now</div></div><p>${r.text}</p></div>`).join('')
+      : '<p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet. Reviews appear here once customers rate your food.</p>';
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -1551,6 +1906,7 @@ function updateCookStats() {
 // ═══════════════════════════════════════════════════════════════════════
 function renderRiderDeliveries() {
   const list = document.getElementById('riderDeliveryList');
+  if (!list) return;
   if (!pendingDeliveriesForRider.length) {
     list.innerHTML = '<p style="color:var(--muted);font-size:14px;">No delivery requests right now.</p>';
     return;
@@ -1580,9 +1936,23 @@ function acceptDelivery(id) {
   if (!d) return;
   pendingDeliveriesForRider = pendingDeliveriesForRider.filter(x => x.id !== id);
   renderRiderDeliveries();
+  // Update rider stats
+  const riderToday = parseInt(document.getElementById('riderTodayDeliveries').textContent) + 1;
+  const riderMonth = parseInt(document.getElementById('riderMonthDeliveries').textContent) + 1;
+  document.getElementById('riderTodayDeliveries').textContent = riderToday;
+  document.getElementById('riderMonthDeliveries').textContent = riderMonth;
   toast(`Delivery #${id} accepted! Head to ${d.pickupName}.`);
   addNavNotif(`Rider accepted delivery #${id}! Food is on the way.`, '');
-  showCustOrderStatus(`🏍️ A rider has accepted your delivery #${id}! Your food is on its way.`, id);
+  advanceTracker(id, 4);
+  // Simulate delivery
+  setTimeout(() => {
+    advanceTracker(id, 5);
+    addNavNotif(`🎉 Order #${id} delivered!`, '');
+    toast('Delivery completed! Great job!');
+    const order = customerOrders.find(o => o.id === id);
+    if (order) order.status = 'delivered';
+    renderOrderHistory();
+  }, 5000);
 }
 
 function rejectDelivery(id) {
@@ -1652,17 +2022,14 @@ function editItem(id) {
     `<div class="option-extra">
       <input type="text" value="${t.label.replace(/^\+ /,'').replace(/ Rs\.\d+$/,'')}" style="flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;">
       <input type="number" value="${t.price}" style="width:90px;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;">
-    </div>`
-  ).join('');
+    </div>`).join('');
   document.getElementById('addItemModal').classList.add('show');
 }
 
 function previewItemImg(inp) {
   const prev = document.getElementById('itemPhotoPreview');
   if (inp.files && inp.files[0]) {
-    const r = new FileReader();
-    r.onload = e => { prev.src = e.target.result; prev.style.display = 'block'; };
-    r.readAsDataURL(inp.files[0]);
+    const r = new FileReader(); r.onload = e => { prev.src = e.target.result; prev.style.display = 'block'; }; r.readAsDataURL(inp.files[0]);
   }
 }
 
@@ -1674,32 +2041,31 @@ function saveItem(e) {
   const price  = parseInt(document.getElementById('itemPrice').value);
   const imgEl  = document.getElementById('itemPhotoPreview');
   const imgSrc = imgEl.style.display !== 'none' ? imgEl.src : 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600';
-  // Parse options
   const optRows = document.querySelectorAll('#optionsContainer .option-extra');
   const tags = [];
   optRows.forEach(row => {
     const inputs = row.querySelectorAll('input');
-    if (inputs[0].value && inputs[1].value) {
-      tags.push({label:`+ ${inputs[0].value} Rs.${inputs[1].value}`, price: parseInt(inputs[1].value)});
-    }
+    if (inputs[0].value && inputs[1].value) tags.push({label:`+ ${inputs[0].value} Rs.${inputs[1].value}`, price: parseInt(inputs[1].value)});
   });
   if (editId) {
     const idx = foods.findIndex(f => f.id === editId);
-    if (idx > -1) { foods[idx] = {...foods[idx], name, desc, price, img: imgSrc, tags}; }
+    if (idx > -1) foods[idx] = {...foods[idx], name, desc, price, img: imgSrc, tags};
     toast('Menu item updated!');
   } else {
-    const newId = Math.max(...foods.map(f => f.id)) + 1;
-    foods.push({id: newId, name, cook:"Chef Ahmad's Kitchen", cookId:1, price, area: cookProfile.areas[0] || 'City Center', img: imgSrc, desc, tags});
+    const newId = foods.length ? Math.max(...foods.map(f => f.id)) + 1 : 1;
+    foods.push({id:newId, name, cook: cookProfile.storeName, cookId:'mystore', price, area: cookProfile.areas[0]||'City Center', img:imgSrc, desc, tags, avgRating:null, reviewCount:0});
     toast('Menu item added!');
   }
   closeModal('addItemModal');
   renderGrids();
+  updateCookStats();
 }
 
 function removeItem(id) {
   if (!confirm('Remove this item from your menu?')) return;
   foods = foods.filter(f => f.id !== id);
   renderGrids();
+  updateCookStats();
   toast('Item removed from menu.');
 }
 
@@ -1714,7 +2080,7 @@ function addOpt() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// REVIEWS
+// REVIEWS (UPDATED: collects name from input, shows on store)
 // ═══════════════════════════════════════════════════════════════════════
 function openReview(type, targetId, targetName) {
   reviewTargetType = type;
@@ -1722,8 +2088,9 @@ function openReview(type, targetId, targetName) {
   starRating = 0;
   setRating(0);
   document.getElementById('revTargetName').textContent = targetName;
-  document.getElementById('revTargetSub').textContent = type === 'chef' ? 'Chef Review' : 'Rider Review';
+  document.getElementById('revTargetSub').textContent = type === 'chef' ? 'Rate this Chef' : 'Rate this Rider';
   document.getElementById('reviewText').value = '';
+  document.getElementById('reviewerName').value = currentUser.name || '';
   document.getElementById('reviewModal').classList.add('show');
 }
 
@@ -1737,41 +2104,47 @@ function setRating(n) {
 function submitReview() {
   if (!starRating) { toast('Please select a star rating!'); return; }
   const text = document.getElementById('reviewText').value.trim();
-  if (!text) { toast('Please write a review!'); return; }
-  const review = { text, rating: starRating, reviewer: currentUser.name, targetId: reviewTargetId, type: reviewTargetType };
+  const reviewer = document.getElementById('reviewerName').value.trim() || (currentUser.name || 'Anonymous');
+  if (!text) { toast('Please write your review!'); return; }
+  const review = { text, rating: starRating, reviewer, targetId: reviewTargetId, type: reviewTargetType };
+
   if (reviewTargetType === 'chef') {
     chefReviews.push(review);
-    // Count bad reviews (1-2 stars = bad)
     if (starRating <= 2) {
       const badCount = chefReviews.filter(r => r.targetId === reviewTargetId && r.rating <= 2).length;
       if (badCount >= 10) {
-        // Auto-send details to owner via WhatsApp
-        const target = foods.find(f => f.cookId === reviewTargetId);
-        const msg = `⚠️ ALERT: Chef with 10+ bad reviews!\nChef: ${target ? target.cook : 'Unknown'}\nReviewer: ${currentUser.name}\nPhone: ${currentUser.phone}\nCNIC: ${currentUser.cnic}\nEmail: ${currentUser.email}\nAddress: ${currentUser.address}`;
+        const target = getPublicFoods().find(f => f.cookId === reviewTargetId);
+        const msg = `⚠️ 10 Bad Reviews Alert!\nChef: ${target ? target.cook : reviewTargetId}\nReporter: ${reviewer}`;
         openWhatsApp(msg);
-        toast('This chef has received 10 bad reviews. Admin notified!');
       }
     }
-    // Update cook reviews section
-    const cl = document.getElementById('cookReviewsList');
-    if (cl) cl.innerHTML = chefReviews.filter(r => r.targetId === 1).map(r =>
-      `<div class="review-card"><div class="review-head"><div class="reviewer">${r.reviewer} <span style="color:var(--gold);">${'★'.repeat(r.rating)}</span></div><div class="review-date">Just now</div></div><p>${r.text}</p></div>`
-    ).join('') || '<p style="color:var(--muted);font-size:14px;">No reviews yet.</p>';
+    // Update chef store if open
+    const storeRevList = document.getElementById('chefStoreReviewsList');
+    if (storeRevList) {
+      const myRevs = chefReviews.filter(r => r.targetId === reviewTargetId);
+      storeRevList.innerHTML = myRevs.map(r =>
+        `<div class="review-card"><div class="review-head"><div class="reviewer">${r.reviewer} <span style="color:var(--gold);">${'★'.repeat(r.rating)}</span></div><div class="review-date">Just now</div></div><p>${r.text}</p></div>`
+      ).join('');
+    }
+    updateCookStats();
   } else {
     riderReviews.push(review);
     if (starRating <= 2) {
       const badCount = riderReviews.filter(r => r.targetId === reviewTargetId && r.rating <= 2).length;
       if (badCount >= 10) {
-        const msg = `⚠️ ALERT: Rider with 10+ bad reviews!\nRider: ${riderProfile.name}\nReviewer: ${currentUser.name}\nPhone: ${currentUser.phone}\nCNIC: ${currentUser.cnic}\nEmail: ${currentUser.email}\nAddress: ${currentUser.address}`;
+        const msg = `⚠️ 10 Bad Reviews Alert!\nRider ID: ${reviewTargetId}\nReporter: ${reviewer}`;
         openWhatsApp(msg);
-        toast('This rider has received 10 bad reviews. Admin notified!');
       }
     }
     const rl = document.getElementById('riderReviewsList');
-    if (rl) rl.innerHTML = riderReviews.filter(r => r.targetId === 1).map(r =>
-      `<div class="review-card"><div class="review-head"><div class="reviewer">${r.reviewer} <span style="color:var(--gold);">${'★'.repeat(r.rating)}</span></div><div class="review-date">Just now</div></div><p>${r.text}</p></div>`
-    ).join('') || '<p style="color:var(--muted);font-size:14px;">No reviews yet.</p>';
+    if (rl) {
+      const myRevs = riderReviews.filter(r => r.targetId === reviewTargetId);
+      rl.innerHTML = myRevs.map(r =>
+        `<div class="review-card"><div class="review-head"><div class="reviewer">${r.reviewer} <span style="color:var(--gold);">${'★'.repeat(r.rating)}</span></div><div class="review-date">Just now</div></div><p>${r.text}</p></div>`
+      ).join('') || '<p style="color:var(--muted);font-size:14px;">No reviews yet.</p>';
+    }
   }
+  updateCustStats();
   toast('Review submitted! Thank you.');
   closeModal('reviewModal');
 }
@@ -1787,15 +2160,32 @@ function switchRole(role, btn) {
 
 function doLogin(e) {
   e.preventDefault();
+  currentUser.loggedIn = true;
+  currentUser.role = currentRole;
   const dashMap = {customer:'customer-dashboard', cook:'cook-dashboard', rider:'rider-dashboard'};
+  // Update nav button
+  document.getElementById('navLoginBtn').textContent = 'My Account';
+  // Update dashboard header
+  if (currentRole === 'customer') {
+    document.getElementById('custWelcomeName').textContent = 'Welcome, ' + (currentUser.name || 'Guest');
+    document.getElementById('custAddressDisplay').textContent = currentUser.address || 'Swabi';
+    document.getElementById('custAvatar').src = currentUser.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(currentUser.name||'Guest')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+  } else if (currentRole === 'cook') {
+    document.getElementById('cookDashAvatar').src = cookProfile.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(cookProfile.name||'Chef')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+    document.getElementById('cookStoreName').textContent = cookProfile.storeName || 'My Kitchen';
+  } else if (currentRole === 'rider') {
+    document.getElementById('riderDashAvatar').src = riderProfile.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(riderProfile.name||'Rider')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+    document.getElementById('riderDashName').textContent = (riderProfile.name || 'Rider') + ' — Delivery Partner';
+    const areas = riderProfile.areas.length ? riderProfile.areas : ['City Center'];
+    document.getElementById('riderAreaDisplay').innerHTML = areas.map(a => `<span class="area-tag"><i class="fas fa-map-pin"></i>${a}</span>`).join('');
+  }
   showPage(dashMap[currentRole]);
   toast(`Welcome back to ApnaKitchen!`);
 }
 
 function doRegister(e) {
   e.preventDefault();
-  const name = document.getElementById('reg_name').value;
-  currentUser.name    = name;
+  currentUser.name    = document.getElementById('reg_name').value;
   currentUser.phone   = document.getElementById('reg_phone').value;
   currentUser.email   = document.getElementById('reg_email').value;
   currentUser.cnic    = document.getElementById('reg_cnic').value;
@@ -1837,50 +2227,59 @@ function riderBack(step) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// PAYMENT SLIP UPLOAD + WHATSAPP SEND
+// PAYMENT SLIP UPLOAD
 // ═══════════════════════════════════════════════════════════════════════
 function onSlipUpload(input, previewId, btnId) {
   const prev = document.getElementById(previewId);
   const btn  = document.getElementById(btnId);
   if (input.files && input.files[0]) {
     const r = new FileReader();
-    r.onload = e => {
-      prev.src = e.target.result;
-      prev.style.display = 'block';
-      if (btn) btn.disabled = false;
-    };
+    r.onload = e => { prev.src = e.target.result; prev.style.display = 'block'; if (btn) btn.disabled = false; };
     r.readAsDataURL(input.files[0]);
   }
 }
 
+// UPDATED: Cook payment — only sends slip image + name, CNIC, store name. No extra text.
 function submitCookPayment() {
   const name  = document.getElementById('c_name').value || 'Cook Applicant';
-  const phone = document.getElementById('c_phone').value || '';
   const cnic  = document.getElementById('c_cnic').value || '';
   const store = document.getElementById('cookStoreInput')?.value || '';
-  const msg   = `🍳 New Cook Registration\nName: ${name}\nPhone: ${phone}\nCNIC: ${cnic}\nStore: ${store}\nFee: Rs. 2,000\n\n[Payment slip attached — please send password: ${COOK_PASSWORD}]`;
-  toast('Payment slip submitted! Opening WhatsApp…');
+  // Build minimal WhatsApp message: only essential fields + slip
+  const msg = `Name: ${name}\nCNIC: ${cnic}\nStore: ${store}`;
+  toast('Payment slip submitted! Opening WhatsApp to send slip…');
+  // Save to profile
+  cookProfile.name      = name;
+  cookProfile.cnic      = cnic;
+  cookProfile.phone     = document.getElementById('c_phone').value || '';
+  cookProfile.email     = document.getElementById('c_email').value || '';
+  cookProfile.address   = document.getElementById('c_address').value || '';
+  cookProfile.storeName = store;
   setTimeout(() => { openWhatsApp(msg); cookNext(5); }, 800);
 }
 
+// UPDATED: Rider payment — only sends slip image + name, CNIC. No extra text.
 function submitRiderPayment() {
   const name  = document.getElementById('r_name').value || 'Rider Applicant';
-  const phone = document.getElementById('r_phone').value || '';
   const cnic  = document.getElementById('r_cnic').value || '';
-  const msg   = `🏍️ New Rider Registration\nName: ${name}\nPhone: ${phone}\nCNIC: ${cnic}\nFee: Rs. 1,000\n\n[Payment slip attached — please send password: ${RIDER_PASSWORD}]`;
-  toast('Payment slip submitted! Opening WhatsApp…');
+  const msg = `Name: ${name}\nCNIC: ${cnic}`;
+  toast('Payment slip submitted! Opening WhatsApp to send slip…');
+  riderProfile.name    = name;
+  riderProfile.cnic    = cnic;
+  riderProfile.phone   = document.getElementById('r_phone').value || '';
+  riderProfile.email   = document.getElementById('r_email').value || '';
+  riderProfile.address = document.getElementById('r_address').value || '';
   setTimeout(() => { openWhatsApp(msg); riderNext(5); }, 800);
 }
 
 function verifyCookPassword() {
   const entered = document.getElementById('cookPasswordInput').value;
   if (entered !== COOK_PASSWORD) { toast('Incorrect password! Check your WhatsApp.'); return; }
-  const storeName = document.getElementById('cookStoreInput')?.value || "Chef's Kitchen";
-  cookProfile.storeName = storeName;
-  cookProfile.regDate   = new Date();
-  cookProfile.premium   = true;
-  document.getElementById('cookStoreName').textContent = storeName;
-  toast(`Welcome! "${storeName}" is now live.`);
+  cookProfile.regDate  = new Date();
+  cookProfile.premium  = true;
+  document.getElementById('cookStoreName').textContent = cookProfile.storeName || "My Kitchen";
+  document.getElementById('cookDashAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(cookProfile.name||'Chef')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+  document.getElementById('navLoginBtn').textContent = 'My Account';
+  toast(`Welcome! "${cookProfile.storeName}" is now live.`);
   showPage('cook-dashboard');
 }
 
@@ -1889,12 +2288,17 @@ function verifyRiderPassword() {
   if (entered !== RIDER_PASSWORD) { toast('Incorrect password! Check your WhatsApp.'); return; }
   riderProfile.regDate = new Date();
   riderProfile.premium = true;
+  document.getElementById('riderDashName').textContent = (riderProfile.name || 'Rider') + ' — Delivery Partner';
+  document.getElementById('riderDashAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(riderProfile.name||'Rider')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+  const areas = riderProfile.areas.length ? riderProfile.areas : ['City Center'];
+  document.getElementById('riderAreaDisplay').innerHTML = areas.map(a => `<span class="area-tag"><i class="fas fa-map-pin"></i>${a}</span>`).join('');
+  document.getElementById('navLoginBtn').textContent = 'My Account';
   toast('Welcome! Your rider account is ready.');
   showPage('rider-dashboard');
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// PREMIUM — CHECK & RENEWAL
+// PREMIUM CHECK & RENEWAL
 // ═══════════════════════════════════════════════════════════════════════
 function checkCookPremium() {
   if (!cookProfile.regDate || !cookProfile.premium) return;
@@ -1924,20 +2328,20 @@ function checkRiderPremium() {
 
 function submitCookRenewal() {
   pendingRenewalRole = 'cook';
-  const msg = `🔄 Cook Premium Renewal\nChef: ${cookProfile.name}\nPhone: ${cookProfile.phone}\nFee: Rs. 2,000\n[Payment slip attached — please send renewal password]`;
+  const msg = `Name: ${cookProfile.name}\nCNIC: ${cookProfile.cnic}\nStore: ${cookProfile.storeName}`;
   toast('Renewal slip submitted! Opening WhatsApp…');
   setTimeout(() => { openWhatsApp(msg); document.getElementById('premiumPwModal').classList.add('show'); }, 800);
 }
 
 function submitRiderRenewal() {
   pendingRenewalRole = 'rider';
-  const msg = `🔄 Rider Premium Renewal\nRider: ${riderProfile.name}\nPhone: ${riderProfile.phone}\nFee: Rs. 1,000\n[Payment slip attached — please send renewal password]`;
+  const msg = `Name: ${riderProfile.name}\nCNIC: ${riderProfile.cnic}`;
   toast('Renewal slip submitted! Opening WhatsApp…');
   setTimeout(() => { openWhatsApp(msg); document.getElementById('premiumPwModal').classList.add('show'); }, 800);
 }
 
 function verifyRenewalCode() {
-  const entered = document.getElementById('renewalCodeInput').value;
+  const entered  = document.getElementById('renewalCodeInput').value;
   const expected = pendingRenewalRole === 'cook' ? COOK_PASSWORD : RIDER_PASSWORD;
   if (entered !== expected) { toast('Incorrect renewal code! Check WhatsApp.'); return; }
   if (pendingRenewalRole === 'cook') {
@@ -1964,12 +2368,12 @@ function verifyRenewalCode() {
 function toggleKitchen(cb) {
   const el = document.getElementById('kitchenStatus');
   el.textContent = cb.checked ? 'Open' : 'Closed';
-  el.className   = 'toggle-label ' + (cb.checked ? 'open' : 'closed');
+  el.className = 'toggle-label ' + (cb.checked ? 'open' : 'closed');
   toast('Kitchen is now ' + (cb.checked ? 'OPEN' : 'CLOSED'));
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// NAVBAR NOTIFICATIONS
+// NOTIFICATIONS
 // ═══════════════════════════════════════════════════════════════════════
 let notifCount = 0;
 function addNavNotif(text, cls='') {
@@ -1985,6 +2389,7 @@ function addNavNotif(text, cls='') {
 }
 
 function toggleNotif() {
+  document.getElementById('cartPanel').classList.remove('show');
   document.getElementById('notifPanel').classList.toggle('show');
   notifCount = 0;
   document.getElementById('notifCount').style.display = 'none';
@@ -2014,7 +2419,6 @@ function previewImg(inp, id) {
 // MODALS
 // ═══════════════════════════════════════════════════════════════════════
 function closeModal(id) { document.getElementById(id).classList.remove('show'); }
-
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
   overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('show'); });
 });
@@ -2036,6 +2440,13 @@ document.addEventListener('DOMContentLoaded', () => {
   renderGrids();
   document.querySelectorAll('.checkbox').forEach(c => {
     const i = c.querySelector('i'); if (i) i.style.display = 'none';
+  });
+  // Close panels when clicking outside
+  document.addEventListener('click', e => {
+    const notif = document.getElementById('notifPanel');
+    const cart = document.getElementById('cartPanel');
+    if (!notif.contains(e.target) && !e.target.closest('.nav-bell')) notif.classList.remove('show');
+    if (!cart.contains(e.target) && !e.target.closest('.nav-cart')) cart.classList.remove('show');
   });
 });
 </script>
