@@ -83,13 +83,13 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .btn-hg{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:12px;padding:14px 28px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;}
 .btn-hg:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6);}
 
-/* SEARCH BAR (FoodPanda style) */
+/* SEARCH BAR */
 .hero-search{display:flex;gap:0;background:#fff;border-radius:14px;overflow:hidden;max-width:520px;margin-bottom:36px;box-shadow:0 6px 32px rgba(0,0,0,.2);}
 .hero-search input{flex:1;padding:16px 20px;border:none;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);outline:none;background:transparent;}
 .hero-search button{background:var(--crimson);color:#fff;border:none;padding:0 28px;font-size:16px;cursor:pointer;transition:all .2s;}
 .hero-search button:hover{background:var(--crimson-deep);}
 
-/* CATEGORY CHIPS (FoodPanda style) */
+/* CATEGORY CHIPS */
 .categories-bar{padding:24px 48px 0;background:var(--warm-white);border-bottom:1px solid var(--border);}
 .cat-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:16px;scrollbar-width:none;}
 .cat-scroll::-webkit-scrollbar{display:none;}
@@ -136,7 +136,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 /* HOME MENU */
 .home-menu-section{padding:0 48px 56px;}
 
-/* PROMO BANNER (FoodPanda style) */
+/* PROMO BANNER */
 .promo-strip{background:linear-gradient(90deg,var(--crimson-deep),var(--crimson-mid));color:#fff;padding:14px 48px;display:flex;align-items:center;gap:16px;font-size:14px;}
 .promo-strip i{color:var(--gold-light);font-size:18px;}
 .promo-strip strong{color:var(--gold-light);}
@@ -227,7 +227,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .stat-val.danger{color:var(--crimson);}
 .stat-val.success{color:var(--success);}
 
-/* ORDER HISTORY (FoodPanda style) */
+/* ORDER HISTORY */
 .order-history-card{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-bottom:12px;display:flex;gap:14px;align-items:center;}
 .order-history-card img{width:56px;height:56px;border-radius:10px;object-fit:cover;}
 .order-hist-info{flex:1;}
@@ -240,7 +240,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .reorder-btn{background:var(--crimson);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:8px;}
 .reorder-btn:hover{background:var(--crimson-deep);}
 
-/* LIVE ORDER TRACKER (FoodPanda style) */
+/* LIVE ORDER TRACKER */
 .order-tracker{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;margin-bottom:24px;}
 .tracker-steps{display:flex;align-items:center;justify-content:space-between;position:relative;margin:24px 0;}
 .tracker-steps::before{content:'';position:absolute;top:20px;left:0;right:0;height:2px;background:var(--border);z-index:0;}
@@ -325,7 +325,6 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .chef-banner p{font-size:14px;opacity:.8;margin-top:4px;}
 .chef-stars{color:var(--gold-light);font-size:14px;margin-top:6px;}
 .chef-stars span{color:rgba(255,255,255,.6);font-size:13px;margin-left:6px;}
-/* Open/Closed badge on chef store */
 .chef-status-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-top:8px;}
 .chef-status-badge.open{background:rgba(30,124,74,.2);color:#7BE4A6;}
 .chef-status-badge.closed{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);}
@@ -342,12 +341,6 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 
 /* PAID BADGE */
 .paid-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(30,124,74,.1);color:var(--success);padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid rgba(30,124,74,.2);margin-bottom:12px;}
-
-/* EDIT AREAS MODAL */
-.villages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-height:340px;overflow-y:auto;padding:4px;}
-.vill-check{display:flex;align-items:center;gap:7px;padding:7px 10px;background:var(--cream);border-radius:8px;cursor:pointer;font-size:12px;color:var(--charcoal);border:1px solid transparent;transition:all .2s;}
-.vill-check:hover{border-color:var(--crimson);background:var(--gold-pale);}
-.vill-check input{accent-color:var(--crimson);}
 
 /* APPLY WRAP */
 .apply-wrap{max-width:860px;margin:0 auto;padding:40px 48px;}
@@ -374,6 +367,12 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .premium-banner h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--gold-light);margin-bottom:12px;}
 .premium-amount{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#fff;margin-bottom:8px;}
 .expiry-tag{background:rgba(255,255,255,.1);border-radius:8px;padding:10px 20px;display:inline-block;margin-bottom:20px;font-size:14px;}
+
+/* SUSPENDED ACCOUNT MESSAGE */
+.suspended-banner{background:linear-gradient(135deg,#3D2030,#7A0020);border-radius:var(--r-lg);padding:40px;margin-bottom:20px;text-align:center;color:#fff;border:2px solid var(--crimson);}
+.suspended-banner h3{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold-light);margin-bottom:12px;}
+.suspended-banner p{opacity:.9;margin-bottom:20px;font-size:15px;}
+.suspended-banner .lock-icon{font-size:48px;color:var(--gold-light);margin-bottom:16px;}
 
 /* MODALS */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,10,14,.6);backdrop-filter:blur(4px);z-index:2000;align-items:center;justify-content:center;}
@@ -427,6 +426,10 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .rating-row .stars{color:var(--gold);font-size:12px;}
 .rating-row span{font-size:12px;color:var(--muted);}
 
+/* READ ONLY MODE */
+.read-only-notice{background:var(--gold-pale);border:1px solid var(--gold);border-radius:10px;padding:12px 16px;margin-bottom:20px;color:var(--crimson);font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;}
+.read-only-notice i{color:var(--gold);}
+
 ::-webkit-scrollbar{width:5px;}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
 
@@ -440,12 +443,12 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   .how-section{margin:0 20px 32px;}
   .hero{padding:48px 24px;}
   .hero h1{font-size:34px;}
-  .villages-grid{grid-template-columns:repeat(2,1fr);}
   .grid-2{grid-template-columns:1fr;}
   .categories-bar{padding:16px 20px 0;}
   .cart-panel,.notif-panel{width:calc(100vw - 32px);right:16px;}
 }
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -519,7 +522,6 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
     </div>
   </div>
 
-  <!-- CATEGORY BAR -->
   <div class="categories-bar">
     <div class="cat-scroll">
       <div class="cat-chip active" onclick="filterCat(this,'')"><i class="fas fa-th"></i>All</div>
@@ -636,7 +638,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   </div>
 </div>
 
-<!-- ═══ APPLY COOK (Multi-step) ══════════════════════════════════════ -->
+<!-- ═══ APPLY COOK (Simplified 3-Step) ══════════════════════════════════════ -->
 <div id="apply-cook" class="page">
   <div class="apply-wrap">
     <div class="apply-head">
@@ -646,104 +648,38 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
     </div>
     <div class="onboard-steps">
       <div class="onboard-step active" id="cstep1"><span class="snum">1</span>Personal Info</div>
-      <div class="onboard-step" id="cstep2"><span class="snum">2</span>Kitchen</div>
-      <div class="onboard-step" id="cstep3"><span class="snum">3</span>Areas</div>
-      <div class="onboard-step" id="cstep4"><span class="snum">4</span>Documents</div>
-      <div class="onboard-step" id="cstep5"><span class="snum">5</span>Payment</div>
-      <div class="onboard-step" id="cstep6"><span class="snum">6</span>Password</div>
+      <div class="onboard-step" id="cstep2"><span class="snum">2</span>Payment</div>
+      <div class="onboard-step" id="cstep3"><span class="snum">3</span>Password</div>
     </div>
-    <!-- Step 1 -->
+    
+    <!-- Step 1: Personal Info (NO ADDRESS) -->
     <div id="cook-s1">
       <div class="apply-section">
         <h3><i class="fas fa-user"></i>Personal Information</h3>
         <div class="grid-2">
           <div class="form-group"><label>Full Name</label><input type="text" id="c_name" placeholder="As per CNIC" required></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="c_phone" placeholder="03XX-XXXXXXX" required></div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group"><label>Email</label><input type="email" id="c_email" placeholder="you@example.com" required></div>
           <div class="form-group"><label>CNIC Number</label><input type="text" id="c_cnic" placeholder="XXXXX-XXXXXXX-X" required></div>
         </div>
-        <div class="grid-2">
-          <div class="form-group"><label>Phone</label><input type="tel" id="c_phone" placeholder="03XX-XXXXXXX" required></div>
-          <div class="form-group"><label>Email</label><input type="email" id="c_email" placeholder="you@example.com"></div>
-        </div>
-        <div class="form-group"><label>Address in Swabi</label><input type="text" id="c_address" placeholder="House #, Street, Area, Swabi" required></div>
+        <div class="form-group"><label>Restaurant / Kitchen Name</label><input type="text" id="c_store" placeholder="e.g. Ahmad's Kitchen" required></div>
         <div class="form-group">
           <label>Profile Photo</label>
-          <div class="file-upload"><input type="file" accept="image/*" onchange="previewImg(this,'cookPrev')"><div class="file-label"><i class="fas fa-camera"></i>Upload your photo</div></div>
+          <div class="file-upload"><input type="file" accept="image/*" id="c_photo" onchange="previewImg(this,'cookPrev')"><div class="file-label"><i class="fas fa-camera"></i>Upload your photo</div></div>
           <img id="cookPrev" class="preview-img">
         </div>
+        <div class="grid-2">
+          <div class="form-group"><label>CNIC Front</label><div class="file-upload"><input type="file" accept="image/*" id="c_cnic_front"><div class="file-label"><i class="fas fa-id-card"></i>Front side</div></div></div>
+          <div class="form-group"><label>CNIC Back</label><div class="file-upload"><input type="file" accept="image/*" id="c_cnic_back"><div class="file-label"><i class="fas fa-id-card"></i>Back side</div></div></div>
+        </div>
       </div>
-      <button class="btn-full" onclick="cookNext(1)">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
+      <button class="btn-full" onclick="validateCookStep1()">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
     </div>
-    <!-- Step 2 -->
+    
+    <!-- Step 2: Payment (Rs. 2000) -->
     <div id="cook-s2" style="display:none;">
-      <div class="apply-section">
-        <h3><i class="fas fa-store"></i>Kitchen Details</h3>
-        <div class="form-group"><label>Kitchen / Store Name</label><input type="text" id="cookStoreInput" placeholder="e.g. Ahmad's Kitchen" required></div>
-        <div class="grid-2">
-          <div class="form-group"><label>Zone / Area</label>
-            <select id="c_zone" required><option value="">Select area</option><option>City Center</option><option>Guli Bagh</option><option>Topi Road</option><option>Shahmansoor</option><option>Marghuz</option><option>Kotha</option><option>Baja</option><option>Other</option></select>
-          </div>
-          <div class="form-group"><label>Years of Experience</label><input type="number" id="c_exp" placeholder="e.g. 5" min="0" required></div>
-        </div>
-        <div class="form-group"><label>Specialty Cuisine</label><input type="text" id="c_cuisine" placeholder="e.g. Pakistani, Desi, Chinese"></div>
-      </div>
-      <div style="display:flex;gap:12px;">
-        <button class="btn-card" style="flex:1;padding:14px;" onclick="cookBack(2)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
-        <button class="btn-full" style="flex:2;" onclick="cookNext(2)">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
-      </div>
-    </div>
-    <!-- Step 3 - Delivery Areas -->
-    <div id="cook-s3" style="display:none;">
-      <div class="apply-section">
-        <h3><i class="fas fa-map-marker-alt"></i>Delivery Areas</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;font-weight:300;">Select areas where you can deliver from your kitchen:</p>
-        <div class="villages-grid" id="cookAreaSelect">
-          <label class="vill-check"><input type="checkbox"><span>City Center</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Guli Bagh</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Topi Road</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Shahmansoor</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Marghuz</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Kotha</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Baja</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Kabla</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Maniri</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Sheikh Jana</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Yar Hussain</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Zaida</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Matta</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Chota Lahor</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Turlandi</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Dobian</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Panjpir</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Ismaila</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Manglawar</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Pabbi</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Tangi</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Kanju</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Buner</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Daggar</span></label>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;">
-        <button class="btn-card" style="flex:1;padding:14px;" onclick="cookBack(3)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
-        <button class="btn-full" style="flex:2;" onclick="cookNext(3)">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
-      </div>
-    </div>
-    <!-- Step 4 - Documents -->
-    <div id="cook-s4" style="display:none;">
-      <div class="apply-section">
-        <h3><i class="fas fa-file-alt"></i>Documents</h3>
-        <div class="grid-2">
-          <div class="form-group"><label>CNIC Front</label><div class="file-upload"><input type="file" accept="image/*"><div class="file-label"><i class="fas fa-id-card"></i>Front side</div></div></div>
-          <div class="form-group"><label>CNIC Back</label><div class="file-upload"><input type="file" accept="image/*"><div class="file-label"><i class="fas fa-id-card"></i>Back side</div></div></div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;">
-        <button class="btn-card" style="flex:1;padding:14px;" onclick="cookBack(4)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
-        <button class="btn-full" style="flex:2;" onclick="cookNext(4)">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
-      </div>
-    </div>
-    <!-- Step 5 - Payment (UPDATED: slip only sent, no extra message) -->
-    <div id="cook-s5" style="display:none;">
       <div class="payment-section">
         <h3><i class="fas fa-lock"></i> Registration Fee</h3>
         <div class="payment-amount">Rs. 2,000</div>
@@ -755,40 +691,43 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         </div>
         <p style="font-size:13px;color:var(--muted);margin-top:8px;">Send Rs. 2,000 to the above account, then upload your payment slip below.</p>
         <div class="form-group" style="text-align:left;margin-top:20px;">
-          <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip</label>
+          <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip (Required)*</label>
           <div class="file-upload">
             <input type="file" accept="image/*" id="cookPaySlip" onchange="onSlipUpload(this,'cookPaySlipPreview','cookPayBtn')">
             <div class="file-label"><i class="fas fa-cloud-upload-alt"></i>Click to upload payment slip screenshot</div>
           </div>
           <img id="cookPaySlipPreview" style="width:100%;max-width:300px;border-radius:10px;margin-top:10px;display:none;">
+          <p id="cookSlipError" style="color:var(--crimson);font-size:12px;margin-top:8px;display:none;"><i class="fas fa-exclamation-circle"></i> Please upload payment slip to continue</p>
         </div>
-        <div class="whatsapp-info"><i class="fab fa-whatsapp"></i><div><strong>Your slip + details will be sent to WhatsApp: 03483351028</strong><br>You will receive your password on WhatsApp within 15 minutes</div></div>
+        <div class="whatsapp-info"><i class="fab fa-whatsapp"></i><div><strong>Your slip will be sent to WhatsApp: 03483351028</strong><br>You will receive your password on WhatsApp within 15 minutes</div></div>
       </div>
       <div style="display:flex;gap:12px;">
-        <button class="btn-card" style="flex:1;padding:14px;" onclick="cookBack(5)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
+        <button class="btn-card" style="flex:1;padding:14px;" onclick="cookBack(2)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
         <button class="btn-full" style="flex:2;" id="cookPayBtn" onclick="submitCookPayment()" disabled>
           <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Payment Slip
         </button>
       </div>
     </div>
-    <!-- Step 6 - Password -->
-    <div id="cook-s6" style="display:none;">
+    
+    <!-- Step 3: Password -->
+    <div id="cook-s3" style="display:none;">
       <div class="password-section">
         <div style="width:80px;height:80px;background:var(--gold-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;color:var(--gold);"><i class="fas fa-key"></i></div>
         <h3>Enter Your Password</h3>
         <p>Enter the password you received on WhatsApp (03483351028)</p>
         <div class="password-input"><input type="password" id="cookPasswordInput" placeholder="••••••••" maxlength="12"></div>
+        <p id="cookPassError" style="color:var(--crimson);font-size:13px;display:none;margin-bottom:10px;"><i class="fas fa-times-circle"></i> Incorrect password! Please check WhatsApp.</p>
         <p style="color:var(--muted);font-size:13px;">Password is case-sensitive. Enter exactly as received.</p>
       </div>
       <div style="display:flex;gap:12px;">
-        <button class="btn-card" style="flex:1;padding:14px;" onclick="cookBack(6)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
+        <button class="btn-card" style="flex:1;padding:14px;" onclick="cookBack(3)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
         <button class="btn-full" style="flex:2;" onclick="verifyCookPassword()"><i class="fas fa-check" style="margin-right:8px;"></i>Continue to Dashboard</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ BECOME RIDER (Multi-step) ══════════════════════════════════════ -->
+<!-- ═══ BECOME RIDER (Simplified 3-Step) ══════════════════════════════════════ -->
 <div id="become-rider" class="page">
   <div class="apply-wrap">
     <div class="apply-head">
@@ -798,100 +737,42 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
     </div>
     <div class="onboard-steps">
       <div class="onboard-step active" id="rstep1"><span class="snum">1</span>Personal Info</div>
-      <div class="onboard-step" id="rstep2"><span class="snum">2</span>Vehicle</div>
-      <div class="onboard-step" id="rstep3"><span class="snum">3</span>Areas</div>
-      <div class="onboard-step" id="rstep4"><span class="snum">4</span>Documents</div>
-      <div class="onboard-step" id="rstep5"><span class="snum">5</span>Payment</div>
-      <div class="onboard-step" id="rstep6"><span class="snum">6</span>Password</div>
+      <div class="onboard-step" id="rstep2"><span class="snum">2</span>Payment</div>
+      <div class="onboard-step" id="rstep3"><span class="snum">3</span>Password</div>
     </div>
-    <!-- R Step 1 -->
+    
+    <!-- Step 1: Personal Info -->
     <div id="rider-s1">
       <div class="apply-section">
         <h3><i class="fas fa-user"></i>Personal Information</h3>
         <div class="grid-2">
           <div class="form-group"><label>Full Name</label><input type="text" id="r_name" placeholder="As per CNIC" required></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="r_phone" placeholder="03XX-XXXXXXX" required></div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group"><label>Email</label><input type="email" id="r_email" placeholder="you@example.com" required></div>
           <div class="form-group"><label>CNIC Number</label><input type="text" id="r_cnic" placeholder="XXXXX-XXXXXXX-X" required></div>
         </div>
-        <div class="grid-2">
-          <div class="form-group"><label>Phone Number</label><input type="tel" id="r_phone" placeholder="03XX-XXXXXXX" required></div>
-          <div class="form-group"><label>Email</label><input type="email" id="r_email" placeholder="you@example.com"></div>
-        </div>
         <div class="form-group"><label>Address in Swabi</label><input type="text" id="r_address" placeholder="House #, Street, Area, Swabi" required></div>
+        <div class="grid-2">
+          <div class="form-group"><label>Vehicle Type</label><select id="r_vehicle_type" required><option value="">Select</option><option>Motorcycle</option><option>Scooter</option><option>Bicycle</option></select></div>
+          <div class="form-group"><label>Vehicle Number</label><input type="text" id="r_vehicle_no" placeholder="SWA-1234" required></div>
+        </div>
         <div class="form-group">
           <label>Profile Photo</label>
-          <div class="file-upload"><input type="file" accept="image/*" onchange="previewImg(this,'riderPrev')"><div class="file-label"><i class="fas fa-camera"></i>Upload clear photo of yourself</div></div>
+          <div class="file-upload"><input type="file" accept="image/*" id="r_photo" onchange="previewImg(this,'riderPrev')"><div class="file-label"><i class="fas fa-camera"></i>Upload clear photo of yourself</div></div>
           <img id="riderPrev" class="preview-img">
         </div>
+        <div class="grid-2">
+          <div class="form-group"><label>CNIC Front</label><div class="file-upload"><input type="file" accept="image/*" id="r_cnic_front"><div class="file-label"><i class="fas fa-id-card"></i>Front side</div></div></div>
+          <div class="form-group"><label>CNIC Back</label><div class="file-upload"><input type="file" accept="image/*" id="r_cnic_back"><div class="file-label"><i class="fas fa-id-card"></i>Back side</div></div></div>
+        </div>
       </div>
-      <button class="btn-full" onclick="riderNext(1)">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
+      <button class="btn-full" onclick="validateRiderStep1()">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
     </div>
-    <!-- R Step 2 -->
+    
+    <!-- Step 2: Payment (Rs. 1000) -->
     <div id="rider-s2" style="display:none;">
-      <div class="apply-section">
-        <h3><i class="fas fa-motorcycle"></i>Vehicle Information</h3>
-        <div class="grid-2">
-          <div class="form-group"><label>Vehicle Type</label><select required><option value="">Select</option><option>Motorcycle</option><option>Scooter</option><option>Bicycle</option></select></div>
-          <div class="form-group"><label>Vehicle Number</label><input type="text" placeholder="SWA-1234" required></div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;">
-        <button class="btn-card" style="flex:1;padding:14px;" onclick="riderBack(2)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
-        <button class="btn-full" style="flex:2;" onclick="riderNext(2)">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
-      </div>
-    </div>
-    <!-- R Step 3 -->
-    <div id="rider-s3" style="display:none;">
-      <div class="apply-section">
-        <h3><i class="fas fa-map-marker-alt"></i>Delivery Areas — Swabi</h3>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;font-weight:300;">Select all areas where you can deliver orders:</p>
-        <div class="villages-grid" id="riderAreaSelect">
-          <label class="vill-check"><input type="checkbox"><span>City Center</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Guli Bagh</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Topi Road</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Shahmansoor</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Marghuz</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Kotha</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Baja</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Kabla</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Maniri</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Sheikh Jana</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Yar Hussain</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Zaida</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Matta</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Chota Lahor</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Turlandi</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Dobian</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Panjpir</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Ismaila</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Manglawar</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Pabbi</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Tangi</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Kanju</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Buner</span></label>
-          <label class="vill-check"><input type="checkbox"><span>Daggar</span></label>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;">
-        <button class="btn-card" style="flex:1;padding:14px;" onclick="riderBack(3)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
-        <button class="btn-full" style="flex:2;" onclick="riderNext(3)">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
-      </div>
-    </div>
-    <!-- R Step 4 -->
-    <div id="rider-s4" style="display:none;">
-      <div class="apply-section">
-        <h3><i class="fas fa-file-alt"></i>Documents</h3>
-        <div class="grid-2">
-          <div class="form-group"><label>CNIC Front</label><div class="file-upload"><input type="file" accept="image/*"><div class="file-label"><i class="fas fa-id-card"></i>Front side</div></div></div>
-          <div class="form-group"><label>CNIC Back</label><div class="file-upload"><input type="file" accept="image/*"><div class="file-label"><i class="fas fa-id-card"></i>Back side</div></div></div>
-        </div>
-      </div>
-      <div style="display:flex;gap:12px;">
-        <button class="btn-card" style="flex:1;padding:14px;" onclick="riderBack(4)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
-        <button class="btn-full" style="flex:2;" onclick="riderNext(4)">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
-      </div>
-    </div>
-    <!-- R Step 5 - Payment (UPDATED) -->
-    <div id="rider-s5" style="display:none;">
       <div class="payment-section">
         <h3><i class="fas fa-lock"></i> Registration Fee</h3>
         <div class="payment-amount">Rs. 1,000</div>
@@ -903,33 +784,36 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         </div>
         <p style="font-size:13px;color:var(--muted);margin-top:8px;">Send Rs. 1,000 to the above account, then upload your payment slip below.</p>
         <div class="form-group" style="text-align:left;margin-top:20px;">
-          <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip</label>
+          <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip (Required)*</label>
           <div class="file-upload">
             <input type="file" accept="image/*" id="riderPaySlip" onchange="onSlipUpload(this,'riderPaySlipPreview','riderPayBtn')">
             <div class="file-label"><i class="fas fa-cloud-upload-alt"></i>Click to upload payment slip screenshot</div>
           </div>
           <img id="riderPaySlipPreview" style="width:100%;max-width:300px;border-radius:10px;margin-top:10px;display:none;">
+          <p id="riderSlipError" style="color:var(--crimson);font-size:12px;margin-top:8px;display:none;"><i class="fas fa-exclamation-circle"></i> Please upload payment slip to continue</p>
         </div>
-        <div class="whatsapp-info"><i class="fab fa-whatsapp"></i><div><strong>Your slip + details will be sent to WhatsApp: 03483351028</strong><br>You will receive your password on WhatsApp within 15 minutes</div></div>
+        <div class="whatsapp-info"><i class="fab fa-whatsapp"></i><div><strong>Your slip will be sent to WhatsApp: 03483351028</strong><br>You will receive your password on WhatsApp within 15 minutes</div></div>
       </div>
       <div style="display:flex;gap:12px;">
-        <button class="btn-card" style="flex:1;padding:14px;" onclick="riderBack(5)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
+        <button class="btn-card" style="flex:1;padding:14px;" onclick="riderBack(2)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
         <button class="btn-full" style="flex:2;" id="riderPayBtn" onclick="submitRiderPayment()" disabled>
           <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Payment Slip
         </button>
       </div>
     </div>
-    <!-- R Step 6 -->
-    <div id="rider-s6" style="display:none;">
+    
+    <!-- Step 3: Password -->
+    <div id="rider-s3" style="display:none;">
       <div class="password-section">
         <div style="width:80px;height:80px;background:var(--gold-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;color:var(--gold);"><i class="fas fa-key"></i></div>
         <h3>Enter Your Password</h3>
         <p>Enter the password you received on WhatsApp (03483351028)</p>
         <div class="password-input"><input type="password" id="riderPasswordInput" placeholder="••••••" maxlength="10"></div>
+        <p id="riderPassError" style="color:var(--crimson);font-size:13px;display:none;margin-bottom:10px;"><i class="fas fa-times-circle"></i> Incorrect password! Please check WhatsApp.</p>
         <p style="color:var(--muted);font-size:13px;">Password is case-sensitive.</p>
       </div>
       <div style="display:flex;gap:12px;">
-        <button class="btn-card" style="flex:1;padding:14px;" onclick="riderBack(6)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
+        <button class="btn-card" style="flex:1;padding:14px;" onclick="riderBack(3)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
         <button class="btn-full" style="flex:2;" onclick="verifyRiderPassword()"><i class="fas fa-check" style="margin-right:8px;"></i>Continue to Dashboard</button>
       </div>
     </div>
@@ -1095,49 +979,70 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 <!-- ═══ COOK DASHBOARD ═══════════════════════════════════════════════ -->
 <div id="cook-dashboard" class="page">
   <div class="dash-wrap">
-    <div class="dash-header">
-      <div class="dash-user">
-        <img id="cookDashAvatar" src="" class="dash-avatar">
-        <div>
-          <h2 id="cookStoreName">My Kitchen</h2>
-          <p><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;font-size:11px;"></i>Swabi</p>
-          <div class="dash-stars" id="cookDashStars"><span style="color:var(--muted);">No ratings yet</span></div>
+    <!-- SUSPENDED BANNER (When Premium Expired) -->
+    <div class="suspended-banner" id="cookSuspendedBanner" style="display:none;">
+      <div class="lock-icon"><i class="fas fa-lock"></i></div>
+      <h3>Account Suspended</h3>
+      <p>Your 1-month premium membership has expired. Your account is currently locked.</p>
+      <p style="font-size:13px;opacity:.8;margin-bottom:16px;">You can view your reviews and past data, but cannot receive orders or edit menu.</p>
+      <div class="expiry-tag"><i class="fas fa-calendar-times" style="margin-right:6px;color:var(--gold-light);"></i>Expired on: <span id="cookExpiryDateDisplay">—</span></div>
+      <button class="btn-hp" onclick="showCookRenewal()" style="margin-top:10px;"><i class="fas fa-crown" style="margin-right:8px;"></i>Buy Premium - Rs. 2,000</button>
+    </div>
+
+    <!-- PREMIUM RENEWAL PAGE (Hidden by default) -->
+    <div id="cookRenewalPage" style="display:none;">
+      <button class="btn-card" onclick="backToSuspendedCook()" style="margin-bottom:20px;"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
+      <div class="premium-banner">
+        <h3><i class="fas fa-crown" style="margin-right:8px;"></i>Renew Premium Membership</h3>
+        <div class="premium-amount">Rs. 2,000</div>
+        <p style="opacity:.8;margin-bottom:16px;">Monthly Renewal Fee</p>
+        <div class="naypay-box" style="max-width:400px;margin:0 auto 20px;">
+          <h4><i class="fas fa-university"></i> Send to NayaPay</h4>
+          <div class="account-num">PK34NAYA1234503169382133</div>
+          <div class="account-name">ApnaKitchen</div>
         </div>
+        <div class="form-group" style="max-width:400px;margin:0 auto 16px;text-align:left;">
+          <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip (Required)*</label>
+          <div class="file-upload">
+            <input type="file" accept="image/*" id="cookRenewSlip" onchange="onSlipUpload(this,'cookRenewSlipPreview','cookRenewSubmitBtn')">
+            <div class="file-label"><i class="fas fa-cloud-upload-alt"></i>Upload payment slip</div>
+          </div>
+          <img id="cookRenewSlipPreview" style="width:100%;max-width:300px;border-radius:10px;margin-top:10px;display:none;">
+        </div>
+        <button class="btn-full" id="cookRenewSubmitBtn" onclick="submitCookRenewalPayment()" disabled style="max-width:400px;margin:0 auto;display:block;">
+          <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Renewal Slip
+        </button>
       </div>
-      <div style="display:flex;align-items:center;gap:20px;">
-        <div class="toggle-wrap">
-          <label class="toggle"><input type="checkbox" checked onchange="toggleKitchen(this)"><span class="toggle-slider"></span></label>
-          <span class="toggle-label open" id="kitchenStatus">Open</span>
-        </div>
+      
+      <!-- Password Step for Renewal -->
+      <div class="password-section" id="cookRenewPasswordSection" style="display:none;margin-top:20px;">
+        <h3><i class="fas fa-key" style="color:var(--gold);margin-right:8px;"></i>Enter Renewal Code</h3>
+        <p>Enter the password sent to your WhatsApp (03483351028)</p>
+        <div class="password-input"><input type="password" id="cookRenewPasswordInput" placeholder="••••••••" maxlength="12"></div>
+        <p id="cookRenewPassError" style="color:var(--crimson);font-size:13px;display:none;margin-bottom:10px;"><i class="fas fa-times-circle"></i> Incorrect password!</p>
+        <button class="btn-full" onclick="verifyCookRenewalPassword()" style="max-width:300px;"><i class="fas fa-check" style="margin-right:8px;"></i>Activate Premium</button>
       </div>
     </div>
 
-    <!-- PREMIUM EXPIRED BANNER -->
-    <div class="premium-banner" id="cookPremiumBanner" style="display:none;">
-      <h3><i class="fas fa-crown" style="margin-right:8px;"></i>Premium Membership Expired</h3>
-      <p style="opacity:.9;margin-bottom:12px;">Your 1-month premium has expired. Renew to continue receiving orders.</p>
-      <div class="expiry-tag"><i class="fas fa-calendar-times" style="margin-right:6px;color:var(--gold-light);"></i>Expired: <span id="cookExpiryDate">—</span></div>
-      <div class="premium-amount">Rs. 2,000</div>
-      <p style="opacity:.8;margin-bottom:16px;">Monthly Renewal Fee</p>
-      <div class="naypay-box" style="max-width:400px;margin:0 auto 20px;">
-        <h4><i class="fas fa-university"></i> Send to NayaPay</h4>
-        <div class="account-num">PK34NAYA1234503169382133</div>
-        <div class="account-name">ApnaKitchen</div>
-      </div>
-      <div class="form-group" style="max-width:400px;margin:0 auto 16px;text-align:left;">
-        <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip</label>
-        <div class="file-upload">
-          <input type="file" accept="image/*" id="cookRenewSlip" onchange="onSlipUpload(this,'cookRenewSlipPreview','cookRenewBtn')">
-          <div class="file-label"><i class="fas fa-cloud-upload-alt"></i>Upload payment slip</div>
-        </div>
-        <img id="cookRenewSlipPreview" style="width:100%;max-width:300px;border-radius:10px;margin-top:10px;display:none;">
-      </div>
-      <button class="btn-full" id="cookRenewBtn" onclick="submitCookRenewal()" disabled style="max-width:400px;margin:0 auto;display:block;">
-        <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Renewal Slip
-      </button>
-    </div>
-
+    <!-- MAIN DASHBOARD CONTENT -->
     <div id="cookMainContent">
+      <div class="dash-header">
+        <div class="dash-user">
+          <img id="cookDashAvatar" src="" class="dash-avatar">
+          <div>
+            <h2 id="cookStoreName">My Kitchen</h2>
+            <p><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;font-size:11px;"></i>Swabi</p>
+            <div class="dash-stars" id="cookDashStars"><span style="color:var(--muted);">No ratings yet</span></div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:20px;">
+          <div class="toggle-wrap">
+            <label class="toggle"><input type="checkbox" checked onchange="toggleKitchen(this)"><span class="toggle-slider"></span></label>
+            <span class="toggle-label open" id="kitchenStatus">Open</span>
+          </div>
+        </div>
+      </div>
+
       <div class="stats-grid">
         <div class="stat-card"><h4>Today's Orders</h4><div class="stat-val" id="cookTodayOrders">0</div></div>
         <div class="stat-card"><h4>Pending</h4><div class="stat-val warn" id="cookPendingOrders">0</div></div>
@@ -1155,7 +1060,6 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         <div class="sec-header">
           <h2><i class="fas fa-book-open"></i>My Menu</h2>
           <div style="display:flex;gap:10px;">
-            <button class="btn-card" onclick="openEditAreas('cook')"><i class="fas fa-map-marker-alt" style="margin-right:6px;"></i>Edit My Areas</button>
             <button class="add-btn" onclick="openAddItem()" title="Add item"><i class="fas fa-plus"></i></button>
           </div>
         </div>
@@ -1179,43 +1083,64 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 <!-- ═══ RIDER DASHBOARD ═══════════════════════════════════════════════ -->
 <div id="rider-dashboard" class="page">
   <div class="dash-wrap">
-    <div class="dash-header">
-      <div class="dash-user">
-        <img id="riderDashAvatar" src="" class="dash-avatar">
-        <div>
-          <h2 id="riderDashName">Rider Dashboard</h2>
-          <p><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;font-size:11px;"></i>Active in Swabi</p>
-          <div style="margin-top:4px;"><span style="font-size:12px;font-weight:600;color:var(--success);"><i class="fas fa-check-circle" style="margin-right:4px;"></i>Verified Rider</span></div>
+    <!-- SUSPENDED BANNER -->
+    <div class="suspended-banner" id="riderSuspendedBanner" style="display:none;">
+      <div class="lock-icon"><i class="fas fa-lock"></i></div>
+      <h3>Account Suspended</h3>
+      <p>Your 1-month premium membership has expired. Your account is currently locked.</p>
+      <p style="font-size:13px;opacity:.8;margin-bottom:16px;">You can view your reviews and past data, but cannot accept deliveries.</p>
+      <div class="expiry-tag"><i class="fas fa-calendar-times" style="margin-right:6px;color:var(--gold-light);"></i>Expired on: <span id="riderExpiryDateDisplay">—</span></div>
+      <button class="btn-hp" onclick="showRiderRenewal()" style="margin-top:10px;"><i class="fas fa-crown" style="margin-right:8px;"></i>Buy Premium - Rs. 1,000</button>
+    </div>
+
+    <!-- PREMIUM RENEWAL PAGE -->
+    <div id="riderRenewalPage" style="display:none;">
+      <button class="btn-card" onclick="backToSuspendedRider()" style="margin-bottom:20px;"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
+      <div class="premium-banner">
+        <h3><i class="fas fa-crown" style="margin-right:8px;"></i>Renew Premium Membership</h3>
+        <div class="premium-amount">Rs. 1,000</div>
+        <p style="opacity:.8;margin-bottom:16px;">Monthly Renewal Fee</p>
+        <div class="naypay-box" style="max-width:400px;margin:0 auto 20px;">
+          <h4><i class="fas fa-university"></i> Send to NayaPay</h4>
+          <div class="account-num">PK34NAYA1234503169382133</div>
+          <div class="account-name">ApnaKitchen</div>
         </div>
+        <div class="form-group" style="max-width:400px;margin:0 auto 16px;text-align:left;">
+          <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip (Required)*</label>
+          <div class="file-upload">
+            <input type="file" accept="image/*" id="riderRenewSlip" onchange="onSlipUpload(this,'riderRenewSlipPreview','riderRenewSubmitBtn')">
+            <div class="file-label"><i class="fas fa-cloud-upload-alt"></i>Upload payment slip</div>
+          </div>
+          <img id="riderRenewSlipPreview" style="width:100%;max-width:300px;border-radius:10px;margin-top:10px;display:none;">
+        </div>
+        <button class="btn-full" id="riderRenewSubmitBtn" onclick="submitRiderRenewalPayment()" disabled style="max-width:400px;margin:0 auto;display:block;">
+          <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Renewal Slip
+        </button>
+      </div>
+      
+      <!-- Password Step for Renewal -->
+      <div class="password-section" id="riderRenewPasswordSection" style="display:none;margin-top:20px;">
+        <h3><i class="fas fa-key" style="color:var(--gold);margin-right:8px;"></i>Enter Renewal Code</h3>
+        <p>Enter the password sent to your WhatsApp (03483351028)</p>
+        <div class="password-input"><input type="password" id="riderRenewPasswordInput" placeholder="••••••" maxlength="10"></div>
+        <p id="riderRenewPassError" style="color:var(--crimson);font-size:13px;display:none;margin-bottom:10px;"><i class="fas fa-times-circle"></i> Incorrect password!</p>
+        <button class="btn-full" onclick="verifyRiderRenewalPassword()" style="max-width:300px;"><i class="fas fa-check" style="margin-right:8px;"></i>Activate Premium</button>
       </div>
     </div>
 
-    <!-- PREMIUM EXPIRED BANNER -->
-    <div class="premium-banner" id="riderPremiumBanner" style="display:none;">
-      <h3><i class="fas fa-crown" style="margin-right:8px;"></i>Premium Membership Expired</h3>
-      <p style="opacity:.9;margin-bottom:12px;">Your 1-month premium has expired. Renew to continue accepting deliveries.</p>
-      <div class="expiry-tag"><i class="fas fa-calendar-times" style="margin-right:6px;color:var(--gold-light);"></i>Expired: <span id="riderExpiryDate">—</span></div>
-      <div class="premium-amount">Rs. 1,000</div>
-      <p style="opacity:.8;margin-bottom:16px;">Monthly Renewal Fee</p>
-      <div class="naypay-box" style="max-width:400px;margin:0 auto 20px;">
-        <h4><i class="fas fa-university"></i> Send to NayaPay</h4>
-        <div class="account-num">PK34NAYA1234503169382133</div>
-        <div class="account-name">ApnaKitchen</div>
-      </div>
-      <div class="form-group" style="max-width:400px;margin:0 auto 16px;text-align:left;">
-        <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip</label>
-        <div class="file-upload">
-          <input type="file" accept="image/*" id="riderRenewSlip" onchange="onSlipUpload(this,'riderRenewSlipPreview','riderRenewBtn')">
-          <div class="file-label"><i class="fas fa-cloud-upload-alt"></i>Upload payment slip</div>
-        </div>
-        <img id="riderRenewSlipPreview" style="width:100%;max-width:300px;border-radius:10px;margin-top:10px;display:none;">
-      </div>
-      <button class="btn-full" id="riderRenewBtn" onclick="submitRiderRenewal()" disabled style="max-width:400px;margin:0 auto;display:block;">
-        <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Renewal Slip
-      </button>
-    </div>
-
+    <!-- MAIN RIDER CONTENT -->
     <div id="riderMainContent">
+      <div class="dash-header">
+        <div class="dash-user">
+          <img id="riderDashAvatar" src="" class="dash-avatar">
+          <div>
+            <h2 id="riderDashName">Rider Dashboard</h2>
+            <p><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;font-size:11px;"></i>Active in Swabi</p>
+            <div style="margin-top:4px;"><span style="font-size:12px;font-weight:600;color:var(--success);"><i class="fas fa-check-circle" style="margin-right:4px;"></i>Verified Rider</span></div>
+          </div>
+        </div>
+      </div>
+
       <div class="stats-grid">
         <div class="stat-card"><h4>Deliveries Today</h4><div class="stat-val" id="riderTodayDeliveries">0</div></div>
         <div class="stat-card"><h4>Available</h4><div class="stat-val danger" id="riderAvailable">0</div></div>
@@ -1229,7 +1154,6 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       <div class="section-card">
         <div class="sec-header">
           <h2><i class="fas fa-map-marked-alt"></i>My Delivery Areas</h2>
-          <button class="btn-card" onclick="openEditAreas('rider')"><i class="fas fa-edit" style="margin-right:6px;"></i>Edit Areas</button>
         </div>
         <div class="area-tags" id="riderAreaDisplay"></div>
       </div>
@@ -1300,7 +1224,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   </div>
 </div>
 
-<!-- REVIEW MODAL (UPDATED: collects name + reason) -->
+<!-- REVIEW MODAL -->
 <div class="modal-overlay" id="reviewModal">
   <div class="modal">
     <div class="modal-head">
@@ -1325,35 +1249,6 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   </div>
 </div>
 
-<!-- EDIT AREAS MODAL -->
-<div class="modal-overlay" id="editAreasModal">
-  <div class="modal" style="max-width:640px;">
-    <div class="modal-head">
-      <h2><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:8px;font-size:18px;"></i>Edit Delivery Areas</h2>
-      <button class="modal-close" onclick="closeModal('editAreasModal')">×</button>
-    </div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Select all areas where you deliver / sell food:</p>
-    <div class="villages-grid" id="editAreasGrid"></div>
-    <div style="display:flex;gap:12px;margin-top:20px;">
-      <button class="btn-card" style="flex:1;" onclick="closeModal('editAreasModal')">Cancel</button>
-      <button class="btn-full" style="flex:2;" onclick="saveEditedAreas()"><i class="fas fa-save" style="margin-right:8px;"></i>Save Areas</button>
-    </div>
-  </div>
-</div>
-
-<!-- PREMIUM PASSWORD MODAL -->
-<div class="modal-overlay" id="premiumPwModal">
-  <div class="modal" style="max-width:420px;">
-    <div class="modal-head">
-      <h2><i class="fas fa-key" style="color:var(--gold);margin-right:8px;font-size:18px;"></i>Enter Renewal Code</h2>
-      <button class="modal-close" onclick="closeModal('premiumPwModal')">×</button>
-    </div>
-    <p style="color:var(--muted);font-size:14px;margin-bottom:20px;">Enter the password sent to your WhatsApp (03483351028):</p>
-    <div class="password-input"><input type="password" id="renewalCodeInput" placeholder="••••••••" maxlength="12" style="text-align:center;font-size:20px;letter-spacing:4px;font-family:monospace;"></div>
-    <button class="btn-full" onclick="verifyRenewalCode()"><i class="fas fa-check" style="margin-right:8px;"></i>Activate Premium</button>
-  </div>
-</div>
-
 <script>
 // ═══════════════════════════════════════════════════════════════════════
 // CONSTANTS & STATE
@@ -1362,28 +1257,22 @@ const OWNER_WHATSAPP = '923483351028';
 const COOK_PASSWORD  = 'kitchen01';
 const RIDER_PASSWORD = 'bike01';
 
-const ALL_AREAS = ['City Center','Guli Bagh','Topi Road','Shahmansoor','Marghuz','Kotha','Baja',
-  'Kabla','Maniri','Sheikh Jana','Yar Hussain','Zaida','Matta','Chota Lahor','Turlandi',
-  'Dobian','Panjpir','Ismaila','Manglawar','Pabbi','Tangi','Kanju','Buner','Daggar'];
-
 let currentRole = 'customer';
 let starRating = 0;
 let reviewTargetType = '';
 let reviewTargetId = 0;
-let currentEditAreasRole = '';
 let currentFoodId = null;
-let pendingRenewalRole = '';
 let qty = 1, basePrice = 0, extras = [];
 
-// USER DATA (in-memory)
+// USER DATA
 let currentUser = {name:'', phone:'', cnic:'', email:'', address:'', photo:'', loggedIn:false, role:''};
-let cookProfile  = {name:'', phone:'', cnic:'', email:'', address:'', storeName:'', areas:[], badReviews:0, regDate:null, premium:false, photo:''};
-let riderProfile = {name:'', phone:'', cnic:'', email:'', address:'', areas:[], badReviews:0, regDate:null, premium:false, photo:''};
+let cookProfile  = {name:'', phone:'', cnic:'', email:'', storeName:'', areas:[], photo:'', regDate:null, premium:false, expiryDate:null};
+let riderProfile = {name:'', phone:'', cnic:'', email:'', address:'', vehicleType:'', vehicleNo:'', areas:[], photo:'', regDate:null, premium:false, expiryDate:null};
 
-// FOODS DATA — empty by default (cooks add their own)
+// FOODS DATA
 let foods = [];
 
-// SAMPLE DATA to show on public pages only
+// SAMPLE DATA
 const sampleFoods = [
   {id:1, name:'Chicken Biryani', cook:"Chef Fatima's Kitchen", cookId:101, price:350, area:'Guli Bagh',
    img:'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=600',
@@ -1439,23 +1328,350 @@ function showPage(id) {
   document.getElementById('notifPanel').classList.remove('show');
   document.getElementById('cartPanel').classList.remove('show');
   window.scrollTo(0, 0);
+  
+  if (id === 'cook-dashboard') {
+    checkCookPremiumStatus();
+  }
+  if (id === 'rider-dashboard') {
+    checkRiderPremiumStatus();
+  }
   if (['customer-dashboard','cook-dashboard','rider-dashboard','menu','home'].includes(id)) {
     setTimeout(renderGrids, 60);
   }
-  if (id === 'cook-dashboard') updateCookStats();
-  if (id === 'rider-dashboard') { checkRiderPremium(); renderRiderDeliveries(); }
-  if (id === 'cook-dashboard') checkCookPremium();
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// CURRENT DISPLAY FOODS (sample for public, cook's own for their dash)
+// PREMIUM STATUS CHECKERS
+// ═══════════════════════════════════════════════════════════════════════
+function checkCookPremiumStatus() {
+  if (!cookProfile.regDate) return;
+  
+  const now = new Date();
+  const regDate = new Date(cookProfile.regDate);
+  const expiryDate = new Date(regDate);
+  expiryDate.setMonth(expiryDate.getMonth() + 1);
+  
+  cookProfile.expiryDate = expiryDate;
+  
+  if (now >= expiryDate) {
+    // SUSPENDED
+    cookProfile.premium = false;
+    document.getElementById('cookSuspendedBanner').style.display = 'block';
+    document.getElementById('cookMainContent').style.display = 'none';
+    document.getElementById('cookRenewalPage').style.display = 'none';
+    document.getElementById('cookExpiryDateDisplay').textContent = expiryDate.toLocaleDateString();
+  } else {
+    // ACTIVE
+    cookProfile.premium = true;
+    document.getElementById('cookSuspendedBanner').style.display = 'none';
+    document.getElementById('cookMainContent').style.display = 'block';
+    document.getElementById('cookRenewalPage').style.display = 'none';
+  }
+  updateCookStats();
+}
+
+function checkRiderPremiumStatus() {
+  if (!riderProfile.regDate) return;
+  
+  const now = new Date();
+  const regDate = new Date(riderProfile.regDate);
+  const expiryDate = new Date(regDate);
+  expiryDate.setMonth(expiryDate.getMonth() + 1);
+  
+  riderProfile.expiryDate = expiryDate;
+  
+  if (now >= expiryDate) {
+    // SUSPENDED
+    riderProfile.premium = false;
+    document.getElementById('riderSuspendedBanner').style.display = 'block';
+    document.getElementById('riderMainContent').style.display = 'none';
+    document.getElementById('riderRenewalPage').style.display = 'none';
+    document.getElementById('riderExpiryDateDisplay').textContent = expiryDate.toLocaleDateString();
+  } else {
+    // ACTIVE
+    riderProfile.premium = true;
+    document.getElementById('riderSuspendedBanner').style.display = 'none';
+    document.getElementById('riderMainContent').style.display = 'block';
+    document.getElementById('riderRenewalPage').style.display = 'none';
+  }
+  renderRiderDeliveries();
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// RENEWAL FLOW FUNCTIONS
+// ═══════════════════════════════════════════════════════════════════════
+function showCookRenewal() {
+  document.getElementById('cookSuspendedBanner').style.display = 'none';
+  document.getElementById('cookRenewalPage').style.display = 'block';
+}
+
+function backToSuspendedCook() {
+  document.getElementById('cookRenewalPage').style.display = 'none';
+  document.getElementById('cookSuspendedBanner').style.display = 'block';
+}
+
+function showRiderRenewal() {
+  document.getElementById('riderSuspendedBanner').style.display = 'none';
+  document.getElementById('riderRenewalPage').style.display = 'block';
+}
+
+function backToSuspendedRider() {
+  document.getElementById('riderRenewalPage').style.display = 'none';
+  document.getElementById('riderSuspendedBanner').style.display = 'block';
+}
+
+function submitCookRenewalPayment() {
+  const slipInput = document.getElementById('cookRenewSlip');
+  if (!slipInput.files || !slipInput.files[0]) {
+    toast('Please upload payment slip!');
+    return;
+  }
+  
+  const msg = `COOK RENEWAL REQUEST\nName: ${cookProfile.name}\nCNIC: ${cookProfile.cnic}\nStore: ${cookProfile.storeName}\nAmount: Rs. 2,000`;
+  openWhatsApp(msg);
+  
+  document.getElementById('cookRenewPasswordSection').style.display = 'block';
+  toast('Slip sent! Enter renewal code from WhatsApp.');
+}
+
+function verifyCookRenewalPassword() {
+  const entered = document.getElementById('cookRenewPasswordInput').value;
+  if (entered !== COOK_PASSWORD) {
+    document.getElementById('cookRenewPassError').style.display = 'block';
+    return;
+  }
+  
+  // Renew subscription
+  cookProfile.regDate = new Date();
+  cookProfile.premium = true;
+  cookProfile.expiryDate = null;
+  
+  toast('Premium renewed successfully!');
+  checkCookPremiumStatus();
+}
+
+function submitRiderRenewalPayment() {
+  const slipInput = document.getElementById('riderRenewSlip');
+  if (!slipInput.files || !slipInput.files[0]) {
+    toast('Please upload payment slip!');
+    return;
+  }
+  
+  const msg = `RIDER RENEWAL REQUEST\nName: ${riderProfile.name}\nCNIC: ${riderProfile.cnic}\nVehicle: ${riderProfile.vehicleNo}\nAmount: Rs. 1,000`;
+  openWhatsApp(msg);
+  
+  document.getElementById('riderRenewPasswordSection').style.display = 'block';
+  toast('Slip sent! Enter renewal code from WhatsApp.');
+}
+
+function verifyRiderRenewalPassword() {
+  const entered = document.getElementById('riderRenewPasswordInput').value;
+  if (entered !== RIDER_PASSWORD) {
+    document.getElementById('riderRenewPassError').style.display = 'block';
+    return;
+  }
+  
+  // Renew subscription
+  riderProfile.regDate = new Date();
+  riderProfile.premium = true;
+  riderProfile.expiryDate = null;
+  
+  toast('Premium renewed successfully!');
+  checkRiderPremiumStatus();
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// COOK REGISTRATION (Simplified)
+// ═══════════════════════════════════════════════════════════════════════
+function validateCookStep1() {
+  const name = document.getElementById('c_name').value.trim();
+  const phone = document.getElementById('c_phone').value.trim();
+  const email = document.getElementById('c_email').value.trim();
+  const cnic = document.getElementById('c_cnic').value.trim();
+  const store = document.getElementById('c_store').value.trim();
+  const photo = document.getElementById('c_photo').files[0];
+  const cnicFront = document.getElementById('c_cnic_front').files[0];
+  const cnicBack = document.getElementById('c_cnic_back').files[0];
+  
+  if (!name || !phone || !email || !cnic || !store) {
+    toast('Please fill all required fields!');
+    return;
+  }
+  if (!photo || !cnicFront || !cnicBack) {
+    toast('Please upload all required photos!');
+    return;
+  }
+  
+  // Save to profile
+  cookProfile.name = name;
+  cookProfile.phone = phone;
+  cookProfile.email = email;
+  cookProfile.cnic = cnic;
+  cookProfile.storeName = store;
+  
+  cookNext(1);
+}
+
+function cookNext(step) {
+  document.getElementById('cook-s'+step).style.display = 'none';
+  document.getElementById('cook-s'+(step+1)).style.display = 'block';
+  document.getElementById('cstep'+step).className = 'onboard-step done';
+  document.getElementById('cstep'+(step+1)).className = 'onboard-step active';
+}
+
+function cookBack(step) {
+  document.getElementById('cook-s'+step).style.display = 'none';
+  document.getElementById('cook-s'+(step-1)).style.display = 'block';
+  document.getElementById('cstep'+step).className = 'onboard-step';
+  document.getElementById('cstep'+(step-1)).className = 'onboard-step active';
+}
+
+function submitCookPayment() {
+  const slipInput = document.getElementById('cookPaySlip');
+  if (!slipInput.files || !slipInput.files[0]) {
+    document.getElementById('cookSlipError').style.display = 'block';
+    toast('Please upload payment slip to continue!');
+    return;
+  }
+  
+  const msg = `NEW COOK REGISTRATION\nName: ${cookProfile.name}\nCNIC: ${cookProfile.cnic}\nStore: ${cookProfile.storeName}\nPhone: ${cookProfile.phone}`;
+  openWhatsApp(msg);
+  
+  document.getElementById('cookSlipError').style.display = 'none';
+  cookNext(2);
+  toast('Payment slip sent! Check WhatsApp for password.');
+}
+
+function verifyCookPassword() {
+  const entered = document.getElementById('cookPasswordInput').value;
+  if (entered !== COOK_PASSWORD) {
+    document.getElementById('cookPassError').style.display = 'block';
+    toast('Incorrect password! Please check WhatsApp.');
+    return;
+  }
+  
+  // Registration successful
+  cookProfile.regDate = new Date();
+  cookProfile.premium = true;
+  
+  document.getElementById('cookStoreName').textContent = cookProfile.storeName;
+  document.getElementById('cookDashAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(cookProfile.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+  document.getElementById('navLoginBtn').textContent = 'My Account';
+  
+  toast(`Welcome! "${cookProfile.storeName}" is now live.`);
+  showPage('cook-dashboard');
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// RIDER REGISTRATION (Simplified)
+// ═══════════════════════════════════════════════════════════════════════
+function validateRiderStep1() {
+  const name = document.getElementById('r_name').value.trim();
+  const phone = document.getElementById('r_phone').value.trim();
+  const email = document.getElementById('r_email').value.trim();
+  const cnic = document.getElementById('r_cnic').value.trim();
+  const address = document.getElementById('r_address').value.trim();
+  const vehicleType = document.getElementById('r_vehicle_type').value;
+  const vehicleNo = document.getElementById('r_vehicle_no').value.trim();
+  const photo = document.getElementById('r_photo').files[0];
+  const cnicFront = document.getElementById('r_cnic_front').files[0];
+  const cnicBack = document.getElementById('r_cnic_back').files[0];
+  
+  if (!name || !phone || !email || !cnic || !address || !vehicleType || !vehicleNo) {
+    toast('Please fill all required fields!');
+    return;
+  }
+  if (!photo || !cnicFront || !cnicBack) {
+    toast('Please upload all required photos!');
+    return;
+  }
+  
+  // Save to profile
+  riderProfile.name = name;
+  riderProfile.phone = phone;
+  riderProfile.email = email;
+  riderProfile.cnic = cnic;
+  riderProfile.address = address;
+  riderProfile.vehicleType = vehicleType;
+  riderProfile.vehicleNo = vehicleNo;
+  
+  riderNext(1);
+}
+
+function riderNext(step) {
+  document.getElementById('rider-s'+step).style.display = 'none';
+  document.getElementById('rider-s'+(step+1)).style.display = 'block';
+  document.getElementById('rstep'+step).className = 'onboard-step done';
+  document.getElementById('rstep'+(step+1)).className = 'onboard-step active';
+}
+
+function riderBack(step) {
+  document.getElementById('rider-s'+step).style.display = 'none';
+  document.getElementById('rider-s'+(step-1)).style.display = 'block';
+  document.getElementById('rstep'+step).className = 'onboard-step';
+  document.getElementById('rstep'+(step-1)).className = 'onboard-step active';
+}
+
+function submitRiderPayment() {
+  const slipInput = document.getElementById('riderPaySlip');
+  if (!slipInput.files || !slipInput.files[0]) {
+    document.getElementById('riderSlipError').style.display = 'block';
+    toast('Please upload payment slip to continue!');
+    return;
+  }
+  
+  const msg = `NEW RIDER REGISTRATION\nName: ${riderProfile.name}\nCNIC: ${riderProfile.cnic}\nVehicle: ${riderProfile.vehicleNo}\nPhone: ${riderProfile.phone}`;
+  openWhatsApp(msg);
+  
+  document.getElementById('riderSlipError').style.display = 'none';
+  riderNext(2);
+  toast('Payment slip sent! Check WhatsApp for password.');
+}
+
+function verifyRiderPassword() {
+  const entered = document.getElementById('riderPasswordInput').value;
+  if (entered !== RIDER_PASSWORD) {
+    document.getElementById('riderPassError').style.display = 'block';
+    toast('Incorrect password! Please check WhatsApp.');
+    return;
+  }
+  
+  // Registration successful
+  riderProfile.regDate = new Date();
+  riderProfile.premium = true;
+  
+  document.getElementById('riderDashName').textContent = riderProfile.name + ' — Delivery Partner';
+  document.getElementById('riderDashAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(riderProfile.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+  document.getElementById('riderAreaDisplay').innerHTML = `<span class="area-tag"><i class="fas fa-map-pin"></i>Swabi</span>`;
+  document.getElementById('navLoginBtn').textContent = 'My Account';
+  
+  toast('Welcome! Your rider account is ready.');
+  showPage('rider-dashboard');
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// PAYMENT SLIP UPLOAD
+// ═══════════════════════════════════════════════════════════════════════
+function onSlipUpload(input, previewId, btnId) {
+  const prev = document.getElementById(previewId);
+  const btn  = document.getElementById(btnId);
+  if (input.files && input.files[0]) {
+    const r = new FileReader();
+    r.onload = e => { 
+      prev.src = e.target.result; 
+      prev.style.display = 'block'; 
+      if (btn) btn.disabled = false; 
+    };
+    r.readAsDataURL(input.files[0]);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// FOOD DISPLAY FUNCTIONS
 // ═══════════════════════════════════════════════════════════════════════
 function getPublicFoods() { return sampleFoods; }
 function getCookFoods()   { return foods.filter(f => f.cookId === 'mystore'); }
 
-// ═══════════════════════════════════════════════════════════════════════
-// FOOD CARD RENDERER
-// ═══════════════════════════════════════════════════════════════════════
 function starsHTML(avg) {
   if (!avg) return '';
   let s = '';
@@ -1497,7 +1713,6 @@ function foodCard(f, editMode=false) {
 }
 
 function renderGrids() {
-  // Public grids
   const pubFoods = getPublicFoods();
   const myFoods  = getCookFoods();
 
@@ -1505,7 +1720,6 @@ function renderGrids() {
     const el = document.getElementById(id); if (el) el.innerHTML = pubFoods.map(f => foodCard(f)).join('');
   });
 
-  // Cook's own menu
   const ck = document.getElementById('cookMenu');
   const ckEmpty = document.getElementById('cookMenuEmpty');
   if (ck) {
@@ -1654,12 +1868,12 @@ function openFoodDetail(id) {
   document.getElementById('fdDesc').textContent = f.desc;
   document.getElementById('sumFoodName').textContent = f.name;
   document.getElementById('qtyUnitPrice').textContent = 'Rs. ' + f.price;
-  // Rating
+  
   const ratingRow = document.getElementById('fdRatingRow');
   ratingRow.innerHTML = f.avgRating
     ? `<span class="stars">${starsHTML(f.avgRating)}</span><span>${f.avgRating} (${f.reviewCount} reviews)</span>`
     : '<span style="color:var(--muted);font-size:13px;">No ratings yet</span>';
-  // Build extras list
+    
   const el = document.getElementById('extrasList');
   el.innerHTML = f.tags.map((t,i) => `
     <div class="opt-item">
@@ -1687,17 +1901,18 @@ function openChefStore(cookId) {
   document.getElementById('chefStoreArea').innerHTML = `<i class="fas fa-map-marker-alt" style="margin-right:4px;"></i>${cf.area}`;
   document.getElementById('chefStoreCuisine').textContent = 'Specialty: Desi & Pakistani';
   document.getElementById('chefStoreAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(cf.cook)}&background=7A0020&color=FDF3DC&bold=true&size=90`;
-  // Rating
+  
   const myRevs = chefReviews.filter(r => r.targetId === cookId);
   const avgRating = myRevs.length ? (myRevs.reduce((a,b)=>a+b.rating,0)/myRevs.length).toFixed(1) : null;
   const starsEl = document.getElementById('chefStoreStars');
   starsEl.innerHTML = avgRating
     ? `${starsHTML(parseFloat(avgRating))}<span>${avgRating} · ${myRevs.length} reviews</span>`
     : '<span style="opacity:.6;">No reviews yet</span>';
+    
   const menu = document.getElementById('chefStoreMenu');
   menu.dataset.cookid = cookId;
   menu.innerHTML = getPublicFoods().filter(f => f.cookId === cookId).map(f => foodCard(f)).join('');
-  // Reviews
+  
   const revList = document.getElementById('chefStoreReviewsList');
   revList.innerHTML = myRevs.length
     ? myRevs.map(r => `<div class="review-card"><div class="review-head"><div class="reviewer">${r.reviewer} <span style="color:var(--gold);">${'★'.repeat(r.rating)}</span></div><div class="review-date">Just now</div></div><p>${r.text}</p></div>`).join('')
@@ -1764,7 +1979,6 @@ function doPlaceOrder() {
   addNavNotif(`Order #${orderId} placed! Waiting for ${f.cook}`, 'new-order');
   toast(`Order #${orderId} placed! Notifying ${f.cook}…`);
 
-  // Go to customer dashboard and show tracker
   showPage('customer-dashboard');
   activeOrderId = orderId;
   trackStep = 1;
@@ -1802,7 +2016,6 @@ function renderOrderHistory() {
   const list = document.getElementById('custOrderHistoryList');
   if (!customerOrders.length) { sec.style.display = 'none'; return; }
   sec.style.display = 'block';
-  const statusMap = {pending:'pending', confirmed:'preparing', preparing:'preparing', 'on-the-way':'pending', delivered:'delivered'};
   list.innerHTML = customerOrders.map(o => `
     <div class="order-history-card">
       <img src="${o.img}" alt="${o.food}">
@@ -1863,7 +2076,7 @@ function cookAcceptOrder(id) {
   const deliveryData = {
     id, food: order.food, qty: order.qty,
     pickupName: cookProfile.storeName || 'Chef Kitchen',
-    pickupArea: cookProfile.areas[0] || 'City Center',
+    pickupArea: 'City Center',
     dropAddress: order.customerAddress, customerName: order.customerName
   };
   pendingDeliveriesForRider.push(deliveryData);
@@ -1891,7 +2104,7 @@ function updateCookStats() {
   document.getElementById('cookTotalReviews').textContent = chefReviews.length;
   const myFoods = getCookFoods();
   document.getElementById('cookMenuCount').textContent = myFoods.length;
-  // Cook dashboard reviews
+  
   const cl = document.getElementById('cookReviewsList');
   if (cl) {
     const myRevs = chefReviews.filter(r => r.targetId === 'mystore');
@@ -1936,15 +2149,16 @@ function acceptDelivery(id) {
   if (!d) return;
   pendingDeliveriesForRider = pendingDeliveriesForRider.filter(x => x.id !== id);
   renderRiderDeliveries();
-  // Update rider stats
+  
   const riderToday = parseInt(document.getElementById('riderTodayDeliveries').textContent) + 1;
   const riderMonth = parseInt(document.getElementById('riderMonthDeliveries').textContent) + 1;
   document.getElementById('riderTodayDeliveries').textContent = riderToday;
   document.getElementById('riderMonthDeliveries').textContent = riderMonth;
+  
   toast(`Delivery #${id} accepted! Head to ${d.pickupName}.`);
   addNavNotif(`Rider accepted delivery #${id}! Food is on the way.`, '');
   advanceTracker(id, 4);
-  // Simulate delivery
+  
   setTimeout(() => {
     advanceTracker(id, 5);
     addNavNotif(`🎉 Order #${id} delivered!`, '');
@@ -1959,34 +2173,6 @@ function rejectDelivery(id) {
   pendingDeliveriesForRider = pendingDeliveriesForRider.filter(x => x.id !== id);
   renderRiderDeliveries();
   toast(`Delivery #${id} declined.`);
-}
-
-// ═══════════════════════════════════════════════════════════════════════
-// EDIT AREAS
-// ═══════════════════════════════════════════════════════════════════════
-function openEditAreas(role) {
-  currentEditAreasRole = role;
-  const currentAreas = role === 'cook' ? cookProfile.areas : riderProfile.areas;
-  const grid = document.getElementById('editAreasGrid');
-  grid.innerHTML = ALL_AREAS.map(a =>
-    `<label class="vill-check"><input type="checkbox" value="${a}" ${currentAreas.includes(a)?'checked':''}><span>${a}</span></label>`
-  ).join('');
-  document.getElementById('editAreasModal').classList.add('show');
-}
-
-function saveEditedAreas() {
-  const checked = [...document.querySelectorAll('#editAreasGrid input:checked')].map(i => i.value);
-  if (!checked.length) { toast('Please select at least one area!'); return; }
-  if (currentEditAreasRole === 'cook') {
-    cookProfile.areas = checked;
-    toast('Your delivery areas updated!');
-  } else {
-    riderProfile.areas = checked;
-    const display = document.getElementById('riderAreaDisplay');
-    display.innerHTML = checked.map(a => `<span class="area-tag"><i class="fas fa-map-pin"></i>${a}</span>`).join('');
-    toast('Your delivery areas updated!');
-  }
-  closeModal('editAreasModal');
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -2053,7 +2239,7 @@ function saveItem(e) {
     toast('Menu item updated!');
   } else {
     const newId = foods.length ? Math.max(...foods.map(f => f.id)) + 1 : 1;
-    foods.push({id:newId, name, cook: cookProfile.storeName, cookId:'mystore', price, area: cookProfile.areas[0]||'City Center', img:imgSrc, desc, tags, avgRating:null, reviewCount:0});
+    foods.push({id:newId, name, cook: cookProfile.storeName, cookId:'mystore', price, area: 'City Center', img:imgSrc, desc, tags, avgRating:null, reviewCount:0});
     toast('Menu item added!');
   }
   closeModal('addItemModal');
@@ -2080,7 +2266,7 @@ function addOpt() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// REVIEWS (UPDATED: collects name from input, shows on store)
+// REVIEWS
 // ═══════════════════════════════════════════════════════════════════════
 function openReview(type, targetId, targetName) {
   reviewTargetType = type;
@@ -2110,15 +2296,6 @@ function submitReview() {
 
   if (reviewTargetType === 'chef') {
     chefReviews.push(review);
-    if (starRating <= 2) {
-      const badCount = chefReviews.filter(r => r.targetId === reviewTargetId && r.rating <= 2).length;
-      if (badCount >= 10) {
-        const target = getPublicFoods().find(f => f.cookId === reviewTargetId);
-        const msg = `⚠️ 10 Bad Reviews Alert!\nChef: ${target ? target.cook : reviewTargetId}\nReporter: ${reviewer}`;
-        openWhatsApp(msg);
-      }
-    }
-    // Update chef store if open
     const storeRevList = document.getElementById('chefStoreReviewsList');
     if (storeRevList) {
       const myRevs = chefReviews.filter(r => r.targetId === reviewTargetId);
@@ -2129,13 +2306,6 @@ function submitReview() {
     updateCookStats();
   } else {
     riderReviews.push(review);
-    if (starRating <= 2) {
-      const badCount = riderReviews.filter(r => r.targetId === reviewTargetId && r.rating <= 2).length;
-      if (badCount >= 10) {
-        const msg = `⚠️ 10 Bad Reviews Alert!\nRider ID: ${reviewTargetId}\nReporter: ${reviewer}`;
-        openWhatsApp(msg);
-      }
-    }
     const rl = document.getElementById('riderReviewsList');
     if (rl) {
       const myRevs = riderReviews.filter(r => r.targetId === reviewTargetId);
@@ -2163,9 +2333,8 @@ function doLogin(e) {
   currentUser.loggedIn = true;
   currentUser.role = currentRole;
   const dashMap = {customer:'customer-dashboard', cook:'cook-dashboard', rider:'rider-dashboard'};
-  // Update nav button
   document.getElementById('navLoginBtn').textContent = 'My Account';
-  // Update dashboard header
+  
   if (currentRole === 'customer') {
     document.getElementById('custWelcomeName').textContent = 'Welcome, ' + (currentUser.name || 'Guest');
     document.getElementById('custAddressDisplay').textContent = currentUser.address || 'Swabi';
@@ -2176,8 +2345,7 @@ function doLogin(e) {
   } else if (currentRole === 'rider') {
     document.getElementById('riderDashAvatar').src = riderProfile.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(riderProfile.name||'Rider')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
     document.getElementById('riderDashName').textContent = (riderProfile.name || 'Rider') + ' — Delivery Partner';
-    const areas = riderProfile.areas.length ? riderProfile.areas : ['City Center'];
-    document.getElementById('riderAreaDisplay').innerHTML = areas.map(a => `<span class="area-tag"><i class="fas fa-map-pin"></i>${a}</span>`).join('');
+    document.getElementById('riderAreaDisplay').innerHTML = `<span class="area-tag"><i class="fas fa-map-pin"></i>Swabi</span>`;
   }
   showPage(dashMap[currentRole]);
   toast(`Welcome back to ApnaKitchen!`);
@@ -2192,174 +2360,6 @@ function doRegister(e) {
   currentUser.address = document.getElementById('reg_address').value;
   toast('Account created! Please login.');
   showPage('login');
-}
-
-// ═══════════════════════════════════════════════════════════════════════
-// COOK MULTI-STEP
-// ═══════════════════════════════════════════════════════════════════════
-function cookNext(step) {
-  document.getElementById('cook-s'+step).style.display = 'none';
-  document.getElementById('cook-s'+(step+1)).style.display = 'block';
-  document.getElementById('cstep'+step).className = 'onboard-step done';
-  document.getElementById('cstep'+(step+1)).className = 'onboard-step active';
-}
-function cookBack(step) {
-  document.getElementById('cook-s'+step).style.display = 'none';
-  document.getElementById('cook-s'+(step-1)).style.display = 'block';
-  document.getElementById('cstep'+step).className = 'onboard-step';
-  document.getElementById('cstep'+(step-1)).className = 'onboard-step active';
-}
-
-// ═══════════════════════════════════════════════════════════════════════
-// RIDER MULTI-STEP
-// ═══════════════════════════════════════════════════════════════════════
-function riderNext(step) {
-  document.getElementById('rider-s'+step).style.display = 'none';
-  document.getElementById('rider-s'+(step+1)).style.display = 'block';
-  document.getElementById('rstep'+step).className = 'onboard-step done';
-  document.getElementById('rstep'+(step+1)).className = 'onboard-step active';
-}
-function riderBack(step) {
-  document.getElementById('rider-s'+step).style.display = 'none';
-  document.getElementById('rider-s'+(step-1)).style.display = 'block';
-  document.getElementById('rstep'+step).className = 'onboard-step';
-  document.getElementById('rstep'+(step-1)).className = 'onboard-step active';
-}
-
-// ═══════════════════════════════════════════════════════════════════════
-// PAYMENT SLIP UPLOAD
-// ═══════════════════════════════════════════════════════════════════════
-function onSlipUpload(input, previewId, btnId) {
-  const prev = document.getElementById(previewId);
-  const btn  = document.getElementById(btnId);
-  if (input.files && input.files[0]) {
-    const r = new FileReader();
-    r.onload = e => { prev.src = e.target.result; prev.style.display = 'block'; if (btn) btn.disabled = false; };
-    r.readAsDataURL(input.files[0]);
-  }
-}
-
-// UPDATED: Cook payment — only sends slip image + name, CNIC, store name. No extra text.
-function submitCookPayment() {
-  const name  = document.getElementById('c_name').value || 'Cook Applicant';
-  const cnic  = document.getElementById('c_cnic').value || '';
-  const store = document.getElementById('cookStoreInput')?.value || '';
-  // Build minimal WhatsApp message: only essential fields + slip
-  const msg = `Name: ${name}\nCNIC: ${cnic}\nStore: ${store}`;
-  toast('Payment slip submitted! Opening WhatsApp to send slip…');
-  // Save to profile
-  cookProfile.name      = name;
-  cookProfile.cnic      = cnic;
-  cookProfile.phone     = document.getElementById('c_phone').value || '';
-  cookProfile.email     = document.getElementById('c_email').value || '';
-  cookProfile.address   = document.getElementById('c_address').value || '';
-  cookProfile.storeName = store;
-  setTimeout(() => { openWhatsApp(msg); cookNext(5); }, 800);
-}
-
-// UPDATED: Rider payment — only sends slip image + name, CNIC. No extra text.
-function submitRiderPayment() {
-  const name  = document.getElementById('r_name').value || 'Rider Applicant';
-  const cnic  = document.getElementById('r_cnic').value || '';
-  const msg = `Name: ${name}\nCNIC: ${cnic}`;
-  toast('Payment slip submitted! Opening WhatsApp to send slip…');
-  riderProfile.name    = name;
-  riderProfile.cnic    = cnic;
-  riderProfile.phone   = document.getElementById('r_phone').value || '';
-  riderProfile.email   = document.getElementById('r_email').value || '';
-  riderProfile.address = document.getElementById('r_address').value || '';
-  setTimeout(() => { openWhatsApp(msg); riderNext(5); }, 800);
-}
-
-function verifyCookPassword() {
-  const entered = document.getElementById('cookPasswordInput').value;
-  if (entered !== COOK_PASSWORD) { toast('Incorrect password! Check your WhatsApp.'); return; }
-  cookProfile.regDate  = new Date();
-  cookProfile.premium  = true;
-  document.getElementById('cookStoreName').textContent = cookProfile.storeName || "My Kitchen";
-  document.getElementById('cookDashAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(cookProfile.name||'Chef')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
-  document.getElementById('navLoginBtn').textContent = 'My Account';
-  toast(`Welcome! "${cookProfile.storeName}" is now live.`);
-  showPage('cook-dashboard');
-}
-
-function verifyRiderPassword() {
-  const entered = document.getElementById('riderPasswordInput').value;
-  if (entered !== RIDER_PASSWORD) { toast('Incorrect password! Check your WhatsApp.'); return; }
-  riderProfile.regDate = new Date();
-  riderProfile.premium = true;
-  document.getElementById('riderDashName').textContent = (riderProfile.name || 'Rider') + ' — Delivery Partner';
-  document.getElementById('riderDashAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(riderProfile.name||'Rider')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
-  const areas = riderProfile.areas.length ? riderProfile.areas : ['City Center'];
-  document.getElementById('riderAreaDisplay').innerHTML = areas.map(a => `<span class="area-tag"><i class="fas fa-map-pin"></i>${a}</span>`).join('');
-  document.getElementById('navLoginBtn').textContent = 'My Account';
-  toast('Welcome! Your rider account is ready.');
-  showPage('rider-dashboard');
-}
-
-// ═══════════════════════════════════════════════════════════════════════
-// PREMIUM CHECK & RENEWAL
-// ═══════════════════════════════════════════════════════════════════════
-function checkCookPremium() {
-  if (!cookProfile.regDate || !cookProfile.premium) return;
-  const expiry = new Date(cookProfile.regDate);
-  expiry.setMonth(expiry.getMonth() + 1);
-  if (new Date() >= expiry) {
-    cookProfile.premium = false;
-    document.getElementById('cookExpiryDate').textContent = expiry.toLocaleDateString();
-    document.getElementById('cookPremiumBanner').style.display = 'block';
-    document.getElementById('cookMainContent').style.display = 'none';
-    pendingRenewalRole = 'cook';
-  }
-}
-
-function checkRiderPremium() {
-  if (!riderProfile.regDate || !riderProfile.premium) return;
-  const expiry = new Date(riderProfile.regDate);
-  expiry.setMonth(expiry.getMonth() + 1);
-  if (new Date() >= expiry) {
-    riderProfile.premium = false;
-    document.getElementById('riderExpiryDate').textContent = expiry.toLocaleDateString();
-    document.getElementById('riderPremiumBanner').style.display = 'block';
-    document.getElementById('riderMainContent').style.display = 'none';
-    pendingRenewalRole = 'rider';
-  }
-}
-
-function submitCookRenewal() {
-  pendingRenewalRole = 'cook';
-  const msg = `Name: ${cookProfile.name}\nCNIC: ${cookProfile.cnic}\nStore: ${cookProfile.storeName}`;
-  toast('Renewal slip submitted! Opening WhatsApp…');
-  setTimeout(() => { openWhatsApp(msg); document.getElementById('premiumPwModal').classList.add('show'); }, 800);
-}
-
-function submitRiderRenewal() {
-  pendingRenewalRole = 'rider';
-  const msg = `Name: ${riderProfile.name}\nCNIC: ${riderProfile.cnic}`;
-  toast('Renewal slip submitted! Opening WhatsApp…');
-  setTimeout(() => { openWhatsApp(msg); document.getElementById('premiumPwModal').classList.add('show'); }, 800);
-}
-
-function verifyRenewalCode() {
-  const entered  = document.getElementById('renewalCodeInput').value;
-  const expected = pendingRenewalRole === 'cook' ? COOK_PASSWORD : RIDER_PASSWORD;
-  if (entered !== expected) { toast('Incorrect renewal code! Check WhatsApp.'); return; }
-  if (pendingRenewalRole === 'cook') {
-    cookProfile.regDate  = new Date();
-    cookProfile.premium  = true;
-    document.getElementById('cookPremiumBanner').style.display = 'none';
-    document.getElementById('cookMainContent').style.display = 'block';
-    toast('Premium renewed! Welcome back.');
-    showPage('cook-dashboard');
-  } else {
-    riderProfile.regDate = new Date();
-    riderProfile.premium = true;
-    document.getElementById('riderPremiumBanner').style.display = 'none';
-    document.getElementById('riderMainContent').style.display = 'block';
-    toast('Premium renewed! Welcome back.');
-    showPage('rider-dashboard');
-  }
-  closeModal('premiumPwModal');
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -2441,7 +2441,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.checkbox').forEach(c => {
     const i = c.querySelector('i'); if (i) i.style.display = 'none';
   });
-  // Close panels when clicking outside
   document.addEventListener('click', e => {
     const notif = document.getElementById('notifPanel');
     const cart = document.getElementById('cartPanel');
