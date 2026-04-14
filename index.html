@@ -19,6 +19,7 @@
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5;}
 
+/* NAVBAR */
 .navbar{position:fixed;top:0;width:100%;z-index:1000;background:rgba(26,10,14,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,134,26,.25);padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer;}
 .logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--crimson-deep);font-weight:700;box-shadow:0 2px 12px rgba(200,134,26,.4);}
@@ -35,6 +36,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .btn-login{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--crimson-deep);border:none;border-radius:10px;padding:9px 22px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;}
 .btn-login:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(200,134,26,.4);}
 
+/* NOTIF PANEL */
 .notif-panel{position:fixed;top:80px;right:24px;width:360px;background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-warm);padding:20px;display:none;z-index:999;max-height:520px;overflow-y:auto;}
 .notif-panel.show{display:block;animation:slideDown .2s ease;}
 @keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
@@ -44,6 +46,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .notif-item strong{color:var(--crimson);display:block;margin-bottom:2px;}
 .notif-item small{color:var(--muted);font-size:11px;}
 
+/* CART PANEL */
 .cart-panel{position:fixed;top:80px;right:24px;width:380px;background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-warm);padding:20px;display:none;z-index:998;max-height:580px;overflow-y:auto;}
 .cart-panel.show{display:block;animation:slideDown .2s ease;}
 .cart-panel h4{font-family:'Playfair Display',serif;font-size:16px;color:var(--crimson);margin-bottom:16px;}
@@ -59,11 +62,13 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .cart-empty{text-align:center;padding:32px 0;color:var(--muted);font-size:14px;}
 .cart-empty i{font-size:36px;margin-bottom:12px;display:block;color:var(--border);}
 
+/* CONTAINER */
 .container{margin-top:68px;min-height:calc(100vh - 68px);position:relative;z-index:1;}
 .page{display:none;animation:fadeUp .3s ease;}
 .page.active{display:block;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
+/* HERO */
 .hero{background:linear-gradient(160deg,var(--crimson-deep) 0%,var(--crimson-mid) 55%,var(--crimson) 100%);color:#fff;padding:80px 64px 72px;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
 .hero::after{content:'';position:absolute;right:-80px;top:-80px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(200,134,26,.18) 0%,transparent 70%);}
@@ -78,11 +83,13 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .btn-hg{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:12px;padding:14px 28px;font-size:15px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;}
 .btn-hg:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6);}
 
+/* SEARCH BAR */
 .hero-search{display:flex;gap:0;background:#fff;border-radius:14px;overflow:hidden;max-width:520px;margin-bottom:36px;box-shadow:0 6px 32px rgba(0,0,0,.2);}
 .hero-search input{flex:1;padding:16px 20px;border:none;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);outline:none;background:transparent;}
 .hero-search button{background:var(--crimson);color:#fff;border:none;padding:0 28px;font-size:16px;cursor:pointer;transition:all .2s;}
 .hero-search button:hover{background:var(--crimson-deep);}
 
+/* CATEGORY CHIPS */
 .categories-bar{padding:24px 48px 0;background:var(--warm-white);border-bottom:1px solid var(--border);}
 .cat-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:16px;scrollbar-width:none;}
 .cat-scroll::-webkit-scrollbar{display:none;}
@@ -91,6 +98,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .cat-chip:hover,.cat-chip.active{background:var(--crimson);color:#fff;border-color:var(--crimson);}
 .cat-chip:hover i,.cat-chip.active i{color:#fff;}
 
+/* SECTIONS */
 .roles-section{padding:56px 48px;}
 .section-label{display:inline-block;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
 .section-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:-.3px;}
@@ -107,6 +115,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .btn-card{background:none;border:1.5px solid var(--crimson);color:var(--crimson);border-radius:10px;padding:10px 20px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;}
 .btn-card:hover{background:var(--crimson);color:#fff;}
 
+/* HOW IT WORKS */
 .how-section{margin:0 48px 56px;background:var(--ink);border-radius:var(--r-lg);overflow:hidden;}
 .how-header{display:flex;justify-content:space-between;align-items:center;padding:24px 36px;cursor:pointer;}
 .how-header:hover{background:rgba(255,255,255,.04);}
@@ -124,13 +133,16 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .commission-info{background:rgba(200,134,26,.12);border:1px solid rgba(200,134,26,.25);border-radius:12px;padding:18px 22px;font-size:13px;color:rgba(255,255,255,.7);line-height:1.8;}
 .commission-info strong{color:var(--gold-light);}
 
+/* HOME MENU */
 .home-menu-section{padding:0 48px 56px;}
 
+/* PROMO BANNER */
 .promo-strip{background:linear-gradient(90deg,var(--crimson-deep),var(--crimson-mid));color:#fff;padding:14px 48px;display:flex;align-items:center;gap:16px;font-size:14px;}
 .promo-strip i{color:var(--gold-light);font-size:18px;}
 .promo-strip strong{color:var(--gold-light);}
 .promo-strip span{opacity:.85;}
 
+/* AUTH */
 .auth-wrap{max-width:480px;margin:40px auto;padding:0 24px;}
 .auth-card{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:44px;box-shadow:var(--shadow-card);}
 .auth-logo{text-align:center;margin-bottom:32px;}
@@ -141,6 +153,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .role-tab{flex:1;padding:9px 4px;border-radius:9px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;background:none;color:var(--muted);}
 .role-tab.active{background:var(--crimson);color:#fff;box-shadow:0 2px 8px rgba(122,0,32,.3);}
 
+/* FORM */
 .form-group{margin-bottom:20px;}
 .form-group label{display:block;font-size:12px;font-weight:600;color:var(--charcoal);margin-bottom:7px;letter-spacing:.3px;text-transform:uppercase;}
 .form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);background:var(--cream);transition:all .2s;outline:none;}
@@ -153,6 +166,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .auth-footer a{color:var(--crimson);font-weight:600;text-decoration:none;cursor:pointer;}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 
+/* ONBOARDING STEPS */
 .onboard-steps{display:flex;gap:0;margin-bottom:32px;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
 .onboard-step{flex:1;text-align:center;padding:12px 6px;font-size:11px;font-weight:600;color:var(--muted);background:var(--cream);border-right:1px solid var(--border);position:relative;}
 .onboard-step:last-child{border-right:none;}
@@ -160,6 +174,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .onboard-step.done{background:var(--success);color:#fff;}
 .onboard-step .snum{display:block;font-size:18px;font-family:'Playfair Display',serif;font-weight:700;}
 
+/* FILE UPLOAD */
 .file-upload{position:relative;display:inline-block;width:100%;}
 .file-upload input[type="file"]{position:absolute;opacity:0;width:100%;height:100%;cursor:pointer;}
 .file-label{display:block;padding:18px;border:2px dashed var(--border);border-radius:10px;text-align:center;color:var(--muted);cursor:pointer;transition:all .2s;font-size:14px;}
@@ -167,6 +182,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .file-label:hover{border-color:var(--crimson);color:var(--crimson);}
 .preview-img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:14px auto;display:none;border:3px solid var(--crimson);}
 
+/* PAYMENT SECTION */
 .payment-section{background:linear-gradient(135deg,var(--gold-pale),var(--cream));border:2px solid var(--gold);border-radius:var(--r-lg);padding:28px;margin-bottom:20px;text-align:center;}
 .payment-section h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--crimson);margin-bottom:12px;}
 .payment-amount{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--crimson);margin-bottom:8px;}
@@ -181,6 +197,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .password-input{max-width:300px;margin:0 auto 20px;}
 .password-input input{text-align:center;font-size:20px;letter-spacing:4px;font-family:monospace;}
 
+/* DASHBOARD */
 .dash-wrap{padding:32px 48px;}
 .dash-header{display:flex;justify-content:space-between;align-items:center;background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px 28px;margin-bottom:24px;box-shadow:var(--shadow-card);}
 .dash-user{display:flex;align-items:center;gap:18px;}
@@ -200,6 +217,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 input:checked+.toggle-slider{background:var(--success);}
 input:checked+.toggle-slider:before{transform:translateX(21px);}
 
+/* STATS */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
 .stat-card{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;box-shadow:var(--shadow-card);position:relative;overflow:hidden;}
 .stat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--crimson),var(--gold));opacity:.4;}
@@ -209,6 +227,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .stat-val.danger{color:var(--crimson);}
 .stat-val.success{color:var(--success);}
 
+/* ORDER HISTORY */
 .order-history-card{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-bottom:12px;display:flex;gap:14px;align-items:center;}
 .order-history-card img{width:56px;height:56px;border-radius:10px;object-fit:cover;}
 .order-hist-info{flex:1;}
@@ -221,6 +240,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .reorder-btn{background:var(--crimson);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:8px;}
 .reorder-btn:hover{background:var(--crimson-deep);}
 
+/* LIVE ORDER TRACKER */
 .order-tracker{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;margin-bottom:24px;}
 .tracker-steps{display:flex;align-items:center;justify-content:space-between;position:relative;margin:24px 0;}
 .tracker-steps::before{content:'';position:absolute;top:20px;left:0;right:0;height:2px;background:var(--border);z-index:0;}
@@ -231,6 +251,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .tracker-step span{font-size:11px;font-weight:600;color:var(--muted);text-align:center;}
 .tracker-step.done span,.tracker-step.active span{color:var(--ink);}
 
+/* SECTION CARD */
 .section-card{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;margin-bottom:24px;box-shadow:var(--shadow-card);}
 .sec-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border);}
 .sec-header h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);}
@@ -241,6 +262,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .btn-search{background:var(--crimson);color:#fff;border:none;border-radius:10px;width:40px;cursor:pointer;font-size:14px;transition:all .2s;}
 .btn-search:hover{background:var(--crimson-deep);}
 
+/* FOOD CARDS */
 .food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;}
 .food-card{background:var(--cream);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;transition:all .25s;}
 .food-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-warm);border-color:var(--crimson);}
@@ -262,11 +284,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .add-btn{width:44px;height:44px;border-radius:11px;background:var(--crimson);color:#fff;border:none;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;}
 .add-btn:hover{background:var(--crimson-deep);transform:rotate(90deg);}
 
-/* ── STAR RATING DISPLAY on cards ── */
-.rating-display{display:flex;align-items:center;gap:6px;margin-bottom:6px;}
-.rating-display .stars-show{color:var(--gold);font-size:13px;letter-spacing:1px;}
-.rating-display .review-count{font-size:12px;color:var(--muted);}
-
+/* FOOD DETAIL PAGE */
 .food-detail-wrap{max-width:960px;margin:0 auto;padding:32px 48px;}
 .food-detail-img{width:100%;height:420px;object-fit:cover;border-radius:var(--r-lg);margin-bottom:24px;}
 .food-detail-info{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;margin-bottom:20px;}
@@ -288,6 +306,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .qty-btn:hover{background:var(--crimson);color:#fff;border-color:var(--crimson);}
 .qty-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;min-width:32px;text-align:center;}
 
+/* ORDER SUMMARY */
 .order-layout{display:grid;grid-template-columns:1fr 380px;gap:24px;}
 .order-summary{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;position:sticky;top:88px;box-shadow:var(--shadow-card);}
 .order-summary h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--ink);margin-bottom:20px;}
@@ -298,6 +317,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .pay-tab{flex:1;padding:9px 4px;border-radius:9px;border:1.5px solid var(--border);font-size:12px;font-weight:600;cursor:pointer;text-align:center;transition:all .2s;background:var(--warm-white);color:var(--muted);font-family:'DM Sans',sans-serif;}
 .pay-tab.active{border-color:var(--crimson);color:var(--crimson);background:rgba(122,0,32,.04);}
 
+/* CHEF STORE PAGE */
 .chef-store-wrap{max-width:1100px;margin:0 auto;padding:32px 48px;}
 .chef-banner{background:linear-gradient(160deg,var(--crimson-deep),var(--crimson-mid));border-radius:var(--r-lg);padding:40px;color:#fff;margin-bottom:28px;display:flex;gap:24px;align-items:center;}
 .chef-avatar-lg{width:90px;height:90px;border-radius:18px;object-fit:cover;border:3px solid rgba(200,134,26,.5);}
@@ -309,6 +329,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .chef-status-badge.open{background:rgba(30,124,74,.2);color:#7BE4A6;}
 .chef-status-badge.closed{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);}
 
+/* DELIVERY CARDS */
 .delivery-card{background:var(--gold-pale);border:1px solid rgba(200,134,26,.3);border-left:4px solid var(--gold);border-radius:var(--r);padding:20px 24px;margin-bottom:16px;}
 .delivery-card h4{font-family:'Playfair Display',serif;font-size:16px;color:var(--ink);margin-bottom:12px;}
 .delivery-card p{font-size:13px;color:var(--charcoal);line-height:1.7;font-weight:300;}
@@ -318,8 +339,10 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .area-tag{background:var(--gold-pale);color:var(--charcoal);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid var(--border);display:flex;align-items:center;gap:5px;}
 .area-tag i{color:var(--crimson);font-size:10px;}
 
+/* PAID BADGE */
 .paid-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(30,124,74,.1);color:var(--success);padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid rgba(30,124,74,.2);margin-bottom:12px;}
 
+/* APPLY WRAP */
 .apply-wrap{max-width:860px;margin:0 auto;padding:40px 48px;}
 .apply-head{text-align:center;margin-bottom:44px;}
 .apply-head .icon{width:72px;height:72px;background:linear-gradient(135deg,var(--crimson-deep),var(--crimson));border-radius:18px;display:inline-flex;align-items:center;justify-content:center;font-size:30px;color:var(--gold-light);margin-bottom:16px;box-shadow:0 8px 24px rgba(122,0,32,.25);}
@@ -328,58 +351,30 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .apply-section{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;margin-bottom:20px;box-shadow:var(--shadow-card);}
 .apply-section h3{font-family:'Playfair Display',serif;font-size:17px;color:var(--crimson);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
 
-/* ══════════════════════════════════════
-   ENHANCED REVIEW / RATING SYSTEM
-══════════════════════════════════════ */
+/* REVIEWS */
 .review-card{padding:18px 0;border-bottom:1px solid var(--border);}
 .review-card:last-child{border:none;}
 .review-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
-.reviewer-info{display:flex;flex-direction:column;gap:3px;}
-.reviewer-name{font-size:14px;font-weight:600;color:var(--ink);}
-.reviewer-stars{color:var(--gold);font-size:13px;letter-spacing:1px;}
+.reviewer{font-size:14px;font-weight:600;color:var(--ink);}
 .review-date{font-size:12px;color:var(--muted);}
-.review-body{font-size:14px;color:var(--muted);line-height:1.6;font-weight:300;}
-.review-reason-tag{display:inline-block;background:var(--gold-pale);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:12px;margin-top:6px;font-weight:500;border:1px solid rgba(200,134,26,.2);}
+.review-card p{font-size:14px;color:var(--muted);line-height:1.6;font-weight:300;}
+.stars-input{display:flex;gap:8px;font-size:28px;color:var(--border);margin-bottom:10px;}
+.stars-input i{cursor:pointer;transition:color .15s;}
+.stars-input i.lit{color:var(--gold);}
 
-/* Star rating input */
-.star-picker{display:flex;gap:6px;margin-bottom:6px;}
-.star-picker .sp{font-size:32px;cursor:pointer;color:var(--border);transition:color .15s,transform .15s;line-height:1;}
-.star-picker .sp:hover,.star-picker .sp.lit{color:var(--gold);}
-.star-picker .sp:hover{transform:scale(1.15);}
-.star-val-label{font-size:13px;color:var(--muted);margin-left:6px;align-self:center;min-width:80px;}
-.review-type-tabs{display:flex;gap:6px;margin-bottom:20px;}
-.rev-tab{flex:1;padding:9px 4px;border-radius:9px;border:1.5px solid var(--border);font-size:12px;font-weight:600;cursor:pointer;text-align:center;transition:all .2s;background:var(--warm-white);color:var(--muted);font-family:'DM Sans',sans-serif;}
-.rev-tab.active{border-color:var(--gold);color:var(--gold);background:var(--gold-pale);}
-
-/* Avg rating badge on chef store */
-.avg-badge{display:inline-flex;align-items:center;gap:6px;background:var(--gold-pale);border:1px solid rgba(200,134,26,.3);padding:6px 14px;border-radius:20px;font-size:14px;font-weight:600;color:var(--gold);margin-bottom:8px;}
-.avg-badge i{color:var(--gold);}
-
-/* ══════════════════════════════════════
-   RIDER BROADCAST CARD (new)
-══════════════════════════════════════ */
-.rider-broadcast-card{background:linear-gradient(135deg,rgba(200,134,26,.08),var(--gold-pale));border:2px solid var(--gold);border-radius:var(--r-lg);padding:22px;margin-bottom:16px;position:relative;overflow:hidden;}
-.rider-broadcast-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));}
-.rider-broadcast-card h4{font-family:'Playfair Display',serif;font-size:17px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-.rider-broadcast-card p{font-size:13px;color:var(--charcoal);line-height:1.8;}
-.rider-broadcast-card .broadcast-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(200,134,26,.15);color:var(--gold);border:1px solid rgba(200,134,26,.3);padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600;margin-bottom:10px;}
-.rider-accepted-notice{background:rgba(30,124,74,.08);border:1px solid rgba(30,124,74,.25);border-radius:10px;padding:14px 18px;color:var(--success);font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;}
-
-/* Restaurant info row */
-.restaurant-pickup{background:var(--ink);border-radius:10px;padding:14px 18px;margin:14px 0;color:#fff;}
-.restaurant-pickup h5{color:var(--gold-light);font-size:13px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
-.restaurant-pickup p{font-size:13px;opacity:.8;line-height:1.6;}
-
+/* PREMIUM BANNER */
 .premium-banner{background:linear-gradient(135deg,var(--crimson-deep),var(--crimson-mid));border-radius:var(--r-lg);padding:32px;margin-bottom:20px;text-align:center;color:#fff;}
 .premium-banner h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--gold-light);margin-bottom:12px;}
 .premium-amount{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:#fff;margin-bottom:8px;}
 .expiry-tag{background:rgba(255,255,255,.1);border-radius:8px;padding:10px 20px;display:inline-block;margin-bottom:20px;font-size:14px;}
 
+/* SUSPENDED ACCOUNT MESSAGE */
 .suspended-banner{background:linear-gradient(135deg,#3D2030,#7A0020);border-radius:var(--r-lg);padding:40px;margin-bottom:20px;text-align:center;color:#fff;border:2px solid var(--crimson);}
 .suspended-banner h3{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold-light);margin-bottom:12px;}
 .suspended-banner p{opacity:.9;margin-bottom:20px;font-size:15px;}
 .suspended-banner .lock-icon{font-size:48px;color:var(--gold-light);margin-bottom:16px;}
 
+/* MODALS */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,10,14,.6);backdrop-filter:blur(4px);z-index:2000;align-items:center;justify-content:center;}
 .modal-overlay.show{display:flex;}
 .modal{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:36px;max-width:580px;width:90%;max-height:90vh;overflow-y:auto;animation:modalIn .25s ease;box-shadow:0 24px 80px rgba(26,10,14,.3);}
@@ -389,6 +384,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .modal-close{background:none;border:none;font-size:24px;color:var(--muted);cursor:pointer;transition:color .2s;}
 .modal-close:hover{color:var(--crimson);}
 
+/* ORDER NOTIF CARD */
 .order-notif-card{background:rgba(122,0,32,.05);border:2px solid rgba(122,0,32,.2);border-radius:var(--r-lg);padding:22px;margin-bottom:16px;}
 .order-notif-card h4{font-family:'Playfair Display',serif;font-size:17px;color:var(--crimson);margin-bottom:12px;}
 .order-notif-card p{font-size:13px;color:var(--charcoal);line-height:1.7;font-weight:300;}
@@ -399,32 +395,55 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .notif-btn.reject{background:var(--cream);border:1.5px solid var(--border);color:var(--muted);}
 .notif-btn.reject:hover{border-color:var(--crimson);color:var(--crimson);}
 
+/* RIDER NOTIF */
 .rider-notif-card{background:var(--gold-pale);border:2px solid var(--gold);border-radius:var(--r-lg);padding:22px;margin-bottom:16px;}
 .rider-notif-card h4{font-family:'Playfair Display',serif;font-size:17px;color:var(--gold);margin-bottom:12px;}
 .rider-notif-card p{font-size:13px;color:var(--charcoal);line-height:1.7;}
 
+/* OPTION EXTRA */
 .option-extra{display:flex;gap:8px;margin-bottom:8px;align-items:center;}
 .btn-add-opt{background:none;border:1.5px solid var(--border);color:var(--muted);border-radius:9px;padding:9px 16px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;margin-top:6px;}
 .btn-add-opt:hover{border-color:var(--crimson);color:var(--crimson);}
 
+/* MENU WRAP */
 .menu-wrap{padding:32px 48px;}
 
+/* TOAST */
 .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:13px 22px;border-radius:12px;font-size:14px;opacity:0;z-index:3000;transition:all .3s;border:1px solid rgba(200,134,26,.2);max-width:400px;text-align:center;pointer-events:none;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
+/* WHATSAPP BTN */
 .wa-btn{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;border:none;border-radius:10px;padding:11px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:12px;}
 .wa-btn:hover{background:#1DAB54;transform:translateY(-1px);}
 
+/* FAVOURITES */
 .fav-btn{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.9);border:none;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;color:var(--border);transition:all .2s;backdrop-filter:blur(6px);}
 .fav-btn.active{color:var(--crimson);}
 .fav-btn:hover{color:var(--crimson);transform:scale(1.1);}
 
+/* RATING STARS DISPLAY */
 .rating-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;}
 .rating-row .stars{color:var(--gold);font-size:12px;}
 .rating-row span{font-size:12px;color:var(--muted);}
 
+/* READ ONLY MODE */
 .read-only-notice{background:var(--gold-pale);border:1px solid var(--gold);border-radius:10px;padding:12px 16px;margin-bottom:20px;color:var(--crimson);font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;}
 .read-only-notice i{color:var(--gold);}
+
+/* BROADCAST BADGE */
+.broadcast-badge{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--crimson-deep);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;box-shadow:0 2px 8px rgba(200,134,26,.3);}
+
+/* RIDER CARD STATES */
+.rider-notif-card.accepted{opacity:0.6;background:var(--cream);border-color:var(--border);border-left-color:var(--muted);}
+.already-accepted-notice{text-align:center;padding:20px;color:var(--muted);font-style:italic;font-size:14px;font-weight:500;}
+.already-accepted-notice i{color:var(--success);font-size:24px;display:block;margin-bottom:8px;}
+
+/* REVIEW TAGS */
+.review-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;margin-top:10px;}
+.review-tag{background:var(--cream);border:1.5px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;cursor:pointer;transition:all .2s;color:var(--charcoal);user-select:none;}
+.review-tag:hover{border-color:var(--gold);color:var(--gold);}
+.review-tag.selected{background:var(--crimson);border-color:var(--crimson);color:#fff;}
+.star-label{text-align:center;font-size:13px;color:var(--gold);font-weight:600;margin-bottom:15px;height:20px;}
 
 ::-webkit-scrollbar{width:5px;}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
@@ -444,6 +463,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   .cart-panel,.notif-panel{width:calc(100vw - 32px);right:16px;}
 }
 </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -634,7 +654,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   </div>
 </div>
 
-<!-- ═══ APPLY COOK ══════════════════════════════════════════════════ -->
+<!-- ═══ APPLY COOK (Simplified 3-Step) ══════════════════════════════════════ -->
 <div id="apply-cook" class="page">
   <div class="apply-wrap">
     <div class="apply-head">
@@ -647,6 +667,8 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       <div class="onboard-step" id="cstep2"><span class="snum">2</span>Payment</div>
       <div class="onboard-step" id="cstep3"><span class="snum">3</span>Password</div>
     </div>
+    
+    <!-- Step 1: Personal Info (NO ADDRESS) -->
     <div id="cook-s1">
       <div class="apply-section">
         <h3><i class="fas fa-user"></i>Personal Information</h3>
@@ -659,7 +681,6 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
           <div class="form-group"><label>CNIC Number</label><input type="text" id="c_cnic" placeholder="XXXXX-XXXXXXX-X" required></div>
         </div>
         <div class="form-group"><label>Restaurant / Kitchen Name</label><input type="text" id="c_store" placeholder="e.g. Ahmad's Kitchen" required></div>
-        <div class="form-group"><label>Kitchen Address in Swabi</label><input type="text" id="c_address" placeholder="House #, Street, Area, Swabi" required></div>
         <div class="form-group">
           <label>Profile Photo</label>
           <div class="file-upload"><input type="file" accept="image/*" id="c_photo" onchange="previewImg(this,'cookPrev')"><div class="file-label"><i class="fas fa-camera"></i>Upload your photo</div></div>
@@ -672,6 +693,8 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       </div>
       <button class="btn-full" onclick="validateCookStep1()">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
     </div>
+    
+    <!-- Step 2: Payment (Rs. 2000) -->
     <div id="cook-s2" style="display:none;">
       <div class="payment-section">
         <h3><i class="fas fa-lock"></i> Registration Fee</h3>
@@ -682,6 +705,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
           <div class="account-num">PK34NAYA1234503169382133</div>
           <div class="account-name">ApnaKitchen — Platform Wallet</div>
         </div>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px;">Send Rs. 2,000 to the above account, then upload your payment slip below.</p>
         <div class="form-group" style="text-align:left;margin-top:20px;">
           <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip (Required)*</label>
           <div class="file-upload">
@@ -695,9 +719,13 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       </div>
       <div style="display:flex;gap:12px;">
         <button class="btn-card" style="flex:1;padding:14px;" onclick="cookBack(2)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
-        <button class="btn-full" style="flex:2;" id="cookPayBtn" onclick="submitCookPayment()" disabled><i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Payment Slip</button>
+        <button class="btn-full" style="flex:2;" id="cookPayBtn" onclick="submitCookPayment()" disabled>
+          <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Payment Slip
+        </button>
       </div>
     </div>
+    
+    <!-- Step 3: Password -->
     <div id="cook-s3" style="display:none;">
       <div class="password-section">
         <div style="width:80px;height:80px;background:var(--gold-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;color:var(--gold);"><i class="fas fa-key"></i></div>
@@ -705,6 +733,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         <p>Enter the password you received on WhatsApp (03483351028)</p>
         <div class="password-input"><input type="password" id="cookPasswordInput" placeholder="••••••••" maxlength="12"></div>
         <p id="cookPassError" style="color:var(--crimson);font-size:13px;display:none;margin-bottom:10px;"><i class="fas fa-times-circle"></i> Incorrect password! Please check WhatsApp.</p>
+        <p style="color:var(--muted);font-size:13px;">Password is case-sensitive. Enter exactly as received.</p>
       </div>
       <div style="display:flex;gap:12px;">
         <button class="btn-card" style="flex:1;padding:14px;" onclick="cookBack(3)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
@@ -714,7 +743,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   </div>
 </div>
 
-<!-- ═══ BECOME RIDER ══════════════════════════════════════════════════ -->
+<!-- ═══ BECOME RIDER (Simplified 3-Step) ══════════════════════════════════════ -->
 <div id="become-rider" class="page">
   <div class="apply-wrap">
     <div class="apply-head">
@@ -727,6 +756,8 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       <div class="onboard-step" id="rstep2"><span class="snum">2</span>Payment</div>
       <div class="onboard-step" id="rstep3"><span class="snum">3</span>Password</div>
     </div>
+    
+    <!-- Step 1: Personal Info -->
     <div id="rider-s1">
       <div class="apply-section">
         <h3><i class="fas fa-user"></i>Personal Information</h3>
@@ -755,6 +786,8 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       </div>
       <button class="btn-full" onclick="validateRiderStep1()">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
     </div>
+    
+    <!-- Step 2: Payment (Rs. 1000) -->
     <div id="rider-s2" style="display:none;">
       <div class="payment-section">
         <h3><i class="fas fa-lock"></i> Registration Fee</h3>
@@ -765,6 +798,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
           <div class="account-num">PK34NAYA1234503169382133</div>
           <div class="account-name">ApnaKitchen — Platform Wallet</div>
         </div>
+        <p style="font-size:13px;color:var(--muted);margin-top:8px;">Send Rs. 1,000 to the above account, then upload your payment slip below.</p>
         <div class="form-group" style="text-align:left;margin-top:20px;">
           <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip (Required)*</label>
           <div class="file-upload">
@@ -778,9 +812,13 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       </div>
       <div style="display:flex;gap:12px;">
         <button class="btn-card" style="flex:1;padding:14px;" onclick="riderBack(2)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
-        <button class="btn-full" style="flex:2;" id="riderPayBtn" onclick="submitRiderPayment()" disabled><i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Payment Slip</button>
+        <button class="btn-full" style="flex:2;" id="riderPayBtn" onclick="submitRiderPayment()" disabled>
+          <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Payment Slip
+        </button>
       </div>
     </div>
+    
+    <!-- Step 3: Password -->
     <div id="rider-s3" style="display:none;">
       <div class="password-section">
         <div style="width:80px;height:80px;background:var(--gold-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;color:var(--gold);"><i class="fas fa-key"></i></div>
@@ -788,6 +826,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         <p>Enter the password you received on WhatsApp (03483351028)</p>
         <div class="password-input"><input type="password" id="riderPasswordInput" placeholder="••••••" maxlength="10"></div>
         <p id="riderPassError" style="color:var(--crimson);font-size:13px;display:none;margin-bottom:10px;"><i class="fas fa-times-circle"></i> Incorrect password! Please check WhatsApp.</p>
+        <p style="color:var(--muted);font-size:13px;">Password is case-sensitive.</p>
       </div>
       <div style="display:flex;gap:12px;">
         <button class="btn-card" style="flex:1;padding:14px;" onclick="riderBack(3)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
@@ -867,7 +906,6 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         <h1 id="chefStoreName">Chef Name</h1>
         <p id="chefStoreArea"><i class="fas fa-map-marker-alt" style="margin-right:4px;"></i>Area</p>
         <p id="chefStoreCuisine" style="opacity:.7;font-size:13px;margin-top:4px;"></p>
-        <div id="chefAvgBadge" style="margin-top:8px;"></div>
         <div class="chef-stars" id="chefStoreStars"></div>
         <div class="chef-status-badge open" id="chefStatusBadge"><i class="fas fa-circle" style="font-size:8px;"></i>Open Now</div>
       </div>
@@ -877,10 +915,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       <div class="food-grid" id="chefStoreMenu"></div>
     </div>
     <div class="section-card" id="chefStoreReviewsSection">
-      <div class="sec-header">
-        <h2><i class="fas fa-star"></i>Reviews</h2>
-        <button class="btn-card" onclick="openReview('chef', currentChefId, currentChefName)" style="padding:8px 16px;font-size:12px;"><i class="fas fa-pen" style="margin-right:6px;"></i>Write a Review</button>
-      </div>
+      <div class="sec-header"><h2><i class="fas fa-star"></i>Reviews</h2></div>
       <div id="chefStoreReviewsList">
         <p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet for this chef.</p>
       </div>
@@ -900,29 +935,50 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         </div>
       </div>
     </div>
+
+    <!-- LIVE ORDER TRACKER -->
     <div class="order-tracker" id="orderTrackerSection" style="display:none;">
       <div class="sec-header" style="margin-bottom:0;padding-bottom:16px;">
         <h2><i class="fas fa-shipping-fast" style="color:var(--crimson);margin-right:8px;font-size:16px;"></i>Live Order Tracking</h2>
         <span id="trackerOrderId" style="font-size:13px;color:var(--muted);"></span>
       </div>
       <div class="tracker-steps">
-        <div class="tracker-step active" id="track1"><div class="tracker-dot active"><i class="fas fa-shopping-bag"></i></div><span>Order Placed</span></div>
-        <div class="tracker-step" id="track2"><div class="tracker-dot"><i class="fas fa-check"></i></div><span>Confirmed</span></div>
-        <div class="tracker-step" id="track3"><div class="tracker-dot"><i class="fas fa-fire"></i></div><span>Preparing</span></div>
-        <div class="tracker-step" id="track4"><div class="tracker-dot"><i class="fas fa-motorcycle"></i></div><span>On the Way</span></div>
-        <div class="tracker-step" id="track5"><div class="tracker-dot"><i class="fas fa-home"></i></div><span>Delivered</span></div>
+        <div class="tracker-step active" id="track1">
+          <div class="tracker-dot active"><i class="fas fa-shopping-bag"></i></div>
+          <span>Order Placed</span>
+        </div>
+        <div class="tracker-step" id="track2">
+          <div class="tracker-dot"><i class="fas fa-check"></i></div>
+          <span>Confirmed</span>
+        </div>
+        <div class="tracker-step" id="track3">
+          <div class="tracker-dot"><i class="fas fa-fire"></i></div>
+          <span>Preparing</span>
+        </div>
+        <div class="tracker-step" id="track4">
+          <div class="tracker-dot"><i class="fas fa-motorcycle"></i></div>
+          <span>On the Way</span>
+        </div>
+        <div class="tracker-step" id="track5">
+          <div class="tracker-dot"><i class="fas fa-home"></i></div>
+          <span>Delivered</span>
+        </div>
       </div>
     </div>
+
     <div class="stats-grid">
       <div class="stat-card"><h4>Total Orders</h4><div class="stat-val" id="custTotalOrders">0</div></div>
       <div class="stat-card"><h4>Favourite Cooks</h4><div class="stat-val" id="custFavCount">0</div></div>
       <div class="stat-card"><h4>Pending</h4><div class="stat-val warn" id="custPendingCount">0</div></div>
       <div class="stat-card"><h4>Reviews Given</h4><div class="stat-val" id="custReviewCount">0</div></div>
     </div>
+
+    <!-- ORDER HISTORY -->
     <div class="section-card" id="custOrderHistorySection" style="display:none;">
       <div class="sec-header"><h2><i class="fas fa-history"></i>My Orders</h2></div>
       <div id="custOrderHistoryList"></div>
     </div>
+
     <div class="section-card">
       <div class="sec-header">
         <h2><i class="fas fa-fire"></i>Popular in Swabi</h2>
@@ -939,33 +995,52 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 <!-- ═══ COOK DASHBOARD ═══════════════════════════════════════════════ -->
 <div id="cook-dashboard" class="page">
   <div class="dash-wrap">
+    <!-- SUSPENDED BANNER (When Premium Expired) -->
     <div class="suspended-banner" id="cookSuspendedBanner" style="display:none;">
       <div class="lock-icon"><i class="fas fa-lock"></i></div>
       <h3>Account Suspended</h3>
-      <p>Your 1-month premium membership has expired.</p>
+      <p>Your 1-month premium membership has expired. Your account is currently locked.</p>
+      <p style="font-size:13px;opacity:.8;margin-bottom:16px;">You can view your reviews and past data, but cannot receive orders or edit menu.</p>
       <div class="expiry-tag"><i class="fas fa-calendar-times" style="margin-right:6px;color:var(--gold-light);"></i>Expired on: <span id="cookExpiryDateDisplay">—</span></div>
       <button class="btn-hp" onclick="showCookRenewal()" style="margin-top:10px;"><i class="fas fa-crown" style="margin-right:8px;"></i>Buy Premium - Rs. 2,000</button>
     </div>
+
+    <!-- PREMIUM RENEWAL PAGE (Hidden by default) -->
     <div id="cookRenewalPage" style="display:none;">
       <button class="btn-card" onclick="backToSuspendedCook()" style="margin-bottom:20px;"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
       <div class="premium-banner">
         <h3><i class="fas fa-crown" style="margin-right:8px;"></i>Renew Premium Membership</h3>
         <div class="premium-amount">Rs. 2,000</div>
-        <div class="naypay-box" style="max-width:400px;margin:0 auto 20px;"><h4><i class="fas fa-university"></i> Send to NayaPay</h4><div class="account-num">PK34NAYA1234503169382133</div><div class="account-name">ApnaKitchen</div></div>
+        <p style="opacity:.8;margin-bottom:16px;">Monthly Renewal Fee</p>
+        <div class="naypay-box" style="max-width:400px;margin:0 auto 20px;">
+          <h4><i class="fas fa-university"></i> Send to NayaPay</h4>
+          <div class="account-num">PK34NAYA1234503169382133</div>
+          <div class="account-name">ApnaKitchen</div>
+        </div>
         <div class="form-group" style="max-width:400px;margin:0 auto 16px;text-align:left;">
-          <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip*</label>
-          <div class="file-upload"><input type="file" accept="image/*" id="cookRenewSlip" onchange="onSlipUpload(this,'cookRenewSlipPreview','cookRenewSubmitBtn')"><div class="file-label"><i class="fas fa-cloud-upload-alt"></i>Upload payment slip</div></div>
+          <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip (Required)*</label>
+          <div class="file-upload">
+            <input type="file" accept="image/*" id="cookRenewSlip" onchange="onSlipUpload(this,'cookRenewSlipPreview','cookRenewSubmitBtn')">
+            <div class="file-label"><i class="fas fa-cloud-upload-alt"></i>Upload payment slip</div>
+          </div>
           <img id="cookRenewSlipPreview" style="width:100%;max-width:300px;border-radius:10px;margin-top:10px;display:none;">
         </div>
-        <button class="btn-full" id="cookRenewSubmitBtn" onclick="submitCookRenewalPayment()" disabled style="max-width:400px;margin:0 auto;display:block;"><i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Renewal Slip</button>
+        <button class="btn-full" id="cookRenewSubmitBtn" onclick="submitCookRenewalPayment()" disabled style="max-width:400px;margin:0 auto;display:block;">
+          <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Renewal Slip
+        </button>
       </div>
+      
+      <!-- Password Step for Renewal -->
       <div class="password-section" id="cookRenewPasswordSection" style="display:none;margin-top:20px;">
-        <h3>Enter Renewal Code</h3>
+        <h3><i class="fas fa-key" style="color:var(--gold);margin-right:8px;"></i>Enter Renewal Code</h3>
+        <p>Enter the password sent to your WhatsApp (03483351028)</p>
         <div class="password-input"><input type="password" id="cookRenewPasswordInput" placeholder="••••••••" maxlength="12"></div>
         <p id="cookRenewPassError" style="color:var(--crimson);font-size:13px;display:none;margin-bottom:10px;"><i class="fas fa-times-circle"></i> Incorrect password!</p>
         <button class="btn-full" onclick="verifyCookRenewalPassword()" style="max-width:300px;"><i class="fas fa-check" style="margin-right:8px;"></i>Activate Premium</button>
       </div>
     </div>
+
+    <!-- MAIN DASHBOARD CONTENT -->
     <div id="cookMainContent">
       <div class="dash-header">
         <div class="dash-user">
@@ -983,27 +1058,39 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
           </div>
         </div>
       </div>
+
       <div class="stats-grid">
         <div class="stat-card"><h4>Today's Orders</h4><div class="stat-val" id="cookTodayOrders">0</div></div>
         <div class="stat-card"><h4>Pending</h4><div class="stat-val warn" id="cookPendingOrders">0</div></div>
         <div class="stat-card"><h4>Total Reviews</h4><div class="stat-val" id="cookTotalReviews">0</div></div>
         <div class="stat-card"><h4>Menu Items</h4><div class="stat-val" id="cookMenuCount">0</div></div>
       </div>
+
+      <!-- NEW ORDER NOTIFICATIONS -->
       <div class="section-card" id="newOrdersSection">
         <div class="sec-header"><h2 style="color:var(--crimson);"><i class="fas fa-bell" style="color:var(--crimson);"></i>New Orders</h2></div>
         <div id="newOrdersList"><p style="color:var(--muted);font-size:14px;">No new orders right now.</p></div>
       </div>
+
       <div class="section-card">
         <div class="sec-header">
           <h2><i class="fas fa-book-open"></i>My Menu</h2>
-          <button class="add-btn" onclick="openAddItem()" title="Add item"><i class="fas fa-plus"></i></button>
+          <div style="display:flex;gap:10px;">
+            <button class="add-btn" onclick="openAddItem()" title="Add item"><i class="fas fa-plus"></i></button>
+          </div>
         </div>
-        <div id="cookMenuEmpty" style="text-align:center;padding:40px 0;color:var(--muted);"><i class="fas fa-utensils" style="font-size:36px;margin-bottom:14px;display:block;color:var(--border);"></i><p>Your menu is empty. Click + to add your first dish!</p></div>
+        <div id="cookMenuEmpty" style="text-align:center;padding:40px 0;color:var(--muted);">
+          <i class="fas fa-utensils" style="font-size:36px;margin-bottom:14px;display:block;color:var(--border);"></i>
+          <p>Your menu is empty. Click + to add your first dish!</p>
+        </div>
         <div class="food-grid" id="cookMenu"></div>
       </div>
+
       <div class="section-card">
         <div class="sec-header"><h2><i class="fas fa-star" style="color:var(--gold);font-size:16px;"></i>My Reviews</h2></div>
-        <div id="cookReviewsList"><p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet.</p></div>
+        <div id="cookReviewsList">
+          <p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet. Reviews appear here once customers rate your food.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1012,33 +1099,52 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 <!-- ═══ RIDER DASHBOARD ═══════════════════════════════════════════════ -->
 <div id="rider-dashboard" class="page">
   <div class="dash-wrap">
+    <!-- SUSPENDED BANNER -->
     <div class="suspended-banner" id="riderSuspendedBanner" style="display:none;">
       <div class="lock-icon"><i class="fas fa-lock"></i></div>
       <h3>Account Suspended</h3>
-      <p>Your 1-month premium membership has expired.</p>
+      <p>Your 1-month premium membership has expired. Your account is currently locked.</p>
+      <p style="font-size:13px;opacity:.8;margin-bottom:16px;">You can view your reviews and past data, but cannot accept deliveries.</p>
       <div class="expiry-tag"><i class="fas fa-calendar-times" style="margin-right:6px;color:var(--gold-light);"></i>Expired on: <span id="riderExpiryDateDisplay">—</span></div>
       <button class="btn-hp" onclick="showRiderRenewal()" style="margin-top:10px;"><i class="fas fa-crown" style="margin-right:8px;"></i>Buy Premium - Rs. 1,000</button>
     </div>
+
+    <!-- PREMIUM RENEWAL PAGE -->
     <div id="riderRenewalPage" style="display:none;">
       <button class="btn-card" onclick="backToSuspendedRider()" style="margin-bottom:20px;"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
       <div class="premium-banner">
         <h3><i class="fas fa-crown" style="margin-right:8px;"></i>Renew Premium Membership</h3>
         <div class="premium-amount">Rs. 1,000</div>
-        <div class="naypay-box" style="max-width:400px;margin:0 auto 20px;"><h4><i class="fas fa-university"></i> Send to NayaPay</h4><div class="account-num">PK34NAYA1234503169382133</div><div class="account-name">ApnaKitchen</div></div>
+        <p style="opacity:.8;margin-bottom:16px;">Monthly Renewal Fee</p>
+        <div class="naypay-box" style="max-width:400px;margin:0 auto 20px;">
+          <h4><i class="fas fa-university"></i> Send to NayaPay</h4>
+          <div class="account-num">PK34NAYA1234503169382133</div>
+          <div class="account-name">ApnaKitchen</div>
+        </div>
         <div class="form-group" style="max-width:400px;margin:0 auto 16px;text-align:left;">
-          <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip*</label>
-          <div class="file-upload"><input type="file" accept="image/*" id="riderRenewSlip" onchange="onSlipUpload(this,'riderRenewSlipPreview','riderRenewSubmitBtn')"><div class="file-label"><i class="fas fa-cloud-upload-alt"></i>Upload payment slip</div></div>
+          <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip (Required)*</label>
+          <div class="file-upload">
+            <input type="file" accept="image/*" id="riderRenewSlip" onchange="onSlipUpload(this,'riderRenewSlipPreview','riderRenewSubmitBtn')">
+            <div class="file-label"><i class="fas fa-cloud-upload-alt"></i>Upload payment slip</div>
+          </div>
           <img id="riderRenewSlipPreview" style="width:100%;max-width:300px;border-radius:10px;margin-top:10px;display:none;">
         </div>
-        <button class="btn-full" id="riderRenewSubmitBtn" onclick="submitRiderRenewalPayment()" disabled style="max-width:400px;margin:0 auto;display:block;"><i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Renewal Slip</button>
+        <button class="btn-full" id="riderRenewSubmitBtn" onclick="submitRiderRenewalPayment()" disabled style="max-width:400px;margin:0 auto;display:block;">
+          <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Renewal Slip
+        </button>
       </div>
+      
+      <!-- Password Step for Renewal -->
       <div class="password-section" id="riderRenewPasswordSection" style="display:none;margin-top:20px;">
-        <h3>Enter Renewal Code</h3>
+        <h3><i class="fas fa-key" style="color:var(--gold);margin-right:8px;"></i>Enter Renewal Code</h3>
+        <p>Enter the password sent to your WhatsApp (03483351028)</p>
         <div class="password-input"><input type="password" id="riderRenewPasswordInput" placeholder="••••••" maxlength="10"></div>
         <p id="riderRenewPassError" style="color:var(--crimson);font-size:13px;display:none;margin-bottom:10px;"><i class="fas fa-times-circle"></i> Incorrect password!</p>
         <button class="btn-full" onclick="verifyRiderRenewalPassword()" style="max-width:300px;"><i class="fas fa-check" style="margin-right:8px;"></i>Activate Premium</button>
       </div>
     </div>
+
+    <!-- MAIN RIDER CONTENT -->
     <div id="riderMainContent">
       <div class="dash-header">
         <div class="dash-user">
@@ -1050,27 +1156,26 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
           </div>
         </div>
       </div>
+
       <div class="stats-grid">
         <div class="stat-card"><h4>Deliveries Today</h4><div class="stat-val" id="riderTodayDeliveries">0</div></div>
         <div class="stat-card"><h4>Available</h4><div class="stat-val danger" id="riderAvailable">0</div></div>
         <div class="stat-card"><h4>Rating</h4><div class="stat-val" id="riderRating">—</div></div>
         <div class="stat-card"><h4>This Month</h4><div class="stat-val" id="riderMonthDeliveries">0</div></div>
       </div>
-
-      <!-- ★ NEW: BROADCAST DELIVERY REQUESTS ★ -->
       <div class="section-card">
-        <div class="sec-header"><h2 style="color:var(--gold);"><i class="fas fa-broadcast-tower" style="color:var(--gold);margin-right:8px;"></i>Delivery Requests — Broadcast</h2></div>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">These requests are sent to ALL available riders. First to accept gets the delivery!</p>
+        <div class="sec-header"><h2 style="color:var(--crimson);"><i class="fas fa-bell" style="color:var(--crimson);"></i>Delivery Requests</h2></div>
         <div id="riderDeliveryList"><p style="color:var(--muted);font-size:14px;">No delivery requests right now.</p></div>
       </div>
-
       <div class="section-card">
-        <div class="sec-header"><h2><i class="fas fa-map-marked-alt"></i>My Delivery Areas</h2></div>
+        <div class="sec-header">
+          <h2><i class="fas fa-map-marked-alt"></i>My Delivery Areas</h2>
+        </div>
         <div class="area-tags" id="riderAreaDisplay"></div>
       </div>
       <div class="section-card">
         <div class="sec-header"><h2><i class="fas fa-star" style="color:var(--gold);font-size:16px;"></i>My Reviews</h2></div>
-        <div id="riderReviewsList"><p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet.</p></div>
+        <div id="riderReviewsList"><p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet. Reviews appear here after deliveries.</p></div>
       </div>
     </div>
   </div>
@@ -1135,79 +1240,40 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     ENHANCED REVIEW MODAL
-══════════════════════════════════════ -->
+<!-- REVIEW MODAL -->
 <div class="modal-overlay" id="reviewModal">
   <div class="modal">
     <div class="modal-head">
       <h2><i class="fas fa-star" style="color:var(--gold);margin-right:8px;font-size:18px;"></i>Write a Review</h2>
-      <button class="modal-close" onclick="closeModal('reviewModal')">×</button>
+      <button class="modal-close" onclick="closeReviewModal()">×</button>
     </div>
-
-    <!-- Target info -->
-    <div style="display:flex;align-items:center;gap:12px;background:var(--gold-pale);border:1px solid rgba(200,134,26,.2);border-radius:12px;padding:14px 18px;margin-bottom:20px;">
-      <div style="width:44px;height:44px;background:var(--crimson);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--gold-light);flex-shrink:0;" id="revTargetIcon"><i class="fas fa-hat-chef"></i></div>
-      <div>
-        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);" id="revTargetName">Chef Name</div>
-        <div style="font-size:12px;color:var(--muted);" id="revTargetSub">Home Cook · Swabi</div>
-      </div>
+    <h3 id="revTargetName" style="font-family:'Playfair Display',serif;font-size:18px;margin-bottom:4px;"></h3>
+    <p id="revTargetSub" style="font-size:13px;color:var(--muted);margin-bottom:16px;font-weight:300;"></p>
+    <div class="stars-input" id="starsInput">
+      <i class="far fa-star" onclick="setRating(1)" onmouseenter="previewRating(1)" onmouseleave="clearPreview()"></i>
+      <i class="far fa-star" onclick="setRating(2)" onmouseenter="previewRating(2)" onmouseleave="clearPreview()"></i>
+      <i class="far fa-star" onclick="setRating(3)" onmouseenter="previewRating(3)" onmouseleave="clearPreview()"></i>
+      <i class="far fa-star" onclick="setRating(4)" onmouseenter="previewRating(4)" onmouseleave="clearPreview()"></i>
+      <i class="far fa-star" onclick="setRating(5)" onmouseenter="previewRating(5)" onmouseleave="clearPreview()"></i>
     </div>
-
-    <!-- Star Picker -->
-    <div style="margin-bottom:20px;">
-      <label style="font-size:12px;font-weight:600;color:var(--charcoal);letter-spacing:.3px;text-transform:uppercase;display:block;margin-bottom:10px;">Your Rating *</label>
-      <div style="display:flex;align-items:center;gap:4px;">
-        <div class="star-picker" id="starPicker">
-          <span class="sp" onclick="setRating(1)" data-val="1">★</span>
-          <span class="sp" onclick="setRating(2)" data-val="2">★</span>
-          <span class="sp" onclick="setRating(3)" data-val="3">★</span>
-          <span class="sp" onclick="setRating(4)" data-val="4">★</span>
-          <span class="sp" onclick="setRating(5)" data-val="5">★</span>
-        </div>
-        <span class="star-val-label" id="starValLabel">Tap a star</span>
-      </div>
+    <div class="star-label" id="starLabel"></div>
+    <div class="review-tags" id="reviewTags">
+      <span class="review-tag" onclick="toggleReviewTag(this, 'Taste')">Taste</span>
+      <span class="review-tag" onclick="toggleReviewTag(this, 'Fast Delivery')">Fast Delivery</span>
+      <span class="review-tag" onclick="toggleReviewTag(this, 'Good Value')">Good Value</span>
+      <span class="review-tag" onclick="toggleReviewTag(this, 'Packaging')">Packaging</span>
+      <span class="review-tag" onclick="toggleReviewTag(this, 'Perfect Spice')">Perfect Spice</span>
+      <span class="review-tag" onclick="toggleReviewTag(this, 'Friendly')">Friendly</span>
+      <span class="review-tag" onclick="toggleReviewTag(this, 'Would Reorder')">Would Reorder</span>
     </div>
-
-    <!-- Reviewer name -->
-    <div class="form-group">
-      <label>Your Name</label>
-      <input type="text" id="reviewerName" placeholder="e.g. Ali Khan" required>
-    </div>
-
-    <!-- Review category / reason tags -->
-    <div style="margin-bottom:16px;">
-      <label style="font-size:12px;font-weight:600;color:var(--charcoal);letter-spacing:.3px;text-transform:uppercase;display:block;margin-bottom:10px;">What did you like? (optional)</label>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;" id="reasonTags">
-        <span class="rtag" onclick="toggleRTag(this)">🍽️ Taste</span>
-        <span class="rtag" onclick="toggleRTag(this)">⚡ Fast Delivery</span>
-        <span class="rtag" onclick="toggleRTag(this)">💰 Good Value</span>
-        <span class="rtag" onclick="toggleRTag(this)">📦 Packaging</span>
-        <span class="rtag" onclick="toggleRTag(this)">🌶️ Perfect Spice</span>
-        <span class="rtag" onclick="toggleRTag(this)">😊 Friendly</span>
-        <span class="rtag" onclick="toggleRTag(this)">🔄 Would Reorder</span>
-      </div>
-    </div>
-
-    <!-- Review text -->
-    <div class="form-group">
-      <label>Your Review *</label>
-      <textarea rows="4" id="reviewText" placeholder="Share your experience — what did you enjoy or what could be better?" style="resize:none;" required></textarea>
-    </div>
-
+    <div class="form-group"><label>Your Name</label><input type="text" id="reviewerName" placeholder="Enter your name" required></div>
+    <div class="form-group"><label>Your Review</label><textarea rows="4" id="reviewText" placeholder="Share your experience — what did you like or dislike?" style="resize:none;" required></textarea></div>
     <div style="display:flex;gap:12px;">
-      <button class="btn-card" style="flex:1;" onclick="closeModal('reviewModal')">Cancel</button>
-      <button class="btn-full" style="flex:2;" onclick="submitReview()"><i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Review</button>
+      <button class="btn-card" style="flex:1;" onclick="closeReviewModal()">Cancel</button>
+      <button class="btn-full" style="flex:2;" onclick="submitReview()">Submit Review</button>
     </div>
   </div>
 </div>
-
-<style>
-/* Review reason tags */
-.rtag{display:inline-flex;align-items:center;gap:4px;background:var(--cream);border:1.5px solid var(--border);color:var(--charcoal);font-size:12px;padding:6px 13px;border-radius:20px;cursor:pointer;transition:all .2s;font-weight:500;user-select:none;}
-.rtag:hover{border-color:var(--gold);color:var(--gold);}
-.rtag.active{background:var(--gold-pale);border-color:var(--gold);color:var(--gold);}
-</style>
 
 <script>
 // ═══════════════════════════════════════════════════════════════════════
@@ -1220,74 +1286,68 @@ const RIDER_PASSWORD = 'bike01';
 let currentRole = 'customer';
 let starRating = 0;
 let reviewTargetType = '';
-let reviewTargetId   = 0;
-let currentFoodId    = null;
-let currentChefId    = null;
-let currentChefName  = '';
+let reviewTargetId = 0;
+let currentFoodId = null;
 let qty = 1, basePrice = 0, extras = [];
+let selectedReviewTags = [];
+let tempRating = 0;
 
-let currentUser  = {name:'', phone:'', cnic:'', email:'', address:'', photo:'', loggedIn:false, role:''};
-let cookProfile  = {name:'', phone:'', cnic:'', email:'', storeName:'', address:'', areas:[], photo:'', regDate:null, premium:false, expiryDate:null};
+// USER DATA
+let currentUser = {name:'', phone:'', cnic:'', email:'', address:'', photo:'', loggedIn:false, role:''};
+let cookProfile  = {name:'', phone:'', cnic:'', email:'', storeName:'', areas:[], photo:'', regDate:null, premium:false, expiryDate:null};
 let riderProfile = {name:'', phone:'', cnic:'', email:'', address:'', vehicleType:'', vehicleNo:'', areas:[], photo:'', regDate:null, premium:false, expiryDate:null};
 
+// FOODS DATA
 let foods = [];
 
+// SAMPLE DATA
 const sampleFoods = [
   {id:1, name:'Chicken Biryani', cook:"Chef Fatima's Kitchen", cookId:101, price:350, area:'Guli Bagh',
-   cookAddress:'House #12, Guli Bagh Main Rd, Swabi',
    img:'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=600',
    desc:'Fragrant homemade biryani with slow-cooked chicken.',
-   tags:[{label:'+ Raita Rs.30',price:30},{label:'+ Salad Rs.40',price:40}]},
+   tags:[{label:'+ Raita Rs.30',price:30},{label:'+ Salad Rs.40',price:40}], avgRating:4.7, reviewCount:18},
   {id:2, name:'Chicken Karahi', cook:"Chef Ahmad's Kitchen", cookId:102, price:800, area:'City Center',
-   cookAddress:'Shop #3, City Center Chowk, Swabi',
    img:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600',
    desc:'Desi style karahi with fresh tomatoes and hand-ground spices.',
-   tags:[{label:'+ Naan Rs.30',price:30},{label:'+ Drink Rs.60',price:60}]},
+   tags:[{label:'+ Naan Rs.30',price:30},{label:'+ Drink Rs.60',price:60}], avgRating:4.9, reviewCount:32},
   {id:3, name:'Seekh Kebab (6 pcs)', cook:"Chef Imran's Kitchen", cookId:103, price:300, area:'Topi Road',
-   cookAddress:'Near Topi Road Bus Stand, Swabi',
    img:'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600',
    desc:'Juicy minced beef seekh kebabs, charcoal grilled.',
-   tags:[{label:'+ Chutney Rs.20',price:20},{label:'+ Paratha Rs.40',price:40}]},
+   tags:[{label:'+ Chutney Rs.20',price:20},{label:'+ Paratha Rs.40',price:40}], avgRating:4.5, reviewCount:11},
   {id:4, name:'Spaghetti Bolognese', cook:"Chef Sara's Kitchen", cookId:104, price:450, area:'Shahmansoor',
-   cookAddress:'Street 5, Shahmansoor Colony, Swabi',
    img:'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600',
    desc:'Authentic Italian-style spaghetti with slow-cooked meat sauce.',
-   tags:[{label:'+ Ketchup Rs.20',price:20},{label:'+ Cheese Rs.50',price:50}]},
+   tags:[{label:'+ Ketchup Rs.20',price:20},{label:'+ Cheese Rs.50',price:50}], avgRating:4.3, reviewCount:7},
   {id:5, name:'Breakfast Pancakes', cook:"Chef Ayesha's Kitchen", cookId:105, price:350, area:'Marghuz',
-   cookAddress:'Lane 2, Marghuz Bazaar, Swabi',
    img:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600',
    desc:'Fluffy American pancakes with maple syrup and fresh fruit.',
-   tags:[{label:'+ Syrup Rs.40',price:40},{label:'+ Fruit Rs.60',price:60}]},
+   tags:[{label:'+ Syrup Rs.40',price:40},{label:'+ Fruit Rs.60',price:60}], avgRating:4.6, reviewCount:14},
   {id:6, name:'Fresh Salad Bowl', cook:"Chef Zainab's Kitchen", cookId:106, price:200, area:'Guli Bagh',
-   cookAddress:'House #22, Guli Bagh Colony, Swabi',
    img:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600',
    desc:'Fresh seasonal salad with house dressing and crunchy toppings.',
-   tags:[{label:'+ Dressing Rs.30',price:30}]},
+   tags:[{label:'+ Dressing Rs.30',price:30}], avgRating:4.2, reviewCount:5},
 ];
 
-// ★ REVIEWS: stored as {text, rating, reviewer, targetId, type, reasons, date}
 let chefReviews  = [];
 let riderReviews = [];
-
 let orderCounter = 1237;
+let pendingOrdersForCook = [];
+let pendingDeliveriesForRider = [];
+let customerOrders = [];
+let favourites = new Set();
+let cartItems = [];
+let activeOrderId = null;
+let trackStep = 1;
 
-// ★ BROADCAST STATE: pendingDeliveriesForRider is now shared — when one rider accepts, it's marked
-// acceptedDeliveryIds tracks which delivery IDs have been claimed
-let acceptedDeliveryIds = new Set();
-
-let pendingOrdersForCook       = [];
-let pendingDeliveriesForRider  = [];
-let customerOrders             = [];
-let favourites                 = new Set();
-let cartItems                  = [];
-let activeOrderId              = null;
-let trackStep                  = 1;
+// STAR LABELS
+const starLabels = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
 
 // ═══════════════════════════════════════════════════════════════════════
 // WHATSAPP HELPER
 // ═══════════════════════════════════════════════════════════════════════
 function openWhatsApp(msg) {
-  window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+  const encoded = encodeURIComponent(msg);
+  window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${encoded}`, '_blank');
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -1298,10 +1358,17 @@ function showPage(id) {
   document.getElementById(id).classList.add('active');
   document.getElementById('notifPanel').classList.remove('show');
   document.getElementById('cartPanel').classList.remove('show');
-  window.scrollTo(0,0);
-  if (id === 'cook-dashboard')  checkCookPremiumStatus();
-  if (id === 'rider-dashboard') checkRiderPremiumStatus();
-  if (['customer-dashboard','cook-dashboard','rider-dashboard','menu','home'].includes(id)) setTimeout(renderGrids, 60);
+  window.scrollTo(0, 0);
+  
+  if (id === 'cook-dashboard') {
+    checkCookPremiumStatus();
+  }
+  if (id === 'rider-dashboard') {
+    checkRiderPremiumStatus();
+  }
+  if (['customer-dashboard','cook-dashboard','rider-dashboard','menu','home'].includes(id)) {
+    setTimeout(renderGrids, 60);
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -1309,16 +1376,23 @@ function showPage(id) {
 // ═══════════════════════════════════════════════════════════════════════
 function checkCookPremiumStatus() {
   if (!cookProfile.regDate) return;
-  const now = new Date(), reg = new Date(cookProfile.regDate);
-  const exp = new Date(reg); exp.setMonth(exp.getMonth()+1);
-  cookProfile.expiryDate = exp;
-  if (now >= exp) {
+  
+  const now = new Date();
+  const regDate = new Date(cookProfile.regDate);
+  const expiryDate = new Date(regDate);
+  expiryDate.setMonth(expiryDate.getMonth() + 1);
+  
+  cookProfile.expiryDate = expiryDate;
+  
+  if (now >= expiryDate) {
+    // SUSPENDED
     cookProfile.premium = false;
     document.getElementById('cookSuspendedBanner').style.display = 'block';
     document.getElementById('cookMainContent').style.display = 'none';
     document.getElementById('cookRenewalPage').style.display = 'none';
-    document.getElementById('cookExpiryDateDisplay').textContent = exp.toLocaleDateString();
+    document.getElementById('cookExpiryDateDisplay').textContent = expiryDate.toLocaleDateString();
   } else {
+    // ACTIVE
     cookProfile.premium = true;
     document.getElementById('cookSuspendedBanner').style.display = 'none';
     document.getElementById('cookMainContent').style.display = 'block';
@@ -1329,16 +1403,23 @@ function checkCookPremiumStatus() {
 
 function checkRiderPremiumStatus() {
   if (!riderProfile.regDate) return;
-  const now = new Date(), reg = new Date(riderProfile.regDate);
-  const exp = new Date(reg); exp.setMonth(exp.getMonth()+1);
-  riderProfile.expiryDate = exp;
-  if (now >= exp) {
+  
+  const now = new Date();
+  const regDate = new Date(riderProfile.regDate);
+  const expiryDate = new Date(regDate);
+  expiryDate.setMonth(expiryDate.getMonth() + 1);
+  
+  riderProfile.expiryDate = expiryDate;
+  
+  if (now >= expiryDate) {
+    // SUSPENDED
     riderProfile.premium = false;
     document.getElementById('riderSuspendedBanner').style.display = 'block';
     document.getElementById('riderMainContent').style.display = 'none';
     document.getElementById('riderRenewalPage').style.display = 'none';
-    document.getElementById('riderExpiryDateDisplay').textContent = exp.toLocaleDateString();
+    document.getElementById('riderExpiryDateDisplay').textContent = expiryDate.toLocaleDateString();
   } else {
+    // ACTIVE
     riderProfile.premium = true;
     document.getElementById('riderSuspendedBanner').style.display = 'none';
     document.getElementById('riderMainContent').style.display = 'block';
@@ -1347,159 +1428,308 @@ function checkRiderPremiumStatus() {
   renderRiderDeliveries();
 }
 
-function showCookRenewal() { document.getElementById('cookSuspendedBanner').style.display='none'; document.getElementById('cookRenewalPage').style.display='block'; }
-function backToSuspendedCook() { document.getElementById('cookRenewalPage').style.display='none'; document.getElementById('cookSuspendedBanner').style.display='block'; }
-function showRiderRenewal() { document.getElementById('riderSuspendedBanner').style.display='none'; document.getElementById('riderRenewalPage').style.display='block'; }
-function backToSuspendedRider() { document.getElementById('riderRenewalPage').style.display='none'; document.getElementById('riderSuspendedBanner').style.display='block'; }
+// ═══════════════════════════════════════════════════════════════════════
+// RENEWAL FLOW FUNCTIONS
+// ═══════════════════════════════════════════════════════════════════════
+function showCookRenewal() {
+  document.getElementById('cookSuspendedBanner').style.display = 'none';
+  document.getElementById('cookRenewalPage').style.display = 'block';
+}
+
+function backToSuspendedCook() {
+  document.getElementById('cookRenewalPage').style.display = 'none';
+  document.getElementById('cookSuspendedBanner').style.display = 'block';
+}
+
+function showRiderRenewal() {
+  document.getElementById('riderSuspendedBanner').style.display = 'none';
+  document.getElementById('riderRenewalPage').style.display = 'block';
+}
+
+function backToSuspendedRider() {
+  document.getElementById('riderRenewalPage').style.display = 'none';
+  document.getElementById('riderSuspendedBanner').style.display = 'block';
+}
 
 function submitCookRenewalPayment() {
-  const s = document.getElementById('cookRenewSlip');
-  if (!s.files||!s.files[0]) { toast('Please upload payment slip!'); return; }
-  openWhatsApp(`COOK RENEWAL\nName: ${cookProfile.name}\nStore: ${cookProfile.storeName}\nAmount: Rs. 2,000`);
+  const slipInput = document.getElementById('cookRenewSlip');
+  if (!slipInput.files || !slipInput.files[0]) {
+    toast('Please upload payment slip!');
+    return;
+  }
+  
+  const msg = `COOK RENEWAL REQUEST\nName: ${cookProfile.name}\nCNIC: ${cookProfile.cnic}\nStore: ${cookProfile.storeName}\nAmount: Rs. 2,000`;
+  openWhatsApp(msg);
+  
   document.getElementById('cookRenewPasswordSection').style.display = 'block';
   toast('Slip sent! Enter renewal code from WhatsApp.');
 }
+
 function verifyCookRenewalPassword() {
-  if (document.getElementById('cookRenewPasswordInput').value !== COOK_PASSWORD) { document.getElementById('cookRenewPassError').style.display='block'; return; }
-  cookProfile.regDate = new Date(); cookProfile.premium = true; cookProfile.expiryDate = null;
-  toast('Premium renewed!'); checkCookPremiumStatus();
+  const entered = document.getElementById('cookRenewPasswordInput').value;
+  if (entered !== COOK_PASSWORD) {
+    document.getElementById('cookRenewPassError').style.display = 'block';
+    return;
+  }
+  
+  // Renew subscription
+  cookProfile.regDate = new Date();
+  cookProfile.premium = true;
+  
+  toast('Premium renewed successfully!');
+  checkCookPremiumStatus();
 }
+
 function submitRiderRenewalPayment() {
-  const s = document.getElementById('riderRenewSlip');
-  if (!s.files||!s.files[0]) { toast('Please upload payment slip!'); return; }
-  openWhatsApp(`RIDER RENEWAL\nName: ${riderProfile.name}\nVehicle: ${riderProfile.vehicleNo}\nAmount: Rs. 1,000`);
+  const slipInput = document.getElementById('riderRenewSlip');
+  if (!slipInput.files || !slipInput.files[0]) {
+    toast('Please upload payment slip!');
+    return;
+  }
+  
+  const msg = `RIDER RENEWAL REQUEST\nName: ${riderProfile.name}\nCNIC: ${riderProfile.cnic}\nVehicle: ${riderProfile.vehicleNo}\nAmount: Rs. 1,000`;
+  openWhatsApp(msg);
+  
   document.getElementById('riderRenewPasswordSection').style.display = 'block';
   toast('Slip sent! Enter renewal code from WhatsApp.');
 }
+
 function verifyRiderRenewalPassword() {
-  if (document.getElementById('riderRenewPasswordInput').value !== RIDER_PASSWORD) { document.getElementById('riderRenewPassError').style.display='block'; return; }
-  riderProfile.regDate = new Date(); riderProfile.premium = true; riderProfile.expiryDate = null;
-  toast('Premium renewed!'); checkRiderPremiumStatus();
+  const entered = document.getElementById('riderRenewPasswordInput').value;
+  if (entered !== RIDER_PASSWORD) {
+    document.getElementById('riderRenewPassError').style.display = 'block';
+    return;
+  }
+  
+  // Renew subscription
+  riderProfile.regDate = new Date();
+  riderProfile.premium = true;
+  
+  toast('Premium renewed successfully!');
+  checkRiderPremiumStatus();
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// COOK REGISTRATION
+// COOK REGISTRATION (Simplified)
 // ═══════════════════════════════════════════════════════════════════════
 function validateCookStep1() {
-  const name=document.getElementById('c_name').value.trim(), phone=document.getElementById('c_phone').value.trim();
-  const email=document.getElementById('c_email').value.trim(), cnic=document.getElementById('c_cnic').value.trim();
-  const store=document.getElementById('c_store').value.trim(), addr=document.getElementById('c_address').value.trim();
-  const photo=document.getElementById('c_photo').files[0];
-  const cf=document.getElementById('c_cnic_front').files[0], cb=document.getElementById('c_cnic_back').files[0];
-  if (!name||!phone||!email||!cnic||!store||!addr) { toast('Please fill all required fields!'); return; }
-  if (!photo||!cf||!cb) { toast('Please upload all required photos!'); return; }
-  cookProfile.name=name; cookProfile.phone=phone; cookProfile.email=email;
-  cookProfile.cnic=cnic; cookProfile.storeName=store; cookProfile.address=addr;
+  const name = document.getElementById('c_name').value.trim();
+  const phone = document.getElementById('c_phone').value.trim();
+  const email = document.getElementById('c_email').value.trim();
+  const cnic = document.getElementById('c_cnic').value.trim();
+  const store = document.getElementById('c_store').value.trim();
+  const photo = document.getElementById('c_photo').files[0];
+  const cnicFront = document.getElementById('c_cnic_front').files[0];
+  const cnicBack = document.getElementById('c_cnic_back').files[0];
+  
+  if (!name || !phone || !email || !cnic || !store) {
+    toast('Please fill all required fields!');
+    return;
+  }
+  if (!photo || !cnicFront || !cnicBack) {
+    toast('Please upload all required photos!');
+    return;
+  }
+  
+  // Save to profile
+  cookProfile.name = name;
+  cookProfile.phone = phone;
+  cookProfile.email = email;
+  cookProfile.cnic = cnic;
+  cookProfile.storeName = store;
+  
   cookNext(1);
 }
-function cookNext(s) { document.getElementById('cook-s'+s).style.display='none'; document.getElementById('cook-s'+(s+1)).style.display='block'; document.getElementById('cstep'+s).className='onboard-step done'; document.getElementById('cstep'+(s+1)).className='onboard-step active'; }
-function cookBack(s) { document.getElementById('cook-s'+s).style.display='none'; document.getElementById('cook-s'+(s-1)).style.display='block'; document.getElementById('cstep'+s).className='onboard-step'; document.getElementById('cstep'+(s-1)).className='onboard-step active'; }
-function submitCookPayment() {
-  const s=document.getElementById('cookPaySlip');
-  if (!s.files||!s.files[0]) { document.getElementById('cookSlipError').style.display='block'; toast('Please upload payment slip!'); return; }
-  openWhatsApp(`NEW COOK REGISTRATION\nName: ${cookProfile.name}\nCNIC: ${cookProfile.cnic}\nStore: ${cookProfile.storeName}\nAddress: ${cookProfile.address}\nPhone: ${cookProfile.phone}`);
-  document.getElementById('cookSlipError').style.display='none';
-  cookNext(2); toast('Payment slip sent! Check WhatsApp for password.');
+
+function cookNext(step) {
+  document.getElementById('cook-s'+step).style.display = 'none';
+  document.getElementById('cook-s'+(step+1)).style.display = 'block';
+  document.getElementById('cstep'+step).className = 'onboard-step done';
+  document.getElementById('cstep'+(step+1)).className = 'onboard-step active';
 }
+
+function cookBack(step) {
+  document.getElementById('cook-s'+step).style.display = 'none';
+  document.getElementById('cook-s'+(step-1)).style.display = 'block';
+  document.getElementById('cstep'+step).className = 'onboard-step';
+  document.getElementById('cstep'+(step-1)).className = 'onboard-step active';
+}
+
+function submitCookPayment() {
+  const slipInput = document.getElementById('cookPaySlip');
+  if (!slipInput.files || !slipInput.files[0]) {
+    document.getElementById('cookSlipError').style.display = 'block';
+    toast('Please upload payment slip to continue!');
+    return;
+  }
+  
+  const msg = `NEW COOK REGISTRATION\nName: ${cookProfile.name}\nCNIC: ${cookProfile.cnic}\nStore: ${cookProfile.storeName}\nPhone: ${cookProfile.phone}`;
+  openWhatsApp(msg);
+  
+  document.getElementById('cookSlipError').style.display = 'none';
+  cookNext(2);
+  toast('Payment slip sent! Check WhatsApp for password.');
+}
+
 function verifyCookPassword() {
-  if (document.getElementById('cookPasswordInput').value !== COOK_PASSWORD) { document.getElementById('cookPassError').style.display='block'; return; }
-  cookProfile.regDate=new Date(); cookProfile.premium=true;
-  document.getElementById('cookStoreName').textContent=cookProfile.storeName;
-  document.getElementById('cookDashAvatar').src=`https://ui-avatars.com/api/?name=${encodeURIComponent(cookProfile.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
-  document.getElementById('navLoginBtn').textContent='My Account';
-  toast(`Welcome! "${cookProfile.storeName}" is now live.`); showPage('cook-dashboard');
+  const entered = document.getElementById('cookPasswordInput').value;
+  if (entered !== COOK_PASSWORD) {
+    document.getElementById('cookPassError').style.display = 'block';
+    toast('Incorrect password! Please check WhatsApp.');
+    return;
+  }
+  
+  // Registration successful
+  cookProfile.regDate = new Date();
+  cookProfile.premium = true;
+  
+  document.getElementById('cookStoreName').textContent = cookProfile.storeName;
+  document.getElementById('cookDashAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(cookProfile.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+  document.getElementById('navLoginBtn').textContent = 'My Account';
+  
+  toast(`Welcome! "${cookProfile.storeName}" is now live.`);
+  showPage('cook-dashboard');
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// RIDER REGISTRATION
+// RIDER REGISTRATION (Simplified)
 // ═══════════════════════════════════════════════════════════════════════
 function validateRiderStep1() {
-  const name=document.getElementById('r_name').value.trim(), phone=document.getElementById('r_phone').value.trim();
-  const email=document.getElementById('r_email').value.trim(), cnic=document.getElementById('r_cnic').value.trim();
-  const addr=document.getElementById('r_address').value.trim(), vt=document.getElementById('r_vehicle_type').value;
-  const vn=document.getElementById('r_vehicle_no').value.trim();
-  const photo=document.getElementById('r_photo').files[0], cf=document.getElementById('r_cnic_front').files[0], cb=document.getElementById('r_cnic_back').files[0];
-  if (!name||!phone||!email||!cnic||!addr||!vt||!vn) { toast('Please fill all required fields!'); return; }
-  if (!photo||!cf||!cb) { toast('Please upload all required photos!'); return; }
-  riderProfile.name=name; riderProfile.phone=phone; riderProfile.email=email;
-  riderProfile.cnic=cnic; riderProfile.address=addr; riderProfile.vehicleType=vt; riderProfile.vehicleNo=vn;
+  const name = document.getElementById('r_name').value.trim();
+  const phone = document.getElementById('r_phone').value.trim();
+  const email = document.getElementById('r_email').value.trim();
+  const cnic = document.getElementById('r_cnic').value.trim();
+  const address = document.getElementById('r_address').value.trim();
+  const vehicleType = document.getElementById('r_vehicle_type').value;
+  const vehicleNo = document.getElementById('r_vehicle_no').value.trim();
+  const photo = document.getElementById('r_photo').files[0];
+  const cnicFront = document.getElementById('r_cnic_front').files[0];
+  const cnicBack = document.getElementById('r_cnic_back').files[0];
+  
+  if (!name || !phone || !email || !cnic || !address || !vehicleType || !vehicleNo) {
+    toast('Please fill all required fields!');
+    return;
+  }
+  if (!photo || !cnicFront || !cnicBack) {
+    toast('Please upload all required photos!');
+    return;
+  }
+  
+  // Save to profile
+  riderProfile.name = name;
+  riderProfile.phone = phone;
+  riderProfile.email = email;
+  riderProfile.cnic = cnic;
+  riderProfile.address = address;
+  riderProfile.vehicleType = vehicleType;
+  riderProfile.vehicleNo = vehicleNo;
+  
   riderNext(1);
 }
-function riderNext(s) { document.getElementById('rider-s'+s).style.display='none'; document.getElementById('rider-s'+(s+1)).style.display='block'; document.getElementById('rstep'+s).className='onboard-step done'; document.getElementById('rstep'+(s+1)).className='onboard-step active'; }
-function riderBack(s) { document.getElementById('rider-s'+s).style.display='none'; document.getElementById('rider-s'+(s-1)).style.display='block'; document.getElementById('rstep'+s).className='onboard-step'; document.getElementById('rstep'+(s-1)).className='onboard-step active'; }
-function submitRiderPayment() {
-  const s=document.getElementById('riderPaySlip');
-  if (!s.files||!s.files[0]) { document.getElementById('riderSlipError').style.display='block'; toast('Please upload payment slip!'); return; }
-  openWhatsApp(`NEW RIDER REGISTRATION\nName: ${riderProfile.name}\nCNIC: ${riderProfile.cnic}\nVehicle: ${riderProfile.vehicleNo}\nPhone: ${riderProfile.phone}`);
-  document.getElementById('riderSlipError').style.display='none';
-  riderNext(2); toast('Payment slip sent! Check WhatsApp for password.');
+
+function riderNext(step) {
+  document.getElementById('rider-s'+step).style.display = 'none';
+  document.getElementById('rider-s'+(step+1)).style.display = 'block';
+  document.getElementById('rstep'+step).className = 'onboard-step done';
+  document.getElementById('rstep'+(step+1)).className = 'onboard-step active';
 }
+
+function riderBack(step) {
+  document.getElementById('rider-s'+step).style.display = 'none';
+  document.getElementById('rider-s'+(step-1)).style.display = 'block';
+  document.getElementById('rstep'+step).className = 'onboard-step';
+  document.getElementById('rstep'+(step-1)).className = 'onboard-step active';
+}
+
+function submitRiderPayment() {
+  const slipInput = document.getElementById('riderPaySlip');
+  if (!slipInput.files || !slipInput.files[0]) {
+    document.getElementById('riderSlipError').style.display = 'block';
+    toast('Please upload payment slip to continue!');
+    return;
+  }
+  
+  const msg = `NEW RIDER REGISTRATION\nName: ${riderProfile.name}\nCNIC: ${riderProfile.cnic}\nVehicle: ${riderProfile.vehicleNo}\nPhone: ${riderProfile.phone}`;
+  openWhatsApp(msg);
+  
+  document.getElementById('riderSlipError').style.display = 'none';
+  riderNext(2);
+  toast('Payment slip sent! Check WhatsApp for password.');
+}
+
 function verifyRiderPassword() {
-  if (document.getElementById('riderPasswordInput').value !== RIDER_PASSWORD) { document.getElementById('riderPassError').style.display='block'; return; }
-  riderProfile.regDate=new Date(); riderProfile.premium=true;
-  document.getElementById('riderDashName').textContent=riderProfile.name+' — Delivery Partner';
-  document.getElementById('riderDashAvatar').src=`https://ui-avatars.com/api/?name=${encodeURIComponent(riderProfile.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
-  document.getElementById('riderAreaDisplay').innerHTML=`<span class="area-tag"><i class="fas fa-map-pin"></i>Swabi</span>`;
-  document.getElementById('navLoginBtn').textContent='My Account';
-  toast('Welcome! Your rider account is ready.'); showPage('rider-dashboard');
+  const entered = document.getElementById('riderPasswordInput').value;
+  if (entered !== RIDER_PASSWORD) {
+    document.getElementById('riderPassError').style.display = 'block';
+    toast('Incorrect password! Please check WhatsApp.');
+    return;
+  }
+  
+  // Registration successful
+  riderProfile.regDate = new Date();
+  riderProfile.premium = true;
+  
+  document.getElementById('riderDashName').textContent = riderProfile.name + ' — Delivery Partner';
+  document.getElementById('riderDashAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(riderProfile.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+  document.getElementById('riderAreaDisplay').innerHTML = `<span class="area-tag"><i class="fas fa-map-pin"></i>Swabi</span>`;
+  document.getElementById('navLoginBtn').textContent = 'My Account';
+  
+  toast('Welcome! Your rider account is ready.');
+  showPage('rider-dashboard');
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// SLIP UPLOAD
+// PAYMENT SLIP UPLOAD
 // ═══════════════════════════════════════════════════════════════════════
-function onSlipUpload(input, prevId, btnId) {
-  const prev=document.getElementById(prevId), btn=document.getElementById(btnId);
-  if (input.files&&input.files[0]) {
-    const r=new FileReader(); r.onload=e=>{prev.src=e.target.result;prev.style.display='block';if(btn)btn.disabled=false;}; r.readAsDataURL(input.files[0]);
+function onSlipUpload(input, previewId, btnId) {
+  const prev = document.getElementById(previewId);
+  const btn  = document.getElementById(btnId);
+  if (input.files && input.files[0]) {
+    const r = new FileReader();
+    r.onload = e => { 
+      prev.src = e.target.result; 
+      prev.style.display = 'block'; 
+      if (btn) btn.disabled = false; 
+    };
+    r.readAsDataURL(input.files[0]);
   }
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// RATING HELPER
+// FOOD DISPLAY FUNCTIONS
 // ═══════════════════════════════════════════════════════════════════════
-function starsHTML(avg, size=13) {
+function getPublicFoods() { return sampleFoods; }
+function getCookFoods()   { return foods.filter(f => f.cookId === 'mystore'); }
+
+function starsHTML(avg) {
   if (!avg) return '';
-  let s='';
-  for (let i=1;i<=5;i++) {
-    if (avg>=i) s+=`<i class="fas fa-star" style="font-size:${size}px;color:var(--gold);"></i>`;
-    else if (avg>=i-0.5) s+=`<i class="fas fa-star-half-alt" style="font-size:${size}px;color:var(--gold);"></i>`;
-    else s+=`<i class="far fa-star" style="font-size:${size}px;color:var(--border);"></i>`;
+  let s = '';
+  for (let i = 1; i <= 5; i++) {
+    if (avg >= i) s += '<i class="fas fa-star"></i>';
+    else if (avg >= i - 0.5) s += '<i class="fas fa-star-half-alt"></i>';
+    else s += '<i class="far fa-star"></i>';
   }
   return s;
 }
 
-function getAvgRating(targetId, list) {
-  const revs = list.filter(r => String(r.targetId)===String(targetId));
-  if (!revs.length) return null;
-  return (revs.reduce((a,b)=>a+b.rating,0)/revs.length).toFixed(1);
-}
-
-// ═══════════════════════════════════════════════════════════════════════
-// FOOD DISPLAY
-// ═══════════════════════════════════════════════════════════════════════
-function getPublicFoods() { return sampleFoods; }
-function getCookFoods()   { return foods.filter(f=>f.cookId==='mystore'); }
-
 function foodCard(f, editMode=false) {
-  const avg = getAvgRating(f.cookId, chefReviews);
-  const count = chefReviews.filter(r=>String(r.targetId)===String(f.cookId)).length;
-  const ratingHTML = avg
-    ? `<div class="rating-display">${starsHTML(parseFloat(avg))}<span class="review-count">${avg} (${count})</span></div>`
-    : `<div class="rating-display" style="font-size:12px;color:var(--muted);">No reviews yet</div>`;
-  const favIcon  = favourites.has(f.id) ? 'fas fa-heart' : 'far fa-heart';
-  const favClass = favourites.has(f.id) ? 'active' : '';
+  const ratingHTML = f.avgRating
+    ? `<div class="rating-row"><span class="stars">${starsHTML(f.avgRating)}</span><span>${f.avgRating} (${f.reviewCount})</span></div>`
+    : '';
+  const favIcon = favourites.has(f.id) ? 'fas fa-heart' : 'far fa-heart';
+  const favActive = favourites.has(f.id) ? 'active' : '';
 
   const actionsHTML = editMode
     ? `<button class="btn-review" onclick="event.stopPropagation();editItem(${f.id})"><i class="fas fa-edit"></i> Edit</button>
        <button class="btn-order" onclick="event.stopPropagation();removeItem(${f.id})" style="background:var(--crimson-deep)"><i class="fas fa-trash"></i> Remove</button>`
-    : `<button class="btn-review" onclick="event.stopPropagation();openReview('chef',${f.cookId},'${f.cook.replace(/'/g,"\\'")}')"><i class="fas fa-star"></i> Review</button>
+    : `<button class="btn-review" onclick="event.stopPropagation();openReview('chef',${f.cookId},'${f.cook}')"><i class="fas fa-star"></i> Review</button>
        <button class="btn-order" onclick="event.stopPropagation();openFoodDetail(${f.id})"><i class="fas fa-shopping-bag"></i> Order</button>`;
 
   return `<div class="food-card" onclick="openFoodDetail(${f.id})">
     <div class="food-img-wrap">
       <img class="food-img" src="${f.img}" alt="${f.name}" loading="lazy">
       <span class="cook-tag">${f.area}</span>
-      ${!editMode?`<button class="fav-btn ${favClass}" onclick="event.stopPropagation();toggleFav(${f.id},this)"><i class="${favIcon}"></i></button>`:''}
+      ${!editMode ? `<button class="fav-btn ${favActive}" onclick="event.stopPropagation();toggleFav(${f.id},this)" title="Favourite"><i class="${favIcon}"></i></button>` : ''}
     </div>
     <div class="food-body">
       ${ratingHTML}
@@ -1512,198 +1742,311 @@ function foodCard(f, editMode=false) {
 }
 
 function renderGrids() {
-  const pub=getPublicFoods(), my=getCookFoods();
-  ['homeMenuGrid','custMenu','menuGrid'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=pub.map(f=>foodCard(f)).join('');});
-  const ck=document.getElementById('cookMenu'), ckE=document.getElementById('cookMenuEmpty');
+  const pubFoods = getPublicFoods();
+  const myFoods  = getCookFoods();
+
+  ['homeMenuGrid','custMenu','menuGrid'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.innerHTML = pubFoods.map(f => foodCard(f)).join('');
+  });
+
+  const ck = document.getElementById('cookMenu');
+  const ckEmpty = document.getElementById('cookMenuEmpty');
   if (ck) {
-    if (my.length) { ck.innerHTML=my.map(f=>foodCard(f,true)).join(''); if(ckE)ckE.style.display='none'; }
-    else { ck.innerHTML=''; if(ckE)ckE.style.display='block'; }
-    document.getElementById('cookMenuCount').textContent=my.length;
+    if (myFoods.length) {
+      ck.innerHTML = myFoods.map(f => foodCard(f, true)).join('');
+      if (ckEmpty) ckEmpty.style.display = 'none';
+    } else {
+      ck.innerHTML = '';
+      if (ckEmpty) ckEmpty.style.display = 'block';
+    }
+    document.getElementById('cookMenuCount').textContent = myFoods.length;
   }
-  const cs=document.getElementById('chefStoreMenu');
+
+  const cs = document.getElementById('chefStoreMenu');
   if (cs) {
-    const sid=cs.dataset.cookid;
-    const sf=pub.filter(f=>String(f.cookId)===String(sid));
-    cs.innerHTML=sf.length?sf.map(f=>foodCard(f)).join(''):'<p style="color:var(--muted);font-size:14px;">No items yet.</p>';
+    const storeId = cs.dataset.cookid;
+    const storeFoods = pubFoods.filter(f => String(f.cookId) === String(storeId));
+    cs.innerHTML = storeFoods.length ? storeFoods.map(f => foodCard(f)).join('') : '<p style="color:var(--muted);font-size:14px;">No items yet.</p>';
   }
-  updateCustStats(); updateCartBadge();
+
+  updateCustStats();
+  updateCartBadge();
 }
 
-function filterMenu(area) { const g=document.getElementById('menuGrid'); const f=area?getPublicFoods().filter(x=>x.area===area):getPublicFoods(); g.innerHTML=f.map(x=>foodCard(x)).join(''); }
-function searchMenu(q) {
-  const f=getPublicFoods().filter(x=>x.name.toLowerCase().includes(q.toLowerCase())||x.cook.toLowerCase().includes(q.toLowerCase()));
-  ['menuGrid','homeMenuGrid'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=f.map(x=>foodCard(x)).join('');});
+function filterMenu(area) {
+  const grid = document.getElementById('menuGrid');
+  const filtered = area ? getPublicFoods().filter(f => f.area === area) : getPublicFoods();
+  grid.innerHTML = filtered.map(f => foodCard(f)).join('');
 }
-function searchMenuCust(q) { const el=document.getElementById('custMenu'); const f=getPublicFoods().filter(x=>x.name.toLowerCase().includes(q.toLowerCase())||x.cook.toLowerCase().includes(q.toLowerCase())); if(el)el.innerHTML=f.map(x=>foodCard(x)).join(''); }
-function filterCat(chip,cat) {
-  document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active')); chip.classList.add('active');
-  const f=cat?getPublicFoods().filter(x=>x.name.toLowerCase().includes(cat.toLowerCase())||x.desc.toLowerCase().includes(cat.toLowerCase())):getPublicFoods();
-  const el=document.getElementById('homeMenuGrid'); if(el)el.innerHTML=(f.length?f:getPublicFoods()).map(x=>foodCard(x)).join('');
+
+function searchMenu(q) {
+  const menuGrid = document.getElementById('menuGrid');
+  const homeGrid = document.getElementById('homeMenuGrid');
+  const filtered = getPublicFoods().filter(f => f.name.toLowerCase().includes(q.toLowerCase()) || f.cook.toLowerCase().includes(q.toLowerCase()));
+  if (menuGrid) menuGrid.innerHTML = filtered.map(f => foodCard(f)).join('');
+  if (homeGrid) homeGrid.innerHTML = filtered.map(f => foodCard(f)).join('');
+}
+
+function searchMenuCust(q) {
+  const el = document.getElementById('custMenu');
+  const filtered = getPublicFoods().filter(f => f.name.toLowerCase().includes(q.toLowerCase()) || f.cook.toLowerCase().includes(q.toLowerCase()));
+  if (el) el.innerHTML = filtered.map(f => foodCard(f)).join('');
+}
+
+function filterCat(chip, cat) {
+  document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  const homeGrid = document.getElementById('homeMenuGrid');
+  const filtered = cat ? getPublicFoods().filter(f => f.name.toLowerCase().includes(cat.toLowerCase()) || f.desc.toLowerCase().includes(cat.toLowerCase())) : getPublicFoods();
+  if (homeGrid) homeGrid.innerHTML = (filtered.length ? filtered : getPublicFoods()).map(f => foodCard(f)).join('');
 }
 
 // ═══════════════════════════════════════════════════════════════════════
 // FAVOURITES
 // ═══════════════════════════════════════════════════════════════════════
-function toggleFav(id,btn) {
-  if (favourites.has(id)) { favourites.delete(id); btn.classList.remove('active'); btn.querySelector('i').className='far fa-heart'; toast('Removed from favourites'); }
-  else { favourites.add(id); btn.classList.add('active'); btn.querySelector('i').className='fas fa-heart'; toast('Added to favourites ❤️'); }
+function toggleFav(id, btn) {
+  if (favourites.has(id)) {
+    favourites.delete(id);
+    btn.classList.remove('active');
+    btn.querySelector('i').className = 'far fa-heart';
+    toast('Removed from favourites');
+  } else {
+    favourites.add(id);
+    btn.classList.add('active');
+    btn.querySelector('i').className = 'fas fa-heart';
+    toast('Added to favourites ❤️');
+  }
   updateCustStats();
 }
 
 // ═══════════════════════════════════════════════════════════════════════
 // CART
 // ═══════════════════════════════════════════════════════════════════════
-function toggleCart() { document.getElementById('notifPanel').classList.remove('show'); document.getElementById('cartPanel').classList.toggle('show'); }
-function addToCart(food,qty) {
-  const ex=cartItems.find(c=>c.id===food.id);
-  if(ex) ex.qty+=qty; else cartItems.push({id:food.id,name:food.name,price:food.price,img:food.img,qty});
-  updateCartBadge(); renderCart();
+function toggleCart() {
+  document.getElementById('notifPanel').classList.remove('show');
+  document.getElementById('cartPanel').classList.toggle('show');
 }
-function updateCartBadge() { const t=cartItems.reduce((a,b)=>a+b.qty,0); const el=document.getElementById('cartCount'); el.textContent=t; el.style.display=t>0?'inline-flex':'none'; }
+
+function addToCart(food, quantity) {
+  const existing = cartItems.find(c => c.id === food.id);
+  if (existing) { existing.qty += quantity; }
+  else { cartItems.push({id: food.id, name: food.name, price: food.price, img: food.img, qty: quantity}); }
+  updateCartBadge();
+  renderCart();
+}
+
+function updateCartBadge() {
+  const total = cartItems.reduce((a, b) => a + b.qty, 0);
+  const el = document.getElementById('cartCount');
+  el.textContent = total;
+  el.style.display = total > 0 ? 'inline-flex' : 'none';
+}
+
 function renderCart() {
-  const list=document.getElementById('cartItemsList'), footer=document.getElementById('cartFooter');
-  if (!cartItems.length) { list.innerHTML='<div class="cart-empty"><i class="fas fa-shopping-bag"></i>Your cart is empty</div>'; footer.style.display='none'; return; }
-  list.innerHTML=cartItems.map(c=>`<div class="cart-item"><img src="${c.img}" alt="${c.name}"><div class="cart-item-info"><strong>${c.name}</strong><span>Qty: ${c.qty}</span></div><span class="cart-item-price">Rs. ${(c.price*c.qty).toLocaleString()}</span><button class="cart-item-remove" onclick="removeFromCart(${c.id})"><i class="fas fa-times"></i></button></div>`).join('');
-  document.getElementById('cartTotalDisplay').textContent='Rs. '+(cartItems.reduce((a,c)=>a+c.price*c.qty,0)+200).toLocaleString();
-  footer.style.display='block';
+  const list = document.getElementById('cartItemsList');
+  const footer = document.getElementById('cartFooter');
+  if (!cartItems.length) {
+    list.innerHTML = '<div class="cart-empty"><i class="fas fa-shopping-bag"></i>Your cart is empty</div>';
+    footer.style.display = 'none';
+    return;
+  }
+  list.innerHTML = cartItems.map(c => `
+    <div class="cart-item">
+      <img src="${c.img}" alt="${c.name}">
+      <div class="cart-item-info">
+        <strong>${c.name}</strong>
+        <span>Qty: ${c.qty}</span>
+      </div>
+      <span class="cart-item-price">Rs. ${(c.price * c.qty).toLocaleString()}</span>
+      <button class="cart-item-remove" onclick="removeFromCart(${c.id})"><i class="fas fa-times"></i></button>
+    </div>`).join('');
+  const total = cartItems.reduce((a, c) => a + c.price * c.qty, 0) + 200;
+  document.getElementById('cartTotalDisplay').textContent = 'Rs. ' + total.toLocaleString();
+  footer.style.display = 'block';
 }
-function removeFromCart(id) { cartItems=cartItems.filter(c=>c.id!==id); updateCartBadge(); renderCart(); }
-function goToCheckout() { if(!cartItems.length)return; const f=getPublicFoods().find(x=>x.id===cartItems[0].id); if(f)openFoodDetail(f.id); document.getElementById('cartPanel').classList.remove('show'); }
+
+function removeFromCart(id) {
+  cartItems = cartItems.filter(c => c.id !== id);
+  updateCartBadge();
+  renderCart();
+}
+
+function goToCheckout() {
+  if (!cartItems.length) return;
+  const first = cartItems[0];
+  const f = getPublicFoods().find(x => x.id === first.id);
+  if (f) openFoodDetail(f.id);
+  document.getElementById('cartPanel').classList.remove('show');
+}
 
 // ═══════════════════════════════════════════════════════════════════════
-// FOOD DETAIL
+// FOOD DETAIL PAGE
 // ═══════════════════════════════════════════════════════════════════════
 function openFoodDetail(id) {
-  const f=getPublicFoods().find(x=>x.id===id); if(!f)return;
-  currentFoodId=id; basePrice=f.price; qty=1; extras=[];
-  document.getElementById('fdImg').src=f.img;
-  document.getElementById('fdName').textContent=f.name;
-  document.getElementById('fdCookLink').textContent=f.cook;
-  document.getElementById('fdCookStore').textContent=f.cook;
-  document.getElementById('fdArea').textContent=f.area;
-  document.getElementById('fdPrice').textContent='Rs. '+f.price.toLocaleString();
-  document.getElementById('fdDesc').textContent=f.desc;
-  document.getElementById('sumFoodName').textContent=f.name;
-  document.getElementById('qtyUnitPrice').textContent='Rs. '+f.price;
-
-  const avg=getAvgRating(f.cookId,chefReviews);
-  const cnt=chefReviews.filter(r=>String(r.targetId)===String(f.cookId)).length;
-  document.getElementById('fdRatingRow').innerHTML=avg
-    ?`${starsHTML(parseFloat(avg))}<span style="font-size:13px;color:var(--muted);margin-left:6px;">${avg} (${cnt} reviews)</span>`
-    :'<span style="color:var(--muted);font-size:13px;">No ratings yet — be the first!</span>';
-
-  document.getElementById('extrasList').innerHTML=f.tags.map(t=>`
+  const f = getPublicFoods().find(x => x.id === id);
+  if (!f) return;
+  currentFoodId = id;
+  basePrice = f.price;
+  qty = 1; extras = [];
+  document.getElementById('fdImg').src = f.img;
+  document.getElementById('fdName').textContent = f.name;
+  document.getElementById('fdCookLink').textContent = f.cook;
+  document.getElementById('fdCookStore').textContent = f.cook;
+  document.getElementById('fdArea').textContent = f.area;
+  document.getElementById('fdPrice').textContent = 'Rs. ' + f.price.toLocaleString();
+  document.getElementById('fdDesc').textContent = f.desc;
+  document.getElementById('sumFoodName').textContent = f.name;
+  document.getElementById('qtyUnitPrice').textContent = 'Rs. ' + f.price;
+  
+  const ratingRow = document.getElementById('fdRatingRow');
+  ratingRow.innerHTML = f.avgRating
+    ? `<span class="stars">${starsHTML(f.avgRating)}</span><span>${f.avgRating} (${f.reviewCount} reviews)</span>`
+    : '<span style="color:var(--muted);font-size:13px;">No ratings yet</span>';
+    
+  const el = document.getElementById('extrasList');
+  el.innerHTML = f.tags.map((t,i) => `
     <div class="opt-item">
       <div><strong>${t.label.replace(/^\+ /,'').replace(/ Rs\.\d+$/,'')}</strong></div>
-      <div style="display:flex;align-items:center;gap:12px;"><span class="opt-price">Rs. ${t.price}</span>
-      <div class="checkbox" onclick="toggleOpt(this,${t.price})"><i class="fas fa-check" style="display:none;"></i></div></div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="opt-price">Rs. ${t.price}</span>
+        <div class="checkbox" onclick="toggleOpt(this,${t.price})"><i class="fas fa-check"></i></div>
+      </div>
     </div>`).join('');
-  calcTotal(); showPage('food-detail');
+  document.querySelectorAll('.checkbox i').forEach(i => i.style.display = 'none');
+  calcTotal();
+  showPage('food-detail');
 }
 
-function visitChefStore() { if(!currentFoodId)return; const f=getPublicFoods().find(x=>x.id===currentFoodId); if(f)openChefStore(f.cookId); }
+function visitChefStore() {
+  if (!currentFoodId) return;
+  const f = getPublicFoods().find(x => x.id === currentFoodId);
+  if (f) openChefStore(f.cookId);
+}
 
 function openChefStore(cookId) {
-  const cf=getPublicFoods().find(f=>f.cookId===cookId); if(!cf)return;
-  currentChefId=cookId; currentChefName=cf.cook;
-  document.getElementById('chefStoreName').textContent=cf.cook;
-  document.getElementById('chefStoreArea').innerHTML=`<i class="fas fa-map-marker-alt" style="margin-right:4px;"></i>${cf.cookAddress||cf.area}`;
-  document.getElementById('chefStoreCuisine').textContent='Specialty: Desi & Pakistani';
-  document.getElementById('chefStoreAvatar').src=`https://ui-avatars.com/api/?name=${encodeURIComponent(cf.cook)}&background=7A0020&color=FDF3DC&bold=true&size=90`;
-
-  const myRevs=chefReviews.filter(r=>String(r.targetId)===String(cookId));
-  const avg=myRevs.length?(myRevs.reduce((a,b)=>a+b.rating,0)/myRevs.length).toFixed(1):null;
-
-  const avgBadge=document.getElementById('chefAvgBadge');
-  avgBadge.innerHTML=avg
-    ?`<div class="avg-badge"><i class="fas fa-star"></i>${avg} avg · ${myRevs.length} review${myRevs.length!==1?'s':''}</div>`
-    :'';
-
-  document.getElementById('chefStoreStars').innerHTML=avg
-    ?`${starsHTML(parseFloat(avg),14)}<span>${avg} · ${myRevs.length} reviews</span>`
-    :'<span style="opacity:.6;">No reviews yet</span>';
-
-  const menu=document.getElementById('chefStoreMenu');
-  menu.dataset.cookid=cookId;
-  menu.innerHTML=getPublicFoods().filter(f=>f.cookId===cookId).map(f=>foodCard(f)).join('');
-  renderChefStoreReviews(cookId);
+  const cf = getPublicFoods().find(f => f.cookId === cookId);
+  if (!cf) return;
+  document.getElementById('chefStoreName').textContent = cf.cook;
+  document.getElementById('chefStoreArea').innerHTML = `<i class="fas fa-map-marker-alt" style="margin-right:4px;"></i>${cf.area}`;
+  document.getElementById('chefStoreCuisine').textContent = 'Specialty: Desi & Pakistani';
+  document.getElementById('chefStoreAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(cf.cook)}&background=7A0020&color=FDF3DC&bold=true&size=90`;
+  
+  const myRevs = chefReviews.filter(r => r.targetId === cookId);
+  const avgRating = myRevs.length ? (myRevs.reduce((a,b)=>a+b.rating,0)/myRevs.length).toFixed(1) : null;
+  const starsEl = document.getElementById('chefStoreStars');
+  starsEl.innerHTML = avgRating
+    ? `${starsHTML(parseFloat(avgRating))}<span>${avgRating} · ${myRevs.length} reviews</span>`
+    : '<span style="opacity:.6;">No reviews yet</span>';
+    
+  const menu = document.getElementById('chefStoreMenu');
+  menu.dataset.cookid = cookId;
+  menu.innerHTML = getPublicFoods().filter(f => f.cookId === cookId).map(f => foodCard(f)).join('');
+  
+  const revList = document.getElementById('chefStoreReviewsList');
+  revList.innerHTML = myRevs.length
+    ? myRevs.map(r => formatReviewCard(r)).join('')
+    : '<p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet for this chef.</p>';
   showPage('chef-store');
 }
 
-function renderChefStoreReviews(cookId) {
-  const list=document.getElementById('chefStoreReviewsList');
-  const myRevs=chefReviews.filter(r=>String(r.targetId)===String(cookId));
-  if (!myRevs.length) { list.innerHTML='<p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet. Be the first to review!</p>'; return; }
-  list.innerHTML=myRevs.map(r=>`
-    <div class="review-card">
-      <div class="review-head">
-        <div class="reviewer-info">
-          <span class="reviewer-name">${r.reviewer}</span>
-          <span class="reviewer-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span>
-          ${r.reasons&&r.reasons.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;">${r.reasons.map(rr=>`<span class="review-reason-tag">${rr}</span>`).join('')}</div>`:''}
-        </div>
-        <span class="review-date">${r.date||'Just now'}</span>
-      </div>
-      <p class="review-body">${r.text}</p>
-    </div>`).join('');
+function formatReviewCard(r) {
+  const tagsHTML = r.tags && r.tags.length ? `<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">${r.tags.map(t => `<span style="background:var(--gold-pale);color:var(--gold);font-size:10px;padding:3px 10px;border-radius:15px;">${t}</span>`).join('')}</div>` : '';
+  const dateStr = r.date ? new Date(r.date).toLocaleDateString() : 'Just now';
+  return `<div class="review-card">
+    <div class="review-head">
+      <div class="reviewer">${r.reviewer} <span style="color:var(--gold);">${'★'.repeat(r.rating)}</span></div>
+      <div class="review-date">${dateStr}</div>
+    </div>
+    <p>${r.text}</p>
+    ${tagsHTML}
+  </div>`;
 }
 
 // ═══════════════════════════════════════════════════════════════════════
 // ORDER FLOW
 // ═══════════════════════════════════════════════════════════════════════
-function changeQty(d) { qty=Math.max(1,qty+d); document.getElementById('qtyDisplay').textContent=qty; document.getElementById('qtyTotal').textContent='Rs. '+(qty*basePrice).toLocaleString(); calcTotal(); }
-function toggleOpt(el,price) {
-  el.classList.toggle('on'); el.querySelector('i').style.display=el.classList.contains('on')?'block':'none';
-  if(el.classList.contains('on')) extras.push(price); else extras.splice(extras.indexOf(price),1);
+function changeQty(d) {
+  qty = Math.max(1, qty + d);
+  document.getElementById('qtyDisplay').textContent = qty;
+  document.getElementById('qtyTotal').textContent = 'Rs. ' + (qty * basePrice).toLocaleString();
   calcTotal();
 }
-function calcTotal() {
-  const item=qty*basePrice, ext=extras.reduce((a,b)=>a+b,0), total=item+ext+200;
-  document.getElementById('sumItem').textContent='Rs. '+item.toLocaleString();
-  document.getElementById('sumTotal').textContent='Rs. '+total.toLocaleString();
-  const extEl=document.getElementById('sumExtrasRows');
-  extEl.innerHTML=extras.length?extras.map(e=>`<div class="sum-row"><span>Extra</span><span>Rs. ${e}</span></div>`).join(''):'';
+
+function toggleOpt(el, price) {
+  el.classList.toggle('on');
+  el.querySelector('i').style.display = el.classList.contains('on') ? 'block' : 'none';
+  if (el.classList.contains('on')) extras.push(price);
+  else extras.splice(extras.indexOf(price), 1);
+  calcTotal();
 }
-function selectPayTab(el,type) { document.querySelectorAll('.pay-tab').forEach(t=>t.classList.remove('active')); el.classList.add('active'); }
+
+function calcTotal() {
+  const item = qty * basePrice;
+  const ext  = extras.reduce((a, b) => a + b, 0);
+  const total = item + ext + 200;
+  document.getElementById('sumItem').textContent = 'Rs. ' + item.toLocaleString();
+  document.getElementById('sumTotal').textContent = 'Rs. ' + total.toLocaleString();
+  const extEl = document.getElementById('sumExtrasRows');
+  extEl.innerHTML = extras.length ? extras.map(e => `<div class="sum-row"><span>Extra</span><span>Rs. ${e}</span></div>`).join('') : '';
+}
+
+function selectPayTab(el, type) {
+  document.querySelectorAll('.pay-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
 
 function doPlaceOrder() {
-  const name=document.getElementById('custName').value.trim();
-  const phone=document.getElementById('custPhone').value.trim();
-  const address=document.getElementById('custAddress').value.trim();
-  if (!name||!phone||!address) { toast('Please fill in your delivery details!'); return; }
-  const f=getPublicFoods().find(x=>x.id===currentFoodId); if(!f)return;
+  const name    = document.getElementById('custName').value.trim();
+  const phone   = document.getElementById('custPhone').value.trim();
+  const address = document.getElementById('custAddress').value.trim();
+  if (!name || !phone || !address) { toast('Please fill in your delivery details!'); return; }
+  const f = getPublicFoods().find(x => x.id === currentFoodId);
+  if (!f) return;
   orderCounter++;
-  const orderId=orderCounter;
-  const note=document.getElementById('custNote').value;
-  const total=qty*basePrice+extras.reduce((a,b)=>a+b,0)+200;
-  const orderData={id:orderId,food:f.name,qty,price:total,customerName:name,customerPhone:phone,customerAddress:address,note,cookId:f.cookId,cookName:f.cook,cookAddress:f.cookAddress||f.area,status:'pending',img:f.img,date:new Date()};
+  const orderId = orderCounter;
+  const orderNote = document.getElementById('custNote').value;
+  const orderTotal = qty * basePrice + extras.reduce((a,b)=>a+b,0) + 200;
+
+  const orderData = {
+    id: orderId, food: f.name, qty, price: orderTotal,
+    customerName: name, customerPhone: phone, customerAddress: address, note: orderNote,
+    cookId: f.cookId, cookName: f.cook, status:'pending', img: f.img, date: new Date()
+  };
+
   pendingOrdersForCook.push(orderData);
   customerOrders.unshift(orderData);
-  addToCart(f,qty);
+  addToCart(f, qty);
+
   renderCookOrders();
   addNavNotif(`Order #${orderId} placed! Waiting for ${f.cook}`, 'new-order');
   toast(`Order #${orderId} placed! Notifying ${f.cook}…`);
+
   showPage('customer-dashboard');
-  activeOrderId=orderId; trackStep=1;
-  showOrderTracker(orderId,1);
-  renderOrderHistory(); updateCustStats();
+  activeOrderId = orderId;
+  trackStep = 1;
+  showOrderTracker(orderId, 1);
+  renderOrderHistory();
+  updateCustStats();
 }
 
-function showOrderTracker(orderId,step) {
-  const sec=document.getElementById('orderTrackerSection'); sec.style.display='block';
-  document.getElementById('trackerOrderId').textContent=`Order #${orderId}`;
-  for (let i=1;i<=5;i++) {
-    const s=document.getElementById('track'+i), dot=s.querySelector('.tracker-dot');
-    s.className='tracker-step'; dot.className='tracker-dot';
-    if(i<step){s.classList.add('done');dot.classList.add('done');}
-    else if(i===step){s.classList.add('active');dot.classList.add('active');}
+function showOrderTracker(orderId, step) {
+  const sec = document.getElementById('orderTrackerSection');
+  sec.style.display = 'block';
+  document.getElementById('trackerOrderId').textContent = `Order #${orderId}`;
+  for (let i = 1; i <= 5; i++) {
+    const tStep = document.getElementById('track'+i);
+    const dot = tStep.querySelector('.tracker-dot');
+    tStep.className = 'tracker-step';
+    dot.className = 'tracker-dot';
+    if (i < step) { tStep.classList.add('done'); dot.classList.add('done'); }
+    else if (i === step) { tStep.classList.add('active'); dot.classList.add('active'); }
   }
 }
 
-function advanceTracker(orderId,newStep) {
-  const order=customerOrders.find(o=>o.id===orderId);
-  if(order) order.status=['pending','confirmed','preparing','on-the-way','delivered'][newStep-1]||'delivered';
-  if(activeOrderId===orderId) showOrderTracker(orderId,newStep);
+function advanceTracker(orderId, newStep) {
+  const order = customerOrders.find(o => o.id === orderId);
+  if (order) order.status = ['pending','confirmed','preparing','on-the-way','delivered'][newStep-1]||'delivered';
+  if (activeOrderId === orderId) showOrderTracker(orderId, newStep);
   renderOrderHistory();
 }
 
@@ -1711,40 +2054,50 @@ function advanceTracker(orderId,newStep) {
 // ORDER HISTORY
 // ═══════════════════════════════════════════════════════════════════════
 function renderOrderHistory() {
-  const sec=document.getElementById('custOrderHistorySection'), list=document.getElementById('custOrderHistoryList');
-  if (!customerOrders.length) { sec.style.display='none'; return; }
-  sec.style.display='block';
-  list.innerHTML=customerOrders.map(o=>`
+  const sec = document.getElementById('custOrderHistorySection');
+  const list = document.getElementById('custOrderHistoryList');
+  if (!customerOrders.length) { sec.style.display = 'none'; return; }
+  sec.style.display = 'block';
+  list.innerHTML = customerOrders.map(o => `
     <div class="order-history-card">
       <img src="${o.img}" alt="${o.food}">
-      <div class="order-hist-info"><strong>${o.food} × ${o.qty}</strong><span>${o.cookName} · Rs. ${o.price.toLocaleString()}</span></div>
-      <span class="order-hist-status ${o.status==='delivered'?'delivered':o.status==='pending'?'pending':'preparing'}">${o.status}</span>
-      ${o.status==='delivered'?`<button class="reorder-btn" onclick="openFoodDetail(${o.id%6+1})"><i class="fas fa-redo" style="margin-right:4px;"></i>Reorder</button>`:''}
+      <div class="order-hist-info">
+        <strong>${o.food} × ${o.qty}</strong>
+        <span>${o.cookName} · Rs. ${o.price.toLocaleString()}</span>
+      </div>
+      <span class="order-hist-status ${o.status === 'delivered' ? 'delivered' : o.status === 'pending' ? 'pending' : 'preparing'}">${o.status}</span>
+      ${o.status === 'delivered' ? `<button class="reorder-btn" onclick="openFoodDetail(${o.id % 106 + 101})"><i class="fas fa-redo" style="margin-right:4px;"></i>Reorder</button>` : ''}
     </div>`).join('');
 }
 
 function updateCustStats() {
-  document.getElementById('custTotalOrders').textContent=customerOrders.length;
-  document.getElementById('custFavCount').textContent=favourites.size;
-  document.getElementById('custPendingCount').textContent=customerOrders.filter(o=>o.status!=='delivered').length;
-  document.getElementById('custReviewCount').textContent=chefReviews.filter(r=>r.reviewer===currentUser.name).length+riderReviews.filter(r=>r.reviewer===currentUser.name).length;
+  document.getElementById('custTotalOrders').textContent = customerOrders.length;
+  document.getElementById('custFavCount').textContent = favourites.size;
+  document.getElementById('custPendingCount').textContent = customerOrders.filter(o => o.status !== 'delivered').length;
+  document.getElementById('custReviewCount').textContent = chefReviews.filter(r => r.reviewer === currentUser.name).length + riderReviews.filter(r => r.reviewer === currentUser.name).length;
 }
 
 // ═══════════════════════════════════════════════════════════════════════
 // COOK DASHBOARD — ORDERS
 // ═══════════════════════════════════════════════════════════════════════
 function renderCookOrders() {
-  const list=document.getElementById('newOrdersList');
-  if (!pendingOrdersForCook.length) { list.innerHTML='<p style="color:var(--muted);font-size:14px;">No new orders right now.</p>'; document.getElementById('cookPendingOrders').textContent=0; return; }
-  document.getElementById('cookPendingOrders').textContent=pendingOrdersForCook.length;
-  list.innerHTML=pendingOrdersForCook.map(o=>`
+  const list = document.getElementById('newOrdersList');
+  if (!pendingOrdersForCook.length) {
+    list.innerHTML = '<p style="color:var(--muted);font-size:14px;">No new orders right now.</p>';
+    document.getElementById('cookPendingOrders').textContent = 0;
+    return;
+  }
+  document.getElementById('cookPendingOrders').textContent = pendingOrdersForCook.length;
+  list.innerHTML = pendingOrdersForCook.map(o => `
     <div class="order-notif-card" id="order-card-${o.id}">
       <h4><i class="fas fa-shopping-bag" style="margin-right:8px;"></i>Order #${o.id} — New Order!</h4>
-      <p><strong>Customer:</strong> ${o.customerName} · ${o.customerPhone}<br>
-         <strong>Address:</strong> ${o.customerAddress}<br>
-         <strong>Item:</strong> ${o.food} ×${o.qty}<br>
-         <strong>Total:</strong> Rs. ${o.price.toLocaleString()}
-         ${o.note?'<br><strong>Note:</strong> '+o.note:''}</p>
+      <p>
+        <strong>Customer:</strong> ${o.customerName} · ${o.customerPhone}<br>
+        <strong>Address:</strong> ${o.customerAddress}<br>
+        <strong>Item:</strong> ${o.food} ×${o.qty}<br>
+        <strong>Total:</strong> Rs. ${o.price.toLocaleString()}
+        ${o.note ? '<br><strong>Note:</strong> ' + o.note : ''}
+      </p>
       <div class="notif-btn-row">
         <button class="notif-btn accept" onclick="cookAcceptOrder(${o.id})"><i class="fas fa-check" style="margin-right:6px;"></i>Accept Order</button>
         <button class="notif-btn reject" onclick="cookRejectOrder(${o.id})"><i class="fas fa-times" style="margin-right:6px;"></i>Reject</button>
@@ -1752,354 +2105,508 @@ function renderCookOrders() {
     </div>`).join('');
 }
 
-// ★ KEY CHANGE: when chef accepts, broadcast to ALL riders
 function cookAcceptOrder(id) {
-  const order=pendingOrdersForCook.find(o=>o.id===id); if(!order)return;
-  pendingOrdersForCook=pendingOrdersForCook.filter(o=>o.id!==id);
-  renderCookOrders(); updateCookStats();
+  const order = pendingOrdersForCook.find(o => o.id === id);
+  if (!order) return;
+  pendingOrdersForCook = pendingOrdersForCook.filter(o => o.id !== id);
+  renderCookOrders();
+  updateCookStats();
   addNavNotif(`Order #${id} accepted! Preparing food.`, '');
-  advanceTracker(id,2);
-  toast(`Order #${id} accepted! Broadcasting to all riders…`);
+  advanceTracker(id, 2);
+  toast(`Order #${id} accepted! Customer notified.`);
 
-  // Build broadcast delivery object
-  const f=getPublicFoods().find(x=>x.cookId===order.cookId)||{};
-  const delivery={
-    id,
-    food:order.food, qty:order.qty,
-    pickupName:cookProfile.storeName||order.cookName,
-    pickupAddress:cookProfile.address||order.cookAddress||'Swabi',
-    pickupArea:f.area||'Swabi',
-    dropAddress:order.customerAddress,
-    customerName:order.customerName,
-    customerPhone:order.customerPhone,
-    acceptedByRider:false    // ★ broadcast flag
+  // BROADCAST to all riders
+  const deliveryData = {
+    id, food: order.food, qty: order.qty,
+    pickupName: cookProfile.storeName || 'Chef Kitchen',
+    pickupArea: 'City Center',
+    pickupAddress: 'Main Road, City Center, Swabi',
+    dropAddress: order.customerAddress, 
+    customerName: order.customerName,
+    acceptedByRider: false,
+    acceptedRiderId: null,
+    acceptedRiderName: null
   };
-  // Remove any existing entry for this order id (idempotent)
-  pendingDeliveriesForRider=pendingDeliveriesForRider.filter(d=>d.id!==id);
-  pendingDeliveriesForRider.push(delivery);
-
-  // If rider dashboard is visible, refresh it
-  if (document.getElementById('rider-dashboard').classList.contains('active')) renderRiderDeliveries();
-  addNavNotif(`📢 New delivery available! Pickup: ${delivery.pickupName}, ${delivery.pickupAddress}`, 'new-order');
-  setTimeout(()=>{ advanceTracker(id,3); toast('Food is being prepared…'); }, 3000);
+  pendingDeliveriesForRider.push(deliveryData);
+  
+  // Notify all riders
+  addNavNotif(`🛵 NEW DELIVERY: Pickup from ${deliveryData.pickupName}`, 'new-order');
+  
+  // Refresh rider dashboard if active
+  if (document.getElementById('rider-dashboard').classList.contains('active')) {
+    renderRiderDeliveries();
+  }
+  
+  setTimeout(() => { advanceTracker(id, 3); toast('Food is being prepared…'); }, 3000);
 }
 
 function cookRejectOrder(id) {
-  pendingOrdersForCook=pendingOrdersForCook.filter(o=>o.id!==id);
+  pendingOrdersForCook = pendingOrdersForCook.filter(o => o.id !== id);
   renderCookOrders();
-  const order=customerOrders.find(o=>o.id===id); if(order)order.status='cancelled';
+  const order = customerOrders.find(o => o.id === id);
+  if (order) order.status = 'cancelled';
   addNavNotif(`Order #${id} was rejected by the chef.`, '');
   toast(`Order #${id} rejected.`);
   renderOrderHistory();
 }
 
 function updateCookStats() {
-  const accepted=customerOrders.filter(o=>o.status!=='pending').length;
-  document.getElementById('cookTodayOrders').textContent=accepted;
-  document.getElementById('cookPendingOrders').textContent=pendingOrdersForCook.length;
-  document.getElementById('cookTotalReviews').textContent=chefReviews.filter(r=>String(r.targetId)===String(cookProfile.storeName||'mystore')).length;
-  document.getElementById('cookMenuCount').textContent=getCookFoods().length;
-  const cl=document.getElementById('cookReviewsList');
+  const accepted = customerOrders.filter(o => o.status !== 'pending').length;
+  document.getElementById('cookTodayOrders').textContent = accepted;
+  document.getElementById('cookPendingOrders').textContent = pendingOrdersForCook.length;
+  document.getElementById('cookTotalReviews').textContent = chefReviews.length;
+  const myFoods = getCookFoods();
+  document.getElementById('cookMenuCount').textContent = myFoods.length;
+  
+  const cl = document.getElementById('cookReviewsList');
   if (cl) {
-    const myRevs=chefReviews.filter(r=>r.targetId==='mystore'||r.targetId===cookProfile.storeName);
-    cl.innerHTML=myRevs.length
-      ?myRevs.map(r=>`<div class="review-card">
-          <div class="review-head">
-            <div class="reviewer-info"><span class="reviewer-name">${r.reviewer}</span><span class="reviewer-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span>${r.reasons&&r.reasons.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;">${r.reasons.map(rr=>`<span class="review-reason-tag">${rr}</span>`).join('')}</div>`:''}</div>
-            <span class="review-date">Just now</span>
-          </div>
-          <p class="review-body">${r.text}</p>
-        </div>`).join('')
-      :'<p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet.</p>';
-  }
-  // Update star display
-  const allCookRevs=chefReviews.filter(r=>r.targetId==='mystore');
-  if (allCookRevs.length) {
-    const avg=(allCookRevs.reduce((a,b)=>a+b.rating,0)/allCookRevs.length).toFixed(1);
-    document.getElementById('cookDashStars').innerHTML=`${starsHTML(parseFloat(avg),13)}<span>${avg} avg (${allCookRevs.length} reviews)</span>`;
+    const myRevs = chefReviews.filter(r => r.targetId === 'mystore' || r.targetId === 101);
+    cl.innerHTML = myRevs.length
+      ? myRevs.map(r => formatReviewCard(r)).join('')
+      : '<p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet. Reviews appear here once customers rate your food.</p>';
   }
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// ★ RIDER DASHBOARD — BROADCAST DELIVERIES
-// When a rider accepts, acceptedByRider=true so all other rider views show "Taken"
+// RIDER DASHBOARD — DELIVERIES (BROADCAST SYSTEM)
 // ═══════════════════════════════════════════════════════════════════════
 function renderRiderDeliveries() {
-  const list=document.getElementById('riderDeliveryList'); if(!list)return;
-  const available=pendingDeliveriesForRider.filter(d=>!d.acceptedByRider);
-  const taken=pendingDeliveriesForRider.filter(d=>d.acceptedByRider);
-
-  if (!pendingDeliveriesForRider.length) { list.innerHTML='<p style="color:var(--muted);font-size:14px;">No delivery requests right now. When a chef accepts an order, it will appear here for all riders.</p>'; return; }
-
-  let html='';
-
-  // Available deliveries
-  available.forEach(d=>{
-    html+=`<div class="rider-broadcast-card" id="rider-card-${d.id}">
-      <div class="broadcast-badge"><i class="fas fa-broadcast-tower"></i>BROADCAST — Open to All Riders</div>
-      <h4><i class="fas fa-shipping-fast"></i>Delivery #${d.id}</h4>
-      <div class="restaurant-pickup">
-        <h5><i class="fas fa-store"></i>Pickup from Restaurant</h5>
-        <p><strong>${d.pickupName}</strong><br>${d.pickupAddress}, ${d.pickupArea}, Swabi</p>
-      </div>
-      <p style="margin-top:12px;font-size:13px;color:var(--charcoal);line-height:1.8;">
-        <strong><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;"></i>Drop:</strong> ${d.dropAddress}<br>
-        <strong><i class="fas fa-user" style="color:var(--crimson);margin-right:4px;"></i>Customer:</strong> ${d.customerName} · ${d.customerPhone}<br>
-        <strong><i class="fas fa-box" style="color:var(--crimson);margin-right:4px;"></i>Item:</strong> ${d.food} ×${d.qty}
-      </p>
-      <div class="paid-badge" style="margin-top:12px;"><i class="fas fa-check-circle"></i>Cash on Delivery from customer</div>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;">
-        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--crimson);">Rs. 190 <span style="font-size:13px;font-weight:400;color:var(--muted);">your share</span></div>
-        <div style="display:flex;gap:10px;">
-          <button class="btn-hp" style="padding:10px 20px;" onclick="acceptDelivery(${d.id})"><i class="fas fa-check" style="margin-right:6px;"></i>Accept First!</button>
-          <button style="color:var(--muted);border:1.5px solid var(--border);background:none;border-radius:10px;padding:10px 18px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;" onclick="rejectDelivery(${d.id})">Skip</button>
+  const list = document.getElementById('riderDeliveryList');
+  if (!list) return;
+  if (!pendingDeliveriesForRider.length) {
+    list.innerHTML = '<p style="color:var(--muted);font-size:14px;">No delivery requests right now.</p>';
+    document.getElementById('riderAvailable').textContent = 0;
+    return;
+  }
+  
+  // Count available (not yet accepted) deliveries
+  const availableCount = pendingDeliveriesForRider.filter(d => !d.acceptedByRider).length;
+  document.getElementById('riderAvailable').textContent = availableCount;
+  
+  list.innerHTML = pendingDeliveriesForRider.map(d => {
+    if (d.acceptedByRider) {
+      // Show dimmed "already accepted" card
+      return `
+        <div class="rider-notif-card accepted" id="rider-card-${d.id}">
+          <div class="already-accepted-notice">
+            <i class="fas fa-check-circle"></i>
+            Already Accepted by Another Rider
+          </div>
+          <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px;">
+            Delivery #${d.id} was claimed by ${d.acceptedRiderName}
+          </p>
+        </div>`;
+    }
+    
+    // Show active broadcast card
+    return `
+      <div class="rider-notif-card" id="rider-card-${d.id}">
+        <div class="broadcast-badge"><i class="fas fa-broadcast-tower"></i> BROADCAST — Open to All Riders</div>
+        <h4><i class="fas fa-shipping-fast" style="margin-right:8px;"></i>Delivery #${d.id} — Ready for Pickup!</h4>
+        <p>
+          <strong><i class="fas fa-store" style="color:var(--gold);margin-right:4px;"></i>Restaurant:</strong> ${d.pickupName}<br>
+          <strong><i class="fas fa-map-marker-alt" style="color:var(--crimson);margin-right:4px;"></i>Pickup Address:</strong> ${d.pickupAddress}<br>
+          <strong><i class="fas fa-user" style="color:var(--success);margin-right:4px;"></i>Customer:</strong> ${d.customerName}<br>
+          <strong><i class="fas fa-home" style="color:var(--muted);margin-right:4px;"></i>Drop Location:</strong> ${d.dropAddress}<br>
+          <strong><i class="fas fa-utensils" style="color:var(--gold);margin-right:4px;"></i>Item:</strong> ${d.food} ×${d.qty}
+        </p>
+        <div class="paid-badge" style="margin-top:12px;"><i class="fas fa-money-bill-wave"></i>Cash on Delivery — Collect from Customer</div>
+        <div class="delivery-actions" style="margin-top:14px;">
+          <div class="delivery-fee">Rs. 190 <span style="font-size:13px;font-weight:400;color:var(--muted);">your share</span></div>
+          <button class="btn-hp" style="padding:12px 28px;font-size:14px;" onclick="acceptDelivery(${d.id})">
+            <i class="fas fa-bolt" style="margin-right:6px;"></i>Accept First!
+          </button>
         </div>
-      </div>
-    </div>`;
-  });
-
-  // Already taken deliveries — show dimmed
-  taken.forEach(d=>{
-    html+=`<div style="background:var(--cream);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px 24px;margin-bottom:16px;opacity:.6;">
-      <div class="rider-accepted-notice" style="margin-bottom:10px;"><i class="fas fa-check-circle"></i>Delivery #${d.id} — Already Accepted by Another Rider</div>
-      <p style="font-size:13px;color:var(--muted);">Pickup: ${d.pickupName} → Drop: ${d.dropAddress}</p>
-    </div>`;
-  });
-
-  list.innerHTML=html;
-  document.getElementById('riderAvailable').textContent=available.length;
+      </div>`;
+  }).join('');
 }
 
-// ★ When one rider accepts — mark acceptedByRider=true globally so others see "Taken"
 function acceptDelivery(id) {
-  const d=pendingDeliveriesForRider.find(x=>x.id===id); if(!d)return;
-  if (d.acceptedByRider) { toast('Sorry! This delivery was already accepted by another rider.'); renderRiderDeliveries(); return; }
-
-  d.acceptedByRider=true; // ★ MARK AS TAKEN for all riders
-  acceptedDeliveryIds.add(id);
-
-  renderRiderDeliveries();
-
-  const today=parseInt(document.getElementById('riderTodayDeliveries').textContent)+1;
-  const month=parseInt(document.getElementById('riderMonthDeliveries').textContent)+1;
-  document.getElementById('riderTodayDeliveries').textContent=today;
-  document.getElementById('riderMonthDeliveries').textContent=month;
-
-  toast(`Delivery #${id} accepted! Head to ${d.pickupName}, ${d.pickupAddress}`);
-  addNavNotif(`Rider accepted delivery #${id}! Heading to ${d.pickupName}.`, '');
-  advanceTracker(id,4);
-
-  setTimeout(()=>{
-    advanceTracker(id,5);
-    addNavNotif(`🎉 Order #${id} delivered!`,'');
-    toast('Delivery completed! Great job!');
-    const order=customerOrders.find(o=>o.id===id); if(order)order.status='delivered';
-    renderOrderHistory();
-    // Remove from pending after delivery
-    pendingDeliveriesForRider=pendingDeliveriesForRider.filter(x=>x.id!==id);
+  const d = pendingDeliveriesForRider.find(x => x.id === id);
+  if (!d) return;
+  
+  // Check if already accepted
+  if (d.acceptedByRider) {
+    toast('This delivery was already claimed!');
     renderRiderDeliveries();
+    return;
+  }
+  
+  // FIRST COME FIRST SERVED — Mark as accepted
+  d.acceptedByRider = true;
+  d.acceptedRiderId = riderProfile.name || 'Current Rider';
+  d.acceptedRiderName = riderProfile.name || 'Current Rider';
+  
+  // Update stats
+  const riderToday = parseInt(document.getElementById('riderTodayDeliveries').textContent) + 1;
+  const riderMonth = parseInt(document.getElementById('riderMonthDeliveries').textContent) + 1;
+  document.getElementById('riderTodayDeliveries').textContent = riderToday;
+  document.getElementById('riderMonthDeliveries').textContent = riderMonth;
+  
+  // Re-render to show accepted state to ALL riders
+  renderRiderDeliveries();
+  
+  toast(`🎉 Delivery #${id} claimed! Head to ${d.pickupName}.`);
+  addNavNotif(`Rider accepted delivery #${id}! Food is on the way.`, '');
+  advanceTracker(id, 4);
+  
+  setTimeout(() => {
+    advanceTracker(id, 5);
+    addNavNotif(`🎉 Order #${id} delivered!`, '');
+    toast('Delivery completed! Great job!');
+    const order = customerOrders.find(o => o.id === id);
+    if (order) order.status = 'delivered';
+    renderOrderHistory();
   }, 5000);
 }
 
 function rejectDelivery(id) {
-  // Only remove from THIS rider's view — in real app, would just hide for this rider
-  // Here we simulate by removing from the list for this session
-  pendingDeliveriesForRider=pendingDeliveriesForRider.filter(x=>x.id!==id);
+  pendingDeliveriesForRider = pendingDeliveriesForRider.filter(x => x.id !== id);
   renderRiderDeliveries();
-  toast(`Delivery #${id} skipped.`);
+  toast(`Delivery #${id} declined.`);
 }
 
 // ═══════════════════════════════════════════════════════════════════════
 // ADD / EDIT / REMOVE MENU ITEMS
 // ═══════════════════════════════════════════════════════════════════════
 function openAddItem() {
-  document.getElementById('addItemTitle').textContent='Add Menu Item';
-  document.getElementById('editItemId').value='';
-  document.getElementById('itemName').value='';
-  document.getElementById('itemDesc').value='';
-  document.getElementById('itemPrice').value='';
-  document.getElementById('itemPrep').value='';
-  document.getElementById('itemPhotoPreview').style.display='none';
-  document.getElementById('optionsContainer').innerHTML=`<div class="option-extra"><input type="text" placeholder="Option name" style="flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;"><input type="number" placeholder="Price" style="width:90px;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;"></div>`;
+  document.getElementById('addItemTitle').textContent = 'Add Menu Item';
+  document.getElementById('editItemId').value = '';
+  document.getElementById('itemName').value = '';
+  document.getElementById('itemDesc').value = '';
+  document.getElementById('itemPrice').value = '';
+  document.getElementById('itemPrep').value = '';
+  document.getElementById('itemPhotoPreview').style.display = 'none';
+  document.getElementById('optionsContainer').innerHTML = `<div class="option-extra">
+    <input type="text" placeholder="Option name (e.g. Extra Ketchup)" style="flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;">
+    <input type="number" placeholder="Price" style="width:90px;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;">
+  </div>`;
   document.getElementById('addItemModal').classList.add('show');
 }
+
 function editItem(id) {
-  const f=foods.find(x=>x.id===id); if(!f)return;
-  document.getElementById('addItemTitle').textContent='Edit Menu Item';
-  document.getElementById('editItemId').value=id;
-  document.getElementById('itemName').value=f.name;
-  document.getElementById('itemDesc').value=f.desc;
-  document.getElementById('itemPrice').value=f.price;
-  document.getElementById('itemPrep').value=30;
-  const prev=document.getElementById('itemPhotoPreview'); prev.src=f.img; prev.style.display='block';
-  document.getElementById('optionsContainer').innerHTML=f.tags.map(t=>`<div class="option-extra"><input type="text" value="${t.label.replace(/^\+ /,'').replace(/ Rs\.\d+$/,'')}" style="flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;"><input type="number" value="${t.price}" style="width:90px;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;"></div>`).join('');
+  const f = foods.find(x => x.id === id);
+  if (!f) return;
+  document.getElementById('addItemTitle').textContent = 'Edit Menu Item';
+  document.getElementById('editItemId').value = id;
+  document.getElementById('itemName').value = f.name;
+  document.getElementById('itemDesc').value = f.desc;
+  document.getElementById('itemPrice').value = f.price;
+  document.getElementById('itemPrep').value = 30;
+  const prev = document.getElementById('itemPhotoPreview');
+  prev.src = f.img; prev.style.display = 'block';
+  document.getElementById('optionsContainer').innerHTML = f.tags.map(t =>
+    `<div class="option-extra">
+      <input type="text" value="${t.label.replace(/^\+ /,'').replace(/ Rs\.\d+$/,'')}" style="flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;">
+      <input type="number" value="${t.price}" style="width:90px;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;">
+    </div>`).join('');
   document.getElementById('addItemModal').classList.add('show');
 }
-function previewItemImg(inp) { const prev=document.getElementById('itemPhotoPreview'); if(inp.files&&inp.files[0]){const r=new FileReader();r.onload=e=>{prev.src=e.target.result;prev.style.display='block';};r.readAsDataURL(inp.files[0]);} }
+
+function previewItemImg(inp) {
+  const prev = document.getElementById('itemPhotoPreview');
+  if (inp.files && inp.files[0]) {
+    const r = new FileReader(); r.onload = e => { prev.src = e.target.result; prev.style.display = 'block'; }; r.readAsDataURL(inp.files[0]);
+  }
+}
+
 function saveItem(e) {
   e.preventDefault();
-  const eid=parseInt(document.getElementById('editItemId').value);
-  const name=document.getElementById('itemName').value, desc=document.getElementById('itemDesc').value;
-  const price=parseInt(document.getElementById('itemPrice').value);
-  const imgEl=document.getElementById('itemPhotoPreview');
-  const imgSrc=imgEl.style.display!=='none'?imgEl.src:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600';
-  const optRows=document.querySelectorAll('#optionsContainer .option-extra');
-  const tags=[]; optRows.forEach(row=>{const ins=row.querySelectorAll('input');if(ins[0].value&&ins[1].value)tags.push({label:`+ ${ins[0].value} Rs.${ins[1].value}`,price:parseInt(ins[1].value)});});
-  if (eid) { const idx=foods.findIndex(f=>f.id===eid); if(idx>-1)foods[idx]={...foods[idx],name,desc,price,img:imgSrc,tags}; toast('Item updated!'); }
-  else { const nid=foods.length?Math.max(...foods.map(f=>f.id))+1:1; foods.push({id:nid,name,cook:cookProfile.storeName,cookId:'mystore',price,area:'City Center',img:imgSrc,desc,tags,cookAddress:cookProfile.address}); toast('Item added!'); }
-  closeModal('addItemModal'); renderGrids(); updateCookStats();
+  const editId = parseInt(document.getElementById('editItemId').value);
+  const name   = document.getElementById('itemName').value;
+  const desc   = document.getElementById('itemDesc').value;
+  const price  = parseInt(document.getElementById('itemPrice').value);
+  const imgEl  = document.getElementById('itemPhotoPreview');
+  const imgSrc = imgEl.style.display !== 'none' ? imgEl.src : 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600';
+  const optRows = document.querySelectorAll('#optionsContainer .option-extra');
+  const tags = [];
+  optRows.forEach(row => {
+    const inputs = row.querySelectorAll('input');
+    if (inputs[0].value && inputs[1].value) tags.push({label:`+ ${inputs[0].value} Rs.${inputs[1].value}`, price: parseInt(inputs[1].value)});
+  });
+  if (editId) {
+    const idx = foods.findIndex(f => f.id === editId);
+    if (idx > -1) foods[idx] = {...foods[idx], name, desc, price, img: imgSrc, tags};
+    toast('Menu item updated!');
+  } else {
+    const newId = foods.length ? Math.max(...foods.map(f => f.id)) + 1 : 1;
+    foods.push({id:newId, name, cook: cookProfile.storeName, cookId:'mystore', price, area: 'City Center', img:imgSrc, desc, tags, avgRating:null, reviewCount:0});
+    toast('Menu item added!');
+  }
+  closeModal('addItemModal');
+  renderGrids();
+  updateCookStats();
 }
-function removeItem(id) { if(!confirm('Remove this item?'))return; foods=foods.filter(f=>f.id!==id); renderGrids(); updateCookStats(); toast('Item removed.'); }
+
+function removeItem(id) {
+  if (!confirm('Remove this item from your menu?')) return;
+  foods = foods.filter(f => f.id !== id);
+  renderGrids();
+  updateCookStats();
+  toast('Item removed from menu.');
+}
+
 function addOpt() {
-  const c=document.getElementById('optionsContainer'), d=document.createElement('div'); d.className='option-extra';
-  d.innerHTML=`<input type="text" placeholder="Option name" style="flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;"><input type="number" placeholder="Price" style="width:90px;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;"><button type="button" onclick="this.parentElement.remove()" style="background:var(--crimson);color:#fff;border:none;border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:16px;align-self:center;flex-shrink:0;">×</button>`;
+  const c = document.getElementById('optionsContainer');
+  const d = document.createElement('div');
+  d.className = 'option-extra';
+  d.innerHTML = `<input type="text" placeholder="Option name" style="flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;">
+    <input type="number" placeholder="Price" style="width:90px;padding:10px 14px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;">
+    <button type="button" onclick="this.parentElement.remove()" style="background:var(--crimson);color:#fff;border:none;border-radius:8px;width:36px;height:36px;cursor:pointer;font-size:16px;align-self:center;flex-shrink:0;">×</button>`;
   c.appendChild(d);
 }
 
 // ═══════════════════════════════════════════════════════════════════════
-// ★ ENHANCED REVIEWS
+// REVIEWS (ENHANCED WITH TAGS)
 // ═══════════════════════════════════════════════════════════════════════
-const STAR_LABELS = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
-
 function openReview(type, targetId, targetName) {
-  reviewTargetType=type; reviewTargetId=targetId; starRating=0;
-  // Reset stars
-  document.querySelectorAll('#starPicker .sp').forEach(s=>s.classList.remove('lit'));
-  document.getElementById('starValLabel').textContent='Tap a star';
-  document.getElementById('revTargetName').textContent=targetName;
-  document.getElementById('revTargetSub').textContent=type==='chef'?'Home Cook · Swabi':'Delivery Rider · Swabi';
-  document.getElementById('revTargetIcon').innerHTML=type==='chef'?'<i class="fas fa-hat-chef"></i>':'<i class="fas fa-motorcycle"></i>';
-  document.getElementById('reviewText').value='';
-  document.getElementById('reviewerName').value=currentUser.name||'';
-  // Reset reason tags
-  document.querySelectorAll('.rtag').forEach(t=>t.classList.remove('active'));
+  reviewTargetType = type;
+  reviewTargetId   = targetId;
+  starRating = 0;
+  tempRating = 0;
+  selectedReviewTags = [];
+  setRating(0);
+  document.getElementById('revTargetName').textContent = targetName;
+  document.getElementById('revTargetSub').textContent = type === 'chef' ? 'Rate this Chef' : 'Rate this Rider';
+  document.getElementById('reviewText').value = '';
+  document.getElementById('reviewerName').value = currentUser.name || '';
+  
+  // Reset tags
+  document.querySelectorAll('.review-tag').forEach(t => t.classList.remove('selected'));
+  
   document.getElementById('reviewModal').classList.add('show');
 }
 
-function setRating(n) {
-  starRating=n;
-  document.querySelectorAll('#starPicker .sp').forEach((s,i)=>{ s.classList.toggle('lit', i<n); });
-  document.getElementById('starValLabel').textContent=STAR_LABELS[n]||'';
+function closeReviewModal() {
+  document.getElementById('reviewModal').classList.remove('show');
+  starRating = 0;
+  tempRating = 0;
+  selectedReviewTags = [];
 }
 
-function toggleRTag(el) { el.classList.toggle('active'); }
+function previewRating(n) {
+  tempRating = n;
+  const stars = document.querySelectorAll('#starsInput i');
+  stars.forEach((s, i) => {
+    s.className = i < n ? 'fas fa-star lit' : 'far fa-star';
+  });
+  document.getElementById('starLabel').textContent = starLabels[n];
+}
+
+function clearPreview() {
+  const stars = document.querySelectorAll('#starsInput i');
+  stars.forEach((s, i) => {
+    s.className = i < starRating ? 'fas fa-star lit' : 'far fa-star';
+  });
+  document.getElementById('starLabel').textContent = starLabels[starRating] || '';
+}
+
+function setRating(n) {
+  starRating = n;
+  tempRating = n;
+  const stars = document.querySelectorAll('#starsInput i');
+  stars.forEach((s, i) => {
+    s.className = i < n ? 'fas fa-star lit' : 'far fa-star';
+  });
+  document.getElementById('starLabel').textContent = starLabels[n];
+}
+
+function toggleReviewTag(el, tag) {
+  el.classList.toggle('selected');
+  if (el.classList.contains('selected')) {
+    selectedReviewTags.push(tag);
+  } else {
+    selectedReviewTags = selectedReviewTags.filter(t => t !== tag);
+  }
+}
 
 function submitReview() {
   if (!starRating) { toast('Please select a star rating!'); return; }
-  const text=document.getElementById('reviewText').value.trim();
-  const reviewer=(document.getElementById('reviewerName').value.trim()||currentUser.name||'Anonymous');
+  const text = document.getElementById('reviewText').value.trim();
+  const reviewer = document.getElementById('reviewerName').value.trim() || (currentUser.name || 'Anonymous');
   if (!text) { toast('Please write your review!'); return; }
-  const reasons=[...document.querySelectorAll('.rtag.active')].map(t=>t.textContent.trim());
-  const review={text,rating:starRating,reviewer,targetId:reviewTargetId,type:reviewTargetType,reasons,date:new Date().toLocaleDateString()};
+  
+  const review = { 
+    text, 
+    rating: starRating, 
+    reviewer, 
+    targetId: reviewTargetId, 
+    type: reviewTargetType,
+    tags: [...selectedReviewTags],
+    date: new Date()
+  };
 
-  if (reviewTargetType==='chef') {
+  if (reviewTargetType === 'chef') {
     chefReviews.push(review);
-    // Update chef store reviews if open
-    if (document.getElementById('chef-store').classList.contains('active')) {
-      renderChefStoreReviews(reviewTargetId);
-      // Update avg badge
-      const myRevs=chefReviews.filter(r=>String(r.targetId)===String(reviewTargetId));
-      const avg=(myRevs.reduce((a,b)=>a+b.rating,0)/myRevs.length).toFixed(1);
-      document.getElementById('chefAvgBadge').innerHTML=`<div class="avg-badge"><i class="fas fa-star"></i>${avg} avg · ${myRevs.length} review${myRevs.length!==1?'s':''}</div>`;
-      document.getElementById('chefStoreStars').innerHTML=`${starsHTML(parseFloat(avg),14)}<span>${avg} · ${myRevs.length} reviews</span>`;
+    
+    // Update chef's average rating in sampleFoods
+    const chefFoods = sampleFoods.filter(f => f.cookId === reviewTargetId);
+    const chefAllReviews = chefReviews.filter(r => r.targetId === reviewTargetId);
+    const newAvg = chefAllReviews.reduce((a,b) => a + b.rating, 0) / chefAllReviews.length;
+    chefFoods.forEach(f => {
+      f.avgRating = parseFloat(newAvg.toFixed(1));
+      f.reviewCount = chefAllReviews.length;
+    });
+    
+    // Update store page if visible
+    const storeRevList = document.getElementById('chefStoreReviewsList');
+    if (storeRevList && document.getElementById('chef-store').classList.contains('active')) {
+      const myRevs = chefReviews.filter(r => r.targetId === reviewTargetId);
+      storeRevList.innerHTML = myRevs.length
+        ? myRevs.map(r => formatReviewCard(r)).join('')
+        : '<p style="color:var(--muted);font-size:14px;padding:10px 0;">No reviews yet for this chef.</p>';
+      
+      // Update stars in banner
+      const avgRating = myRevs.length ? (myRevs.reduce((a,b) => a + b.rating, 0) / myRevs.length).toFixed(1) : null;
+      const starsEl = document.getElementById('chefStoreStars');
+      starsEl.innerHTML = avgRating
+        ? `${starsHTML(parseFloat(avgRating))}<span>${avgRating} · ${myRevs.length} reviews</span>`
+        : '<span style="opacity:.6;">No reviews yet</span>';
     }
+    
     updateCookStats();
+    renderGrids(); // Update food cards with new ratings
   } else {
     riderReviews.push(review);
-    const rl=document.getElementById('riderReviewsList');
+    const rl = document.getElementById('riderReviewsList');
     if (rl) {
-      const myRevs=riderReviews.filter(r=>r.targetId===reviewTargetId);
-      rl.innerHTML=myRevs.map(r=>`<div class="review-card">
-        <div class="review-head">
-          <div class="reviewer-info"><span class="reviewer-name">${r.reviewer}</span><span class="reviewer-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span>${r.reasons&&r.reasons.length?`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;">${r.reasons.map(rr=>`<span class="review-reason-tag">${rr}</span>`).join('')}</div>`:''}</div>
-          <span class="review-date">${r.date||'Just now'}</span>
-        </div>
-        <p class="review-body">${r.text}</p>
-      </div>`).join('');
+      const myRevs = riderReviews.filter(r => r.targetId === reviewTargetId);
+      rl.innerHTML = myRevs.map(r => formatReviewCard(r)).join('') || '<p style="color:var(--muted);font-size:14px;">No reviews yet.</p>';
     }
   }
-  // Re-render food cards so star ratings update
-  renderGrids();
+  
   updateCustStats();
-  toast(`Review submitted! Thank you for your feedback.`);
-  closeModal('reviewModal');
+  toast('Review submitted! Thank you for your feedback.');
+  closeReviewModal();
 }
 
 // ═══════════════════════════════════════════════════════════════════════
 // AUTH
 // ═══════════════════════════════════════════════════════════════════════
-function switchRole(role,btn) { currentRole=role; document.querySelectorAll('.role-tab').forEach(t=>t.classList.remove('active')); btn.classList.add('active'); }
-function doLogin(e) {
-  e.preventDefault(); currentUser.loggedIn=true; currentUser.role=currentRole;
-  document.getElementById('navLoginBtn').textContent='My Account';
-  if (currentRole==='customer') {
-    document.getElementById('custWelcomeName').textContent='Welcome, '+(currentUser.name||'Guest');
-    document.getElementById('custAddressDisplay').textContent=currentUser.address||'Swabi';
-    document.getElementById('custAvatar').src=currentUser.photo||`https://ui-avatars.com/api/?name=${encodeURIComponent(currentUser.name||'Guest')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
-  } else if (currentRole==='cook') {
-    document.getElementById('cookDashAvatar').src=`https://ui-avatars.com/api/?name=${encodeURIComponent(cookProfile.name||'Chef')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
-    document.getElementById('cookStoreName').textContent=cookProfile.storeName||'My Kitchen';
-  } else {
-    document.getElementById('riderDashAvatar').src=`https://ui-avatars.com/api/?name=${encodeURIComponent(riderProfile.name||'Rider')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
-    document.getElementById('riderDashName').textContent=(riderProfile.name||'Rider')+' — Delivery Partner';
-    document.getElementById('riderAreaDisplay').innerHTML=`<span class="area-tag"><i class="fas fa-map-pin"></i>Swabi</span>`;
-  }
-  showPage({customer:'customer-dashboard',cook:'cook-dashboard',rider:'rider-dashboard'}[currentRole]);
-  toast('Welcome back to ApnaKitchen!');
+function switchRole(role, btn) {
+  currentRole = role;
+  document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
 }
+
+function doLogin(e) {
+  e.preventDefault();
+  currentUser.loggedIn = true;
+  currentUser.role = currentRole;
+  const dashMap = {customer:'customer-dashboard', cook:'cook-dashboard', rider:'rider-dashboard'};
+  document.getElementById('navLoginBtn').textContent = 'My Account';
+  
+  if (currentRole === 'customer') {
+    document.getElementById('custWelcomeName').textContent = 'Welcome, ' + (currentUser.name || 'Guest');
+    document.getElementById('custAddressDisplay').textContent = currentUser.address || 'Swabi';
+    document.getElementById('custAvatar').src = currentUser.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(currentUser.name||'Guest')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+  } else if (currentRole === 'cook') {
+    document.getElementById('cookDashAvatar').src = cookProfile.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(cookProfile.name||'Chef')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+    document.getElementById('cookStoreName').textContent = cookProfile.storeName || 'My Kitchen';
+  } else if (currentRole === 'rider') {
+    document.getElementById('riderDashAvatar').src = riderProfile.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(riderProfile.name||'Rider')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+    document.getElementById('riderDashName').textContent = (riderProfile.name || 'Rider') + ' — Delivery Partner';
+    document.getElementById('riderAreaDisplay').innerHTML = `<span class="area-tag"><i class="fas fa-map-pin"></i>Swabi</span>`;
+  }
+  showPage(dashMap[currentRole]);
+  toast(`Welcome back to ApnaKitchen!`);
+}
+
 function doRegister(e) {
-  e.preventDefault(); currentUser.name=document.getElementById('reg_name').value; currentUser.phone=document.getElementById('reg_phone').value; currentUser.email=document.getElementById('reg_email').value; currentUser.cnic=document.getElementById('reg_cnic').value; currentUser.address=document.getElementById('reg_address').value;
-  toast('Account created! Please login.'); showPage('login');
+  e.preventDefault();
+  currentUser.name    = document.getElementById('reg_name').value;
+  currentUser.phone   = document.getElementById('reg_phone').value;
+  currentUser.email   = document.getElementById('reg_email').value;
+  currentUser.cnic    = document.getElementById('reg_cnic').value;
+  currentUser.address = document.getElementById('reg_address').value;
+  toast('Account created! Please login.');
+  showPage('login');
 }
 
 // ═══════════════════════════════════════════════════════════════════════
 // KITCHEN TOGGLE
 // ═══════════════════════════════════════════════════════════════════════
-function toggleKitchen(cb) { const el=document.getElementById('kitchenStatus'); el.textContent=cb.checked?'Open':'Closed'; el.className='toggle-label '+(cb.checked?'open':'closed'); toast('Kitchen is now '+(cb.checked?'OPEN':'CLOSED')); }
+function toggleKitchen(cb) {
+  const el = document.getElementById('kitchenStatus');
+  el.textContent = cb.checked ? 'Open' : 'Closed';
+  el.className = 'toggle-label ' + (cb.checked ? 'open' : 'closed');
+  toast('Kitchen is now ' + (cb.checked ? 'OPEN' : 'CLOSED'));
+}
 
 // ═══════════════════════════════════════════════════════════════════════
 // NOTIFICATIONS
 // ═══════════════════════════════════════════════════════════════════════
-let notifCount=0;
-function addNavNotif(text,cls='') {
-  notifCount++; const c=document.getElementById('notifCount'); c.textContent=notifCount; c.style.display='inline-flex';
-  const list=document.getElementById('notifList'), d=document.createElement('div');
-  d.className='notif-item '+cls;
-  d.innerHTML=`<strong>${text}</strong><small>Just now</small>`;
-  list.insertBefore(d,list.firstChild);
+let notifCount = 0;
+function addNavNotif(text, cls='') {
+  notifCount++;
+  const count = document.getElementById('notifCount');
+  count.textContent = notifCount;
+  count.style.display = 'inline-flex';
+  const list = document.getElementById('notifList');
+  const d = document.createElement('div');
+  d.className = 'notif-item ' + cls;
+  d.innerHTML = `<strong>${text}</strong><small>Just now</small>`;
+  list.insertBefore(d, list.firstChild);
 }
-function toggleNotif() { document.getElementById('cartPanel').classList.remove('show'); document.getElementById('notifPanel').classList.toggle('show'); notifCount=0; document.getElementById('notifCount').style.display='none'; }
 
-function toggleHow() { document.getElementById('howBody').classList.toggle('open'); document.getElementById('howChevron').classList.toggle('open'); }
-function previewImg(inp,id) { const prev=document.getElementById(id); if(inp.files&&inp.files[0]){const r=new FileReader();r.onload=e=>{prev.src=e.target.result;prev.style.display='block';};r.readAsDataURL(inp.files[0]);} }
+function toggleNotif() {
+  document.getElementById('cartPanel').classList.remove('show');
+  document.getElementById('notifPanel').classList.toggle('show');
+  notifCount = 0;
+  document.getElementById('notifCount').style.display = 'none';
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// HOW IT WORKS
+// ═══════════════════════════════════════════════════════════════════════
+function toggleHow() {
+  document.getElementById('howBody').classList.toggle('open');
+  document.getElementById('howChevron').classList.toggle('open');
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// IMAGE PREVIEW
+// ═══════════════════════════════════════════════════════════════════════
+function previewImg(inp, id) {
+  const prev = document.getElementById(id);
+  if (inp.files && inp.files[0]) {
+    const r = new FileReader();
+    r.onload = e => { prev.src = e.target.result; prev.style.display = 'block'; };
+    r.readAsDataURL(inp.files[0]);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// MODALS
+// ═══════════════════════════════════════════════════════════════════════
 function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('show'); });
+});
 
 // ═══════════════════════════════════════════════════════════════════════
 // TOAST
 // ═══════════════════════════════════════════════════════════════════════
-function toast(msg) { const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3200); }
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
 
 // ═══════════════════════════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded', () => {
   renderGrids();
-  document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('show');}));
-  document.addEventListener('click',e=>{
-    const notif=document.getElementById('notifPanel'), cart=document.getElementById('cartPanel');
-    if(!notif.contains(e.target)&&!e.target.closest('.nav-bell'))notif.classList.remove('show');
-    if(!cart.contains(e.target)&&!e.target.closest('.nav-cart'))cart.classList.remove('show');
+  document.querySelectorAll('.checkbox').forEach(c => {
+    const i = c.querySelector('i'); if (i) i.style.display = 'none';
   });
-  // Star picker hover preview
-  document.querySelectorAll('#starPicker .sp').forEach((sp,i)=>{
-    sp.addEventListener('mouseenter',()=>{
-      document.querySelectorAll('#starPicker .sp').forEach((s,j)=>s.classList.toggle('lit',j<=i));
-      document.getElementById('starValLabel').textContent=STAR_LABELS[i+1];
-    });
-    sp.addEventListener('mouseleave',()=>{
-      document.querySelectorAll('#starPicker .sp').forEach((s,j)=>s.classList.toggle('lit',j<starRating));
-      document.getElementById('starValLabel').textContent=starRating?STAR_LABELS[starRating]:'Tap a star';
-    });
+  document.addEventListener('click', e => {
+    const notif = document.getElementById('notifPanel');
+    const cart = document.getElementById('cartPanel');
+    if (!notif.contains(e.target) && !e.target.closest('.nav-bell')) notif.classList.remove('show');
+    if (!cart.contains(e.target) && !e.target.closest('.nav-cart')) cart.classList.remove('show');
   });
 });
 </script>
