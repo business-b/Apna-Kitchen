@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ApnaKitchen — Swabi's Home Kitchen</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital ,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css " rel="stylesheet">
 <style>
 :root{
   --crimson:#7A0020;--crimson-deep:#4A0012;--crimson-mid:#9E1030;
@@ -17,7 +17,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg '%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5;}
 
 /* NAVBAR */
 .navbar{position:fixed;top:0;width:100%;z-index:1000;background:rgba(26,10,14,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,134,26,.25);padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;}
@@ -70,7 +70,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* HERO */
 .hero{background:linear-gradient(160deg,var(--crimson-deep) 0%,var(--crimson-mid) 55%,var(--crimson) 100%);color:#fff;padding:80px 64px 72px;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg '%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
 .hero::after{content:'';position:absolute;right:-80px;top:-80px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(200,134,26,.18) 0%,transparent 70%);}
 .hero-inner{position:relative;z-index:1;max-width:680px;}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,134,26,.2);border:1px solid rgba(200,134,26,.4);color:var(--gold-light);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;letter-spacing:.4px;margin-bottom:24px;}
@@ -445,49 +445,15 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 .review-tag.selected{background:var(--crimson);border-color:var(--crimson);color:#fff;}
 .star-label{text-align:center;font-size:13px;color:var(--gold);font-weight:600;margin-bottom:15px;height:20px;}
 
-/* FOOTER */
-.footer{background:var(--ink);color:#fff;padding:56px 48px 32px;margin-top:40px;}
-.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:40px;}
-.footer-col h4{font-family:'Playfair Display',serif;font-size:18px;color:var(--gold-light);margin-bottom:20px;}
-.footer-col p,.footer-col a{font-size:14px;color:rgba(255,255,255,.7);line-height:1.8;text-decoration:none;display:block;margin-bottom:8px;transition:all .2s;}
-.footer-col a:hover{color:var(--gold-light);}
-.footer-col i{width:20px;margin-right:8px;color:var(--gold);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;}
-.footer-bottom p{font-size:13px;color:rgba(255,255,255,.5);}
-.social-links{display:flex;gap:12px;}
-.social-links a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff;transition:all .2s;}
-.social-links a:hover{background:var(--gold-light);color:var(--crimson-deep);}
-
-/* VILLAGE SELECTOR */
-.village-selector{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
-.village-chip{background:var(--cream);border:1.5px solid var(--border);border-radius:20px;padding:8px 16px;font-size:13px;cursor:pointer;transition:all .2s;color:var(--charcoal);display:flex;align-items:center;gap:6px;}
-.village-chip:hover{border-color:var(--gold);color:var(--gold);}
-.village-chip.selected{background:var(--crimson);border-color:var(--crimson);color:#fff;}
-.village-chip.selected i{color:#fff;}
-.village-chip i{font-size:11px;color:var(--crimson);}
-
-/* REVIEW PAGE */
-.review-page-wrap{max-width:800px;margin:0 auto;padding:40px 48px;}
-.review-page-header{text-align:center;margin-bottom:40px;}
-.review-page-header .icon{width:80px;height:80px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:20px;display:inline-flex;align-items:center;justify-content:center;font-size:36px;color:var(--crimson-deep);margin-bottom:16px;box-shadow:0 4px 20px rgba(200,134,26,.3);}
-.review-page-header h2{font-family:'Playfair Display',serif;font-size:32px;color:var(--ink);margin-bottom:8px;}
-.review-page-header p{font-size:15px;color:var(--muted);font-weight:300;}
-.review-target-card{background:var(--warm-white);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;margin-bottom:28px;display:flex;gap:20px;align-items:center;}
-.review-target-img{width:80px;height:80px;border-radius:14px;object-fit:cover;}
-.review-target-info{flex:1;}
-.review-target-info h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--ink);margin-bottom:4px;}
-.review-target-info p{color:var(--muted);font-size:14px;margin-bottom:8px;}
-.review-target-stars{color:var(--gold);font-size:14px;}
-
 ::-webkit-scrollbar{width:5px;}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
 
 @media(max-width:900px){
   .navbar{padding:0 20px;}
-  .roles-grid,.stats-grid,.footer-grid{grid-template-columns:1fr 1fr;}
+  .roles-grid,.stats-grid{grid-template-columns:1fr 1fr;}
   .how-steps{grid-template-columns:1fr;}
   .order-layout{grid-template-columns:1fr;}
-  .dash-wrap,.menu-wrap,.apply-wrap,.food-detail-wrap,.chef-store-wrap,.review-page-wrap{padding:20px;}
+  .dash-wrap,.menu-wrap,.apply-wrap,.food-detail-wrap,.chef-store-wrap{padding:20px;}
   .roles-section,.home-menu-section{padding:32px 20px;}
   .how-section{margin:0 20px 32px;}
   .hero{padding:48px 24px;}
@@ -495,9 +461,6 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   .grid-2{grid-template-columns:1fr;}
   .categories-bar{padding:16px 20px 0;}
   .cart-panel,.notif-panel{width:calc(100vw - 32px);right:16px;}
-  .footer{padding:40px 20px 24px;}
-  .footer-grid{grid-template-columns:1fr;gap:30px;}
-  .review-target-card{flex-direction:column;text-align:center;}
 }
 </style>
 </head>
@@ -509,10 +472,10 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
     <div class="logo-text">Apna<span>Kitchen</span></div>
   </div>
   <div class="nav-links">
-    <a onclick="showPage('home')"><i class="fas fa-home" style="margin-right:4px;"></i>Home</a>
-    <a onclick="showPage('menu')"><i class="fas fa-utensils" style="margin-right:4px;"></i>Menu</a>
-    <a onclick="showPage('become-rider')"><i class="fas fa-motorcycle" style="margin-right:4px;"></i>Become a Rider</a>
-    <a onclick="showPage('apply-cook')"><i class="fas fa-hat-chef" style="margin-right:4px;"></i>Apply as Cook</a>
+    <a onclick="showPage('home')">Home</a>
+    <a onclick="showPage('menu')">Menu</a>
+    <a onclick="showPage('become-rider')">Become a Rider</a>
+    <a onclick="showPage('apply-cook')">Apply as Cook</a>
     <button class="nav-cart" onclick="toggleCart()" title="Cart">
       <i class="fas fa-shopping-bag"></i>
       <span class="notif-count" id="cartCount" style="background:var(--crimson);color:#fff;">0</span>
@@ -521,7 +484,7 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       <i class="fas fa-bell"></i>
       <span class="notif-count" id="notifCount">0</span>
     </button>
-    <button class="btn-login" id="navLoginBtn" onclick="showPage('login')"><i class="fas fa-user" style="margin-right:6px;"></i>Login</button>
+    <button class="btn-login" id="navLoginBtn" onclick="showPage('login')">Login</button>
   </div>
 </nav>
 
@@ -567,8 +530,8 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       </div>
       <div class="hero-actions">
         <button class="btn-hp" onclick="showPage('login')"><i class="fas fa-utensils" style="margin-right:8px;"></i>Order Now</button>
-        <button class="btn-hg" onclick="showPage('apply-cook')"><i class="fas fa-hat-chef" style="margin-right:8px;"></i>Cook With Us</button>
-        <button class="btn-hg" onclick="showPage('become-rider')"><i class="fas fa-motorcycle" style="margin-right:8px;"></i>Deliver With Us</button>
+        <button class="btn-hg" onclick="showPage('apply-cook')">Cook With Us</button>
+        <button class="btn-hg" onclick="showPage('become-rider')">Deliver With Us</button>
       </div>
     </div>
   </div>
@@ -596,19 +559,19 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         <div class="role-icon-wrap"><i class="fas fa-user"></i></div>
         <h3>Customers</h3>
         <p>Browse homemade meals from verified local cooks. Order, customize, and enjoy doorstep delivery.</p>
-        <button class="btn-card" onclick="showPage('login')"><i class="fas fa-arrow-right" style="margin-right:6px;"></i>Start Ordering</button>
+        <button class="btn-card" onclick="showPage('login')">Start Ordering</button>
       </div>
       <div class="role-card">
         <div class="role-icon-wrap"><i class="fas fa-hat-chef"></i></div>
         <h3>Home Cooks</h3>
         <p>Turn your kitchen into a business. Upload your menu, manage orders, and earn from home.</p>
-        <button class="btn-card" onclick="showPage('apply-cook')"><i class="fas fa-arrow-right" style="margin-right:6px;"></i>Apply Now</button>
+        <button class="btn-card" onclick="showPage('apply-cook')">Apply Now</button>
       </div>
       <div class="role-card">
         <div class="role-icon-wrap"><i class="fas fa-motorcycle"></i></div>
         <h3>Riders</h3>
         <p>Deliver happiness across Swabi. Choose your areas, work your hours, earn Rs. 190 per delivery.</p>
-        <button class="btn-card" onclick="showPage('become-rider')"><i class="fas fa-arrow-right" style="margin-right:6px;"></i>Join the Team</button>
+        <button class="btn-card" onclick="showPage('become-rider')">Join the Team</button>
       </div>
     </div>
   </div>
@@ -646,16 +609,16 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
         <p>Sign in to your ApnaKitchen account</p>
       </div>
       <div class="role-tabs">
-        <button class="role-tab active" onclick="switchRole('customer',this)"><i class="fas fa-user" style="margin-right:4px;"></i>Customer</button>
-        <button class="role-tab" onclick="switchRole('cook',this)"><i class="fas fa-hat-chef" style="margin-right:4px;"></i>Cook</button>
-        <button class="role-tab" onclick="switchRole('rider',this)"><i class="fas fa-motorcycle" style="margin-right:4px;"></i>Rider</button>
+        <button class="role-tab active" onclick="switchRole('customer',this)">Customer</button>
+        <button class="role-tab" onclick="switchRole('cook',this)">Cook</button>
+        <button class="role-tab" onclick="switchRole('rider',this)">Rider</button>
       </div>
       <form onsubmit="doLogin(event)">
-        <div class="form-group"><label><i class="fas fa-envelope" style="margin-right:4px;"></i>Email or Phone</label><input type="text" placeholder="03XX-XXXXXXX or email" required></div>
-        <div class="form-group"><label><i class="fas fa-lock" style="margin-right:4px;"></i>Password</label><input type="password" placeholder="Enter your password" required></div>
-        <button type="submit" class="btn-full"><i class="fas fa-sign-in-alt" style="margin-right:8px;"></i>Sign In</button>
+        <div class="form-group"><label>Email or Phone</label><input type="text" placeholder="03XX-XXXXXXX or email" required></div>
+        <div class="form-group"><label>Password</label><input type="password" placeholder="Enter your password" required></div>
+        <button type="submit" class="btn-full">Sign In</button>
       </form>
-      <p class="auth-footer">No account? <a onclick="showPage('register')"><i class="fas fa-user-plus" style="margin-right:4px;"></i>Register here</a></p>
+      <p class="auth-footer">No account? <a onclick="showPage('register')">Register here</a></p>
     </div>
   </div>
 </div>
@@ -671,9 +634,9 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
     
     <!-- Role Selection -->
     <div class="role-tabs" style="max-width:400px;margin:0 auto 28px;">
-      <button class="role-tab active" onclick="switchRegRole('customer',this)"><i class="fas fa-user" style="margin-right:4px;"></i>Customer</button>
-      <button class="role-tab" onclick="switchRegRole('cook',this)"><i class="fas fa-hat-chef" style="margin-right:4px;"></i>Cook</button>
-      <button class="role-tab" onclick="switchRegRole('rider',this)"><i class="fas fa-motorcycle" style="margin-right:4px;"></i>Rider</button>
+      <button class="role-tab active" onclick="switchRegRole('customer',this)">Customer</button>
+      <button class="role-tab" onclick="switchRegRole('cook',this)">Cook</button>
+      <button class="role-tab" onclick="switchRegRole('rider',this)">Rider</button>
     </div>
     
     <div class="onboard-steps">
@@ -681,27 +644,6 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
       <div class="onboard-step" id="regStep2"><span class="snum">2</span>Payment</div>
       <div class="onboard-step" id="regStep3"><span class="snum">3</span>Password</div>
     </div>
-    
-    <!-- Step 1: Personal Info -->
-    <div id="regStep1Content">
-      <div class="apply-section">
-        <h3><i class="fas fa-user"></i>Personal Information</h3>
-        <div class="grid-2">
-          <div class="form-group"><label><i class="fas fa-user" style="margin-right:4px;"></i>Full Name</label><input type="text" id="reg_name" placeholder="As per CNIC" required></div>
-          <div class="form-group"><label><i class="fas fa-phone" style="margin-right:4px;"></i>Phone Number</label><input type="tel" id="reg_phone" placeholder="03XX-XXXXXXX" required></div>
-        </div>
-        <div class="grid-2">
-          <div class="form-group"><label><i class="fas fa-envelope" style="margin-right:4px;"></i>Email</label><input type="email" id="reg_email" placeholder="you@example.com" required></div>
-          <div class="form-group"><label><i class="fas fa-id-card" style="margin-right:4px;"></i>CNIC Number</label><input type="text" id="reg_cnic" placeholder="XXXXX-XXXXXXX-X" required></div>
-        </div>
-        <div class="form-group"><label><i class="fas fa-map-marker-alt" style="margin-right:4px;"></i>Address in Swabi</label><input type="text" id="reg_address" placeholder="House #, Street, Area, Swabi" required></div>
-        <div class="form-group" id="regStoreField" style="display:none;">
-          <label><i class="fas fa-store" style="margin-right:4px;"></i>Restaurant / Kitchen Name</label>
-          <input type="text" id="reg_store" placeholder="e.g. Ahmad's Kitchen">
-        </div>
-        <div class="form-group" id="regVehicleFields" style="display:none;">
-          <div class="grid-2">
-            <div
     
     <!-- Step 1: Personal Info -->
     <div id="regStep1Content">
