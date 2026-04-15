@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ApnaKitchen — Swabi's Home Kitchen</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital ,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css " rel="stylesheet">
 <style>
 :root{
   --crimson:#7A0020;--crimson-deep:#4A0012;--crimson-mid:#9E1030;
@@ -17,7 +17,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg '%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5;}
 
 /* NAVBAR */
 .navbar{position:fixed;top:0;width:100%;z-index:1000;background:rgba(26,10,14,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,134,26,.25);padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;}
@@ -70,7 +70,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* HERO */
 .hero{background:linear-gradient(160deg,var(--crimson-deep) 0%,var(--crimson-mid) 55%,var(--crimson) 100%);color:#fff;padding:80px 64px 72px;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg '%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
 .hero::after{content:'';position:absolute;right:-80px;top:-80px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(200,134,26,.18) 0%,transparent 70%);}
 .hero-inner{position:relative;z-index:1;max-width:680px;}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,134,26,.2);border:1px solid rgba(200,134,26,.4);color:var(--gold-light);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;letter-spacing:.4px;margin-bottom:24px;}
@@ -463,8 +463,6 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   .cart-panel,.notif-panel{width:calc(100vw - 32px);right:16px;}
 }
 </style>
-<base target="_blank">
-<base target="_blank">
 </head>
 <body>
 
@@ -625,31 +623,98 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
   </div>
 </div>
 
-<!-- ═══ REGISTER ══════════════════════════════════════════════════════ -->
+<!-- ═══ REGISTER (Enhanced 3-Step) ══════════════════════════════════════ -->
 <div id="register" class="page">
-  <div class="auth-wrap" style="max-width:600px;">
-    <div class="auth-card">
-      <div class="auth-logo"><h2>Create Account</h2><p>Join ApnaKitchen today</p></div>
-      <form onsubmit="doRegister(event)">
+  <div class="apply-wrap">
+    <div class="apply-head">
+      <div class="icon"><i class="fas fa-user-plus"></i></div>
+      <h2>Create Account</h2>
+      <p>Join ApnaKitchen today — Choose your role</p>
+    </div>
+    
+    <!-- Role Selection -->
+    <div class="role-tabs" style="max-width:400px;margin:0 auto 28px;">
+      <button class="role-tab active" onclick="switchRegRole('customer',this)">Customer</button>
+      <button class="role-tab" onclick="switchRegRole('cook',this)">Cook</button>
+      <button class="role-tab" onclick="switchRegRole('rider',this)">Rider</button>
+    </div>
+    
+    <div class="onboard-steps">
+      <div class="onboard-step active" id="regStep1"><span class="snum">1</span>Personal Info</div>
+      <div class="onboard-step" id="regStep2"><span class="snum">2</span>Payment</div>
+      <div class="onboard-step" id="regStep3"><span class="snum">3</span>Password</div>
+    </div>
+    
+    <!-- Step 1: Personal Info -->
+    <div id="regStep1Content">
+      <div class="apply-section">
+        <h3><i class="fas fa-user"></i>Personal Information</h3>
         <div class="grid-2">
-          <div class="form-group"><label>Full Name</label><input type="text" id="reg_name" placeholder="Your full name" required></div>
-          <div class="form-group"><label>Phone</label><input type="tel" id="reg_phone" placeholder="03XX-XXXXXXX" required></div>
+          <div class="form-group"><label>Full Name</label><input type="text" id="reg_name" placeholder="As per CNIC" required></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="reg_phone" placeholder="03XX-XXXXXXX" required></div>
         </div>
-        <div class="form-group"><label>Email</label><input type="email" id="reg_email" placeholder="you@example.com" required></div>
-        <div class="form-group"><label>CNIC Number</label><input type="text" id="reg_cnic" placeholder="XXXXX-XXXXXXX-X" required></div>
-        <div class="form-group"><label>Address in Swabi</label><input type="text" id="reg_address" placeholder="e.g. Near City Center, Swabi" required></div>
+        <div class="grid-2">
+          <div class="form-group"><label>Email</label><input type="email" id="reg_email" placeholder="you@example.com" required></div>
+          <div class="form-group"><label>CNIC Number</label><input type="text" id="reg_cnic" placeholder="XXXXX-XXXXXXX-X" required></div>
+        </div>
+        <div class="form-group"><label>Address in Swabi</label><input type="text" id="reg_address" placeholder="House #, Street, Area, Swabi" required></div>
+        <div class="form-group" id="regStoreField" style="display:none;">
+          <label>Restaurant / Kitchen Name</label>
+          <input type="text" id="reg_store" placeholder="e.g. Ahmad's Kitchen">
+        </div>
+        <div class="form-group" id="regVehicleFields" style="display:none;">
+          <div class="grid-2">
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Vehicle Type</label>
+              <select id="reg_vehicle_type"><option value="">Select</option><option>Motorcycle</option><option>Scooter</option><option>Bicycle</option></select>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Vehicle Number</label>
+              <input type="text" id="reg_vehicle_no" placeholder="SWA-1234">
+            </div>
+          </div>
+        </div>
         <div class="form-group">
           <label>Profile Photo</label>
-          <div class="file-upload"><input type="file" accept="image/*" onchange="previewImg(this,'regPrev')"><div class="file-label"><i class="fas fa-camera"></i>Click to upload photo</div></div>
+          <div class="file-upload"><input type="file" accept="image/*" id="reg_photo" onchange="previewImg(this,'regPrev')"><div class="file-label"><i class="fas fa-camera"></i>Upload your photo</div></div>
           <img id="regPrev" class="preview-img">
         </div>
         <div class="grid-2">
-          <div class="form-group"><label>Password</label><input type="password" id="reg_pass" placeholder="Create password" required></div>
-          <div class="form-group"><label>Confirm Password</label><input type="password" id="reg_pass2" placeholder="Confirm password" required></div>
+          <div class="form-group"><label>CNIC Front</label><div class="file-upload"><input type="file" accept="image/*" id="reg_cnic_front"><div class="file-label"><i class="fas fa-id-card"></i>Front side</div></div></div>
+          <div class="form-group"><label>CNIC Back</label><div class="file-upload"><input type="file" accept="image/*" id="reg_cnic_back"><div class="file-label"><i class="fas fa-id-card"></i>Back side</div></div></div>
         </div>
-        <button type="submit" class="btn-full">Create Account</button>
-      </form>
-      <p class="auth-footer">Already have an account? <a onclick="showPage('login')">Login</a></p>
+      </div>
+      <button class="btn-full" onclick="validateRegStep1()">Continue <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
+      <p class="auth-footer" style="margin-top:20px;">Already have an account? <a onclick="showPage('login')">Login</a></p>
+    </div>
+    
+    <!-- Step 2: Payment -->
+    <div id="regStep2Content" style="display:none;">
+      <div class="payment-section" id="regPaymentSection">
+        <!-- Dynamic content based on role -->
+      </div>
+      <div style="display:flex;gap:12px;">
+        <button class="btn-card" style="flex:1;padding:14px;" onclick="regBack(2)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
+        <button class="btn-full" style="flex:2;" id="regPayBtn" onclick="submitRegPayment()" disabled>
+          <i class="fas fa-paper-plane" style="margin-right:8px;"></i>Submit Payment Slip
+        </button>
+      </div>
+    </div>
+    
+    <!-- Step 3: Password -->
+    <div id="regStep3Content" style="display:none;">
+      <div class="password-section">
+        <div style="width:80px;height:80px;background:var(--gold-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;color:var(--gold);"><i class="fas fa-key"></i></div>
+        <h3>Enter Your Password</h3>
+        <p>Enter the password you received on WhatsApp (03483351028)</p>
+        <div class="password-input"><input type="password" id="regPasswordInput" placeholder="••••••••" maxlength="12"></div>
+        <p id="regPassError" style="color:var(--crimson);font-size:13px;display:none;margin-bottom:10px;"><i class="fas fa-times-circle"></i> Incorrect password! Please check WhatsApp.</p>
+        <p style="color:var(--muted);font-size:13px;">Password is case-sensitive.</p>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <button class="btn-card" style="flex:1;padding:14px;" onclick="regBack(3)"><i class="fas fa-arrow-left" style="margin-right:6px;"></i>Back</button>
+        <button class="btn-full" style="flex:2;" onclick="verifyRegPassword()"><i class="fas fa-check" style="margin-right:8px;"></i>Complete Registration</button>
+      </div>
     </div>
   </div>
 </div>
@@ -1282,8 +1347,10 @@ input:checked+.toggle-slider:before{transform:translateX(21px);}
 const OWNER_WHATSAPP = '923483351028';
 const COOK_PASSWORD  = 'kitchen01';
 const RIDER_PASSWORD = 'bike01';
+const CUSTOMER_PASSWORD = 'apna01';
 
 let currentRole = 'customer';
+let regRole = 'customer';
 let starRating = 0;
 let reviewTargetType = '';
 let reviewTargetId = 0;
@@ -1303,27 +1370,27 @@ let foods = [];
 // SAMPLE DATA
 const sampleFoods = [
   {id:1, name:'Chicken Biryani', cook:"Chef Fatima's Kitchen", cookId:101, price:350, area:'Guli Bagh',
-   img:'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=600',
+   img:'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=600 ',
    desc:'Fragrant homemade biryani with slow-cooked chicken.',
    tags:[{label:'+ Raita Rs.30',price:30},{label:'+ Salad Rs.40',price:40}], avgRating:4.7, reviewCount:18},
   {id:2, name:'Chicken Karahi', cook:"Chef Ahmad's Kitchen", cookId:102, price:800, area:'City Center',
-   img:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600',
+   img:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600 ',
    desc:'Desi style karahi with fresh tomatoes and hand-ground spices.',
    tags:[{label:'+ Naan Rs.30',price:30},{label:'+ Drink Rs.60',price:60}], avgRating:4.9, reviewCount:32},
   {id:3, name:'Seekh Kebab (6 pcs)', cook:"Chef Imran's Kitchen", cookId:103, price:300, area:'Topi Road',
-   img:'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600',
+   img:'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600 ',
    desc:'Juicy minced beef seekh kebabs, charcoal grilled.',
    tags:[{label:'+ Chutney Rs.20',price:20},{label:'+ Paratha Rs.40',price:40}], avgRating:4.5, reviewCount:11},
   {id:4, name:'Spaghetti Bolognese', cook:"Chef Sara's Kitchen", cookId:104, price:450, area:'Shahmansoor',
-   img:'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600',
+   img:'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600 ',
    desc:'Authentic Italian-style spaghetti with slow-cooked meat sauce.',
    tags:[{label:'+ Ketchup Rs.20',price:20},{label:'+ Cheese Rs.50',price:50}], avgRating:4.3, reviewCount:7},
   {id:5, name:'Breakfast Pancakes', cook:"Chef Ayesha's Kitchen", cookId:105, price:350, area:'Marghuz',
-   img:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600',
+   img:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600 ',
    desc:'Fluffy American pancakes with maple syrup and fresh fruit.',
    tags:[{label:'+ Syrup Rs.40',price:40},{label:'+ Fruit Rs.60',price:60}], avgRating:4.6, reviewCount:14},
   {id:6, name:'Fresh Salad Bowl', cook:"Chef Zainab's Kitchen", cookId:106, price:200, area:'Guli Bagh',
-   img:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600',
+   img:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600 ',
    desc:'Fresh seasonal salad with house dressing and crunchy toppings.',
    tags:[{label:'+ Dressing Rs.30',price:30}], avgRating:4.2, reviewCount:5},
 ];
@@ -1347,7 +1414,7 @@ const starLabels = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
 // ═══════════════════════════════════════════════════════════════════════
 function openWhatsApp(msg) {
   const encoded = encodeURIComponent(msg);
-  window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${encoded}`, '_blank');
+  window.open(`https://wa.me/ ${OWNER_WHATSAPP}?text=${encoded}`, '_blank');
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -1510,6 +1577,184 @@ function verifyRiderRenewalPassword() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════
+// REGISTRATION FLOW (Enhanced 3-Step)
+// ═══════════════════════════════════════════════════════════════════════
+function switchRegRole(role, btn) {
+  regRole = role;
+  document.querySelectorAll('#register .role-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  
+  // Show/hide role-specific fields
+  document.getElementById('regStoreField').style.display = role === 'cook' ? 'block' : 'none';
+  document.getElementById('regVehicleFields').style.display = role === 'rider' ? 'block' : 'none';
+}
+
+function validateRegStep1() {
+  const name = document.getElementById('reg_name').value.trim();
+  const phone = document.getElementById('reg_phone').value.trim();
+  const email = document.getElementById('reg_email').value.trim();
+  const cnic = document.getElementById('reg_cnic').value.trim();
+  const address = document.getElementById('reg_address').value.trim();
+  const photo = document.getElementById('reg_photo').files[0];
+  const cnicFront = document.getElementById('reg_cnic_front').files[0];
+  const cnicBack = document.getElementById('reg_cnic_back').files[0];
+  
+  if (!name || !phone || !email || !cnic || !address) {
+    toast('Please fill all required fields!');
+    return;
+  }
+  if (!photo || !cnicFront || !cnicBack) {
+    toast('Please upload all required photos!');
+    return;
+  }
+  
+  // Role-specific validation
+  if (regRole === 'cook') {
+    const store = document.getElementById('reg_store').value.trim();
+    if (!store) { toast('Please enter your kitchen name!'); return; }
+    cookProfile.name = name; cookProfile.phone = phone; cookProfile.email = email;
+    cookProfile.cnic = cnic; cookProfile.storeName = store;
+  } else if (regRole === 'rider') {
+    const vehicleType = document.getElementById('reg_vehicle_type').value;
+    const vehicleNo = document.getElementById('reg_vehicle_no').value.trim();
+    if (!vehicleType || !vehicleNo) { toast('Please enter vehicle details!'); return; }
+    riderProfile.name = name; riderProfile.phone = phone; riderProfile.email = email;
+    riderProfile.cnic = cnic; riderProfile.address = address;
+    riderProfile.vehicleType = vehicleType; riderProfile.vehicleNo = vehicleNo;
+  } else {
+    currentUser.name = name; currentUser.phone = phone; currentUser.email = email;
+    currentUser.cnic = cnic; currentUser.address = address;
+  }
+  
+  // Setup payment section based on role
+  setupRegPaymentSection();
+  regNext(1);
+}
+
+function setupRegPaymentSection() {
+  const section = document.getElementById('regPaymentSection');
+  const fee = regRole === 'cook' ? '2,000' : regRole === 'rider' ? '1,000' : '0';
+  const roleName = regRole === 'cook' ? 'Home Cook' : regRole === 'rider' ? 'Rider' : 'Customer';
+  
+  if (regRole === 'customer') {
+    section.innerHTML = `
+      <h3><i class="fas fa-check-circle" style="color:var(--success);"></i> No Registration Fee</h3>
+      <div class="payment-amount" style="font-size:32px;">FREE</div>
+      <p>Customer registration is completely free!</p>
+      <div class="whatsapp-info"><i class="fab fa-whatsapp"></i><div><strong>Your details will be sent to WhatsApp: 03483351028</strong><br>You will receive your password on WhatsApp within 15 minutes</div></div>
+    `;
+  } else {
+    section.innerHTML = `
+      <h3><i class="fas fa-lock"></i> Registration Fee</h3>
+      <div class="payment-amount">Rs. ${fee}</div>
+      <p>One-time registration fee for ${roleName}</p>
+      <div class="naypay-box">
+        <h4><i class="fas fa-university"></i> Send Payment To This NayaPay Account</h4>
+        <div class="account-num">PK34NAYA1234503169382133</div>
+        <div class="account-name">ApnaKitchen — Platform Wallet</div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:8px;">Send Rs. ${fee} to the above account, then upload your payment slip below.</p>
+      <div class="form-group" style="text-align:left;margin-top:20px;">
+        <label><i class="fas fa-receipt" style="color:var(--gold);margin-right:6px;"></i>Upload Payment Slip (Required)*</label>
+        <div class="file-upload">
+          <input type="file" accept="image/*" id="regPaySlip" onchange="onSlipUpload(this,'regPaySlipPreview','regPayBtn')">
+          <div class="file-label"><i class="fas fa-cloud-upload-alt"></i>Click to upload payment slip screenshot</div>
+        </div>
+        <img id="regPaySlipPreview" style="width:100%;max-width:300px;border-radius:10px;margin-top:10px;display:none;">
+        <p id="regSlipError" style="color:var(--crimson);font-size:12px;margin-top:8px;display:none;"><i class="fas fa-exclamation-circle"></i> Please upload payment slip to continue</p>
+      </div>
+      <div class="whatsapp-info"><i class="fab fa-whatsapp"></i><div><strong>Your slip will be sent to WhatsApp: 03483351028</strong><br>You will receive your password on WhatsApp within 15 minutes</div></div>
+    `;
+  }
+}
+
+function regNext(step) {
+  document.getElementById('regStep'+step+'Content').style.display = 'none';
+  document.getElementById('regStep'+(step+1)+'Content').style.display = 'block';
+  document.getElementById('regStep'+step).className = 'onboard-step done';
+  document.getElementById('regStep'+(step+1)).className = 'onboard-step active';
+  
+  // Enable button for customer (no payment needed)
+  if (step === 1 && regRole === 'customer') {
+    document.getElementById('regPayBtn').disabled = false;
+  }
+}
+
+function regBack(step) {
+  document.getElementById('regStep'+step+'Content').style.display = 'none';
+  document.getElementById('regStep'+(step-1)+'Content').style.display = 'block';
+  document.getElementById('regStep'+step).className = 'onboard-step';
+  document.getElementById('regStep'+(step-1)).className = 'onboard-step active';
+}
+
+function submitRegPayment() {
+  if (regRole === 'customer') {
+    // Skip payment for customer
+    regNext(2);
+    toast('Check WhatsApp for your password!');
+    return;
+  }
+  
+  const slipInput = document.getElementById('regPaySlip');
+  if (!slipInput || !slipInput.files || !slipInput.files[0]) {
+    const err = document.getElementById('regSlipError');
+    if (err) err.style.display = 'block';
+    toast('Please upload payment slip to continue!');
+    return;
+  }
+  
+  const msg = regRole === 'cook' 
+    ? `NEW COOK REGISTRATION\nName: ${cookProfile.name}\nCNIC: ${cookProfile.cnic}\nStore: ${cookProfile.storeName}\nPhone: ${cookProfile.phone}`
+    : `NEW RIDER REGISTRATION\nName: ${riderProfile.name}\nCNIC: ${riderProfile.cnic}\nVehicle: ${riderProfile.vehicleNo}\nPhone: ${riderProfile.phone}`;
+  
+  openWhatsApp(msg);
+  regNext(2);
+  toast('Payment slip sent! Check WhatsApp for password.');
+}
+
+function verifyRegPassword() {
+  const entered = document.getElementById('regPasswordInput').value;
+  let correctPassword = CUSTOMER_PASSWORD;
+  if (regRole === 'cook') correctPassword = COOK_PASSWORD;
+  if (regRole === 'rider') correctPassword = RIDER_PASSWORD;
+  
+  if (entered !== correctPassword) {
+    document.getElementById('regPassError').style.display = 'block';
+    toast('Incorrect password! Please check WhatsApp.');
+    return;
+  }
+  
+  // Registration successful
+  const now = new Date();
+  document.getElementById('navLoginBtn').textContent = 'My Account';
+  
+  if (regRole === 'cook') {
+    cookProfile.regDate = now;
+    cookProfile.premium = true;
+    document.getElementById('cookStoreName').textContent = cookProfile.storeName;
+    document.getElementById('cookDashAvatar').src = `https://ui-avatars.com/api/?name= ${encodeURIComponent(cookProfile.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+    toast(`Welcome! "${cookProfile.storeName}" is now live.`);
+    showPage('cook-dashboard');
+  } else if (regRole === 'rider') {
+    riderProfile.regDate = now;
+    riderProfile.premium = true;
+    document.getElementById('riderDashName').textContent = riderProfile.name + ' — Delivery Partner';
+    document.getElementById('riderDashAvatar').src = `https://ui-avatars.com/api/?name= ${encodeURIComponent(riderProfile.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+    document.getElementById('riderAreaDisplay').innerHTML = `<span class="area-tag"><i class="fas fa-map-pin"></i>Swabi</span>`;
+    toast('Welcome! Your rider account is ready.');
+    showPage('rider-dashboard');
+  } else {
+    currentUser.loggedIn = true;
+    currentUser.role = 'customer';
+    document.getElementById('custWelcomeName').textContent = 'Welcome, ' + currentUser.name;
+    document.getElementById('custAddressDisplay').textContent = currentUser.address;
+    document.getElementById('custAvatar').src = `https://ui-avatars.com/api/?name= ${encodeURIComponent(currentUser.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+    toast('Welcome to ApnaKitchen!');
+    showPage('customer-dashboard');
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
 // COOK REGISTRATION (Simplified)
 // ═══════════════════════════════════════════════════════════════════════
 function validateCookStep1() {
@@ -1584,7 +1829,7 @@ function verifyCookPassword() {
   cookProfile.premium = true;
   
   document.getElementById('cookStoreName').textContent = cookProfile.storeName;
-  document.getElementById('cookDashAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(cookProfile.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+  document.getElementById('cookDashAvatar').src = `https://ui-avatars.com/api/?name= ${encodeURIComponent(cookProfile.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
   document.getElementById('navLoginBtn').textContent = 'My Account';
   
   toast(`Welcome! "${cookProfile.storeName}" is now live.`);
@@ -1670,7 +1915,7 @@ function verifyRiderPassword() {
   riderProfile.premium = true;
   
   document.getElementById('riderDashName').textContent = riderProfile.name + ' — Delivery Partner';
-  document.getElementById('riderDashAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(riderProfile.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+  document.getElementById('riderDashAvatar').src = `https://ui-avatars.com/api/?name= ${encodeURIComponent(riderProfile.name)}&background=7A0020&color=FDF3DC&bold=true&size=60`;
   document.getElementById('riderAreaDisplay').innerHTML = `<span class="area-tag"><i class="fas fa-map-pin"></i>Swabi</span>`;
   document.getElementById('navLoginBtn').textContent = 'My Account';
   
@@ -1929,7 +2174,7 @@ function openChefStore(cookId) {
   document.getElementById('chefStoreName').textContent = cf.cook;
   document.getElementById('chefStoreArea').innerHTML = `<i class="fas fa-map-marker-alt" style="margin-right:4px;"></i>${cf.area}`;
   document.getElementById('chefStoreCuisine').textContent = 'Specialty: Desi & Pakistani';
-  document.getElementById('chefStoreAvatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(cf.cook)}&background=7A0020&color=FDF3DC&bold=true&size=90`;
+  document.getElementById('chefStoreAvatar').src = `https://ui-avatars.com/api/?name= ${encodeURIComponent(cf.cook)}&background=7A0020&color=FDF3DC&bold=true&size=90`;
   
   const myRevs = chefReviews.filter(r => r.targetId === cookId);
   const avgRating = myRevs.length ? (myRevs.reduce((a,b)=>a+b.rating,0)/myRevs.length).toFixed(1) : null;
@@ -2317,7 +2562,7 @@ function saveItem(e) {
   const desc   = document.getElementById('itemDesc').value;
   const price  = parseInt(document.getElementById('itemPrice').value);
   const imgEl  = document.getElementById('itemPhotoPreview');
-  const imgSrc = imgEl.style.display !== 'none' ? imgEl.src : 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600';
+  const imgSrc = imgEl.style.display !== 'none' ? imgEl.src : 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600 ';
   const optRows = document.querySelectorAll('#optionsContainer .option-extra');
   const tags = [];
   optRows.forEach(row => {
@@ -2499,28 +2744,17 @@ function doLogin(e) {
   if (currentRole === 'customer') {
     document.getElementById('custWelcomeName').textContent = 'Welcome, ' + (currentUser.name || 'Guest');
     document.getElementById('custAddressDisplay').textContent = currentUser.address || 'Swabi';
-    document.getElementById('custAvatar').src = currentUser.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(currentUser.name||'Guest')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+    document.getElementById('custAvatar').src = currentUser.photo || `https://ui-avatars.com/api/?name= ${encodeURIComponent(currentUser.name||'Guest')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
   } else if (currentRole === 'cook') {
-    document.getElementById('cookDashAvatar').src = cookProfile.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(cookProfile.name||'Chef')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+    document.getElementById('cookDashAvatar').src = cookProfile.photo || `https://ui-avatars.com/api/?name= ${encodeURIComponent(cookProfile.name||'Chef')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
     document.getElementById('cookStoreName').textContent = cookProfile.storeName || 'My Kitchen';
   } else if (currentRole === 'rider') {
-    document.getElementById('riderDashAvatar').src = riderProfile.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(riderProfile.name||'Rider')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
+    document.getElementById('riderDashAvatar').src = riderProfile.photo || `https://ui-avatars.com/api/?name= ${encodeURIComponent(riderProfile.name||'Rider')}&background=7A0020&color=FDF3DC&bold=true&size=60`;
     document.getElementById('riderDashName').textContent = (riderProfile.name || 'Rider') + ' — Delivery Partner';
     document.getElementById('riderAreaDisplay').innerHTML = `<span class="area-tag"><i class="fas fa-map-pin"></i>Swabi</span>`;
   }
   showPage(dashMap[currentRole]);
   toast(`Welcome back to ApnaKitchen!`);
-}
-
-function doRegister(e) {
-  e.preventDefault();
-  currentUser.name    = document.getElementById('reg_name').value;
-  currentUser.phone   = document.getElementById('reg_phone').value;
-  currentUser.email   = document.getElementById('reg_email').value;
-  currentUser.cnic    = document.getElementById('reg_cnic').value;
-  currentUser.address = document.getElementById('reg_address').value;
-  toast('Account created! Please login.');
-  showPage('login');
 }
 
 // ═══════════════════════════════════════════════════════════════════════
